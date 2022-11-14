@@ -3,7 +3,7 @@
     public class InputGroupAddon : Tag
     {
         internal InputGroupAddon(BootstrapHelper helper)
-            : base(helper, "span", Css.InputGroupAddon)
+            : base(helper, "span"/*, Css.InputGroupAddon*/)
         {
         }
     }

@@ -13,7 +13,7 @@ namespace FluentBootstrapCore.Thumbnails
         public string Alt { get; set; }
 
         internal Thumbnail(BootstrapHelper helper)
-            : base(helper, "a", Css.Thumbnail)
+            : base(helper, "a"/*, Css.Thumbnail*/)
         {
         }
 
@@ -23,7 +23,7 @@ namespace FluentBootstrapCore.Thumbnails
             bool inContainer = false;
             if (GetComponent<ThumbnailContainer>(true) != null)
             {
-                RemoveCss(Css.Thumbnail);
+                //RemoveCss(Css.Thumbnail);
                 inContainer = true;
             }
 

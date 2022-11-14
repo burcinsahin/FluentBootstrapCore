@@ -401,7 +401,8 @@ namespace FluentBootstrapCore
 
         private Stack<Component> GetComponentStack()
         {
-            return GetStack(ComponentStackKey);
+            var stack = GetStack(ComponentStackKey);
+            return stack;
         }
 
         private Stack<Component> GetOutputStack()
@@ -411,7 +412,7 @@ namespace FluentBootstrapCore
 
         private Stack<Component> GetStack(object key)
         {
-            Stack<Component> stack = Config.GetItem(key, null) as Stack<Component>;
+            var stack = Config.GetItem(key, null) as Stack<Component>;
             if (stack == null)
             {
                 stack = new Stack<Component>();

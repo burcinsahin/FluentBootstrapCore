@@ -8,7 +8,7 @@ namespace FluentBootstrapCore.Forms
         ICanCreate<Dropdown>
     {
         internal InputGroupButton(BootstrapHelper helper)
-            : base(helper, "span", Css.InputGroupBtn)
+            : base(helper, "span"/*, Css.InputGroupBtn*/)
         {
         }
     }

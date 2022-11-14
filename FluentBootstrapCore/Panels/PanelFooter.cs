@@ -3,7 +3,7 @@
     public class PanelFooter : PanelSection
     {
         internal PanelFooter(BootstrapHelper helper)
-            : base(helper, Css.PanelFooter)
+            : base(helper/*, Css.PanelFooter*/)
         {
         }
     }

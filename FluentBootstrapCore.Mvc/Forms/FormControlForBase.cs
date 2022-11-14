@@ -3,7 +3,7 @@ using FluentBootstrapCore.Html;
 using FluentBootstrapCore.Internals;
 using FluentBootstrapCore.Mvc.Internals;
 using HtmlAgilityPack;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.IO;
 using System.Linq.Expressions;
@@ -20,7 +20,7 @@ namespace FluentBootstrapCore.Mvc.Forms
         public object AdditionalViewData { get; set; }
 
         protected FormControlForBase(BootstrapHelper helper, bool editor)
-            : base(helper, "div", editor ? null : Css.FormControlStatic)
+            : base(helper, "div", editor ? null : " "/*Css.FormControlStatic*/)
         {
             AddFormControlClass = true;
         }
@@ -55,7 +55,7 @@ namespace FluentBootstrapCore.Mvc.Forms
             // Add the validation message if requested
             if (AddValidationMessage)
             {
-                writer.Write(this.GetHtmlHelper<TModel>().ValidationMessageFor(Expression, "", null, ""));//TODO:?
+                writer.Write(this.GetHtmlHelper<TModel>().ValidationMessageFor(Expression, "", null, "").ToHtmlString());//TODO:???
             }
         }
 
@@ -64,12 +64,12 @@ namespace FluentBootstrapCore.Mvc.Forms
             // Add the description text if requested
             if (AddDescription)
             {
-                var expressionProvider = new ModelExpressionProvider(this.GetHtmlHelper<TModel>().MetadataProvider, null);
-                var metadata = expressionProvider.CreateModelExpression(this.GetHtmlHelper<TModel>().ViewData, Expression).Metadata;
-                //ModelMetadata metadata = ModelMetadata.FromLambdaExpression(Expression, this.GetHtmlHelper<TModel>().ViewData);
+                var htmlHelper = this.GetHtmlHelper<TModel>();
+                var expressionProvider = htmlHelper.GetModelExpressionProvider();
+                var metadata = expressionProvider.CreateModelExpression(htmlHelper.ViewData, Expression).Metadata;
                 if (!string.IsNullOrWhiteSpace(metadata.Description))
                 {
-                    Element element = GetHelper().Element("p").AddCss(Css.HelpBlock).GetComponent();
+                    Element element = GetHelper().Element("p").AddCss(/*Css.HelpBlock*/).GetComponent();
                     element.AddChild(GetHelper().Content(metadata.Description));
                     element.StartAndFinish(writer);
                 }
@@ -81,22 +81,22 @@ namespace FluentBootstrapCore.Mvc.Forms
         protected virtual void WriteDisplay(TextWriter writer)
         {
             //// Insert the hidden control if requested
-            //if (AddHidden)
-            //{
-            //    this.GetHelper<TModel>().HiddenFor(Expression).GetComponent().StartAndFinish(writer);
-            //}
+            if (AddHidden)
+            {
+                this.GetHelper<TModel>().HiddenFor(Expression).GetComponent().StartAndFinish(writer);
+            }
 
-            //writer.Write(this.GetHtmlHelper<TModel>().DisplayFor(Expression, TemplateName, AdditionalViewData));
-            throw new NotImplementedException();
+            writer.Write(this.GetHtmlHelper<TModel>().DisplayFor(Expression, TemplateName, AdditionalViewData));
         }
 
         protected virtual void WriteEditor(TextWriter writer)
         {
-            //writer.Write(GetEditor(this.GetHtmlHelper<TModel>().EditorFor(Expression, TemplateName, AdditionalViewData).ToString()));
-            throw new NotImplementedException();
+            var htmlHelper = this.GetHtmlHelper<TModel>();
+            var editor = htmlHelper.EditorFor(Expression, TemplateName, AdditionalViewData);
+            writer.Write(GetEditor(editor.ToHtmlString()));
         }
 
-        protected string GetEditor(string html)
+        protected string? GetEditor(string? html)
         {
             if (AddFormControlClass)
             {

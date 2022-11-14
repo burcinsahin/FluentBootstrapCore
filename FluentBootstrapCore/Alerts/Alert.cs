@@ -2,10 +2,10 @@
 
 namespace FluentBootstrapCore.Alerts
 {
-    public class Alert : Tag, IHasTextContent
+    public class Alert : Tag, IHasTextContent, ICanCreate<AlertLink>
     {
         public bool Dismissible { set; get; }
-        public string Heading { set; get; }
+        public string? Heading { set; get; }
 
         internal Alert(BootstrapHelper helper)
             : base(helper, "div", Css.Alert, Css.AlertInfo)
@@ -24,15 +24,15 @@ namespace FluentBootstrapCore.Alerts
 
             if (Dismissible)
             {
-                GetHelper().Element("button").AddAttribute("type", "button").AddCss(Css.Close).AddAttribute("data-dismiss", "alert")
-                    .AddChild(_ => GetHelper().Span().AddAttribute("aria-hidden", "true").SetText("\u00D7"))
-                    .AddChild(_ => GetHelper().Span().AddCss(Css.SrOnly).SetText("Close"))
+                GetHelper().Element("button").AddAttribute("type", "button")
+                    .AddCss(Css.BtnClose, Css.Fade, Css.Show)
+                    .AddAttribute("data-bs-dismiss", "alert").AddAttribute("aria-label", "Close")
                     .Component.StartAndFinish(writer);
             }
 
             if (!string.IsNullOrWhiteSpace(Heading))
             {
-                GetHelper().Strong(Heading + " ").Component.StartAndFinish(writer);
+                GetHelper().Heading6(Heading).AddCss(Css.AlertHeading).Component.StartAndFinish(writer);
             }
         }
     }

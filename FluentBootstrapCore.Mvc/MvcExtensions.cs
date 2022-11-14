@@ -6,13 +6,14 @@ using FluentBootstrapCore.Links;
 using FluentBootstrapCore.ListGroups;
 using FluentBootstrapCore.MediaObjects;
 using FluentBootstrapCore.Mvc;
+using FluentBootstrapCore.Mvc.Internals;
 using FluentBootstrapCore.Navbars;
 using FluentBootstrapCore.Navs;
 using FluentBootstrapCore.Pagers;
 using FluentBootstrapCore.Paginations;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -27,9 +28,8 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TTag : Tag
         {
-            //builder.GetComponent().AddChild(builder.GetHelper().Content(content(null).ToHtmlString()).GetComponent());
-            //return builder;
-            throw new NotImplementedException();
+            builder.GetComponent().AddChild(builder.GetHelper().Content(content(null).ToHtmlString()).GetComponent());
+            return builder;
         }
 
         // Link
@@ -38,40 +38,30 @@ namespace FluentBootstrapCore
             this BootstrapHelper<MvcBootstrapConfig<TModel>, TComponent> helper, string text, string actionName, string controllerName, object routeValues = null)
             where TComponent : Component, ICanCreate<Link>
         {
-            //return new ComponentBuilder<MvcBootstrapConfig<TModel>, Link>(helper.GetConfig(), helper.Link(text, null).GetComponent())
-            //    .SetLinkAction(actionName, controllerName, routeValues)
-            //    .SetText(text);
-            throw new NotImplementedException();
+            return new ComponentBuilder<MvcBootstrapConfig<TModel>, Link>(helper.GetConfig(), helper.Link(text, null).GetComponent())
+                .SetLinkAction(actionName, controllerName, routeValues)
+                .SetText(text);
         }
 
         public static ComponentBuilder<MvcBootstrapConfig<TModel>, TTag> SetLinkAction<TTag, TModel>(
             this ComponentBuilder<MvcBootstrapConfig<TModel>, TTag> builder, string actionName, string controllerName, object routeValues = null)
             where TTag : Tag, IHasLinkExtensions
         {
-            //RouteValueDictionary routeValueDictionary = routeValues == null ? new RouteValueDictionary() : routeValues as RouteValueDictionary;
-            //if (routeValueDictionary == null)
-            //{
-            //    routeValueDictionary = new RouteValueDictionary(routeValues);
-            //}
-            //builder.SetHref(UrlHelper.GenerateUrl(null, actionName, controllerName, routeValueDictionary,
-            //    builder.GetConfig().HtmlHelper.RouteCollection, builder.GetConfig().HtmlHelper.ViewContext.RequestContext, true));
-            //return builder;
-            throw new NotImplementedException();
+            var urlHelper = builder.GetConfig().HtmlHelper.GetUrlHelper();
+            var urlActionContext = new UrlActionContext { Action = actionName, Controller = controllerName, Values = routeValues };
+            var url = urlHelper?.Action(urlActionContext);
+            builder.SetHref(url);
+            return builder;
         }
 
         public static ComponentBuilder<MvcBootstrapConfig<TModel>, TTag> SetRoute<TTag, TModel>(
             this ComponentBuilder<MvcBootstrapConfig<TModel>, TTag> builder, string routeName, object routeValues = null)
             where TTag : Tag, IHasLinkExtensions
         {
-            //RouteValueDictionary routeValueDictionary = routeValues == null ? new RouteValueDictionary() : routeValues as RouteValueDictionary;
-            //if (routeValueDictionary == null)
-            //{
-            //    routeValueDictionary = new RouteValueDictionary(routeValues);
-            //}
-            //builder.SetHref(UrlHelper.GenerateUrl(routeName, null, null, routeValueDictionary,
-            //    builder.GetConfig().HtmlHelper.RouteCollection, builder.GetConfig().HtmlHelper.ViewContext.RequestContext, false));
-            //return builder;
-            throw new NotImplementedException();
+            var htmlHelper = builder.GetHelper().GetConfig().GetHtmlHelper();
+            var href = htmlHelper.GetUrlHelper().RouteUrl(routeName, routeValues);
+            builder.SetHref(href);
+            return builder;
         }
 
         // Breadcrumb
@@ -80,10 +70,9 @@ namespace FluentBootstrapCore
             this BootstrapHelper<MvcBootstrapConfig<TModel>, TComponent> helper, string text, string actionName, string controllerName, object routeValues = null)
             where TComponent : Component, ICanCreate<Crumb>
         {
-            //return new ComponentBuilder<MvcBootstrapConfig<TModel>, Crumb>(helper.GetConfig(), helper.Crumb(text, null).GetComponent())
-            //    .SetLinkAction(actionName, controllerName, routeValues)
-            //    .SetText(text);
-            throw new NotImplementedException();
+            return new ComponentBuilder<MvcBootstrapConfig<TModel>, Crumb>(helper.GetConfig(), helper.Crumb(text, null).GetComponent())
+                .SetLinkAction(actionName, controllerName, routeValues)
+                .SetText(text);
         }
 
         // Button
@@ -133,9 +122,8 @@ namespace FluentBootstrapCore
             this BootstrapHelper<MvcBootstrapConfig<TModel>, TComponent> helper, string brand, string actionName, string controllerName, object routeValues = null, bool fluid = true)
             where TComponent : Component, ICanCreate<Navbar>
         {
-            //return new ComponentBuilder<MvcBootstrapConfig<TModel>, Navbar>(helper.GetConfig(), helper.Navbar(fluid).GetComponent())
-            //    .AddChild(x => x.Brand(brand, actionName, controllerName, routeValues));
-            throw new NotImplementedException();
+            return new ComponentBuilder<MvcBootstrapConfig<TModel>, Navbar>(helper.GetConfig(), helper.Navbar(fluid).GetComponent())
+                .AddChild(x => x.Brand(brand, actionName, controllerName, routeValues));
         }
 
         public static ComponentBuilder<MvcBootstrapConfig<TModel>, Brand> Brand<TComponent, TModel>(
@@ -177,9 +165,8 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<MvcBootstrapConfig<TModel>, Pager> AddPrevious<TModel>(
             this ComponentBuilder<MvcBootstrapConfig<TModel>, Pager> builder, string text, string actionName, string controllerName, object routeValues = null, bool disabled = false)
         {
-            //builder.AddChild(x => x.Page(text, actionName, controllerName, routeValues).SetAlignment(PageAlignment.Previous).SetDisabled(disabled));
-            //return builder;
-            throw new NotImplementedException();
+            builder.AddChild(x => x.Page(text, actionName, controllerName, routeValues).SetAlignment(PageAlignment.Previous).SetDisabled(disabled));
+            return builder;
         }
 
         // Pager
@@ -244,18 +231,19 @@ namespace FluentBootstrapCore
             Expression<Func<TModel, IEnumerable<TValue>>> expression, Func<TValue, object> item, ListType listType = ListType.Unstyled)
             where TComponent : Component, ICanCreate<Typography.List>
         {
-            //ComponentBuilder<MvcBootstrapConfig<TModel>, Typography.List> builder =
-            //    new ComponentBuilder<MvcBootstrapConfig<TModel>, Typography.List>(helper.GetConfig(), helper.List(listType).GetComponent());
-            //IEnumerable<TValue> values = ModelMetadata.FromLambdaExpression(expression, builder.GetConfig().HtmlHelper.ViewData).Model as IEnumerable<TValue>;
-            //if (values != null)
-            //{
-            //    foreach (TValue value in values)
-            //    {
-            //        builder.AddChild(x => x.ListItem(item(value)));
-            //    }
-            //}
-            //return builder;
-            throw new NotImplementedException();
+            var builder =
+                new ComponentBuilder<MvcBootstrapConfig<TModel>, Typography.List>(helper.GetConfig(), helper.List(listType).GetComponent());
+            var htmlHelper = helper.GetConfig().GetHtmlHelper();
+            var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
+            var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
+            if (modelExpression.Model is IEnumerable<TValue> values)
+            {
+                foreach (TValue value in values)
+                {
+                    builder.AddChild(x => x.ListItem(item(value)));
+                }
+            }
+            return builder;
         }
     }
 }

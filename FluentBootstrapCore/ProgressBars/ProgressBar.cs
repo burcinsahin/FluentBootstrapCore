@@ -57,7 +57,7 @@ namespace FluentBootstrapCore.ProgressBars
             }
             else
             {
-                GetHelper().Element("span").AddCss(Css.SrOnly).SetText(percent + "% Complete").Component.StartAndFinish(writer);
+                GetHelper().Element("span")/*.AddCss(Css.SrOnly)*/.SetText(percent + "% Complete").Component.StartAndFinish(writer);
             }
         }
 

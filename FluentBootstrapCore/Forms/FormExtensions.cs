@@ -30,7 +30,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TForm : Form
         {
-            builder.Component.ToggleCss(Css.FormInline, inline, Css.FormHorizontal);
+            //builder.Component.ToggleCss(Css.FormInline, inline, Css.FormHorizontal);
             return builder;
         }
 
@@ -38,11 +38,11 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TForm : Form
         {
-            builder.Component.ToggleCss(Css.FormHorizontal, horizontal, Css.FormInline);
-            if (defaultlabelWidth.HasValue)
-            {
-                builder.Component.DefaultLabelWidth = defaultlabelWidth.Value;
-            }
+            //builder.Component.ToggleCss(Css.FormHorizontal, horizontal, Css.FormInline);
+            //if (defaultlabelWidth.HasValue)
+            //{
+            //    builder.Component.DefaultLabelWidth = defaultlabelWidth.Value;
+            //}
             return builder;
         }
 
@@ -118,11 +118,11 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, FormGroup> SetFeedback<TConfig>(this ComponentBuilder<TConfig, FormGroup> builder, Icon icon)
             where TConfig : BootstrapConfig
         {
-            if (icon != Icon.None)
-            {
-                builder.Component.ToggleCss(Css.HasFeedback, true);
-                builder.Component.Icon = icon;
-            }
+            //if (icon != Icon.None)
+            //{
+            //    builder.Component.ToggleCss(Css.HasFeedback, true);
+            //    builder.Component.Icon = icon;
+            //}
             return builder;
         }
 
@@ -192,7 +192,7 @@ namespace FluentBootstrapCore
         {
             if (icon != Icon.None)
             {
-                builder.Component.ToggleCss(Css.HasFeedback, true);
+                //builder.Component.ToggleCss(Css.HasFeedback, true);
                 builder.Component.Icon = icon;
             }
             return builder;
@@ -238,7 +238,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TComponent : Component, ICanCreate<CheckedControl>
         {
-            return new ComponentBuilder<TConfig, CheckedControl>(helper.Config, new CheckedControl(helper, Css.Checkbox))
+            return new ComponentBuilder<TConfig, CheckedControl>(helper.Config, new CheckedControl(helper, "checkbox"))
                 .SetName(name)
                 .SetControlLabel(label)
                 .SetDescription(description)
@@ -249,7 +249,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TComponent : Component, ICanCreate<CheckedControl>
         {
-            return new ComponentBuilder<TConfig, CheckedControl>(helper.Config, new CheckedControl(helper, Css.Radio))
+            return new ComponentBuilder<TConfig, CheckedControl>(helper.Config, new CheckedControl(helper, "radio"))
                 .SetName(name)
                 .SetControlLabel(label)
                 .SetDescription(description)
@@ -435,7 +435,7 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, FormControl> AddStaticClass<TConfig>(this ComponentBuilder<TConfig, FormControl> builder, bool addStaticClass = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.FormControlStatic, addStaticClass);
+            //builder.Component.ToggleCss(Css.FormControlStatic, addStaticClass);
             return builder;
         }
 
@@ -456,7 +456,7 @@ namespace FluentBootstrapCore
         {
             if (label != null)
             {
-                ComponentBuilder<TConfig, ControlLabel> controlLabelBuilder = builder.GetHelper().ControlLabel(label).For(builder.Component.GetAttribute("name"));
+                var controlLabelBuilder = builder.GetHelper().ControlLabel(label).For(builder.Component.GetAttribute("name"));
                 if (labelAction != null)
                 {
                     labelAction(controlLabelBuilder);
@@ -550,7 +550,7 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, CheckedControl> CheckBox<TConfig>(this ComponentWrapper<TConfig, InputGroupAddon> wrapper, string name = null, bool isChecked = false)
             where TConfig : BootstrapConfig
         {
-            return new ComponentBuilder<TConfig, CheckedControl>(wrapper.Config, new CheckedControl(wrapper, Css.Checkbox) { SuppressLabelWrapper = true })
+            return new ComponentBuilder<TConfig, CheckedControl>(wrapper.Config, new CheckedControl(wrapper, "" /*Css.Checkbox*/) { SuppressLabelWrapper = true })
                 .SetName(name)
                 .SetChecked(isChecked)
                 .EnsureFormGroup(false)
@@ -560,7 +560,7 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, CheckedControl> Radio<TConfig>(this ComponentWrapper<TConfig, InputGroupAddon> wrapper, string name = null, object value = null, bool isChecked = false)
             where TConfig : BootstrapConfig
         {
-            return new ComponentBuilder<TConfig, CheckedControl>(wrapper.Config, new CheckedControl(wrapper, Css.Radio) { SuppressLabelWrapper = true })
+            return new ComponentBuilder<TConfig, CheckedControl>(wrapper.Config, new CheckedControl(wrapper, "radio") { SuppressLabelWrapper = true })
                 .SetName(name)
                 .SetValue(value)
                 .SetChecked(isChecked)

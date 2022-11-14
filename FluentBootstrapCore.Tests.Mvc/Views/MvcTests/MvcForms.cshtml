@@ -6,16 +6,25 @@
 
 @using (Html.Bootstrap().Container().Begin())
 {
+    using (var form = Html.Bootstrap().Form("Login", "Home", FormMethod.Post, new { area = "Admin" }).AddCss("form-signin").Begin())
+    {
+        @form.InputFor(model => model.PropA)
+        @form.PasswordFor(model => model.PropB).SetMaxLength(16).IsRequired()
+    }
+
     @Html.Bootstrap().Heading1("Validation Summary")
     using (Html.Bootstrap().Div().SetId("test-validation-summary").Begin())
     {
-        using (var form = Html.Bootstrap().Form().Begin())
+        @using (var form = Html.Bootstrap().Form().Begin())
         {
             @form.EditorFor(x => x.PropA)
         }
     }
 
     <hr />
+
+    @*
+
 
     @Html.Bootstrap().Heading1("Explicit Validation Summary")
     using (Html.Bootstrap().Div().SetId("test-explicit-validation-summary").Begin())
@@ -171,5 +180,5 @@
         {
             @form.Submit();
         }
-    }
+    }*@
 }

@@ -15,7 +15,7 @@ namespace FluentBootstrapCore.MediaObjects
         public string Alt { get; set; }
 
         internal MediaObject(BootstrapHelper helper)
-            : base(helper, "a", Css.MediaLeft)
+            : base(helper, "a"/*, Css.MediaLeft*/)
         {
         }
 
@@ -41,7 +41,7 @@ namespace FluentBootstrapCore.MediaObjects
 
             base.OnStart(writer);
 
-            _image = GetHelper().Image(Src, Alt).AddCss(Css.MediaObject).Component;
+            _image = GetHelper().Image(Src, Alt)/*.AddCss(Css.MediaObject)*/.Component;
             _image.Start(writer);
         }
 

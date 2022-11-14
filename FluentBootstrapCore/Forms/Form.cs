@@ -20,7 +20,7 @@
 
         public bool Horizontal
         {
-            get { return CssClasses.Contains(Css.FormHorizontal); }
+            get { return false/*CssClasses.Contains(Css.FormHorizontal)*/; }
         }
     }
 }

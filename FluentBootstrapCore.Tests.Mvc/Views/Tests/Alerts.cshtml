@@ -3,10 +3,14 @@
     @Html.Bootstrap().Heading1("States")
     using (Html.Bootstrap().Div().SetId("test-states").Begin())
     {
+        @Html.Bootstrap().Alert(AlertState.Primary, "Primary")
+        @Html.Bootstrap().Alert(AlertState.Secondary, "Secondary")
         @Html.Bootstrap().Alert(AlertState.Success, "Success")
-        @Html.Bootstrap().Alert(AlertState.Info, "Info")
-        @Html.Bootstrap().Alert(AlertState.Warning, "Warning")
         @Html.Bootstrap().Alert(AlertState.Danger, "Danger")
+        @Html.Bootstrap().Alert(AlertState.Warning, "Warning")
+        @Html.Bootstrap().Alert(AlertState.Info, "Info")
+        @Html.Bootstrap().Alert(AlertState.Light, "Light")
+        @Html.Bootstrap().Alert(AlertState.Dark, "Dark")
     }
 
     <hr />
@@ -38,9 +42,9 @@
     @Html.Bootstrap().Heading1("Links")
     using (Html.Bootstrap().Div().SetId("test-links").Begin())
     {
-        using(Html.Bootstrap().Alert(AlertState.Warning).SetHeading("Yikes!").Begin())
+        using (var alert = Html.Bootstrap().Alert(AlertState.Warning).SetHeading("Yikes!").Begin())
         {
-            <text>This is @Html.Bootstrap().Link("link") inside the alert.</text>
+            <text>This is @alert.AlertLink("link") inside the alert.</text>
         }
     }
 }

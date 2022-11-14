@@ -7,7 +7,7 @@ namespace FluentBootstrapCore.MediaObjects
         public string Heading { get; set; }
 
         internal MediaBody(BootstrapHelper helper)
-            : base(helper, "div", Css.MediaBody)
+            : base(helper, "div"/*, Css.MediaBody*/)
         {
         }
 

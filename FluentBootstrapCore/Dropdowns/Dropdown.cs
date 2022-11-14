@@ -24,7 +24,7 @@ namespace FluentBootstrapCore.Dropdowns
         public bool MenuLeft { get; set; }
 
         internal Dropdown(BootstrapHelper helper)
-            : base(helper, "div", Css.Dropdown, Css.BtnDefault)
+            : base(helper, "div", Css.Dropdown, Css.BtnPrimary)
         {
             Caret = true;
         }
@@ -50,7 +50,7 @@ namespace FluentBootstrapCore.Dropdowns
             {
                 // Create a button and copy over any button classes and text
                 Button button = GetHelper().Button().Component;
-                button.RemoveCss(Css.BtnDefault);
+                button.RemoveCss(Css.BtnPrimary);
                 button.AddCss(Css.DropdownToggle);
                 button.MergeAttribute("data-toggle", "dropdown");
                 foreach (string buttonClass in CssClasses.Where(x => x.StartsWith("btn")))
@@ -69,7 +69,7 @@ namespace FluentBootstrapCore.Dropdowns
             }
             else
             {
-                Element element = GetHelper().Element("span").AddCss(Css.SrOnly).Component;
+                Element element = GetHelper().Element("span")/*.AddCss(Css.SrOnly)*/.Component;
                 element.AddChild(GetHelper().Content("Toggle Dropdown"));
                 _toggle.AddChild(element);
             }
@@ -97,11 +97,11 @@ namespace FluentBootstrapCore.Dropdowns
             _list.MergeAttribute("role", "menu");
             if (MenuRight)
             {
-                _list.AddCss(Css.DropdownMenuRight);
+                //_list.AddCss(Css.DropdownMenuRight);
             }
             if (MenuLeft)
             {
-                _list.AddCss(Css.DropdownMenuLeft);
+                //_list.AddCss(Css.DropdownMenuLeft);
             }
 
             // Start this component

@@ -12,7 +12,7 @@ namespace FluentBootstrapCore
         Bordered = 1 << 1,
         [Description(Css.TableHover)]
         Hover = 1 << 2,
-        [Description(Css.TableCondensed)]
-        Condensed = 1 << 3
+        //[Description(Css.TableCondensed)]
+        //Condensed = 1 << 3
     }
 }

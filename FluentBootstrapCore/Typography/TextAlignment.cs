@@ -6,13 +6,13 @@ namespace FluentBootstrapCore
     {
         [Description()]
         Default,
-        [Description(Css.TextLeft)]
+        [Description(/*Css.TextLeft*/)]
         Left,
-        [Description(Css.TextCenter)]
+        [Description(/*Css.TextCenter*/)]
         Center,
-        [Description(Css.TextRight)]
+        [Description(/*Css.TextRight*/)]
         Right,
-        [Description(Css.TextJustify)]
+        [Description(/*Css.TextJustify*/)]
         Justify,
         [Description(Css.TextNowrap)]
         Nowrap

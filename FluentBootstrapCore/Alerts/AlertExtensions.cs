@@ -1,4 +1,5 @@
 ﻿using FluentBootstrapCore.Alerts;
+using FluentBootstrapCore.Typography;
 
 namespace FluentBootstrapCore
 {
@@ -42,6 +43,23 @@ namespace FluentBootstrapCore
         {
             builder.Component.Dismissible = dismissible;
             return builder;
+        }
+
+        public static ComponentBuilder<TConfig, THeading> SetDisplay<TConfig, THeading>(this ComponentBuilder<TConfig, THeading> builder, DisplaySize displaySize)
+            where TConfig : BootstrapConfig
+            where THeading : Heading
+        {
+            builder.Component.AddCss(displaySize.GetDescription());
+            return builder;
+        }
+
+        public static ComponentBuilder<TConfig, AlertLink> AlertLink<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper, object text, string href = "#")
+            where TConfig : BootstrapConfig
+            where TComponent : Component, ICanCreate<AlertLink>
+        {
+            return new ComponentBuilder<TConfig, AlertLink>(helper.Config, new AlertLink(helper))
+                .SetText(text)
+                .SetHref(href);
         }
     }
 }

@@ -16,14 +16,14 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, Pager> AddPrevious<TConfig>(this ComponentBuilder<TConfig, Pager> builder, string text, string href = "#", bool disabled = false)
             where TConfig : BootstrapConfig
         {
-            builder.AddChild(x => x.Page(text, href).SetAlignment(PageAlignment.Previous).SetDisabled(disabled));
+            //builder.AddChild(x => x.Page(text, href).SetAlignment(PageAlignment.Previous).SetDisabled(disabled));
             return builder;
         }
 
         public static ComponentBuilder<TConfig, Pager> AddNext<TConfig>(this ComponentBuilder<TConfig, Pager> builder, string text, string href = "#", bool disabled = false)
             where TConfig : BootstrapConfig
         {
-            builder.AddChild(x => x.Page(text, href).SetAlignment(PageAlignment.Next).SetDisabled(disabled));
+            //builder.AddChild(x => x.Page(text, href).SetAlignment(PageAlignment.Next).SetDisabled(disabled));
             return builder;
         }
 

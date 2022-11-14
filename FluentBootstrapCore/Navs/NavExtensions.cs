@@ -16,7 +16,7 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, Pills> SetStacked<TConfig>(this ComponentBuilder<TConfig, Pills> builder, bool stacked = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.NavStacked, stacked);
+            //builder.Component.ToggleCss(Css.NavStacked, stacked);
             return builder;
         }
 

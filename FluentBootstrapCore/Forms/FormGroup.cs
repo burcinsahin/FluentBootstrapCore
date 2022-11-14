@@ -30,7 +30,7 @@ namespace FluentBootstrapCore.Forms
         public bool AutoColumns { get; set; }   // indicates if columns should automatically be generated if horizontal
 
         internal FormGroup(BootstrapHelper helper)
-            : base(helper, "div", Css.FormGroup)
+            : base(helper, "div"/*, Css.FormGroup*/)
         {
             Icon = Icon.None;
             AutoColumns = true;
@@ -103,7 +103,7 @@ namespace FluentBootstrapCore.Forms
             // Add the feedback icon as a final child of either this or the wrapper
             if (Icon != Icon.None)
             {
-                Component icon = GetHelper().Icon(Icon).AddCss(Css.FormControlFeedback).Component;
+                Component icon = GetHelper().Icon(Icon)/*.AddCss(Css.FormControlFeedback)*/.Component;
                 if (_columnWrapper == null)
                 {
                     AddChildAtEnd(icon);

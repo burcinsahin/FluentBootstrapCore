@@ -5,17 +5,17 @@ namespace FluentBootstrapCore
 
     public enum LabelState
     {
-        [Description(Css.LabelDefault)]
+        [Description(Css.TextInfo)]
         Default,
-        [Description(Css.LabelPrimary)]
+        [Description(Css.TextPrimary)]
         Primary,
-        [Description(Css.LabelSuccess)]
+        [Description(Css.TextSuccess)]
         Success,
-        [Description(Css.LabelInfo)]
+        [Description(Css.TextInfo)]
         Info,
-        [Description(Css.LabelWarning)]
+        [Description(Css.TextWarning)]
         Warning,
-        [Description(Css.LabelDanger)]
+        [Description(Css.TextDanger)]
         Danger
     }
 }

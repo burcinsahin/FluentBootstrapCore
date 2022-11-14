@@ -4,7 +4,7 @@
         ICanCreate<Media>
     {
         internal MediaList(BootstrapHelper helper)
-            : base(helper, "ul", Css.MediaList)
+            : base(helper, "ul"/*, Css.MediaList*/)
         {
         }
     }

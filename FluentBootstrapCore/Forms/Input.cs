@@ -21,7 +21,7 @@ namespace FluentBootstrapCore.Forms
             // Add the feedback icon
             if (Icon != Icon.None)
             {
-                GetHelper().Icon(Icon).AddCss(Css.FormControlFeedback).Component.StartAndFinish(writer);
+                //GetHelper().Icon(Icon).AddCss(Css.FormControlFeedback).Component.StartAndFinish(writer);
             }
 
             base.OnFinish(writer);

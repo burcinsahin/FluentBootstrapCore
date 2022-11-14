@@ -1,4 +1,4 @@
-﻿@using FluentBootstrap;
+﻿@using FluentBootstrapCore;
 
 @using (Html.Bootstrap().Container().Begin())
 {
@@ -11,17 +11,17 @@
             @form.Input("readonly2", "Normal Input", "Initial Value").SetReadonly(false)
         }
     }
-    
+
     <hr />
-    
+
     @Html.Bootstrap().Heading1("Validation")
     using (Html.Bootstrap().Div().SetId("test-validation").Begin())
     {
         using (var form = Html.Bootstrap().Form().Begin())
         {
-            @form.Input("Error", "Error").SetState(ValidationState.Error)
-            @form.CheckBox("Warning", "Warning").SetState(ValidationState.Warning)
-            @form.Radio("Success", "Success", "Description here").SetState(ValidationState.Success)
+            @form.Input("Error", "Error").SetState(ValidationState.Default)
+            @form.CheckBox("Warning", "Warning").SetState(ValidationState.Default)
+            @form.Radio("Success", "Success", "Description here").SetState(ValidationState.Default)
         }
     }
 
@@ -46,7 +46,7 @@
         using (var form = Html.Bootstrap().Form().SetHorizontal(6).Begin())
         {
             @form.Input("horizontal", "Horizontal")
-            using(form.FormGroup().SetHorizontal(false).Begin())
+            using (form.FormGroup().SetHorizontal(false).Begin())
             {
                 @form.Input("not-horizontal", "Not Horizontal")
             }
@@ -129,9 +129,9 @@
         using (var form = Html.Bootstrap().Form().Begin())
         {
             @(form.Select("Select", "Select")
-                .AddChild(x => x.SelectOption("Option A", "A"))
-                .AddChild(x => x.SelectOption("Option B", "B", true))
-                .AddChild(x => x.SelectOption("Option C", "C")))
+                    .AddChild(x => x.SelectOption("Option A", "A"))
+                    .AddChild(x => x.SelectOption("Option B", "B", true))
+                    .AddChild(x => x.SelectOption("Option C", "C")))
         }
     }
 
@@ -324,8 +324,8 @@
         using (var form = Html.Bootstrap().Form().Begin())
         {
             @form.Input("Normal", "Normal").SetFeedback(Icon.OkCircle)
-            @form.Input("Error", "Error").SetState(ValidationState.Error).SetFeedback(Icon.RemoveCircle)
-            @form.Input("SrOnly").SetState(ValidationState.Warning).SetFeedback(Icon.Check).SetControlLabel("SrOnly Label", x => x.SetVisibility(Visibility.SrOnly))
+            @form.Input("Error", "Error").SetState(ValidationState.Default).SetFeedback(Icon.RemoveCircle)
+            @form.Input("SrOnly").SetState(ValidationState.Default).SetFeedback(Icon.Check).SetControlLabel("SrOnly Label", x => x.SetVisibility(Visibility.Show))
         }
     }
 
@@ -344,7 +344,7 @@
                     @inputGroup.Input().SetPlaceholder("Username")
                 }
             }
-            using (form.FormGroup().SetFeedback(Icon.OkCircle).SetState(ValidationState.Success).Begin())
+            using (form.FormGroup().SetFeedback(Icon.OkCircle).SetState(ValidationState.Default).Begin())
             {
                 using (var inputGroup = form.InputGroup().Begin())
                 {

@@ -6,13 +6,13 @@ namespace FluentBootstrapCore
     {
         [Description()]
         None,
-        [Description(Css.ProgressBarSuccess)]
+        [Description(/*Css.ProgressBarSuccess*/)]
         Success,
-        [Description(Css.ProgressBarInfo)]
+        [Description(/*Css.ProgressBarInfo*/)]
         Info,
-        [Description(Css.ProgressBarWarning)]
+        [Description(/*Css.ProgressBarWarning*/)]
         Warning,
-        [Description(Css.ProgressBarDanger)]
+        [Description(/*Css.ProgressBarDanger*/)]
         Danger
     }
 }

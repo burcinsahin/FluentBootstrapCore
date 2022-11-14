@@ -10,7 +10,7 @@ namespace FluentBootstrapCore
         Lg,
         [Description(Css.BtnSm)]
         Sm,
-        [Description(Css.BtnXs)]
+        [Description(Css.BtnSm)]
         Xs
     }
 }

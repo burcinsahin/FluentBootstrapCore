@@ -5,7 +5,7 @@ namespace FluentBootstrapCore.Navbars
     public class NavbarText : Tag, INavbarComponent, IHasTextContent
     {
         internal NavbarText(BootstrapHelper helper)
-            : base(helper, "p", Css.NavbarText, Css.NavbarLeft)
+            : base(helper, "p", Css.NavbarText/*, Css.NavbarLeft*/)
         {
         }
 

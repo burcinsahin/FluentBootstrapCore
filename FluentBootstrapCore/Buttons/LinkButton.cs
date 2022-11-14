@@ -7,7 +7,7 @@ namespace FluentBootstrapCore.Buttons
         IHasIconExtensions, IHasLinkExtensions, IHasButtonExtensions, IHasButtonStateExtensions, IHasTextContent
     {
         internal LinkButton(BootstrapHelper helper)
-            : base(helper, "a", Css.Btn, Css.BtnDefault)
+            : base(helper, "a", Css.Btn, Css.BtnPrimary)
         {
             MergeAttribute("role", "button");
         }

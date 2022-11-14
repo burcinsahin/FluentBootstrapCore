@@ -12,7 +12,7 @@ namespace FluentBootstrapCore.Buttons
         private ButtonGroup _buttonGroup;
 
         internal Button(BootstrapHelper helper, ButtonType buttonType)
-            : base(helper, "button", Css.Btn, Css.BtnDefault)
+            : base(helper, "button", Css.Btn, Css.BtnPrimary)
         {
             MergeAttribute("type", buttonType.GetDescription());
         }
@@ -22,7 +22,7 @@ namespace FluentBootstrapCore.Buttons
             // Fix for justified buttons in a group (need to surround them with an extra button group)
             // See https://github.com/twbs/bootstrap/issues/12476
             ButtonGroup buttonGroup = GetComponent<ButtonGroup>(true);
-            if (buttonGroup != null && buttonGroup.CssClasses.Contains(Css.BtnGroupJustified))
+            if (buttonGroup != null /*&& buttonGroup.CssClasses.Contains(Css.BtnGroupJustified)*/)
             {
                 _buttonGroup = GetHelper().ButtonGroup().Component;
                 _buttonGroup.Start(writer);

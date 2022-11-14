@@ -9,7 +9,7 @@ namespace FluentBootstrapCore.Pagers
         private Element _nav = null;
 
         internal Pager(BootstrapHelper helper)
-            : base(helper, "ul", Css.Pager)
+            : base(helper, "ul"/*, Css.Pager*/)
         {
         }
 

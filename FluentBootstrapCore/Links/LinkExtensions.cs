@@ -33,5 +33,13 @@ namespace FluentBootstrapCore
             builder.Component.MergeAttribute("target", target.GetDescription());
             return builder;
         }
+
+        public static ComponentBuilder<TConfig, TTag> SetColor<TConfig, TTag>(this ComponentBuilder<TConfig, TTag> builder, LinkColor color)
+            where TConfig : BootstrapConfig
+            where TTag : Link, IHasLinkExtensions
+        {
+            builder.Component.AddCss(color.GetDescription());
+            return builder;
+        }
     }
 }

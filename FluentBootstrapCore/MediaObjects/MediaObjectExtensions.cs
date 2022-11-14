@@ -1,4 +1,5 @@
 ﻿using FluentBootstrapCore.MediaObjects;
+using System;
 
 namespace FluentBootstrapCore
 {
@@ -42,28 +43,28 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, MediaObject> SetLeft<TConfig>(this ComponentBuilder<TConfig, MediaObject> builder, bool left = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.MediaLeft, left, Css.MediaRight);
+            //builder.Component.ToggleCss(Css.MediaLeft, left, Css.MediaRight);
             return builder;
         }
 
         public static ComponentBuilder<TConfig, MediaObject> SetRight<TConfig>(this ComponentBuilder<TConfig, MediaObject> builder, bool right = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.MediaRight, right, Css.MediaLeft);
+            //builder.Component.ToggleCss(Css.MediaRight, right, Css.MediaLeft);
             return builder;
         }
 
         public static ComponentBuilder<TConfig, MediaObject> SetMiddle<TConfig>(this ComponentBuilder<TConfig, MediaObject> builder, bool middle = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.MediaMiddle, middle, Css.MediaBottom);
+            //builder.Component.ToggleCss(Css.MediaMiddle, middle, Css.MediaBottom);
             return builder;
         }
 
         public static ComponentBuilder<TConfig, MediaObject> SetBottom<TConfig>(this ComponentBuilder<TConfig, MediaObject> builder, bool bottom = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.MediaBottom, bottom, Css.MediaMiddle);
+            //builder.Component.ToggleCss(Css.MediaBottom, bottom, Css.MediaMiddle);
             return builder;
         }
 

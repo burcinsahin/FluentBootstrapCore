@@ -21,13 +21,13 @@ namespace FluentBootstrapCore.Typography
             // Add the appropriate CSS class if in a media object
             if (GetComponent<MediaBody>() != null)
             {
-                AddCss(Css.MediaHeading);
+                //AddCss(Css.MediaHeading);
             }
 
             // Add the appropriate CSS class if in a list group item
             if (GetComponent<ListGroupItem>() != null)
             {
-                AddCss(Css.ListGroupItemHeading);
+                //AddCss(Css.ListGroupItemHeading);
             }
 
             base.OnStart(writer);

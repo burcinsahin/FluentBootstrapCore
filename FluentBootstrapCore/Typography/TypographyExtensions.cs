@@ -1,5 +1,6 @@
 ﻿using FluentBootstrapCore.Html;
 using FluentBootstrapCore.Typography;
+using System;
 
 namespace FluentBootstrapCore
 {
@@ -253,7 +254,7 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, Blockquote> SetReverse<TConfig>(this ComponentBuilder<TConfig, Blockquote> builder, bool reverse = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.BlockquoteReverse, reverse);
+            //builder.Component.ToggleCss(Css.BlockquoteReverse, reverse);
             return builder;
         }
 
@@ -311,7 +312,7 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, DescriptionList> SetHorizontalDescription<TConfig>(this ComponentBuilder<TConfig, DescriptionList> builder, bool horizontal = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.DlHorizontal, horizontal);
+            //builder.Component.ToggleCss(Css.DlHorizontal, horizontal);
             return builder;
         }
 
@@ -360,7 +361,7 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, Pre> SetScrollable<TConfig>(this ComponentBuilder<TConfig, Pre> builder, bool scrollable = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.PreScrollable, scrollable);
+            //builder.Component.ToggleCss(Css.PreScrollable, scrollable);
             return builder;
         }
 

@@ -5,22 +5,37 @@
     {
         <p>Badge @Html.Bootstrap().Badge("4")</p>
     }
-    
+
     <hr />
 
     @Html.Bootstrap().Heading1("Link")
     using (Html.Bootstrap().Div().SetId("test-link").Begin())
     {
-        <p>@Html.Bootstrap().Link("Link").WithChild().Badge("789")</p>
+        <p>
+            @*@Html.Bootstrap().Link("Link").WithChild().Badge("789")*@
+            @using (var link = Html.Bootstrap().Link("Link").Begin())
+            {
+                @link.Badge("789").SetBackgroundState(BackgroundState.Dark)
+            }
+        </p>
     }
 
     <hr />
-    
+
     @Html.Bootstrap().Heading1("Button")
     using (Html.Bootstrap().Div().SetId("test-button").Begin())
     {
-        @Html.Bootstrap().Button("Button").WithChild().Badge("4")
-        @Html.Bootstrap().Button("Button").SetState(ButtonState.Primary).WithChild().Badge("456")
+        @using (var button = Html.Bootstrap().Button("Button").Begin())
+        {
+            @button.Badge("4").SetBackgroundState(BackgroundState.Info)
+        }
+        @using (var button = Html.Bootstrap().Button("Button").SetState(ButtonState.Primary).Begin())
+        {
+            @button.Badge("456").SetBackgroundState(BackgroundState.Primary)
+        }
+
+        @*        @Html.Bootstrap().Button("Button").WithChild().Badge("4")
+        @Html.Bootstrap().Button("Button").SetState(ButtonState.Primary).WithChild().Badge("456")*@
     }
 
     <hr />
@@ -28,11 +43,12 @@
     @Html.Bootstrap().Heading1("Pills")
     using (Html.Bootstrap().Div().SetId("test-pills").Begin())
     {
-        using(var pills = Html.Bootstrap().Pills().Begin())
-        {
-            @pills.Pill("A").WithChild().Badge("3")
-            @pills.Pill("B").SetActive().WithChild().Badge("5")
-        }
+        @Html.Bootstrap().Badge("Primary").SetPill(TextBgState.Primary)
+        @Html.Bootstrap().Badge("Secondary").SetPill(TextBgState.Secondary)
+        @Html.Bootstrap().Badge("Info").SetPill(TextBgState.Info)
+        @Html.Bootstrap().Badge("Warning").SetPill(TextBgState.Warning)
+        @Html.Bootstrap().Badge("Danger").SetPill(TextBgState.Danger)
+        @Html.Bootstrap().Badge("Dark").SetPill(TextBgState.Dark)
+        @Html.Bootstrap().Badge("Light").SetPill(TextBgState.Light)
     }
-
 }

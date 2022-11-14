@@ -6,7 +6,7 @@ namespace FluentBootstrapCore.Navbars
     public class NavbarForm : Form, INavbarComponent
     {
         internal NavbarForm(BootstrapHelper helper)
-            : base(helper, Css.NavbarForm, Css.NavbarLeft)
+            : base(helper/*, Css.NavbarForm, Css.NavbarLeft*/)
         {
         }
 

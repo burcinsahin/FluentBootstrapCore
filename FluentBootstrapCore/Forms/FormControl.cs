@@ -81,22 +81,22 @@ namespace FluentBootstrapCore.Forms
             // Add the label to the form group or write it
             if (_label != null)
             {
-                // Set the label's for attribute to the input id
-                string id = Attributes.GetValue("id");
-                if (!string.IsNullOrWhiteSpace(id))
-                {
-                    _label.MergeAttribute("for", id);
-                }
+                //// Set the label's for attribute to the input id
+                //string id = Attributes.GetValue("id");
+                //if (!string.IsNullOrWhiteSpace(id))
+                //{
+                //    _label.MergeAttribute("for", id);
+                //}
 
-                // Add or write the label
-                if (formGroup != null)
-                {
-                    formGroup.ControlLabel = _label;
-                }
-                else
-                {
-                    _label.StartAndFinish(writer);
-                }
+                //// Add or write the label
+                //if (formGroup != null)
+                //{
+                //    formGroup.ControlLabel = _label;
+                //}
+                //else
+                //{
+                //    _label.StartAndFinish(writer);
+                //}
             }
 
             // Start the new form group if we created one

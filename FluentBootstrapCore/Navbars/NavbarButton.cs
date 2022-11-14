@@ -8,7 +8,7 @@ namespace FluentBootstrapCore.Navbars
         IHasDisabledAttribute, IHasTextContent, IHasValueAttribute, INavbarComponent
     {
         internal NavbarButton(BootstrapHelper helper)
-            : base(helper, "button", Css.Btn, Css.BtnDefault, Css.NavbarBtn, Css.NavbarLeft)
+            : base(helper, "button", Css.Btn, Css.BtnPrimary/*, Css.NavbarBtn, Css.NavbarLeft*/)
         {
             MergeAttribute("type", "button");
         }

@@ -15,7 +15,7 @@ namespace FluentBootstrapCore.Misc
 
         protected override void OnStart(TextWriter writer)
         {
-            _wrapper = GetHelper().Element("div").AddCss(Css.PageHeader).Component;
+            _wrapper = GetHelper().Element("div")/*.AddCss(Css.PageHeader)*/.Component;
             _wrapper.Start(writer);
             base.OnStart(writer);
         }

@@ -39,7 +39,7 @@ namespace FluentBootstrapCore
             where TComponent : Component, ICanCreate<Tag>
         {
             return new ComponentBuilder<TConfig, Element>(helper.Config, new Element(helper, "div"))
-                .AddCss(Css.CenterBlock);
+                /*.AddCss(Css.CenterBlock)*/;
         }
 
         public static ComponentBuilder<TConfig, Element> PullLeft<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper)
@@ -47,7 +47,7 @@ namespace FluentBootstrapCore
             where TComponent : Component, ICanCreate<Tag>
         {
             return new ComponentBuilder<TConfig, Element>(helper.Config, new Element(helper, "div"))
-                .AddCss(Css.PullLeft);
+                /*.AddCss(Css.PullLeft)*/;
         }
 
         public static ComponentBuilder<TConfig, Element> PullRight<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper)
@@ -55,7 +55,7 @@ namespace FluentBootstrapCore
             where TComponent : Component, ICanCreate<Tag>
         {
             return new ComponentBuilder<TConfig, Element>(helper.Config, new Element(helper, "div"))
-                .AddCss(Css.PullRight);
+                /*.AddCss(Css.PullRight)*/;
         }
 
         public static ComponentBuilder<TConfig, Element> Caret<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper)
@@ -63,7 +63,7 @@ namespace FluentBootstrapCore
             where TComponent : Component, ICanCreate<Tag>
         {
             return new ComponentBuilder<TConfig, Element>(helper.Config, new Element(helper, "span"))
-                .AddCss(Css.Caret);
+                /*.AddCss(Css.Caret)*/;
         }
 
         public static ComponentBuilder<TConfig, Element> Close<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper)
@@ -71,7 +71,7 @@ namespace FluentBootstrapCore
             where TComponent : Component, ICanCreate<Tag>
         {
             return new ComponentBuilder<TConfig, Element>(helper.Config, new Element(helper, "button"))
-                .AddCss(Css.Close)
+                .AddCss(Css.BtnClose)
                 .AddAttribute("type", "button")
                 .AddContent("<span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span>");
         }

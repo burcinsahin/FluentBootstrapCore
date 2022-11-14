@@ -6,9 +6,9 @@ namespace FluentBootstrapCore
     {
         [Description()]
         Default,
-        [Description(Css.WellLg)]
-        Lg,
-        [Description(Css.WellSm)]
-        Sm
+        //[Description(Css.WellLg)]
+        //Lg,
+        //[Description(Css.WellSm)]
+        //Sm
     }
 }

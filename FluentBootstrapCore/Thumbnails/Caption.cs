@@ -3,7 +3,7 @@
     public class Caption : Tag
     {
         internal Caption(BootstrapHelper helper)
-            : base(helper, "div", Css.Caption)
+            : base(helper, "div"/*, Css.Caption*/)
         {
         }
     }

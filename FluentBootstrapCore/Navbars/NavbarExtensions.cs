@@ -40,7 +40,7 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, Navbar> SetInverse<TConfig>(this ComponentBuilder<TConfig, Navbar> builder, bool inverse = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.NavbarInverse, inverse);
+            //builder.Component.ToggleCss(Css.NavbarInverse, inverse);
             return builder;
         }
 
@@ -166,7 +166,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TTag : Tag, INavbarComponent
         {
-            builder.Component.ToggleCss(Css.NavbarLeft, left, Css.NavbarRight);
+            //builder.Component.ToggleCss(Css.NavbarLeft, left, Css.NavbarRight);
             return builder;
         }
 
@@ -174,7 +174,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TTag : Tag, INavbarComponent
         {
-            builder.Component.ToggleCss(Css.NavbarRight, right, Css.NavbarLeft);
+            //builder.Component.ToggleCss(Css.NavbarRight, right, Css.NavbarLeft);
             return builder;
         }
     }

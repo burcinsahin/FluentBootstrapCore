@@ -7,7 +7,7 @@ namespace FluentBootstrapCore.Panels
     public class PanelTitle : Tag, IHasTextContent, ICanCreate<Link>
     {
         internal PanelTitle(BootstrapHelper helper, object text, int headingLevel)
-            : base(helper, "h" + headingLevel, Css.PanelTitle)
+            : base(helper, "h" + headingLevel/*, Css.PanelTitle*/)
         {
             if (headingLevel < 1 || headingLevel > 6)
             {

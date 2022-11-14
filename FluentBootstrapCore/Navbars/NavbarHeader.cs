@@ -9,7 +9,7 @@ namespace FluentBootstrapCore.Navbars
         public bool HasToggle { get; set; }
 
         internal NavbarHeader(BootstrapHelper helper)
-            : base(helper, "div", Css.NavbarHeader)
+            : base(helper, "div"/*, Css.NavbarHeader*/)
         {
         }
 

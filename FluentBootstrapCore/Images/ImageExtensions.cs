@@ -1,4 +1,5 @@
 ﻿using FluentBootstrapCore.Images;
+using System;
 
 namespace FluentBootstrapCore
 {
@@ -81,7 +82,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TImage : ImageBase
         {
-            builder.Component.ToggleCss(Css.ImgResponsive, responsive);
+            //builder.Component.ToggleCss(Css.ImgResponsive, responsive);
             return builder;
         }
 

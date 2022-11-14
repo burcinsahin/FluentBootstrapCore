@@ -20,7 +20,7 @@ namespace FluentBootstrapCore.Links
             // Adjust the link style if we're in a navbar
             if (GetComponent<Navbar>() != null)
             {
-                CssClasses.Add(Css.NavbarLink);
+                //CssClasses.Add(Css.NavbarLink);
             }
 
             // Adjust the link style if we're in an alert

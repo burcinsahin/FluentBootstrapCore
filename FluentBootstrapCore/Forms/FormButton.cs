@@ -8,7 +8,7 @@ namespace FluentBootstrapCore.Forms
         IHasValueAttribute, IHasDisabledAttribute, IHasTextContent, IHasNameAttribute
     {
         internal FormButton(BootstrapHelper helper, ButtonType buttonType)
-            : base(helper, "button", Css.Btn, Css.BtnDefault)
+            : base(helper, "button", Css.Btn, Css.BtnPrimary)
         {
             MergeAttribute("type", buttonType.GetDescription());
         }

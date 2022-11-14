@@ -1,0 +1,7 @@
+﻿@using FluentBootstrapCore.Tests.Mvc.Workshop
+@Html.MyBootstrap().Div("some text...")
+<br />
+@using (Html.MyBootstrap().Begin(new MyDiv()))
+{
+    <p>some text...</p>
+}

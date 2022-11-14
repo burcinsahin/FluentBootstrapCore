@@ -22,7 +22,7 @@ namespace FluentBootstrapCore.Navbars
         public bool Fluid { get; set; }
 
         internal Navbar(BootstrapHelper helper)
-            : base(helper, "nav", Css.Navbar, Css.NavbarDefault)
+            : base(helper, "nav", Css.Navbar/*, Css.NavbarDefault*/)
         {
             MergeAttribute("role", "navigation");
             GetBuilder(this).SetId("navbar");

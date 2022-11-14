@@ -20,8 +20,8 @@
     {
         using (var listGroup = Html.Bootstrap().ListGroup().Begin())
         {
-            @listGroup.ListGroupItem("Item one").WithChild().Badge("14")
-            @listGroup.ListGroupItem("Item two").WithChild().Badge("Great!")
+@*            @listGroup.ListGroupItem("Item one").WithChild().Badge("14")
+            @listGroup.ListGroupItem("Item two").WithChild().Badge("Great!")*@
         }
     }
 
@@ -49,7 +49,7 @@
             @listGroup.ListGroupButton("C").SetIcon(Icon.Check)
             @listGroup.ListGroupItem("Normal item")
             @listGroup.ListGroupButton("D").IsDisabled()
-            @listGroup.ListGroupButton("E").WithChild().Badge("Badge!")
+            @*@listGroup.ListGroupButton("E").WithChild().Badge("Badge!")*@
         }
     }
 

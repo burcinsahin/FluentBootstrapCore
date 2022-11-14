@@ -3,7 +3,7 @@
     public class DropdownDivider : Tag
     {
         internal DropdownDivider(BootstrapHelper hepler)
-            : base(hepler, "li", Css.Divider)
+            : base(hepler, "li"/*, Css.Divider*/)
         {
             MergeAttribute("role", "separator");
         }

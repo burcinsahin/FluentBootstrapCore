@@ -6,11 +6,11 @@ namespace FluentBootstrapCore
     {
         [Description()]
         Default,
-        [Description(Css.NavbarFixedTop)]
+        [Description(/*Css.NavbarFixedTop*/)]
         FixedTop,
-        [Description(Css.NavbarFixedBottom)]
+        [Description(/*Css.NavbarFixedBottom*/)]
         FixedBottm,
-        [Description(Css.NavbarStaticTop)]
+        [Description(/*Css.NavbarStaticTop*/)]
         StaticTop
     }
 }

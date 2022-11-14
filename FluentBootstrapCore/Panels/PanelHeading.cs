@@ -4,7 +4,7 @@
         ICanCreate<PanelTitle>
     {
         internal PanelHeading(BootstrapHelper helper)
-            : base(helper, Css.PanelHeading)
+            : base(helper/*, Css.PanelHeading*/)
         {
         }
     }

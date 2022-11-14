@@ -11,6 +11,14 @@ namespace FluentBootstrapCore
         [Description(Css.AlertWarning)]
         Warning,
         [Description(Css.AlertDanger)]
-        Danger
+        Danger,
+        [Description(Css.AlertPrimary)]
+        Primary,
+        [Description(Css.AlertSecondary)]
+        Secondary,
+        [Description(Css.AlertLight)]
+        Light,
+        [Description(Css.AlertDark)]
+        Dark
     }
 }

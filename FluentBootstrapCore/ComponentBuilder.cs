@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Html;
 using System.IO;
 using System.Text.Encodings.Web;
-using System.Web;
 
 namespace FluentBootstrapCore
 {
-    public abstract class ComponentBuilder
+    public abstract class ComponentBuilder : IHtmlContent
     {
         internal abstract BootstrapConfig GetConfig();
         internal abstract Component GetComponent();
+        public abstract void WriteTo(TextWriter writer, HtmlEncoder encoder);
     }
 
-    // TODO: ASP.NET MVC 5 doesn't use System.Web so there's no IHtmlContent, instead it has it's own HtmlString class and/or HelperResult class - need to think of a way to deal with both old and new
-    public class ComponentBuilder<TConfig, TComponent> : ComponentBuilder, IHtmlContent
+    // TODO: ASP.NET MVC 5 doesn't use System.Web so there's no IHtmlString, instead it has it's own HtmlString class and/or HelperResult class - need to think of a way to deal with both old and new
+    public class ComponentBuilder<TConfig, TComponent> : ComponentBuilder
         where TConfig : BootstrapConfig
         where TComponent : Component
     {
@@ -70,20 +70,19 @@ namespace FluentBootstrapCore
             return GetWrapper();
         }
 
-        public string ToHtmlString()
-        {
-            return ToString();
-        }
+        //public string ToHtmlString()
+        //{
+        //    return ToString();
+        //}
 
         public override string ToString()
         {
             return Component.ToString();
         }
 
-        public void WriteTo(TextWriter writer, HtmlEncoder encoder)
+        public override void WriteTo(TextWriter writer, HtmlEncoder encoder)
         {
             writer.Write(ToString());
-            //throw new System.NotImplementedException();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace FluentBootstrapCore.Forms
         IHasValueAttribute, IHasNameAttribute
     {
         internal InputButton(BootstrapHelper helper, ButtonType buttonType)
-            : base(helper, "input", Css.Btn, Css.BtnDefault)
+            : base(helper, "input", Css.Btn, Css.BtnPrimary)
         {
             OutputEndTag = false;
             MergeAttribute("type", buttonType.GetDescription());

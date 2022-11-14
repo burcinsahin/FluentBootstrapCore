@@ -8,7 +8,7 @@ namespace FluentBootstrapCore.Navbars
         public bool Hamburger { get; set; }
 
         internal NavbarToggle(BootstrapHelper helper)
-            : base(helper, "button", Css.NavbarToggle, "collapsed")
+            : base(helper, "button"/*, Css.NavbarToggle*/, "collapsed")
         {
             Hamburger = true;
             MergeAttribute("type", "button");
@@ -45,12 +45,12 @@ namespace FluentBootstrapCore.Navbars
 
             base.OnStart(writer);
 
-            GetHelper().Span().AddCss(Css.SrOnly).SetText("Toggle Navigation").Component.StartAndFinish(writer);
+            GetHelper().Span()/*.AddCss(Css.SrOnly)*/.SetText("Toggle Navigation").Component.StartAndFinish(writer);
             if (Hamburger)
             {
-                GetHelper().Span().AddCss(Css.IconBar).Component.StartAndFinish(writer);
-                GetHelper().Span().AddCss(Css.IconBar).Component.StartAndFinish(writer);
-                GetHelper().Span().AddCss(Css.IconBar).Component.StartAndFinish(writer);
+                GetHelper().Span()/*.AddCss(Css.IconBar)*/.Component.StartAndFinish(writer);
+                GetHelper().Span()/*.AddCss(Css.IconBar)*/.Component.StartAndFinish(writer);
+                GetHelper().Span()/*.AddCss(Css.IconBar)*/.Component.StartAndFinish(writer);
             }
         }
     }

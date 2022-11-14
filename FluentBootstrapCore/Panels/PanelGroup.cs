@@ -12,7 +12,7 @@ namespace FluentBootstrapCore.Panels
         public bool Accordion { get; set; }
 
         public PanelGroup(BootstrapHelper helper)
-            : base(helper, "div", Css.PanelGroup)
+            : base(helper, "div"/*, Css.PanelGroup*/)
         {
         }
 

@@ -1,4 +1,5 @@
 ﻿using FluentBootstrapCore.Buttons;
+using System;
 
 namespace FluentBootstrapCore
 {
@@ -55,7 +56,7 @@ namespace FluentBootstrapCore
         public static ComponentBuilder<TConfig, ButtonGroup> SetJustified<TConfig>(this ComponentBuilder<TConfig, ButtonGroup> builder, bool justified = true)
             where TConfig : BootstrapConfig
         {
-            builder.Component.ToggleCss(Css.BtnGroupJustified, justified);
+            //builder.Component.ToggleCss(Css.BtnGroupJustified, justified);
             return builder;
         }
 
@@ -131,7 +132,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TTag : Tag, IHasButtonExtensions
         {
-            builder.Component.ToggleCss(Css.BtnBlock, block);
+            //builder.Component.ToggleCss(Css.BtnBlock, block);
             return builder;
         }
 

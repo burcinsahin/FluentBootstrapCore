@@ -190,6 +190,7 @@ namespace FluentBootstrapCore
 
         // This is a very special extension - it allows adding a child using fluent style and switches the current chaining object to the child
         // behind the scenes the parent start is immediately output and the child ends the parent when it ends (so that the while hierarchy gets output)
+        [Obsolete("Causes some error due to stacking issue", true)]
         public static ComponentWrapper<TConfig, TTag> WithChild<TConfig, TTag>(this ComponentBuilder<TConfig, TTag> builder)
             where TConfig : BootstrapConfig
             where TTag : Tag
@@ -238,7 +239,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TTag : Tag
         {
-            builder.Component.ToggleCss(Css.PullLeft, pullLeft);
+            //builder.Component.ToggleCss(Css.PullLeft, pullLeft);
             return builder;
         }
 
@@ -246,7 +247,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TTag : Tag
         {
-            builder.Component.ToggleCss(Css.PullRight, pullRight);
+            //builder.Component.ToggleCss(Css.PullRight, pullRight);
             return builder;
         }
 
@@ -254,7 +255,7 @@ namespace FluentBootstrapCore
             where TConfig : BootstrapConfig
             where TTag : Tag
         {
-            builder.Component.ToggleCss(Css.CenterBlock, centerBlock);
+            //builder.Component.ToggleCss(Css.CenterBlock, centerBlock);
             return builder;
         }
     }

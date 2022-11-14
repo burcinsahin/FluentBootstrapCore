@@ -15,7 +15,7 @@ namespace FluentBootstrapCore.Html
             // Add the appropriate CSS class if in a list group item
             if (GetComponent<ListGroupItem>() != null)
             {
-                AddCss(Css.ListGroupItemText);
+                //AddCss(Css.ListGroupItemText);
             }
 
             base.OnStart(writer);

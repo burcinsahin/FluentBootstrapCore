@@ -7,7 +7,7 @@ namespace FluentBootstrapCore.MediaObjects
         ICanCreate<MediaBody>
     {
         internal Media(BootstrapHelper helper)
-            : base(helper, "div", Css.Media)
+            : base(helper, "div"/*, Css.Media*/)
         {
         }
 

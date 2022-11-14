@@ -48,7 +48,7 @@ namespace FluentBootstrapCore.Buttons
             // Create the dropdown button, copy over CSS, add the text and caret, then render
             Button dropdown = GetHelper().Button(buttonType: ButtonType.Button).Component;
             MoveIcons(dropdown);
-            dropdown.AddCss(Css.Btn, Css.BtnDefault, Css.DropdownToggle);
+            dropdown.AddCss(Css.Btn, Css.BtnInfo, Css.DropdownToggle);
             dropdown.MergeAttribute("data-toggle", "dropdown");
             foreach (string cssClass in CssClasses)
             {
@@ -64,7 +64,7 @@ namespace FluentBootstrapCore.Buttons
             }
             else
             {
-                Element element = GetHelper().Element("span").AddCss(Css.SrOnly).Component;
+                Element element = GetHelper().Element("span")/*.AddCss(Css.SrOnly)*/.Component;
                 element.AddChild(GetHelper().Content("Toggle Dropdown"));
                 dropdown.AddChild(element);
             }

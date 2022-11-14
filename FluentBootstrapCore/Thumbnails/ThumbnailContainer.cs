@@ -5,7 +5,7 @@
         ICanCreate<Caption>
     {
         internal ThumbnailContainer(BootstrapHelper helper)
-            : base(helper, "div", Css.Thumbnail)
+            : base(helper, "div"/*, Css.Thumbnail*/)
         {
         }
     }

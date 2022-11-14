@@ -4,17 +4,17 @@ namespace FluentBootstrapCore
 {
     public enum PanelState
     {
-        [Description(Css.PanelDefault)]
+        [Description(/*Css.PanelDefault*/)]
         Default,
-        [Description(Css.PanelPrimary)]
+        [Description(/*Css.PanelPrimary*/)]
         Primary,
-        [Description(Css.PanelSuccess)]
+        [Description(/*Css.PanelSuccess*/)]
         Success,
-        [Description(Css.PanelInfo)]
+        [Description()]
         Info,
-        [Description(Css.PanelWarning)]
+        [Description()]
         Warning,
-        [Description(Css.PanelDanger)]
+        [Description()]
         Danger
     }
 }

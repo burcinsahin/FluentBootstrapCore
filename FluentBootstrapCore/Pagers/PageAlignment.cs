@@ -6,9 +6,9 @@ namespace FluentBootstrapCore
     {
         [Description()]
         Default,
-        [Description(Css.Previous)]
+        [Description(/*Css.Previous*/)]
         Previous,
-        [Description(Css.Next)]
+        [Description(/*Css.Next*/)]
         Next
     }
 }

@@ -6,11 +6,11 @@ namespace FluentBootstrapCore
     {
         [Description()]
         Default,
-        [Description(Css.HasSuccess)]
-        Success,
-        [Description(Css.HasWarning)]
-        Warning,
-        [Description(Css.HasError)]
-        Error
+        //[Description(Css.HasSuccess)]
+        //Success,
+        //[Description(Css.HasWarning)]
+        //Warning,
+        //[Description(Css.HasError)]
+        //Error
     }
 }

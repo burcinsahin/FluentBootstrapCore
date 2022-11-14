@@ -13,7 +13,7 @@ namespace FluentBootstrapCore.Panels
         public bool Collapsible { get; set; }
 
         internal Panel(BootstrapHelper helper)
-            : base(helper, "div", Css.Panel, Css.PanelDefault)
+            : base(helper, "div"/*, Css.Panel, Css.PanelDefault*/)
         {
         }
 

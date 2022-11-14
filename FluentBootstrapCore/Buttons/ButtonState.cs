@@ -4,7 +4,7 @@ namespace FluentBootstrapCore
 {
     public enum ButtonState
     {
-        [Description(Css.BtnDefault)]
+        [Description(Css.BtnInfo)]
         Default,
         [Description(Css.BtnPrimary)]
         Primary,

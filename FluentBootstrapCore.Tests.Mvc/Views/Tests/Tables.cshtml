@@ -3,7 +3,7 @@
     @Html.Bootstrap().Heading1("Striped")
     using (Html.Bootstrap().Div().SetId("test-striped").Begin())
     {
-        using (var table = Html.Bootstrap(this).Table().SetStyle(TableStyle.Striped).Begin())
+        using (var table = Html.Bootstrap().Table().SetStyle(TableStyle.Striped).Begin())
         {
             @table.TableHeaderRow("#", "First Name", "Last Name", "Username")
             @table.TableDataRow("1", "Mark", "Otto", "mdo")
@@ -16,7 +16,7 @@
     @Html.Bootstrap().Heading1("Explicit Sections")
     using (Html.Bootstrap().Div().SetId("test-explicit-sections").Begin())
     {
-        using (var table = Html.Bootstrap(this).Table().Begin())
+        using (var table = Html.Bootstrap().Table().Begin())
         {
             using (table.TableHeadSection().Begin())
             {
