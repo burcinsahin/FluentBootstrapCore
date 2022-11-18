@@ -16,7 +16,7 @@ namespace FBootstrapCoreMvc.Components
         {
             _content = content;
             AddCssClass(buttonState.GetCssDescription());
-            SetContent(content);
+            AppendContent(content);
         }
 
         public Button SetType(ButtonType type = ButtonType.Button)
@@ -29,7 +29,7 @@ namespace FBootstrapCoreMvc.Components
             _icon = new Icon(_helper, icon);
             InnerHtml.Clear();
             InnerHtml.AppendHtml(_icon);
-            SetContent(_content);
+            AppendContent(_content);
             return this;
         }
     }

@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace FBootstrapCoreMvc
 {
-    public class Bootstrap<TModel>
+    public class BootstrapHelper<TModel> : IBootstrapHelper
     {
-        protected readonly IHtmlHelper<TModel> _htmlHelper;
+        private readonly IHtmlHelper<TModel> _htmlHelper;
 
-        public Bootstrap(IHtmlHelper<TModel> helper)
+        public IHtmlHelper HtmlHelper => _htmlHelper;
+
+        public BootstrapHelper(IHtmlHelper<TModel> helper)
         {
             _htmlHelper = helper;
         }
@@ -19,12 +21,12 @@ namespace FBootstrapCoreMvc
         #region Typography
         public HtmlElement Div()
         {
-            return new HtmlElement(_htmlHelper, "div");
+            return new HtmlElement(HtmlHelper, "div");
         }
 
         public Icon Icon(IconType icon, string? text = null)
         {
-            return new Icon(_htmlHelper, icon).SetContent(text);
+            return new Icon(HtmlHelper, icon).SetContent(text);
         }
 
         public Heading Heading(byte size = 1)
@@ -32,28 +34,23 @@ namespace FBootstrapCoreMvc
             if (size < 1) size = 1;
             else if (size > 6) size = 6;
 
-            return new Heading(_htmlHelper, size);
+            return new Heading(HtmlHelper, size);
         }
 
         public Heading Heading1(string? text = null)
         {
-            return new Heading(_htmlHelper, 1).SetContent(text);
+            return new Heading(HtmlHelper, 1).SetContent(text);
         }
 
         public List List(ListType listType = ListType.Unstyled)
         {
-            return new List(_htmlHelper, listType);
+            return new List(HtmlHelper, listType);
         }
         #endregion
 
-        public Alert Alert()
-        {
-            return new Alert(_htmlHelper);
-        }
-
         public Container Container()
         {
-            return new Container(_htmlHelper);
+            return new Container(HtmlHelper);
         }
 
         /// <summary>
@@ -62,7 +59,7 @@ namespace FBootstrapCoreMvc
         /// <returns></returns>
         public Card Card(string? header = null, string? footer = null)
         {
-            var card = new Card(_htmlHelper);
+            var card = new Card(HtmlHelper);
             if (header != null)
                 card.SetHeader(header);
             if (footer != null)
@@ -72,20 +69,20 @@ namespace FBootstrapCoreMvc
 
         public Navbar Navbar()
         {
-            var navbar = new Navbar(_htmlHelper);
+            var navbar = new Navbar(HtmlHelper);
             return navbar;
         }
 
         public Component Element(string tagName, string text)
         {
-            var element = new Component(_htmlHelper, tagName);
+            var element = new Component(HtmlHelper, tagName);
             element.InnerHtml.SetContent(text);
             return element;
         }
 
         public Input Hidden(string? name = null, object? value = null)
         {
-            var input = new Input(_htmlHelper);
+            var input = new Input(HtmlHelper);
             input.SetType(FormInputType.Hidden);
             input.MergeAttribute("name", name);
             input.MergeAttribute("value", value?.ToString());
@@ -94,25 +91,25 @@ namespace FBootstrapCoreMvc
 
         public Image Image(string src, string? alt = null)
         {
-            return new Image(_htmlHelper).AddAttribute("src", src).AddAttribute("alt", alt);
+            return new Image(HtmlHelper).AddAttribute("src", src).AddAttribute("alt", alt);
         }
 
         public Component Paragraph()
         {
             //TODO:
-            var p = new Component(_htmlHelper, "p");
+            var p = new Component(HtmlHelper, "p");
             return p;
         }
 
         public Link Link(object? content, string href = "#")
         {
-            return new Link(_htmlHelper, content).SetHref(href);
+            return new Link(HtmlHelper, content).SetHref(href);
         }
 
         public Link Link(string text, string action, string controller, object routeValues = null)
         {
-            var link = new Link(_htmlHelper, text);
-            var urlHelper = _htmlHelper.GetUrlHelper();
+            var link = new Link(HtmlHelper, text);
+            var urlHelper = HtmlHelper.GetUrlHelper();
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
             var url = urlHelper?.Action(urlActionContext);
             link.MergeAttribute("href", url);
@@ -121,8 +118,8 @@ namespace FBootstrapCoreMvc
 
         public LinkButton LinkButton(string text, string action, string controller, object routeValues = null)
         {
-            var linkButton = new LinkButton(_htmlHelper, ButtonState.Primary, text);
-            var htmlHelper = _htmlHelper;
+            var linkButton = new LinkButton(HtmlHelper, ButtonState.Primary, text);
+            var htmlHelper = HtmlHelper;
             var urlHelperFactory = htmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;
             var urlHelper = urlHelperFactory?.GetUrlHelper(htmlHelper.ViewContext);
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
@@ -138,7 +135,7 @@ namespace FBootstrapCoreMvc
 
         public Form<TModel> Form(string action, string controller, FormMethod method = FormMethod.Post, object routeValues = null)
         {
-            var htmlHelper = _htmlHelper;
+            var htmlHelper = HtmlHelper;
             var urlHelperFactory = htmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;
             var urlHelper = urlHelperFactory?.GetUrlHelper(htmlHelper.ViewContext);
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
@@ -148,12 +145,12 @@ namespace FBootstrapCoreMvc
 
         public Table Table()
         {
-            return new Table(_htmlHelper);
+            return new Table(HtmlHelper);
         }
 
         public Button Button(ButtonType buttonType = ButtonType.Button, object? value = null)
         {
-            var button = new Button(_htmlHelper);
+            var button = new Button(HtmlHelper);
             button.SetType(buttonType);
             button.SetValue(value);
             return button;
@@ -161,7 +158,7 @@ namespace FBootstrapCoreMvc
 
         public CheckBox CheckBox()
         {
-            var checkbox = new CheckBox(_htmlHelper);
+            var checkbox = new CheckBox(HtmlHelper);
             return checkbox;
         }
 

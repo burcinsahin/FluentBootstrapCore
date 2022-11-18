@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 
 namespace FBootstrapCoreMvc
 {
-    public abstract class MvcComponent<TComponent, TModel> : Component, IDisposable
+    public abstract class MvcComponent<TComponent, TModel> : Component
         where TComponent : MvcComponent<TComponent, TModel>
     {
         private readonly IHtmlHelper<TModel> _helper;
@@ -19,7 +18,6 @@ namespace FBootstrapCoreMvc
                 AddCssClass(cssClass);
             }
         }
-
 
         public TComponent AddCss(string css)
         {

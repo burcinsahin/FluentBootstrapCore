@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc
 {
-    public class Component : TagBuilder, IDisposable
+    [Obsolete("Use HtmlComponent instead.")]
+    public class Component : TagBuilder
     {
         private readonly IHtmlHelper _helper;
 
@@ -35,24 +36,25 @@ namespace FBootstrapCoreMvc
         //    MergeAttribute("id", id, true);
         //}
 
-        protected void SetContent(object? content)
+        protected internal void AppendContent(object? content, bool clearHtml = false)
         {
             if (content == null) return;
+            if (clearHtml)
+                InnerHtml.Clear();
             if (content is IHtmlContent htmlContent)
-                InnerHtml.SetHtmlContent(htmlContent);
+                InnerHtml.AppendHtml(htmlContent);
             else
-                InnerHtml.SetContent(content.ToString());
+                InnerHtml.Append(content.ToString());
         }
 
-        public virtual void End()
+        protected void Write(IHtmlContent htmlContent)
         {
-            Finish();
+            _helper.ViewContext.Writer.Write(htmlContent);
+        }
+
+        protected virtual void End()
+        {
             _helper.ViewContext.Writer.Write(RenderEndTag());
-        }
-
-        public void Dispose()
-        {
-            End();
         }
 
         public override string ToString()
@@ -64,7 +66,7 @@ namespace FBootstrapCoreMvc
         /// Appends child components to inner html
         /// </summary>
         /// <param name="clearHtml">if true, clears inner html before appending</param>
-        protected virtual void AppendChildrenToHtml(bool clearHtml = false)
+        protected internal void AppendChildrenToHtml(bool clearHtml = false)
         {
             if (clearHtml)
                 InnerHtml.Clear();
@@ -72,10 +74,6 @@ namespace FBootstrapCoreMvc
             {
                 InnerHtml.AppendHtml(comp);
             }
-        }
-
-        protected virtual void Finish()
-        {
         }
     }
 }

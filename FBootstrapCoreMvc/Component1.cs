@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 
 namespace FBootstrapCoreMvc
 {
-    public abstract class Component<TComponent> : Component, IDisposable
+    [Obsolete("Use HtmlComponent instead.")]
+    public abstract class Component<TComponent> : Component
         where TComponent : Component<TComponent>
     {
         protected readonly IHtmlHelper _helper;

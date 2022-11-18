@@ -7,7 +7,7 @@ namespace FBootstrapCoreMvc.Components
         public TableData(IHtmlHelper helper, object? content = null)
             : base(helper, "td")
         {
-            SetContent(content);
+            AppendContent(content);
         }
     }
 }

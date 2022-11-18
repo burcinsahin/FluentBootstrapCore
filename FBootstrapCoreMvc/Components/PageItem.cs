@@ -17,7 +17,7 @@ namespace FBootstrapCoreMvc.Components
         public PageItem SetLink(string? href, object? content)
         {
             _link.SetHref(href).SetContent(content);
-            SetContent(_link);
+            AppendContent(_link);
             return this;
         }
 

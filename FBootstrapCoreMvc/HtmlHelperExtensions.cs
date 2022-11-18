@@ -11,9 +11,9 @@ namespace FBootstrapCoreMvc
 {
     public static class HtmlHelperExtensions
     {
-        public static Bootstrap<TModel> Bootstrap<TModel>(this IHtmlHelper<TModel> htmlHelper)
+        public static BootstrapHelper<TModel> Bootstrap<TModel>(this IHtmlHelper<TModel> htmlHelper)
         {
-            return new Bootstrap<TModel>(htmlHelper);
+            return new BootstrapHelper<TModel>(htmlHelper);
         }
 
         public static string ToHtmlString(this IHtmlContent htmlContent)

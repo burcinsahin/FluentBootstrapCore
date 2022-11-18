@@ -7,6 +7,11 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class TypographyExtensions
     {
+        public static BootstrapContent<Alert> Alert<TModel>(this BootstrapHelper<TModel> bootstrap) 
+        {
+            return new BootstrapContent<Alert>(bootstrap.HtmlHelper, new Alert());
+        }
+
         #region Dropdown
         public static DropdownMenu DropdownMenu<TComponent>(this HtmlBuilder<TComponent> builder)
             where TComponent : Component<TComponent>, ICanCreate<DropdownMenu>

@@ -8,7 +8,7 @@ namespace FBootstrapCoreMvc.Components
         public Link(IHtmlHelper helper, object? content = null)
             : base(helper, "a")
         {
-            SetContent(content);
+            AppendContent(content);
         }
 
         internal Link SetRole(string role) => AddAttribute("role", role);

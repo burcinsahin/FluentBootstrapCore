@@ -15,7 +15,7 @@ namespace FBootstrapCoreMvc.Components
             _content = content;
             MergeAttribute("role", "button");
             AddCssClass(buttonState.GetCssDescription());
-            SetContent(content);
+            AppendContent(content);
         }
 
         public LinkButton SetIcon(IconType icon)
@@ -23,7 +23,7 @@ namespace FBootstrapCoreMvc.Components
             _icon = new Icon(_helper, icon);
             InnerHtml.Clear();
             InnerHtml.AppendHtml(_icon);
-            SetContent(_content);
+            AppendContent(_content);
             return this;
         }
     }
