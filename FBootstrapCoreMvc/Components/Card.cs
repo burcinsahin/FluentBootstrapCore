@@ -1,15 +1,10 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Hosting;
-using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Card : Component<Card>,
+    public class Card : HtmlComponent,
         ICanCreate<CardBody>,
         ICanCreate<CardHeader>,
         ICanCreate<CardFooter>
@@ -17,46 +12,42 @@ namespace FBootstrapCoreMvc.Components
         private CardHeader _header;
         private CardFooter _footer;
 
-        public Card(IHtmlHelper helper)
-            : base(helper, "div", Css.Card)
+        public Card()
+            : base("div", Css.Card)
         {
         }
 
-        public Card SetHeader(string text)
+        protected internal void SetHeader(object content)
         {
-            _header = new CardHeader(_helper);
-            _header.InnerHtml.SetContent(text);
-            SetContentHtml();
-            return this;
+            _header = new CardHeader();
+            _header.Content = content;
+            AddChild(_header, ChildType.Header);
         }
 
-        public Card SetFooter(string text)
+        protected internal void SetFooter(object content)
         {
-            _footer = new CardFooter(_helper);
-            _footer.InnerHtml.SetContent(text);
-            SetContentHtml();
-            return this;
+            _footer = new CardFooter();
+            _footer.Content = content;
+            AddChild(_header, ChildType.Footer);
         }
 
-        public Card SetBackground(BackgroundState backgroundState = BackgroundState.Primary)
-        {
-            AddCssClass(backgroundState.GetCssDescription());
-            return this;
-        }
+        //public void SetBackground(BackgroundState backgroundState = BackgroundState.Primary)
+        //{
+        //    AddCss(backgroundState.GetCssDescription());
+        //}
 
-        public Card SetState(TextBgState textBgState = TextBgState.Primary)
-        {
-            AddCssClass(textBgState.GetCssDescription());
-            return this;
-        }
+        //public void SetState(TextBgState textBgState = TextBgState.Primary)
+        //{
+        //    AddCss(textBgState.GetCssDescription());
+        //}
 
-        private void SetContentHtml()
-        {
-            InnerHtml.Clear();
-            if (_header != null)
-                InnerHtml.AppendHtml(_header);
-            if (_footer != null)
-                InnerHtml.AppendHtml(_footer);
-        }
+        //private void SetContentHtml()
+        //{
+        //    InnerHtml.Clear();
+        //    if (_header != null)
+        //        InnerHtml.AppendHtml(_header);
+        //    if (_footer != null)
+        //        InnerHtml.AppendHtml(_footer);
+        //}
     }
 }

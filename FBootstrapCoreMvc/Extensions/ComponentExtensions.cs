@@ -1,4 +1,5 @@
-﻿using FBootstrapCoreMvc.Extensions;
+﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
 using Microsoft.AspNetCore.Html;
 using System;
@@ -72,6 +73,20 @@ namespace FBootstrapCoreMvc.Extensions
                 component.AddStyle(key, value);
             }
             return component;
+        }
+
+        public static BootstrapContent<TComponent> SetTextBgState<TComponent>(this BootstrapContent<TComponent> bootstrapContent, TextBgState state = TextBgState.Primary)
+            where TComponent : HtmlComponent
+        {
+            bootstrapContent.Component.AddCss(state.GetCssDescription());
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> SetBgState<TComponent>(this BootstrapContent<TComponent> bootstrapContent, BackgroundState state = BackgroundState.Primary)
+            where TComponent : HtmlComponent
+        {
+            bootstrapContent.Component.AddCss(state.GetCssDescription());
+            return bootstrapContent;
         }
         #endregion
 

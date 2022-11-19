@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
-    public class CardFooter : Component<CardFooter>
+    public class CardFooter : HtmlComponent
     {
-        public CardFooter(IHtmlHelper helper)
-            : base(helper, "div", Css.CardFooter)
+        public CardFooter()
+            : base("div", Css.CardFooter)
         {
         }
     }

@@ -1,15 +1,14 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Icon : Component<Icon>
+    public class Icon : HtmlComponent
     {
-        public Icon(IHtmlHelper helper, IconType icon)
-            : base(helper, "i")
+        public Icon(IconType icon)
+            : base("i")
         {
-            AddCssClass($"bi bi-{icon.GetCssDescription()}");
+            AddCss($"bi bi-{icon.GetCssDescription()}");
         }
     }
 }

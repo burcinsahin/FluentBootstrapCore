@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class CardBody : Component<CardBody>
+    public class CardBody : HtmlComponent
     {
-        public CardBody(IHtmlHelper helper)
-            : base(helper, "div", Css.CardBody)
+        public CardBody()
+            : base("div", Css.CardBody)
         {
         }
     }

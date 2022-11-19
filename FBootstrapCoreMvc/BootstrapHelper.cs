@@ -24,24 +24,6 @@ namespace FBootstrapCoreMvc
             return new HtmlElement(HtmlHelper, "div");
         }
 
-        public Icon Icon(IconType icon, string? text = null)
-        {
-            return new Icon(HtmlHelper, icon).SetContent(text);
-        }
-
-        public Heading Heading(byte size = 1)
-        {
-            if (size < 1) size = 1;
-            else if (size > 6) size = 6;
-
-            return new Heading(HtmlHelper, size);
-        }
-
-        public Heading Heading1(string? text = null)
-        {
-            return new Heading(HtmlHelper, 1).SetContent(text);
-        }
-
         public List List(ListType listType = ListType.Unstyled)
         {
             return new List(HtmlHelper, listType);
@@ -53,19 +35,19 @@ namespace FBootstrapCoreMvc
             return new Container(HtmlHelper);
         }
 
-        /// <summary>
-        /// Card is new version of old Panel
-        /// </summary>
-        /// <returns></returns>
-        public Card Card(string? header = null, string? footer = null)
-        {
-            var card = new Card(HtmlHelper);
-            if (header != null)
-                card.SetHeader(header);
-            if (footer != null)
-                card.SetFooter(footer);
-            return card;
-        }
+        ///// <summary>
+        ///// Card is new version of old Panel
+        ///// </summary>
+        ///// <returns></returns>
+        //public Card Card(string? header = null, string? footer = null)
+        //{
+        //    var card = new Card(HtmlHelper);
+        //    if (header != null)
+        //        card.SetHeader(header);
+        //    if (footer != null)
+        //        card.SetFooter(footer);
+        //    return card;
+        //}
 
         public Navbar Navbar()
         {
@@ -150,7 +132,7 @@ namespace FBootstrapCoreMvc
 
         public Button Button(ButtonType buttonType = ButtonType.Button, object? value = null)
         {
-            var button = new Button(HtmlHelper);
+            var button = new Button();
             button.SetType(buttonType);
             button.SetValue(value);
             return button;

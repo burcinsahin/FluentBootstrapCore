@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.Design;
+using System.Globalization;
 using System.Linq;
 
 namespace FBootstrapCoreMvc
@@ -53,6 +55,21 @@ namespace FBootstrapCoreMvc
                 .Split(" ", StringSplitOptions.RemoveEmptyEntries);
             ClearCss();
             AddCss(currentClasses.Except(cssClasses).ToArray());
+        }
+
+        protected internal void AddStyle(string key, string value) 
+        {
+            _tagBuilder.MergeAttribute("style", $"{key}:{value};", false);
+        }
+
+        protected internal void AddStyles(object styles)
+        {
+            foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
+            {
+                var key = property.Name;
+                var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
+                AddStyle(key, value);
+            }
         }
 
         public string ToHtml()

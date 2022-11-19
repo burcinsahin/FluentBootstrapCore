@@ -20,9 +20,9 @@ namespace FBootstrapCoreMvc.Components
 
         public LinkButton SetIcon(IconType icon)
         {
-            _icon = new Icon(_helper, icon);
+            _icon = new Icon(icon);
             InnerHtml.Clear();
-            InnerHtml.AppendHtml(_icon);
+            InnerHtml.AppendHtml(_icon.ToHtml());
             AppendContent(_content);
             return this;
         }

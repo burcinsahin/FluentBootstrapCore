@@ -33,7 +33,7 @@ namespace FBootstrapCoreMvc.Extensions
         public static Icon FormIcon<TComponent>(this HtmlBuilder<TComponent> builder)
             where TComponent : Component<TComponent>, ICanCreate<Icon>
         {
-            return new Icon(builder.HtmlHelper, IconType.Chat);
+            return new Icon(IconType.Chat);
         }
 
         public static FormInput Input<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string? name = null, string? label = null, object? value = null, FormInputType inputType = FormInputType.Text)
@@ -60,7 +60,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static FormCheck CheckFor<TComponent, TModel, TValue>(this MvcBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormCheck> 
+            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormCheck>
         {
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
@@ -145,8 +145,8 @@ namespace FBootstrapCoreMvc.Extensions
         public static Button Button<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string text = "Button", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<Button>
         {
-            var button = new Button(builder.HtmlHelper, buttonState, text)
-                .SetType(ButtonType.Button);
+            var button = new Button(buttonState, text);
+            button.SetType(ButtonType.Button);
             if (value != null)
                 button.SetValue(value.ToString());
             return button;
@@ -155,8 +155,8 @@ namespace FBootstrapCoreMvc.Extensions
         public static Button Submit<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string text = "Submit", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<Button>
         {
-            var submit = new Button(builder.HtmlHelper, buttonState, text)
-                .SetType(ButtonType.Submit);
+            var submit = new Button(buttonState, text);
+            submit.SetType(ButtonType.Submit);
             if (value != null)
                 submit.SetValue(value.ToString());
             return submit;
@@ -165,8 +165,8 @@ namespace FBootstrapCoreMvc.Extensions
         public static Button Reset<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string text = "Reset", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<Button>
         {
-            var reset = new Button(builder.HtmlHelper, buttonState, text)
-                .SetType(ButtonType.Reset);
+            var reset = new Button(buttonState, text);
+            reset.SetType(ButtonType.Reset);
             if (value != null)
                 reset.SetValue(value.ToString());
             return reset;

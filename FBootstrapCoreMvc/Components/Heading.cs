@@ -1,12 +1,9 @@
-﻿using FBootstrapCoreMvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
-    public class Heading : Component<Heading>
+    public class Heading : HtmlComponent
     {
-        public Heading(IHtmlHelper helper, byte size)
-            : base(helper, $"h{size}")
+        public Heading(byte size)
+            : base($"h{size}")
         {
         }
     }
