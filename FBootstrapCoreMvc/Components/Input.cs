@@ -1,16 +1,14 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Input : Component<Input>,
+    public class Input : HtmlComponent,
         ICanHaveValue
     {
-        public Input(IHtmlHelper helper)
-            : base(helper, "input")
+        public Input()
+            : base("input")
         {
         }
 

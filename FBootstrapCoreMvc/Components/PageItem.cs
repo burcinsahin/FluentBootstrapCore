@@ -4,14 +4,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class PageItem : Component<PageItem>
+    public class PageItem : HtmlComponent
     {
         private Link _link;
 
-        public PageItem(IHtmlHelper helper)
-            : base(helper, "li", Css.PageItem)
+        public PageItem()
+            : base("li", Css.PageItem)
         {
-            _link = new Link(_helper).AddCss(Css.PageLink);
+            _link = new Link();
+            _link.AddCss(Css.PageLink);
         }
 
         public PageItem SetLink(string? href, object? content)

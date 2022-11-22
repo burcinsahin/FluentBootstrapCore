@@ -44,13 +44,13 @@ namespace FBootstrapCoreMvc.Extensions
             return dropdownMenu;
         }
 
-        public static DropdownItem DropdownItem<TComponent>(this HtmlBuilder<TComponent> builder, string? text, string action, string controller, object? routeValues = null)
-            where TComponent : Component<TComponent>, ICanCreate<DropdownItem>
+        public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this BootstrapBuilder<TComponent> builder, string? text, string action, string controller, object? routeValues = null)
+            where TComponent : HtmlComponent, ICanCreate<DropdownItem>
         {
-            var dropdownItem = new DropdownItem(builder.HtmlHelper, text);
+            var dropdownItem = new DropdownItem(text);
             var url = builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
             dropdownItem.SetHref(url);
-            return dropdownItem;
+            return new BootstrapContent<DropdownItem>(builder.HtmlHelper, dropdownItem);
         }
         #endregion
 

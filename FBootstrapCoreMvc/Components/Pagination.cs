@@ -1,24 +1,21 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Pagination : Component<Pagination>,
+    public class Pagination : HtmlComponent,
         ICanCreate<PageItem>
     {
-        public Pagination(IHtmlHelper helper)
-            : base(helper, "ul", Css.Pagination)
+        public Pagination()
+            : base("ul", Css.Pagination)
         {
         }
 
         public Pagination AddPageItem(string? href, object? content, bool active = false, bool disabled = false)
         {
-            var pageItem = new PageItem(_helper).SetLink(href, content).SetActive(active).SetDisabled(disabled);
-
-            InnerHtml.AppendHtml(pageItem);
+            var pageItem = new PageItem().SetLink(href, content).SetActive(active).SetDisabled(disabled);
+            AddChild(pageItem);
             return this;
         }
 

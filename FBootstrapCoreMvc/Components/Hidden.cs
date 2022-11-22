@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Hidden : Component<Hidden>,
+    public class Hidden : HtmlComponent,
         ICanHaveName,
         ICanHaveValue
     {
-        public Hidden(IHtmlHelper helper)
-            : base(helper, "input")
+        public Hidden()
+            : base("input")
         {
-            AddAttribute("type", FormInputType.Hidden.GetDescription());
+            MergeAttribute("type", FormInputType.Hidden.GetDescription());
         }
     }
 }

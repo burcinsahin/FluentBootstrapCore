@@ -9,8 +9,8 @@ namespace FBootstrapCoreMvc.Components
         public NavbarBrand(IHtmlHelper helper, string? text = null)
             : base(helper)
         {
-            AddCssClass(Css.NavbarBrand);
-            InnerHtml.SetContent(text);
+            AddCss(Css.NavbarBrand);
+            Content = text;
         }
     }
 }

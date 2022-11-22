@@ -15,7 +15,7 @@ namespace FBootstrapCoreMvc.Components
             : base(helper, "div", Css.FormFloating)
         {
             _select = new Select(helper).SetId();
-            _label = new Label(helper).SetContent(label).AddAttribute("for", _select.Id);
+            _label = new Label().SetContent(label).AddAttribute("for", _select.Id);
             _childComponents.Add(_select);
             _childComponents.Add(_label);
             AppendChildrenToHtml();

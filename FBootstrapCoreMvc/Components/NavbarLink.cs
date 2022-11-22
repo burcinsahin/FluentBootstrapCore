@@ -4,30 +4,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class NavbarLink : Component<NavbarLink>
+    public class NavbarLink : HtmlComponent
     {
         private Link _link;
 
-        public NavbarLink(IHtmlHelper helper, string? text)
-            : base(helper, "li", Css.NavItem)
+        public NavbarLink(string? text)
+            : base("li", Css.NavItem)
         {
-            _link = new Link(helper, text);
-            _link.AddCssClass(Css.NavLink);
-            InnerHtml.SetHtmlContent(_link);
+            _link = new Link(text);
+            _link.AddCss(Css.NavLink);
+            AddChild(_link);
         }
 
         public NavbarLink SetActive()
         {
-            _link.AddCssClass(Css.Active);
-            _link.AddAttribute("aria-current", "page");
-            InnerHtml.SetHtmlContent(_link);
+            _link.AddCss(Css.Active);
+            _link.MergeAttribute("aria-current", "page");
             return this;
         }
 
         public NavbarLink SetHref(string href)
         {
-            _link.AddAttribute("href", href);
-            InnerHtml.SetHtmlContent(_link);
+            _link.MergeAttribute("href", href);
             return this;
         }
     }

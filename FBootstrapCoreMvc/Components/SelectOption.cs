@@ -1,22 +1,19 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class SelectOption : Component<SelectOption>,
+    public class SelectOption : HtmlComponent,
         ICanHaveValue, ICanBeDisabled, ICanBeSelected
     {
-        public SelectOption(IHtmlHelper helper)
-            : base(helper, "option")
+        public SelectOption()
+            : base("option")
         {
         }
 
         public SelectOption SetSelected(bool selected = false)
         {
             if (!selected) return this;
-            return AddAttribute("selected", "");
+            return MergeAttribute("selected");
         }
     }
 }

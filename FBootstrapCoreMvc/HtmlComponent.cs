@@ -1,4 +1,5 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Components;
+using FBootstrapCoreMvc.Enums;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -19,7 +20,9 @@ namespace FBootstrapCoreMvc
         private List<IHtmlComponent> _bodyChildren;
         private List<IHtmlComponent> _footerChildren;
 
-        internal object? Content { get => _content; set => _content = value; } 
+        public string Id { get; protected internal set; }
+
+        internal object? Content { get => _content; set => _content = value; }
         #endregion
 
         #region Ctors
@@ -57,7 +60,7 @@ namespace FBootstrapCoreMvc
             AddCss(currentClasses.Except(cssClasses).ToArray());
         }
 
-        protected internal void AddStyle(string key, string value) 
+        protected internal void AddStyle(string key, string value)
         {
             _tagBuilder.MergeAttribute("style", $"{key}:{value};", false);
         }
@@ -122,8 +125,10 @@ namespace FBootstrapCoreMvc
             return htmlContentBuilder;
         }
 
-        internal void AddChild(IHtmlComponent component, ChildType childType = ChildType.Body)
+        protected internal void AddChild(IHtmlComponent component, ChildType childType = ChildType.Body)
         {
+            if (component == null) return;
+
             switch (childType)
             {
                 case ChildType.Header:
@@ -138,7 +143,16 @@ namespace FBootstrapCoreMvc
             }
         }
 
-        internal void AppendContent(object? content, bool clear = false)
+        protected internal void RemoveChild(IHtmlComponent component)
+        {
+            if (component == null) return;
+            _headerChildren.Remove(component);
+            _bodyChildren.Remove(component);
+            _footerChildren.Remove(component);
+        }
+
+
+        protected internal void AppendContent(object? content, bool clear = false)
         {
             if (content == null)
                 return;
@@ -154,7 +168,7 @@ namespace FBootstrapCoreMvc
             _tagBuilder.InnerHtml.Append(content.ToString());
         }
 
-        internal void MergeAttribute(string key, object? value = null, bool replaceExisting = false)
+        protected internal void MergeAttribute(string key, object? value = null, bool replaceExisting = false)
         {
             if (value == null)
             {
@@ -163,6 +177,12 @@ namespace FBootstrapCoreMvc
             }
 
             _tagBuilder.MergeAttribute(key, value.ToString(), replaceExisting);
+        }
+
+        [Obsolete("Use MergeAttribute instead!")]
+        protected internal void AddAttribute(string key, object? value = null)
+        {
+            MergeAttribute(key, value);
         }
         #endregion
     }

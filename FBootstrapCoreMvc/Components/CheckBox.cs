@@ -1,22 +1,21 @@
 ﻿using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class CheckBox : Component<CheckBox>,
+    public class CheckBox : HtmlComponent,
         ICanBeDisabled, ICanHaveName, ICanHaveValue
     {
-        public CheckBox(IHtmlHelper helper)
-            : base(helper, "input")
+        public CheckBox()
+            : base("input")
         {
-            AddAttribute("type", "checkbox");
+            MergeAttribute("type", "checkbox");
         }
 
-        public CheckBox SetChecked(bool? value = null)
+        protected internal void SetChecked(bool? value = false)
         {
-            if (!value.HasValue || value.Value)
-                return AddAttribute("checked");
-            return this;
+            if (value == null || value.Value)
+                MergeAttribute("checked");
         }
     }
 }

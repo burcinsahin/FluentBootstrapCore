@@ -30,9 +30,9 @@ namespace FBootstrapCoreMvc
         }
         #endregion
 
-        public Container Container()
+        public BootstrapContent<Container> Container()
         {
-            return new Container(HtmlHelper);
+            return new BootstrapContent<Container>(HtmlHelper, new Container());
         }
 
         ///// <summary>
@@ -64,7 +64,7 @@ namespace FBootstrapCoreMvc
 
         public Input Hidden(string? name = null, object? value = null)
         {
-            var input = new Input(HtmlHelper);
+            var input = new Input();
             input.SetType(FormInputType.Hidden);
             input.MergeAttribute("name", name);
             input.MergeAttribute("value", value?.ToString());
@@ -85,12 +85,12 @@ namespace FBootstrapCoreMvc
 
         public Link Link(object? content, string href = "#")
         {
-            return new Link(HtmlHelper, content).SetHref(href);
+            return new Link(content).SetHref(href);
         }
 
         public Link Link(string text, string action, string controller, object routeValues = null)
         {
-            var link = new Link(HtmlHelper, text);
+            var link = new Link(text);
             var urlHelper = HtmlHelper.GetUrlHelper();
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
             var url = urlHelper?.Action(urlActionContext);
@@ -138,11 +138,11 @@ namespace FBootstrapCoreMvc
             return button;
         }
 
-        public CheckBox CheckBox()
-        {
-            var checkbox = new CheckBox(HtmlHelper);
-            return checkbox;
-        }
+        //public CheckBox CheckBox()
+        //{
+        //    var checkbox = new CheckBox(HtmlHelper);
+        //    return checkbox;
+        //}
 
         //public HtmlBuilder<TComponent> Begin<TComponent>(TComponent component)
         //    where TComponent : Component

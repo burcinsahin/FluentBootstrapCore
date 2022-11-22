@@ -3,15 +3,15 @@ using System;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Link : Component<Link>
+    public class Link : HtmlComponent
     {
-        public Link(IHtmlHelper helper, object? content = null)
-            : base(helper, "a")
+        public Link(object? content = null)
+            : base("a")
         {
             AppendContent(content);
         }
 
-        internal Link SetRole(string role) => AddAttribute("role", role);
+        internal void SetRole(string role) => AddAttribute("role", role);
 
         //public Link SetHref(string href) => AddAttribute("href", href);
     }

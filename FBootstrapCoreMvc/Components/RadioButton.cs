@@ -1,14 +1,12 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class RadioButton : Component<RadioButton>,
+    public class RadioButton : HtmlComponent,
         ICanHaveName, ICanBeDisabled
     {
-        public RadioButton(IHtmlHelper helper)
-            : base(helper, "input", Css.FormCheckInput)
+        public RadioButton()
+            : base("input", Css.FormCheckInput)
         {
             MergeAttribute("type", "radio");
         }

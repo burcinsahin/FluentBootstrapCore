@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Select : Component<Select>,
+    public class Select : HtmlComponent,
         ICanCreate<SelectOption>
     {
-        public Select(IHtmlHelper helper)
-            : base(helper, "select", Css.FormSelect)
+        public Select()
+            : base("select", Css.FormSelect)
         {
         }
 
@@ -18,14 +18,13 @@ namespace FBootstrapCoreMvc.Components
         {
             foreach (var item in selectList)
             {
-                var option = new SelectOption(_helper)
+                var option = new SelectOption()
                     .SetValue(item.Value)
                     .SetSelected(item.Selected)
                     .SetDisabled(item.Disabled)
                     .SetContent(item.Text);
-                _childComponents.Add(option);
+                AddChild(option);
             }
-            AppendChildrenToHtml(true);
             return this;
         }
     }

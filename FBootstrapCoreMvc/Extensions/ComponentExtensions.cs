@@ -1,28 +1,25 @@
 ﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Html;
 using System;
 using System.ComponentModel;
 using System.Globalization;
-using System.Xml.Serialization;
 
 namespace FBootstrapCoreMvc.Extensions
 {
     public static class ComponentExtensions
     {
-        #region Common
-        public static Component AddCss(this Component component, params string[] cssClasses)
-        {
-            foreach (var css in cssClasses)
-            {
-                component.AddCssClass(css);
-            }
-            return component;
-        }
+        #region Internals
+        //public static Component AddCss(this Component component, params string[] cssClasses)
+        //{
+        //    foreach (var css in cssClasses)
+        //    {
+        //        component.AddCssClass(css);
+        //    }
+        //    return component;
+        //}
 
-        public static TComponent SetId<TComponent>(this TComponent component, string? id = null)
-            where TComponent : Component<TComponent>
+        internal static TComponent SetId<TComponent>(this TComponent component, string? id = null)
+            where TComponent : HtmlComponent
         {
             if (id == null)
                 id = $"{typeof(TComponent).Name}_{DateTime.Now.Ticks}";
@@ -31,49 +28,41 @@ namespace FBootstrapCoreMvc.Extensions
             return component;
         }
 
-        public static TComponent SetContent<TComponent>(this TComponent component, object? content)
-            where TComponent : Component<TComponent>
+        internal static TComponent SetContent<TComponent>(this TComponent component, object? content)
+            where TComponent : HtmlComponent
         {
-            if (content == null)
-                return component;
-
-            if (content is IHtmlContent htmlContent)
-            {
-                component.InnerHtml.SetHtmlContent(htmlContent);
-                return component;
-            }
-            component.InnerHtml.SetContent(content.ToString());
+            component.AppendContent(content);
             return component;
         }
 
-        public static TComponent AddCss<TComponent>(this TComponent component, params string[] cssClasses)
-            where TComponent : Component<TComponent>
-        {
-            foreach (var css in cssClasses)
-            {
-                component.AddCssClass(css);
-            }
-            return component;
-        }
+        //internal static TComponent AddCss<TComponent>(this TComponent component, params string[] cssClasses)
+        //    where TComponent : HtmlComponent
+        //{
+        //    foreach (var css in cssClasses)
+        //    {
+        //        component.AddCss(cssclas);
+        //    }
+        //    return component;
+        //}
 
-        public static TComponent AddStyle<TComponent>(this TComponent component, string name, string value)
-            where TComponent : Component<TComponent>
-        {
-            component.MergeAttribute("style", $"{name}:{value}", false);
-            return component;
-        }
+        //public static TComponent AddStyle<TComponent>(this TComponent component, string name, string value)
+        //    where TComponent : Component<TComponent>
+        //{
+        //    component.MergeAttribute("style", $"{name}:{value}", false);
+        //    return component;
+        //}
 
-        public static TComponent AddStyles<TComponent>(this TComponent component, object styles)
-            where TComponent : Component<TComponent>
-        {
-            foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
-            {
-                var key = property.Name;
-                var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
-                component.AddStyle(key, value);
-            }
-            return component;
-        }
+        //public static TComponent AddStyles<TComponent>(this TComponent component, object styles)
+        //    where TComponent : Component<TComponent>
+        //{
+        //    foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
+        //    {
+        //        var key = property.Name;
+        //        var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
+        //        component.AddStyle(key, value);
+        //    }
+        //    return component;
+        //}
 
         public static BootstrapContent<TComponent> SetTextBgState<TComponent>(this BootstrapContent<TComponent> bootstrapContent, TextBgState state = TextBgState.Primary)
             where TComponent : HtmlComponent
@@ -88,33 +77,43 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.AddCss(state.GetCssDescription());
             return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> SetId<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? id = null)
+            where TComponent : HtmlComponent
+        {
+            if (id == null)
+                id = $"{typeof(TComponent).Name}_{DateTime.Now.Ticks}";
+            bootstrapContent.Component.Id = id;
+            return bootstrapContent;
+        }
         #endregion
 
         #region Interface Filtered
-        public static TComponent SetValue<TComponent>(this TComponent component, object? value)
-            where TComponent : Component<TComponent>, ICanHaveValue
+        internal static TComponent SetValue<TComponent>(this TComponent component, object? value)
+            where TComponent : HtmlComponent, ICanHaveValue
         {
             if (value == null)
                 return component;
 
-            component.AddAttribute("value", value);
+            component.MergeAttribute("value", value);
             return component;
         }
 
-        public static TComponent SetName<TComponent>(this TComponent component, string? name)
-            where TComponent : Component<TComponent>, ICanHaveName
+        internal static TComponent SetName<TComponent>(this TComponent component, string? name)
+            where TComponent : HtmlComponent, ICanHaveName
         {
-            return component.AddAttribute("name", name);
+            component.MergeAttribute("name", name);
+            return component;
         }
 
-        public static TComponent SetDisabled<TComponent>(this TComponent component, bool? value = true)
-            where TComponent : Component<TComponent>, ICanBeDisabled
+        internal static TComponent SetDisabled<TComponent>(this TComponent component, bool? value = true)
+            where TComponent : HtmlComponent, ICanBeDisabled
         {
-            if (value == null || value == false)
+            if (value.HasValue && value == false)
                 return component;
-            return component.AddAttribute("disabled", "");
+            component.MergeAttribute("disabled");
+            return component;
         }
         #endregion
-
     }
 }

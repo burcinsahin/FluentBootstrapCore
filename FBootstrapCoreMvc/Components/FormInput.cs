@@ -1,36 +1,31 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormInput : Component<FormInput>
+    public class FormInput : HtmlComponent
     {
         private Input _input;
         private Label _label;
 
-        public FormInput(IHtmlHelper helper, FormInputType inputType = FormInputType.Text, string? label = null)
-            : base(helper, "div", Css.Mb3)
+        public FormInput(FormInputType inputType = FormInputType.Text, string? label = null)
+            : base("div", Css.Mb3)
         {
-            _input = new Input(helper)
-                .AddCss(Css.FormControl)
-                .SetType(inputType)
-                .SetId();
+            _input = new Input();
+            _input.AddCss(Css.FormControl);
+            _input.SetType(inputType);
+            _input.SetId();
 
-            _label = new Label(helper);
+            _label = new Label();
             if (label != null)
             {
-                _label.AddCss(Css.FormLabel)
-                .AddAttribute("for", _input.Id)
-                .SetContent(label);
+                _label.AddCss(Css.FormLabel);
+                _label.AddAttribute("for", _input.Id);
+                _label.SetContent(label);
 
-                _childComponents.Add(_label);
+                AddChild(_label);
             }
-
-            _childComponents.Add(_input);
-
-            AppendChildrenToHtml();
+            AddChild(_input);
         }
 
         public FormInput IsRequired()
@@ -79,10 +74,11 @@ namespace FBootstrapCoreMvc.Components
         {
             AddCss(Css.FormFloating);
             _input.SetPlaceholder(label);
-            _label.AddAttribute("for", _input.Id).SetContent(label);
-            _childComponents.Remove(_label);
-            _childComponents.Add(_label);
-            AppendChildrenToHtml(true);
+            _label.MergeAttribute("for", _input.Id);
+            _label.SetContent(label);
+
+            RemoveChild(_label);
+            AddChild(_label);
             return this;
         }
 

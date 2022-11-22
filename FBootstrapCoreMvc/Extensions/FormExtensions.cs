@@ -65,7 +65,7 @@ namespace FBootstrapCoreMvc.Extensions
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
             var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
-            var formCheck = new FormCheck(builder.HtmlHelper, modelExpression.Name, modelExpression.Name, modelExpression.Model as bool?);
+            var formCheck = new FormCheck(modelExpression.Name, modelExpression.Name, modelExpression.Model as bool?);
             return formCheck;
         }
 
@@ -138,7 +138,7 @@ namespace FBootstrapCoreMvc.Extensions
         public static FormCheck CheckBox<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string name = null, string label = null, string description = null, bool isChecked = false)
             where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormCheck>
         {
-            var checkbox = new FormCheck(builder.HtmlHelper, name, label, isChecked);
+            var checkbox = new FormCheck(name, label, isChecked);
             return checkbox;
         }
 

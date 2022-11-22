@@ -1,20 +1,18 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Container : Component<Container>,
+    public class Container : HtmlComponent,
         ICanCreate<GridRow>
     {
-        public Container(IHtmlHelper helper)
-            : base(helper, "div", Css.Container)
+        public Container()
+            : base("div", Css.Container)
         {
         }
 
-        public Container TextCenter()
+        protected internal Container TextCenter()
         {
-            AddCssClass(Css.TextCenter);
+            AddCss(Css.TextCenter);
             return this;
         }
     }
