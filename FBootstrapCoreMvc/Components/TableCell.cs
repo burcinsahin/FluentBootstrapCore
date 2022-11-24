@@ -1,6 +1,10 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    internal class TableCell
+    public class TableCell : HtmlComponent
     {
+        public TableCell() 
+            : base("td")
+        {
+        }
     }
 }

@@ -21,7 +21,8 @@ namespace FBootstrapCoreMvc.Components
 
         public Pagination JustifyContent(JustifyContent justifyContent)
         {
-            return AddCss(justifyContent.GetCssDescription());
+            AddCss(justifyContent.GetCssDescription());
+            return this;
         }
     }
 }

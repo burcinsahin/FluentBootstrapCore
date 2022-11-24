@@ -1,14 +1,13 @@
 ﻿using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class NavbarNav : Component<NavbarNav>,
+    public class NavbarNav : HtmlComponent,
         ICanCreate<NavbarLink>,
         ICanCreate<NavbarDropdown>
     {
-        public NavbarNav(IHtmlHelper helper)
-            : base(helper, "ul", Css.NavbarNav, Css.MeAuto)
+        public NavbarNav()
+            : base("ul", Css.NavbarNav, Css.MeAuto)
         {
         }
     }

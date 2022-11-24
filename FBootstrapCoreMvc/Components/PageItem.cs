@@ -1,6 +1,4 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Extensions;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using FBootstrapCoreMvc.Extensions;
 
 namespace FBootstrapCoreMvc.Components
 {

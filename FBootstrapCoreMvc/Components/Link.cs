@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
     public class Link : HtmlComponent
     {

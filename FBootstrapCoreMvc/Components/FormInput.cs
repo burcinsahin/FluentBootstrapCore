@@ -20,7 +20,7 @@ namespace FBootstrapCoreMvc.Components
             if (label != null)
             {
                 _label.AddCss(Css.FormLabel);
-                _label.AddAttribute("for", _input.Id);
+                _label.MergeAttribute("for", _input.Id);
                 _label.SetContent(label);
 
                 AddChild(_label);
@@ -84,7 +84,7 @@ namespace FBootstrapCoreMvc.Components
 
         public FormInput SetReadonly()
         {
-            _input.AddAttribute("readonly", true);
+            _input.MergeAttribute("readonly", true);
             return this;
         }
     }

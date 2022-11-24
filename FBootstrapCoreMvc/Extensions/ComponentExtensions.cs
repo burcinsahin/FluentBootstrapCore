@@ -1,8 +1,6 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
 using System;
-using System.ComponentModel;
-using System.Globalization;
 
 namespace FBootstrapCoreMvc.Extensions
 {

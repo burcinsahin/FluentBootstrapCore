@@ -1,12 +1,9 @@
-﻿using FBootstrapCoreMvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
-    public class GridColumn : Component<GridColumn>
+    public class GridColumn : HtmlComponent
     {
-        public GridColumn(IHtmlHelper helper)
-            : base(helper, "div", Css.Col)
+        public GridColumn()
+            : base("div", Css.Col)
         {
         }
     }

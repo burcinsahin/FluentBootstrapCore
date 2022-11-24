@@ -19,7 +19,7 @@ namespace FBootstrapCoreMvc.Components
 
             _label = new Label();
             _label.AddCss(Css.FormCheckLabel);
-            _label.AddAttribute("for", _checkbox.Id);
+            _label.MergeAttribute("for", _checkbox.Id);
             _label.SetContent(label);
             _hidden = new Hidden();
             _hidden.SetValue(false);
@@ -32,10 +32,13 @@ namespace FBootstrapCoreMvc.Components
         public FormCheck SetReadonly()
         {
             _checkbox.SetDisabled(true);
-            AppendChildrenToHtml(true);
             return this;
         }
 
-        public FormCheck SetInline() => AddCss(Css.FormCheckInline);
+        public FormCheck SetInline()
+        {
+            AddCss(Css.FormCheckInline);
+            return this;
+        }
     }
 }

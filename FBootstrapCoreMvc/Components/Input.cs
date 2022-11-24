@@ -12,16 +12,39 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        public Input IsRequired() => AddAttribute("required", true);
+        public Input IsRequired()
+        {
+            MergeAttribute("required", true);
+            return this;
+        }
 
-        public Input AutoFocus() => AddAttribute("autofocus", true);
+        public Input AutoFocus()
+        {
+            MergeAttribute("autofocus", true);
+            return this;
+        }
 
-        public Input SetMaxLength(int value) => AddAttribute("maxlength", value);
+        public Input SetMaxLength(int value)
+        {
+            MergeAttribute("maxlength", value);
+            return this;
+        }
 
-        public Input SetPlaceholder(string? text) => AddAttribute("placeholder", text);
+        public Input SetPlaceholder(string? text)
+        {
+            MergeAttribute("placeholder", text);
+            return this;
+        }
 
-        public Input SetType(FormInputType inputType) => AddAttribute("type", inputType.GetDescription());
+        public Input SetType(FormInputType inputType)
+        {
+            MergeAttribute("type", inputType.GetDescription());
+            return this;
+        }
 
-        public Input SetName(string? name) => AddAttribute("name", name);
+        public Input SetName(string? name) {
+            MergeAttribute("name", name);
+            return this;
+        }
     }
 }

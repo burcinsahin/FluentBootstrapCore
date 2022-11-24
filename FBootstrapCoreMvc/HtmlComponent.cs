@@ -1,11 +1,9 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.Design;
 using System.Globalization;
 using System.Linq;
 
@@ -163,6 +161,11 @@ namespace FBootstrapCoreMvc
             if (content is IHtmlComponent htmlComponent)
             {
                 _tagBuilder.InnerHtml.AppendHtml(htmlComponent.ToHtml());
+                return;
+            }
+            if (content is IHtmlContent htmlContent)
+            {
+                _tagBuilder.InnerHtml.AppendHtml(htmlContent);
                 return;
             }
             _tagBuilder.InnerHtml.Append(content.ToString());

@@ -23,28 +23,28 @@ namespace FBootstrapCoreMvc.Extensions
         public static NavbarToggler NavbarToggler<TComponent>(this HtmlBuilder<TComponent> builder, string? collapseId)
             where TComponent : Component<TComponent>, ICanCreate<NavbarToggler>
         {
-            var brand = new NavbarToggler(builder.HtmlHelper, collapseId);
+            var brand = new NavbarToggler(collapseId);
             return brand;
         }
 
         public static NavbarCollapse NavbarCollapse<TComponent>(this HtmlBuilder<TComponent> builder, string? id)
             where TComponent : Component<TComponent>, ICanCreate<NavbarCollapse>
         {
-            var navbarCollapse = new NavbarCollapse(builder.HtmlHelper, id);
+            var navbarCollapse = new NavbarCollapse(id);
             return navbarCollapse;
         }
 
         public static NavbarNav NavbarNav<TComponent>(this HtmlBuilder<TComponent> builder)
             where TComponent : Component<TComponent>, ICanCreate<NavbarNav>
         {
-            var navbarNav = new NavbarNav(builder.HtmlHelper);
+            var navbarNav = new NavbarNav();
             return navbarNav;
         }
 
         public static NavbarLink NavbarLink<TComponent>(this HtmlBuilder<TComponent> builder, string text, string action, string controller, object? routeValues = null)
             where TComponent : Component<TComponent>, ICanCreate<NavbarLink>
         {
-            var navbarNav = new NavbarLink(builder.HtmlHelper, text);
+            var navbarNav = new NavbarLink(text);
             navbarNav.SetHref(builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues));
             return navbarNav;
         }
@@ -52,7 +52,7 @@ namespace FBootstrapCoreMvc.Extensions
         public static NavbarDropdown Dropdown<TComponent>(this HtmlBuilder<TComponent> builder, string text)
             where TComponent : Component<TComponent>, ICanCreate<NavbarDropdown>
         {
-            var dropdown = new NavbarDropdown(builder.HtmlHelper, text);
+            var dropdown = new NavbarDropdown(text);
             return dropdown;
         }
     }

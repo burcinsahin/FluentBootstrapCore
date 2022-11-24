@@ -1,7 +1,4 @@
-﻿using FBootstrapCoreMvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
     public class CardBody : HtmlComponent
     {

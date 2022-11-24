@@ -1,16 +1,14 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Navbar : Component<Navbar>,
+    public class Navbar : HtmlComponent,
         ICanCreate<NavbarBrand>,
         ICanCreate<NavbarCollapse>,
         ICanCreate<NavbarToggler>
     {
-        public Navbar(IHtmlHelper helper)
-            : base(helper, "nav", Css.Navbar, Css.NavbarExpandLg, Css.NavbarDark, Css.BgDark)
+        public Navbar()
+            : base("nav", Css.Navbar, Css.NavbarExpandLg, Css.NavbarDark, Css.BgDark)
         {
         }
     }

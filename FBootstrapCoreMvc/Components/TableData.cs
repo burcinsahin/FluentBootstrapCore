@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
-    public class TableData : Component<TableData>
+    public class TableData : HtmlComponent
     {
-        public TableData(IHtmlHelper helper, object? content = null)
-            : base(helper, "td")
+        public TableData(object? content = null)
+            : base("td")
         {
             AppendContent(content);
         }

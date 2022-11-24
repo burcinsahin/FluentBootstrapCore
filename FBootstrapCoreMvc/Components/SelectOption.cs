@@ -13,7 +13,8 @@ namespace FBootstrapCoreMvc.Components
         public SelectOption SetSelected(bool selected = false)
         {
             if (!selected) return this;
-            return MergeAttribute("selected");
+            MergeAttribute("selected");
+            return this;
         }
     }
 }

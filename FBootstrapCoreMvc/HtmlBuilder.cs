@@ -3,6 +3,7 @@ using System;
 
 namespace FBootstrapCoreMvc
 {
+    [Obsolete("Use BootstrapBuilder instead")]
     public class HtmlBuilder<TComponent> : IDisposable
         where TComponent : Component<TComponent>
     {

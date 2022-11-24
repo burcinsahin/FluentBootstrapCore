@@ -1,5 +1,4 @@
 ﻿using FBootstrapCoreMvc.Extensions;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -18,7 +17,7 @@ namespace FBootstrapCoreMvc.Components
             _radioButton.SetName(name);
             _label = new Label();
             _label.AddCss(Css.FormCheckLabel);
-            _label.AddAttribute("for", _radioButton.Id);
+            _label.MergeAttribute("for", _radioButton.Id);
             _label.SetContent(label);
 
             AddChild(_radioButton);

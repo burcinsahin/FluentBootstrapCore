@@ -1,5 +1,4 @@
 ﻿using FBootstrapCoreMvc.Interfaces;
-using System;
 
 namespace FBootstrapCoreMvc.Components
 {

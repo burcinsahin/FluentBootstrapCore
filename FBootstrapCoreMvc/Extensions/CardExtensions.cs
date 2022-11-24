@@ -1,7 +1,5 @@
 ﻿
 using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace FBootstrapCoreMvc.Extensions
 {

@@ -1,7 +1,6 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {

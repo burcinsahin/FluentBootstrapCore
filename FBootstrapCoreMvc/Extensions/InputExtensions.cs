@@ -16,5 +16,19 @@ namespace FBootstrapCoreMvc.Extensions
                 bootstrapContent.Component.MergeAttribute("checked");
             return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> SetMaxLength<TComponent>(this BootstrapContent<TComponent> bootstrapContent, short value = 100)
+            where TComponent : FormInput
+        {
+            bootstrapContent.Component.SetMaxLength(value);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> IsRequired<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : FormInput
+        {
+            bootstrapContent.Component.IsRequired();
+            return bootstrapContent;
+        }
     }
 }

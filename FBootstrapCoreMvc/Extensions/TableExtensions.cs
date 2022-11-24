@@ -38,23 +38,23 @@ namespace FBootstrapCoreMvc.Extensions
         //}
 
         // Cells
-        public static TableHeader TableHeader<TComponent>(this HtmlBuilder<TComponent> builder, params string[] headers)
-            where TComponent : Component<TComponent>, ICanCreate<TableHeader>
-        {
-            return new TableHeader(builder.HtmlHelper, headers);
-        }
+        //public static TableHeader TableHeader<TComponent>(this HtmlBuilder<TComponent> builder, params string[] headers)
+        //    where TComponent : Component<TComponent>, ICanCreate<TableHeader>
+        //{
+        //    return new TableHeader(builder.HtmlHelper, headers);
+        //}
 
-        public static TableRow TableRow<TComponent>(this HtmlBuilder<TComponent> builder)
-            where TComponent : Component<TComponent>, ICanCreate<TableRow>
-        {
-            return new TableRow(builder.HtmlHelper);
-        }
+        //public static TableRow TableRow<TComponent>(this HtmlBuilder<TComponent> builder)
+        //    where TComponent : Component<TComponent>, ICanCreate<TableRow>
+        //{
+        //    return new TableRow(builder.HtmlHelper);
+        //}
 
-        public static TableData TableData<TComponent>(this HtmlBuilder<TComponent> builder, object? content = null)
-            where TComponent : Component<TComponent>, ICanCreate<TableData>
-        {
-            return new TableData(builder.HtmlHelper, content);
-        }
+        //public static TableData TableData<TComponent>(this HtmlBuilder<TComponent> builder, object? content = null)
+        //    where TComponent : Component<TComponent>, ICanCreate<TableData>
+        //{
+        //    return new TableData(builder.HtmlHelper, content);
+        //}
 
         //public static ComponentBuilder<TConfig, TableHeader> TableHeader<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper, object content = null)
         //    where TConfig : BootstrapConfig

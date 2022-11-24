@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace FBootstrapCoreMvc
 {
+    [Obsolete("Use HtmlComponent instead.")]
     public abstract class MvcComponent<TComponent, TModel> : Component
         where TComponent : MvcComponent<TComponent, TModel>
     {

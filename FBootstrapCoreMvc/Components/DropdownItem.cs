@@ -1,8 +1,5 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Extensions;
+﻿using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -13,7 +10,8 @@ namespace FBootstrapCoreMvc.Components
         public DropdownItem(string? text)
             : base("li")
         {
-            _link = new Link(text).AddCss(Css.DropdownItem);
+            _link = new Link(text);
+            _link.AddCss(Css.DropdownItem);
             AddChild(_link);
         }
 
