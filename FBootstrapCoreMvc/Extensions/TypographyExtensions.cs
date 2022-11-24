@@ -35,11 +35,11 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         #region Dropdown
-        public static DropdownMenu DropdownMenu<TComponent>(this HtmlBuilder<TComponent> builder)
-            where TComponent : Component<TComponent>, ICanCreate<DropdownMenu>
+        public static BootstrapContent<DropdownMenu> DropdownMenu<TComponent>(this BootstrapBuilder<TComponent> builder)
+            where TComponent : HtmlComponent, ICanCreate<DropdownMenu>
         {
             var dropdownMenu = new DropdownMenu();
-            return dropdownMenu;
+            return new BootstrapContent<DropdownMenu>(builder.HtmlHelper, dropdownMenu);
         }
 
         public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this BootstrapBuilder<TComponent> builder, string? text, string action, string controller, object? routeValues = null)

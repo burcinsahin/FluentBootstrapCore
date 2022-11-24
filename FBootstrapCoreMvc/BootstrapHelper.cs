@@ -4,7 +4,6 @@ using FBootstrapCoreMvc.Extensions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
-using System.Xml;
 
 namespace FBootstrapCoreMvc
 {
@@ -74,19 +73,21 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<HtmlElement>(_htmlHelper, p);
         }
 
-        public Link Link(object? content, string href = "#")
+        public BootstrapContent<Link> Link(object? content, string href = "#")
         {
-            return new Link(content).SetHref(href);
+            var link = new Link(content);
+            link.SetHref(href);
+            return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
-        public Link Link(string text, string action, string controller, object routeValues = null)
+        public BootstrapContent<Link> Link(string text, string action, string controller, object routeValues = null)
         {
             var link = new Link(text);
             var urlHelper = HtmlHelper.GetUrlHelper();
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
             var url = urlHelper?.Action(urlActionContext);
             link.MergeAttribute("href", url);
-            return link;
+            return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
         public BootstrapContent<LinkButton> LinkButton(string text, string action, string controller, object routeValues = null)
@@ -119,29 +120,23 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Form, TModel>(_htmlHelper, form);
         }
 
-        //public Table Table()
-        //{
-        //    return new Table();
-        //}
+        public BootstrapContent<Table> Table()
+        {
+            return new BootstrapContent<Table>(HtmlHelper, new Table());
+        }
 
-        //public Button Button(ButtonType buttonType = ButtonType.Button, object? value = null)
-        //{
-        //    var button = new Button();
-        //    button.SetType(buttonType);
-        //    button.SetValue(value);
-        //    return button;
-        //}
+        public BootstrapContent<Button> Button(ButtonType buttonType = ButtonType.Button, object? value = null)
+        {
+            var button = new Button();
+            button.SetType(buttonType);
+            button.SetValue(value);
+            return new BootstrapContent<Button>(_htmlHelper, button);
+        }
 
-        //public CheckBox CheckBox()
-        //{
-        //    var checkbox = new CheckBox(HtmlHelper);
-        //    return checkbox;
-        //}
-
-        //public HtmlBuilder<TComponent> Begin<TComponent>(TComponent component)
-        //    where TComponent : Component
-        //{
-        //    return new HtmlBuilder<TComponent>(_htmlHelper, component);
-        //}
+        public BootstrapContent<CheckBox> CheckBox()
+        {
+            var checkbox = new CheckBox();
+            return new BootstrapContent<CheckBox>(HtmlHelper, checkbox);
+        }
     }
 }

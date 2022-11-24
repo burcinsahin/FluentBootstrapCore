@@ -5,7 +5,7 @@
 }
 @using (Html.Bootstrap().Container().Begin())
 {
-    using (var form = Html.Bootstrap().Form("Submit", "MvcTests", FormMethod.Post).Begin())
+    using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Begin())
     {
         @form.InputFor(model => model.Name).SetMaxLength(50)
         @form.InputFor(model => model.Surname).SetMaxLength(50)

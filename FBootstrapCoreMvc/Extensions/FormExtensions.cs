@@ -38,17 +38,17 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<FormInput>(builder.HtmlHelper, input);
         }
 
-        //public static Component DisplayFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-        //    where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormInput>
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public static BootstrapContent<HtmlElement> DisplayFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+            where TComponent : HtmlComponent, ICanCreate<FormInput>
+        {
+            throw new NotImplementedException();
+        }
 
-        //public static Component EditorFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-        //    where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormInput>
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public static BootstrapContent<HtmlElement> EditorFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+            where TComponent : HtmlComponent, ICanCreate<FormInput>
+        {
+            throw new NotImplementedException();
+        }
 
         public static BootstrapContent<FormCheck> CheckFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
             where TComponent : HtmlComponent, ICanCreate<FormCheck>
@@ -113,9 +113,9 @@ namespace FBootstrapCoreMvc.Extensions
             var formSelect = new FormSelect(modelExpression.Name);
             formSelect.SetName(modelExpression.Name);
             formSelect.SetOptions(selectList);
+            formSelect.SetSelected(modelExpression.Model);
             return new BootstrapContent<FormSelect>(htmlHelper, formSelect);
         }
-
 
         public static BootstrapContent<FormSelect> Select<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string name, string label, IEnumerable<SelectListItem> selectList)
             where TComponent : HtmlComponent, ICanCreate<FormSelect>

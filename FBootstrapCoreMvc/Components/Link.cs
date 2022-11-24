@@ -8,7 +8,10 @@
             AppendContent(content);
         }
 
-        internal void SetRole(string role) => AddAttribute("role", role);
+        internal void SetRole(string role)
+        {
+            MergeAttribute("role", role);
+        }
 
         //public Link SetHref(string href) => AddAttribute("href", href);
     }

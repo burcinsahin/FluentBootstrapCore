@@ -29,7 +29,7 @@ namespace FBootstrapCoreMvc.Extensions
 
         public static BootstrapContent<HtmlComponent> AlertLink(this BootstrapBuilder<Alert> builder, object? content, string? href = "#")
         {
-            var link = new HtmlComponent("a", Css.AlertLink);
+            var link = new HtmlElement("a", Css.AlertLink);
             link.AppendContent(content);
             link.MergeAttribute("href", href);
             return new BootstrapContent<HtmlComponent>(builder.HtmlHelper, link);

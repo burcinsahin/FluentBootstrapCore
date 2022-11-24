@@ -31,5 +31,12 @@ namespace FBootstrapCoreMvc.Components
             _select.SetOptions(selectList);
             return this;
         }
+
+        public FormSelect SetSelected(object? value)
+        {
+            _select.SetSelected(value);
+            return this;
+        }
+
     }
 }

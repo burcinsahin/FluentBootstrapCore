@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace FBootstrapCoreMvc
 {
-    public class HtmlComponent : IHtmlComponent
+    public abstract class HtmlComponent : IHtmlComponent
     {
         #region Props&Fields
         private object? _content;
@@ -149,7 +149,6 @@ namespace FBootstrapCoreMvc
             _footerChildren.Remove(component);
         }
 
-
         protected internal void AppendContent(object? content, bool clear = false)
         {
             if (content == null)
@@ -182,10 +181,10 @@ namespace FBootstrapCoreMvc
             _tagBuilder.MergeAttribute(key, value.ToString(), replaceExisting);
         }
 
-        [Obsolete("Use MergeAttribute instead!")]
-        protected internal void AddAttribute(string key, object? value = null)
+        protected internal string? GetAttribute(string key)
         {
-            MergeAttribute(key, value);
+            _tagBuilder.Attributes.TryGetValue(key, out var attr);
+            return attr;
         }
         #endregion
     }

@@ -1,4 +1,5 @@
 ﻿using FBootstrapCoreMvc.Interfaces;
+using System;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -10,7 +11,7 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        public SelectOption SetSelected(bool selected = false)
+        public SelectOption SetSelected(bool selected = true)
         {
             if (!selected) return this;
             MergeAttribute("selected");
