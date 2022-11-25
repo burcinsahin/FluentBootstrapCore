@@ -8,8 +8,8 @@ namespace FBootstrapCoreMvc.Components
         ICanCreate<CardHeader>,
         ICanCreate<CardFooter>
     {
-        private CardHeader _header;
-        private CardFooter _footer;
+        private CardHeader? _header;
+        private CardFooter? _footer;
 
         public Card()
             : base("div", Css.Card)

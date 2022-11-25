@@ -9,7 +9,7 @@ namespace FBootstrapCoreMvc.Components
         ICanCreate<TableRow>,
         ICanCreate<TableCell>
     {
-        private HtmlElement _caption;
+        private HtmlElement? _caption;
         public Table(string? caption = null)
             : base("table", Css.Table)
         {

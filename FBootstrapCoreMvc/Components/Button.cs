@@ -35,13 +35,9 @@ namespace FBootstrapCoreMvc.Components
             MergeAttribute("value", value);
         }
 
-        //public Button SetIcon(IconType icon)
-        //{
-        //    _icon = new Icon(_helper, icon);
-        //    InnerHtml.Clear();
-        //    InnerHtml.AppendHtml(_icon);
-        //    AppendContent(_content);
-        //    return this;
-        //}
+        protected internal void SetIcon(IconType icon)
+        {
+            _icon = new Icon(icon);
+        }
     }
 }

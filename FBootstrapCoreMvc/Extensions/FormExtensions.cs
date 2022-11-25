@@ -126,7 +126,7 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<FormSelect>(builder.HtmlHelper, formSelect);
         }
 
-        public static BootstrapContent<FormCheck> CheckBox<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string name = null, string label = null, string description = null, bool isChecked = false)
+        public static BootstrapContent<FormCheck> CheckBox<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, string? description = null, bool isChecked = false)
             where TComponent : HtmlComponent, ICanCreate<FormCheck>
         {
             var checkbox = new FormCheck(name, label, isChecked);

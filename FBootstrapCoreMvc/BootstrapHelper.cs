@@ -80,7 +80,7 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
-        public BootstrapContent<Link> Link(string text, string action, string controller, object routeValues = null)
+        public BootstrapContent<Link> Link(string text, string action, string controller, object? routeValues = null)
         {
             var link = new Link(text);
             var urlHelper = HtmlHelper.GetUrlHelper();
@@ -90,7 +90,7 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
-        public BootstrapContent<LinkButton> LinkButton(string text, string action, string controller, object routeValues = null)
+        public BootstrapContent<LinkButton> LinkButton(string text, string action, string controller, object? routeValues = null)
         {
             var linkButton = new LinkButton(ButtonState.Primary, text);
             var urlHelperFactory = HtmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;
@@ -107,7 +107,7 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Form>(_htmlHelper, form);
         }
 
-        public BootstrapContent<Form, TModel> Form(string action, string controller, FormMethod method = FormMethod.Post, object routeValues = null)
+        public BootstrapContent<Form, TModel> Form(string action, string controller, FormMethod method = FormMethod.Post, object? routeValues = null)
         {
             var htmlHelper = HtmlHelper;
             var urlHelperFactory = htmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;

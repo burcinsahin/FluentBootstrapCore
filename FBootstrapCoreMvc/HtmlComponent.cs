@@ -18,7 +18,7 @@ namespace FBootstrapCoreMvc
         private List<IHtmlComponent> _bodyChildren;
         private List<IHtmlComponent> _footerChildren;
 
-        public string Id { get; protected internal set; }
+        public string? Id { get; protected internal set; }
 
         internal object? Content { get => _content; set => _content = value; }
         #endregion
@@ -123,7 +123,7 @@ namespace FBootstrapCoreMvc
             return htmlContentBuilder;
         }
 
-        protected internal void AddChild(IHtmlComponent component, ChildType childType = ChildType.Body)
+        protected internal void AddChild(IHtmlComponent? component, ChildType childType = ChildType.Body)
         {
             if (component == null) return;
 

@@ -10,7 +10,7 @@ namespace FBootstrapCoreMvc.Components
     public class Select : HtmlComponent,
         ICanCreate<SelectOption>
     {
-        private List<SelectOption> _options;
+        private List<SelectOption>? _options;
 
         public Select()
             : base("select", Css.FormSelect)
@@ -19,7 +19,7 @@ namespace FBootstrapCoreMvc.Components
 
         protected override void Initialize()
         {
-            _options.ForEach(o => AddChild(o));
+            _options?.ForEach(o => AddChild(o));
 
             base.Initialize();
         }
@@ -42,6 +42,8 @@ namespace FBootstrapCoreMvc.Components
         protected internal void SetSelected(object? value)
         {
             if (value == null)
+                return;
+            if (_options == null)
                 return;
             foreach (var option in _options)
             {
