@@ -1,5 +1,4 @@
 ﻿using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -16,19 +15,19 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        public Form SetAction(string? action)
+        protected internal Form SetAction(string? action)
         {
             MergeAttribute("action", action);
             return this;
         }
 
-        public Form SetMethod(string method)
+        protected internal Form SetMethod(string method)
         {
             MergeAttribute("method", method);
             return this;
         }
 
-        public Form SetConfirm(string message)
+        protected internal Form SetConfirm(string message)
         {
             MergeAttribute("onsubmit", $"return confirm('{message}');");
             return this;

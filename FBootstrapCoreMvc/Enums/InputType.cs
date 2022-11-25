@@ -33,6 +33,10 @@ namespace FBootstrapCoreMvc.Enums
         [Description("color")]
         Color,
         [Description("hidden")]
-        Hidden
+        Hidden,
+        [Description("checkbox")]
+        Checkbox,
+        [Description("radio")]
+        Radio
     }
 }

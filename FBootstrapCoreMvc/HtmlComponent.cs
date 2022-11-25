@@ -58,18 +58,18 @@ namespace FBootstrapCoreMvc
             AddCss(currentClasses.Except(cssClasses).ToArray());
         }
 
-        protected internal void AddStyle(string key, string value)
+        protected internal void MergeStyle(string key, string value)
         {
             _tagBuilder.MergeAttribute("style", $"{key}:{value};", false);
         }
 
-        protected internal void AddStyles(object styles)
+        protected internal void MergeStyles(object styles)
         {
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
             {
                 var key = property.Name;
                 var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
-                AddStyle(key, value);
+                MergeStyle(key, value);
             }
         }
 
@@ -91,6 +91,8 @@ namespace FBootstrapCoreMvc
         /// </summary>
         protected virtual void Initialize()
         {
+            if (Id != null)
+                MergeAttribute("id", Id);
         }
 
         internal IHtmlContent Begin()

@@ -5,6 +5,7 @@
 }
 @using (Html.Bootstrap().Container().Begin())
 {
+    @Html.Bootstrap().Heading1("Form-Example-1")
     using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Begin())
     {
         @form.InputFor(model => model.Name).SetMaxLength(50)
@@ -14,4 +15,17 @@
         @form.PasswordFor(model => model.Password).SetMaxLength(16).IsRequired()
         @form.Submit()
     }
+    <hr />
+    @Html.Bootstrap().Heading1("Form-Example-1")
+    using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).SetConfirm("confirm submit?").Begin())
+    {
+        @form.InputFor(model => model.Name).SetMaxLength(50)
+        @form.InputFor(model => model.Surname).SetMaxLength(50)
+        @form.SelectFor(model => model.Gender, genderOpts)
+        @form.CheckFor(model => model.IsMarried)
+        @form.PasswordFor(model => model.Password).SetMaxLength(16).IsRequired()
+        @form.Submit()
+    }
+    <hr />
+
 }

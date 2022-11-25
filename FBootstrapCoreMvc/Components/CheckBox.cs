@@ -1,14 +1,16 @@
-﻿using FBootstrapCoreMvc.Interfaces;
+﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class CheckBox : HtmlComponent,
-        ICanBeDisabled, ICanHaveName, ICanHaveValue
+    public class CheckBox : BaseInput,
+        ICanBeDisabled,
+        ICanHaveName,
+        ICanHaveValue,
+        ICanBeChecked
     {
-        public CheckBox()
-            : base("input")
+        public CheckBox() : base(FormInputType.Checkbox)
         {
-            MergeAttribute("type", "checkbox");
         }
 
         protected internal void SetChecked(bool? value = false)

@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Components;
+﻿using FBootstrapCoreMvc.Components;
 using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
@@ -14,16 +13,22 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class FormExtensions
     {
-        public static BootstrapContent<Form> SetAction(this BootstrapContent<Form> content, string action, string controller, object? routeValues = null)
+        public static BootstrapContent<Form, TModel> SetAction<TModel>(this BootstrapContent<Form, TModel> content, string action, string controller, object? routeValues = null)
         {
             var url = content.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
             content.Component.SetAction(url);
             return content;
         }
 
-        public static BootstrapContent<Form> SetFormMethod<TModel>(this BootstrapContent<Form> content, FormMethod formMethod)
+        public static BootstrapContent<Form,TModel> SetFormMethod<TModel>(this BootstrapContent<Form, TModel> content, FormMethod formMethod)
         {
             content.Component.SetMethod(formMethod.ToString());
+            return content;
+        }
+
+        public static BootstrapContent<Form, TModel> SetConfirm<TModel>(this BootstrapContent<Form, TModel> content, string message)
+        {
+            content.Component.SetConfirm(message);
             return content;
         }
 

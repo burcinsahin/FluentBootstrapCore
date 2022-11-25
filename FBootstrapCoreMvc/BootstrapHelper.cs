@@ -90,6 +90,13 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
+        public BootstrapContent<LinkButton> LinkButton(object? content, string href = "#")
+        {
+            var linkButton = new LinkButton(ButtonState.Primary, content);
+            linkButton.MergeAttribute("href", href);
+            return new BootstrapContent<LinkButton>(HtmlHelper, linkButton);
+        }
+
         public BootstrapContent<LinkButton> LinkButton(string text, string action, string controller, object? routeValues = null)
         {
             var linkButton = new LinkButton(ButtonState.Primary, text);
@@ -118,11 +125,6 @@ namespace FBootstrapCoreMvc
             form.SetAction(url);
             form.SetMethod(method.ToString());
             return new BootstrapContent<Form, TModel>(_htmlHelper, form);
-        }
-
-        public BootstrapContent<Table> Table()
-        {
-            return new BootstrapContent<Table>(HtmlHelper, new Table());
         }
 
         public BootstrapContent<Button> Button(ButtonType buttonType = ButtonType.Button, object? value = null)

@@ -44,12 +44,11 @@ namespace FBootstrapCoreMvc.Test.WebUI.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var genders = new Dictionary<int, string>()
+            ViewBag.GenderOptions = new SelectList(new Dictionary<int, string>()
             {
                 { 1, "Male"},
                 { 2, "Female"}
-            };
-            ViewBag.GenderOptions = new SelectList(genders, "Key", "Value");
+            }, "Key", "Value");
             base.OnActionExecuting(context);
         }
     }

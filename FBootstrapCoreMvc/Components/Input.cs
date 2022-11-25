@@ -4,11 +4,10 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Input : HtmlComponent,
+    public class Input : BaseInput,
         ICanHaveValue
     {
-        public Input()
-            : base("input")
+        public Input() : base(FormInputType.Text)
         {
         }
 
@@ -38,11 +37,12 @@ namespace FBootstrapCoreMvc.Components
 
         public Input SetType(FormInputType inputType)
         {
-            MergeAttribute("type", inputType.GetDescription());
+            MergeAttribute("type", inputType.GetDescription(), true);
             return this;
         }
 
-        public Input SetName(string? name) {
+        public Input SetName(string? name)
+        {
             MergeAttribute("name", name);
             return this;
         }

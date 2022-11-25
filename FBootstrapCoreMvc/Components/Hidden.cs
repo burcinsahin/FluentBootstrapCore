@@ -4,14 +4,12 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Hidden : HtmlComponent,
+    public class Hidden : BaseInput,
         ICanHaveName,
         ICanHaveValue
     {
-        public Hidden()
-            : base("input")
+        public Hidden() : base(FormInputType.Hidden)
         {
-            MergeAttribute("type", FormInputType.Hidden.GetDescription());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FBootstrapCoreMvc.Components;
+using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -10,7 +11,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> SetChecked<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool? value = null)
-            where TComponent : HtmlComponent
+            where TComponent : HtmlComponent, ICanBeChecked
         {
             if (!value.HasValue || value.Value)
                 bootstrapContent.Component.MergeAttribute("checked");

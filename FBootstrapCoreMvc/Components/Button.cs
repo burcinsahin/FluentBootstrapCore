@@ -13,7 +13,6 @@ namespace FBootstrapCoreMvc.Components
         {
             Content = content;
             AddCss(buttonState.GetCssDescription());
-            AppendContent(content);
         }
 
         protected override void Initialize()

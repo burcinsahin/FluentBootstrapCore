@@ -16,22 +16,7 @@ namespace FBootstrapCoreMvc.Extensions
         //    return component;
         //}
 
-        internal static TComponent SetId<TComponent>(this TComponent component, string? id = null)
-            where TComponent : HtmlComponent
-        {
-            if (id == null)
-                id = $"{typeof(TComponent).Name}_{DateTime.Now.Ticks}";
 
-            component.MergeAttribute("id", id);
-            return component;
-        }
-
-        internal static TComponent SetContent<TComponent>(this TComponent component, object? content)
-            where TComponent : HtmlComponent
-        {
-            component.AppendContent(content);
-            return component;
-        }
 
         //internal static TComponent AddCss<TComponent>(this TComponent component, params string[] cssClasses)
         //    where TComponent : HtmlComponent
@@ -87,30 +72,30 @@ namespace FBootstrapCoreMvc.Extensions
         #endregion
 
         #region Interface Filtered
-        internal static TComponent SetValue<TComponent>(this TComponent component, object? value)
+        public static BootstrapContent<TComponent> SetValue<TComponent>(this BootstrapContent<TComponent> bootstrapContent, object? value)
             where TComponent : HtmlComponent, ICanHaveValue
         {
             if (value == null)
-                return component;
+                return bootstrapContent;
 
-            component.MergeAttribute("value", value);
-            return component;
+            bootstrapContent.Component.MergeAttribute("value", value);
+            return bootstrapContent;
         }
 
-        internal static TComponent SetName<TComponent>(this TComponent component, string? name)
+        public static BootstrapContent<TComponent> SetName<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? name)
             where TComponent : HtmlComponent, ICanHaveName
         {
-            component.MergeAttribute("name", name);
-            return component;
+            bootstrapContent.Component.MergeAttribute("name", name);
+            return bootstrapContent;
         }
 
-        internal static TComponent SetDisabled<TComponent>(this TComponent component, bool? value = true)
+        public static BootstrapContent<TComponent> SetDisabled<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool? value = true)
             where TComponent : HtmlComponent, ICanBeDisabled
         {
             if (value.HasValue && value == false)
-                return component;
-            component.MergeAttribute("disabled");
-            return component;
+                return bootstrapContent;
+            bootstrapContent.Component.MergeAttribute("disabled");
+            return bootstrapContent;
         }
         #endregion
     }
