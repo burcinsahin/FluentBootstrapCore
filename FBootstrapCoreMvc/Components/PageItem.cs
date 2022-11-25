@@ -13,14 +13,19 @@ namespace FBootstrapCoreMvc.Components
             _link.AddCss(Css.PageLink);
         }
 
-        public PageItem SetLink(string? href, object? content)
+        protected override void Initialize()
+        {
+            AddChild(_link);
+            base.Initialize();
+        }
+
+        protected internal PageItem SetLink(string? href, object? content)
         {
             _link.SetHref(href).SetContent(content);
-            AppendContent(_link);
             return this;
         }
 
-        public PageItem SetActive(bool active)
+        public PageItem SetActive(bool active = true)
         {
             if (active)
                 AddCss(Css.Active);
@@ -28,7 +33,7 @@ namespace FBootstrapCoreMvc.Components
             return this;
         }
 
-        public PageItem SetDisabled(bool disabled)
+        public PageItem SetDisabled(bool disabled = true)
         {
             if (disabled)
                 AddCss(Css.Disabled);
