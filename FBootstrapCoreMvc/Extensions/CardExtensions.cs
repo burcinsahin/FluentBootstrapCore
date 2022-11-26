@@ -1,5 +1,4 @@
-﻿
-using FBootstrapCoreMvc.Components;
+﻿using FBootstrapCoreMvc.Components;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -52,5 +51,18 @@ namespace FBootstrapCoreMvc.Extensions
             };
             return new BootstrapContent<CardBody>(builder.HtmlHelper, component);
         }
+
+
+
+
+        //public void SetBackground(BackgroundState backgroundState = BackgroundState.Primary)
+        //{
+        //    AddCss(backgroundState.GetCssDescription());
+        //}
+
+        //public void SetState(TextBgState textBgState = TextBgState.Primary)
+        //{
+        //    AddCss(textBgState.GetCssDescription());
+        //}
     }
 }

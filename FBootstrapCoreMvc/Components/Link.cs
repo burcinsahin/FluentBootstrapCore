@@ -5,14 +5,18 @@
         public Link(object? content = null)
             : base("a")
         {
-            AppendContent(content);
+            Content = content;
         }
 
-        internal void SetRole(string role)
+        protected internal void SetRole(string role)
         {
             MergeAttribute("role", role);
         }
 
-        //public Link SetHref(string href) => AddAttribute("href", href);
+        protected internal Link SetHref(string href)
+        {
+            MergeAttribute("href", href);
+            return this;
+        }
     }
 }

@@ -6,6 +6,9 @@
     <Title>FBootstrapCoreMvc</Title>
     <Description>Fluent bootstrap (v5.2) library for netcore MVC applications.</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>0.0.4-alpha</Version>
   </PropertyGroup>
 
   <ItemGroup>

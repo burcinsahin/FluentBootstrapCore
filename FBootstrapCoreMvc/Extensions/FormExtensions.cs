@@ -20,7 +20,7 @@ namespace FBootstrapCoreMvc.Extensions
             return content;
         }
 
-        public static BootstrapContent<Form,TModel> SetFormMethod<TModel>(this BootstrapContent<Form, TModel> content, FormMethod formMethod)
+        public static BootstrapContent<Form, TModel> SetFormMethod<TModel>(this BootstrapContent<Form, TModel> content, FormMethod formMethod)
         {
             content.Component.SetMethod(formMethod.ToString());
             return content;
@@ -122,7 +122,7 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<FormSelect>(htmlHelper, formSelect);
         }
 
-        public static BootstrapContent<FormSelect> Select<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string name, string label, IEnumerable<SelectListItem> selectList)
+        public static BootstrapContent<FormSelect> Select<TComponent>(this BootstrapBuilder<TComponent> builder, string name, string label, IEnumerable<SelectListItem> selectList)
             where TComponent : HtmlComponent, ICanCreate<FormSelect>
         {
             var formSelect = new FormSelect(label);

@@ -3,7 +3,7 @@
 @{
     var genderOpts = (SelectList)ViewBag.GenderOptions;
 }
-@using (Html.Bootstrap().Container().Begin())
+@using (Html.Bootstrap().Container().SetResponsive(ContainerSize.Small).Begin())
 {
     @Html.Bootstrap().Heading1("Form-Example-1")
     using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Begin())
@@ -16,7 +16,7 @@
         @form.Submit()
     }
     <hr />
-    @Html.Bootstrap().Heading1("Form-Example-1")
+    @Html.Bootstrap().Heading1("Form-Example-2")
     using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).SetConfirm("confirm submit?").Begin())
     {
         @form.InputFor(model => model.Name).SetMaxLength(50)
@@ -27,5 +27,41 @@
         @form.Submit()
     }
     <hr />
-
+    @Html.Bootstrap().Heading1("Form-Example-3")
+    @using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Get).Begin())
+    {
+        using (var grid = Html.Bootstrap().Container().AddCss(Css.Mb3, Css.Mt3).Begin())
+        {
+            using (var row = grid.Row().Begin())
+            {
+                using (row.Column().Begin())
+                {
+                    @form.Select("isActive", "Gender", genderOpts)
+                }
+                using (row.Column().Begin())
+                {
+                    @Html.Bootstrap().Button(ButtonType.Submit, "Filter").SetIcon(IconType.Filter)
+                }
+            }
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading1("Form-Example-4")
+    @using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post, new { area = "Admin" }).AddCss("form-signin").Begin())
+    {
+        @form.InputFor(model => model.Email).SetFloatingLabel("Email").SetMaxLength().IsRequired().AutoFocus()
+        @form.PasswordFor(model => model.Password).SetFloatingLabel("Password").SetMaxLength(16).IsRequired()
+        @form.CheckBox("RememberMe", "Remember Me").SetReadonly()
+        @using (Html.Bootstrap().Container().TextCenter().Begin())
+        {
+            <div class="row mb-3 mt-3">
+                <div class="col">
+                    @form.Submit("Signin", ButtonState.Primary, "Login")
+                </div>
+                <div class="col">
+                    @Html.Bootstrap().LinkButton("Signup", "Signup", "Home")
+                </div>
+            </div>
+        }
+    }
 }

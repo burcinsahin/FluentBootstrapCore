@@ -2,11 +2,15 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormCheck : HtmlComponent
+    public class FormCheck : HtmlComponent,
+        ICanBeReadonly
     {
         private readonly Label _label;
         private readonly CheckBox _checkbox;
         private readonly Hidden _hidden;
+
+        public bool Readonly { get; set; }
+
         public FormCheck(string? name, string? label, bool? value = false)
             : base("div", Css.FormCheck)
         {
@@ -29,13 +33,20 @@ namespace FBootstrapCoreMvc.Components
             AddChild(_hidden);
         }
 
-        public FormCheck SetReadonly()
+        protected override void Initialize()
+        {
+            if (Readonly)
+                _checkbox.SetDisabled();
+            base.Initialize();
+        }
+
+        protected internal FormCheck SetReadonly()
         {
             _checkbox.SetDisabled(true);
             return this;
         }
 
-        public FormCheck SetInline()
+        protected internal FormCheck SetInline()
         {
             AddCss(Css.FormCheckInline);
             return this;

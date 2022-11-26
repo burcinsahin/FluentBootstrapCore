@@ -1,23 +1,22 @@
 ﻿using FBootstrapCoreMvc.Components;
 using FBootstrapCoreMvc.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace FBootstrapCoreMvc.Extensions
 {
     public static class NavbarExtensions
     {
-        public static TComponent SetHref<TComponent>(this TComponent component, string? href)
+        public static BootstrapContent<TComponent> SetHref<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? href)
             where TComponent : Link
         {
-            component.MergeAttribute("href", href);
-            return component;
+            bootstrapContent.Component.MergeAttribute("href", href);
+            return bootstrapContent;
         }
 
         public static BootstrapContent<NavbarBrand> Brand<TComponent>(this BootstrapBuilder<TComponent> builder, string? text)
             where TComponent : HtmlComponent, ICanCreate<NavbarBrand>
         {
-            var brand = new NavbarBrand(builder.HtmlHelper, text);
+            var brand = new NavbarBrand(text);
             return new BootstrapContent<NavbarBrand>(builder.HtmlHelper, brand);
         }
 

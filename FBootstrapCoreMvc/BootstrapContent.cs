@@ -5,28 +5,28 @@ using System.Text.Encodings.Web;
 
 namespace FBootstrapCoreMvc
 {
-    public class BootstrapContent<TComponent, TModel> : IHtmlContent
+    public class BootstrapContent<TComponent, TModel> : BootstrapContent<TComponent>
         where TComponent : HtmlComponent
     {
         private readonly TComponent _component;
         private readonly IHtmlHelper<TModel> _htmlHelper;
 
-        internal TComponent Component => _component;
-        internal IHtmlHelper<TModel> HtmlHelper => _htmlHelper;
+        internal new IHtmlHelper<TModel> HtmlHelper => _htmlHelper;
 
-        public BootstrapContent(IHtmlHelper<TModel> htmlHelper, TComponent component)
+        public BootstrapContent(IHtmlHelper<TModel> htmlHelper, TComponent component) 
+            : base(htmlHelper, component)
         {
             _htmlHelper = htmlHelper;
             _component = component;
         }
 
-        public void WriteTo(TextWriter writer, HtmlEncoder encoder)
-        {
-            var html = _component.ToHtml();
-            writer.Write(html);
-        }
+        //public void WriteTo(TextWriter writer, HtmlEncoder encoder)
+        //{
+        //    var html = _component.ToHtml();
+        //    writer.Write(html);
+        //}
 
-        public BootstrapBuilder<TComponent, TModel> Begin()
+        public new BootstrapBuilder<TComponent, TModel> Begin()
         {
             return new BootstrapBuilder<TComponent, TModel>(_htmlHelper, _component);
         }

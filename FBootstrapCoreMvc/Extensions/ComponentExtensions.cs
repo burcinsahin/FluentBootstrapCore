@@ -6,46 +6,61 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class ComponentExtensions
     {
-        #region Internals
-        //public static Component AddCss(this Component component, params string[] cssClasses)
-        //{
-        //    foreach (var css in cssClasses)
-        //    {
-        //        component.AddCssClass(css);
-        //    }
-        //    return component;
-        //}
+        public static BootstrapContent<TComponent> AddCss<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            params string[] cssClasses)
+            where TComponent : HtmlComponent
+        {
+            bootstrapContent.Component.AddCss(cssClasses);
+            return bootstrapContent;
+        }
 
+        public static BootstrapContent<TComponent, TModel> AddCss<TComponent, TModel>(
+            this BootstrapContent<TComponent, TModel> bootstrapContent,
+            params string[] cssClasses)
+            where TComponent : HtmlComponent
+        {
+            bootstrapContent.Component.AddCss(cssClasses);
+            return bootstrapContent;
+        }
 
+        public static BootstrapContent<TComponent> AddStyle<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string name,
+            string value)
+            where TComponent : HtmlComponent
+        {
+            bootstrapContent.Component.MergeStyle(name, value);
+            return bootstrapContent;
+        }
 
-        //internal static TComponent AddCss<TComponent>(this TComponent component, params string[] cssClasses)
-        //    where TComponent : HtmlComponent
-        //{
-        //    foreach (var css in cssClasses)
-        //    {
-        //        component.AddCss(cssclas);
-        //    }
-        //    return component;
-        //}
+        public static BootstrapContent<TComponent, TModel> AddStyle<TComponent, TModel>(
+            this BootstrapContent<TComponent, TModel> bootstrapContent,
+            string name,
+            string value)
+            where TComponent : HtmlComponent
+        {
+            bootstrapContent.Component.MergeStyle(name, value);
+            return bootstrapContent;
+        }
 
-        //public static TComponent AddStyle<TComponent>(this TComponent component, string name, string value)
-        //    where TComponent : Component<TComponent>
-        //{
-        //    component.MergeAttribute("style", $"{name}:{value}", false);
-        //    return component;
-        //}
+        public static BootstrapContent<TComponent> AddStyles<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            object styles)
+            where TComponent : HtmlComponent
+        {
+            bootstrapContent.Component.MergeStyles(styles);
+            return bootstrapContent;
+        }
 
-        //public static TComponent AddStyles<TComponent>(this TComponent component, object styles)
-        //    where TComponent : Component<TComponent>
-        //{
-        //    foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
-        //    {
-        //        var key = property.Name;
-        //        var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
-        //        component.AddStyle(key, value);
-        //    }
-        //    return component;
-        //}
+        public static BootstrapContent<TComponent,TModel> AddStyles<TComponent,TModel>(
+            this BootstrapContent<TComponent, TModel> bootstrapContent,
+            object styles)
+            where TComponent : HtmlComponent
+        {
+            bootstrapContent.Component.MergeStyles(styles);
+            return bootstrapContent;
+        }
 
         public static BootstrapContent<TComponent> SetTextBgState<TComponent>(this BootstrapContent<TComponent> bootstrapContent, TextBgState state = TextBgState.Primary)
             where TComponent : HtmlComponent
@@ -69,9 +84,7 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.Id = id;
             return bootstrapContent;
         }
-        #endregion
 
-        #region Interface Filtered
         public static BootstrapContent<TComponent> SetValue<TComponent>(this BootstrapContent<TComponent> bootstrapContent, object? value)
             where TComponent : HtmlComponent, ICanHaveValue
         {
@@ -97,6 +110,5 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.MergeAttribute("disabled");
             return bootstrapContent;
         }
-        #endregion
     }
 }

@@ -16,3 +16,14 @@
     }
     @card.Footer("Footer")
 }
+<hr />
+@using (Html.Bootstrap().Card("Summary").SetTextBgState(TextBgState.Info).Begin())
+{
+    using (var list = Html.Bootstrap().List(ListType.Unordered).Begin())
+    {
+        @list.ListItem($"item1")
+        @list.ListItem($"item2")
+        @list.ListItem($"item3")
+        @list.ListItem($"item4")
+    }
+}

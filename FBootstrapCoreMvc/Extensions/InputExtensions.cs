@@ -1,5 +1,8 @@
 ﻿using FBootstrapCoreMvc.Components;
+using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
+using System;
+using System.Threading.Tasks;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -29,6 +32,34 @@ namespace FBootstrapCoreMvc.Extensions
             where TComponent : FormInput
         {
             bootstrapContent.Component.IsRequired();
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> SetReadonly<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : HtmlComponent, ICanBeReadonly
+        {
+            bootstrapContent.Component.Readonly = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> SetFloatingLabel<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? label)
+            where TComponent : FormInput
+        {
+            bootstrapContent.Component.SetFloatingLabel(label);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> SetType<TComponent>(this BootstrapContent<TComponent> bootstrapContent, FormInputType type)
+            where TComponent : FormInput
+        {
+            bootstrapContent.Component.SetType(type);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> AutoFocus<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : FormInput
+        {
+            bootstrapContent.Component.AutoFocus();
             return bootstrapContent;
         }
     }

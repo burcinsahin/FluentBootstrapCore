@@ -63,11 +63,15 @@ namespace FBootstrapCoreMvc
             _tagBuilder.MergeAttribute("style", $"{key}:{value};", false);
         }
 
+        /// <summary>
+        /// Replaces '_' char with '-'
+        /// </summary>
+        /// <param name="styles"></param>
         protected internal void MergeStyles(object styles)
         {
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
             {
-                var key = property.Name;
+                var key = property.Name.ToLowerInvariant().Replace("_","-");
                 var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
                 MergeStyle(key, value);
             }

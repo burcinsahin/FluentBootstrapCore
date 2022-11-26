@@ -3,10 +3,13 @@ using FBootstrapCoreMvc.Extensions;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormInput : HtmlComponent
+    public class FormInput : HtmlComponent,
+        ICanBeReadonly
     {
         private Input _input;
         private Label _label;
+
+        public bool Readonly { get; set; }
 
         public FormInput(FormInputType inputType = FormInputType.Text, string? label = null)
             : base("div", Css.Mb3)
@@ -26,6 +29,13 @@ namespace FBootstrapCoreMvc.Components
                 AddChild(_label);
             }
             AddChild(_input);
+        }
+
+        protected override void Initialize()
+        {
+            if (Readonly)
+                MergeAttribute("readonly");
+            base.Initialize();
         }
 
         public FormInput IsRequired()
@@ -79,12 +89,6 @@ namespace FBootstrapCoreMvc.Components
 
             RemoveChild(_label);
             AddChild(_label);
-            return this;
-        }
-
-        public FormInput SetReadonly()
-        {
-            _input.MergeAttribute("readonly", true);
             return this;
         }
     }
