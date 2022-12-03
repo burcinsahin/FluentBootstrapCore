@@ -1,6 +1,9 @@
 ﻿namespace FBootstrapCoreMvc.Enums
 {
-    public enum ChildType
+    /// <summary>
+    /// Render location for child components
+    /// </summary>
+    public enum ChildLocation
     {
         /// <summary>
         /// Render before content

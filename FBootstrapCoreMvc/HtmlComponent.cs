@@ -14,27 +14,56 @@ namespace FBootstrapCoreMvc
         #region Props&Fields
         private object? _content;
         private readonly TagBuilder _tagBuilder;
-        private List<IHtmlComponent> _headerChildren;
-        private List<IHtmlComponent> _bodyChildren;
-        private List<IHtmlComponent> _footerChildren;
+        private readonly List<IHtmlComponent> _headerChildren;
+        private readonly List<IHtmlComponent> _bodyChildren;
+        private readonly List<IHtmlComponent> _footerChildren;
+
+        private RenderMode _renderMode;
 
         public string? Id { get; protected internal set; }
 
-        internal object? Content { get => _content; set => _content = value; }
+        internal object? Content
+        {
+            get => _content;
+            set => _content = value;
+        }
+        internal RenderMode RenderMode
+        {
+            get => _renderMode;
+            set => _renderMode = value;
+        }
         #endregion
 
         #region Ctors
         public HtmlComponent(string tagName, params string[] cssClasses)
         {
             _tagBuilder = new TagBuilder(tagName);
+            _renderMode = RenderMode.Normal;
             _tagBuilder.AddCssClass(string.Join(" ", cssClasses));
             _headerChildren = new List<IHtmlComponent>();
             _bodyChildren = new List<IHtmlComponent>();
             _footerChildren = new List<IHtmlComponent>();
         }
+
         #endregion
 
         #region Methods
+        private void SetTagRenderMode()
+        {
+            switch (RenderMode)
+            {
+                case RenderMode.Start:
+                    _tagBuilder.TagRenderMode = TagRenderMode.StartTag;
+                    break;
+                case RenderMode.End:
+                    _tagBuilder.TagRenderMode = TagRenderMode.EndTag;
+                    break;
+                case RenderMode.SelfClosing:
+                    _tagBuilder.TagRenderMode = TagRenderMode.SelfClosing;
+                    break;
+            }
+        }
+
         protected internal void AddCss(params string[] cssClasses)
         {
             foreach (var cssClass in cssClasses)
@@ -71,7 +100,7 @@ namespace FBootstrapCoreMvc
         {
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
             {
-                var key = property.Name.ToLowerInvariant().Replace("_","-");
+                var key = property.Name.ToLowerInvariant().Replace("_", "-");
                 var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
                 MergeStyle(key, value);
             }
@@ -80,6 +109,7 @@ namespace FBootstrapCoreMvc
         public string ToHtml()
         {
             Build();
+            SetTagRenderMode();
             return _tagBuilder.ToHtmlString();
         }
 
@@ -109,7 +139,7 @@ namespace FBootstrapCoreMvc
             return _tagBuilder.RenderStartTag();
         }
 
-        internal IHtmlContent Body()//TODO: virtual??
+        internal IHtmlContent Body()
         {
             AppendContent(_content);
             _bodyChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
@@ -129,19 +159,19 @@ namespace FBootstrapCoreMvc
             return htmlContentBuilder;
         }
 
-        protected internal void AddChild(IHtmlComponent? component, ChildType childType = ChildType.Body)
+        protected internal void AddChild(IHtmlComponent? component, ChildLocation childType = ChildLocation.Body)
         {
             if (component == null) return;
 
             switch (childType)
             {
-                case ChildType.Header:
+                case ChildLocation.Header:
                     _headerChildren.Add(component);
                     break;
-                case ChildType.Body:
+                case ChildLocation.Body:
                     _bodyChildren.Add(component);
                     break;
-                case ChildType.Footer:
+                case ChildLocation.Footer:
                     _footerChildren.Add(component);
                     break;
             }
@@ -174,6 +204,17 @@ namespace FBootstrapCoreMvc
                 return;
             }
             _tagBuilder.InnerHtml.Append(content.ToString());
+        }
+
+        protected internal void AppendHtml(string? htmlString, bool clear = false)
+        {
+            if (htmlString == null)
+                return;
+
+            if (clear)
+                _tagBuilder.InnerHtml.Clear();
+
+            _tagBuilder.InnerHtml.AppendHtml(htmlString);
         }
 
         protected internal void MergeAttribute(string key, object? value = null, bool replaceExisting = false)

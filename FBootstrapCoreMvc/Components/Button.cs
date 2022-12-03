@@ -19,7 +19,7 @@ namespace FBootstrapCoreMvc.Components
         {
             if (_icon != null)
             {
-                AddChild(_icon, ChildType.Header);
+                AddChild(_icon, ChildLocation.Header);
             }
             base.Initialize();
         }

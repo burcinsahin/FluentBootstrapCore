@@ -17,14 +17,14 @@ namespace FBootstrapCoreMvc.Components
             {
                 var h4 = new HtmlElement("h4");
                 h4.AppendContent(Heading);
-                AddChild(h4, ChildType.Header);
+                AddChild(h4, ChildLocation.Header);
             }
             if (Dismissible)
             {
                 AddCss(Css.AlertDismissible, Css.Fade, Css.Show);
                 var button = new HtmlElement("button", Css.BtnClose);
                 button.MergeAttribute("data-bs-dismiss", "alert");
-                AddChild(button, ChildType.Footer);
+                AddChild(button, ChildLocation.Footer);
             }
 
             base.Initialize();

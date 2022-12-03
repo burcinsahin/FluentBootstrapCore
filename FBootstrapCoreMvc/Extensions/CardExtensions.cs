@@ -19,9 +19,17 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> SetHeader<TComponent>(this BootstrapContent<TComponent> bootstrapContent,
-            string? header = null, string? footer = null)
-            where TComponent : HtmlComponent
+            string? header = null)
+            where TComponent : Card
         {
+            bootstrapContent.Component.SetHeader(header);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> NoCardBody<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : Card
+        {
+            bootstrapContent.Component.HasCardBody = false;
             return bootstrapContent;
         }
 
@@ -43,16 +51,16 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<CardFooter>(builder.HtmlHelper, component);
         }
 
-        public static BootstrapContent<CardBody> Body(this BootstrapBuilder<Card> builder, object? content = null)
+        public static BootstrapContent<CardBody> Body(this BootstrapBuilder<Card> builder, object? content = null, string? title = null, string? subtitle = null)
         {
-            var component = new CardBody
+            var cardBody = new CardBody
             {
-                Content = content
+                Content = content,
+                Title = title,
+                Subtitle = subtitle
             };
-            return new BootstrapContent<CardBody>(builder.HtmlHelper, component);
+            return new BootstrapContent<CardBody>(builder.HtmlHelper, cardBody);
         }
-
-
 
 
         //public void SetBackground(BackgroundState backgroundState = BackgroundState.Primary)

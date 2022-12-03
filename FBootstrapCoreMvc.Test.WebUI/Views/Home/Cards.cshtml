@@ -1,29 +1,93 @@
-﻿@using (Html.Bootstrap().Card("Header text").SetTextBgState(TextBgState.Info).Begin())
+﻿@using (Html.Bootstrap().Div().AddStyles(new { width = "300px" }).Begin())
 {
-    <p>
-        Hello world!
-    </p>
-}
-<hr />
-@using (var card = Html.Bootstrap().Card().SetTextBgState(TextBgState.Primary).Begin())
-{
-    @card.Header("Header")
-    @using (@card.Body().Begin())
+    @using (Html.Bootstrap().Card("Header text").SetTextBgState(TextBgState.Primary).Begin())
     {
         <p>
             Hello world!
         </p>
     }
-    @card.Footer("Footer")
-}
-<hr />
-@using (Html.Bootstrap().Card("Summary").SetTextBgState(TextBgState.Info).Begin())
-{
-    using (var list = Html.Bootstrap().List(ListType.Unordered).Begin())
+    <hr />
+    @using (Html.Bootstrap().Card("Summary").SetTextBgState(TextBgState.Secondary).Begin())
     {
-        @list.ListItem($"item1")
-        @list.ListItem($"item2")
-        @list.ListItem($"item3")
-        @list.ListItem($"item4")
+        using (var list = Html.Bootstrap().List(ListType.Unordered).Begin())
+        {
+            @list.ListItem($"item1")
+            @list.ListItem($"item2")
+            @list.ListItem($"item3")
+            @list.ListItem($"item4")
+        }
     }
+    <hr />
+    @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Success).Begin())
+    {
+        @card.Header("Header")
+        @using (@card.Body().Begin())
+        {
+            <p>
+                Hello world!
+            </p>
+        }
+        @card.Footer("Footer")
+    }
+    <hr />
+    @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Danger).Begin())
+    {
+        @card.Header("Header")
+        @using (@card.Body(null, "title", "subtitle").Begin())
+        {
+            <p>
+                Hello world!
+            </p>
+        }
+        @card.Footer("Footer")
+    }
+    <hr />
+    @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Warning).Begin())
+    {
+        @card.Header("Header")
+        @using (@card.Body(null, "title", "subtitle").Begin())
+        {
+            <p>
+                Hello world!
+            </p>
+        }
+        @card.Footer("Footer")
+    }
+    <hr />
+    @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Info).Begin())
+    {
+        @card.Header("Header")
+        @using (@card.Body(null, "title", "subtitle").Begin())
+        {
+            <p>
+                Hello world!
+            </p>
+        }
+        @card.Footer("Footer")
+    }
+    <hr />
+    @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Light).Begin())
+    {
+        @card.Header("Header")
+        @using (@card.Body(null, "title", "subtitle").Begin())
+        {
+            <p>
+                Hello world!
+            </p>
+        }
+        @card.Footer("Footer")
+    }
+    <hr />
+    @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Dark).Begin())
+    {
+        @card.Header("Header")
+        @using (@card.Body(null, "title", "subtitle").Begin())
+        {
+            <p>
+                Hello world!
+            </p>
+        }
+        @card.Footer("Footer")
+    }
+    <hr />
 }
