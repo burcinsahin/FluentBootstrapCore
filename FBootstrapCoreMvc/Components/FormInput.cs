@@ -1,36 +1,41 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormInput : Component<FormInput>
+    public class FormInput : HtmlComponent,
+        ICanBeReadonly
     {
         private Input _input;
         private Label _label;
 
-        public FormInput(IHtmlHelper helper, FormInputType inputType = FormInputType.Text, string? label = null)
-            : base(helper, "div", Css.Mb3)
-        {
-            _input = new Input(helper)
-                .AddCss(Css.FormControl)
-                .SetType(inputType)
-                .SetId();
+        public bool Readonly { get; set; }
 
-            _label = new Label(helper);
+        public FormInput(FormInputType inputType = FormInputType.Text, string? label = null)
+            : base("div", Css.Mb3)
+        {
+            _input = new Input();
+            _input.AddCss(Css.FormControl);
+            _input.SetType(inputType);
+            _input.SetId();
+
+            _label = new Label();
             if (label != null)
             {
-                _label.AddCss(Css.FormLabel)
-                .AddAttribute("for", _input.Id)
-                .SetContent(label);
+                _label.AddCss(Css.FormLabel);
+                _label.MergeAttribute("for", _input.Id);
+                _label.SetContent(label);
 
-                _childComponents.Add(_label);
+                AddChild(_label);
             }
+            AddChild(_input);
+        }
 
-            _childComponents.Add(_input);
-
-            AppendChildrenToHtml();
+        protected override void Initialize()
+        {
+            if (Readonly)
+                MergeAttribute("readonly");
+            base.Initialize();
         }
 
         public FormInput IsRequired()
@@ -79,16 +84,11 @@ namespace FBootstrapCoreMvc.Components
         {
             AddCss(Css.FormFloating);
             _input.SetPlaceholder(label);
-            _label.AddAttribute("for", _input.Id).SetContent(label);
-            _childComponents.Remove(_label);
-            _childComponents.Add(_label);
-            AppendChildrenToHtml(true);
-            return this;
-        }
+            _label.MergeAttribute("for", _input.Id);
+            _label.SetContent(label);
 
-        public FormInput SetReadonly()
-        {
-            _input.AddAttribute("readonly", true);
+            RemoveChild(_label);
+            AddChild(_label);
             return this;
         }
     }

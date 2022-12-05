@@ -26,10 +26,10 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "tests",
     pattern: "Tests/{*view}",
-    defaults: new { controller = "Tests", action = "Tests" });
+    defaults: new { controller = "Home", action = "Test" });
 app.MapControllerRoute(
     name: "mvctests",
     pattern: "MvcTests/{*view}",
-    defaults: new { controller = "MvcTests", action = "MvcTests" });
+    defaults: new { controller = "Home", action = "MvcTest" });
 
 app.Run();

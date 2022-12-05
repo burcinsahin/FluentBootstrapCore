@@ -1,19 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
-    public class NavbarToggler : Component<NavbarToggler>
+    public class NavbarToggler : HtmlComponent
     {
-        public NavbarToggler(IHtmlHelper helper, string? collapseId)
-            : base(helper, "button", Css.NavbarToggler)
+        public NavbarToggler(string? collapseId)
+            : base("button", Css.NavbarToggler)
         {
-            AddAttribute("type", "button");
-            AddAttribute("data-bs-toggle", "collapse");
-            AddAttribute("data-bs-target", $"#{collapseId}");
-            AddAttribute("aria-controls", collapseId);
-            AddAttribute("aria-expanded", false);
-            AddAttribute("aria-label", "Toggle");
+            MergeAttribute("type", "button");
+            MergeAttribute("data-bs-toggle", "collapse");
+            MergeAttribute("data-bs-target", $"#{collapseId}");
+            MergeAttribute("aria-controls", collapseId);
+            MergeAttribute("aria-expanded", false);
+            MergeAttribute("aria-label", "Toggle");
         }
     }
 }

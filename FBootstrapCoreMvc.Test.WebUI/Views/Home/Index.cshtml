@@ -5,7 +5,12 @@
     {
         @list.ListItem(Html.Bootstrap().Link("Alerts", "/Tests/Alerts"))
         @list.ListItem(Html.Bootstrap().Link("Cards", "/Tests/Cards"))
+        @list.ListItem(Html.Bootstrap().Link("MvcForms", "/MvcTests/MvcForms"))
+        @list.ListItem(Html.Bootstrap().Link("Navbars", "/Tests/Navbars"))
+        @list.ListItem(Html.Bootstrap().Link("Paginations", "/Tests/Paginations"))
+        @list.ListItem(Html.Bootstrap().Link("Tables", "/Tests/Tables"))
         @list.ListItem(Html.Bootstrap().Link("Typography", "/Tests/Typography"))
+
 @*        @list.ListItem(Html.Bootstrap().Link("Architecture", "/Tests/Architecture"))
         @list.ListItem(Html.Bootstrap().Link("Badges", "/Tests/Badges"))
         @list.ListItem(Html.Bootstrap().Link("Breadcrumbs", "/Tests/Breadcrumbs"))
@@ -21,19 +26,11 @@
         @list.ListItem(Html.Bootstrap().Link("Media Objects", "/Tests/MediaObjects"))
         @list.ListItem(Html.Bootstrap().Link("Modals", "/Tests/Modals"))
         @list.ListItem(Html.Bootstrap().Link("Misc", "/Tests/Misc"))
-        @list.ListItem(Html.Bootstrap().Link("Navbars", "/Tests/Navbars"))
         @list.ListItem(Html.Bootstrap().Link("Navs", "/Tests/Navs"))
         @list.ListItem(Html.Bootstrap().Link("Pagers", "/Tests/Pagers"))
-        @list.ListItem(Html.Bootstrap().Link("Paginations", "/Tests/Paginations"))
         @list.ListItem(Html.Bootstrap().Link("Panels", "/Tests/Panels"))
         @list.ListItem(Html.Bootstrap().Link("Progress Bars", "/Tests/ProgressBars"))
-        @list.ListItem(Html.Bootstrap().Link("Tables", "/Tests/Tables"))
         @list.ListItem(Html.Bootstrap().Link("Tags", "/Tests/Tags"))
         *@
-    }
-    @Html.Bootstrap().Heading1("FluentBootstrap.Mvc Tests")
-    using (var list = Html.Bootstrap().List().Begin())
-    {
-        @list.ListItem(Html.Bootstrap().Link("Forms", "/MvcTests/MvcForms"))
     }
 }

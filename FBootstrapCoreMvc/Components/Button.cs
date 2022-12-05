@@ -13,14 +13,13 @@ namespace FBootstrapCoreMvc.Components
         {
             Content = content;
             AddCss(buttonState.GetCssDescription());
-            AppendContent(content);
         }
 
         protected override void Initialize()
         {
             if (_icon != null)
             {
-                AddChild(_icon, ChildType.Header);
+                AddChild(_icon, ChildLocation.Header);
             }
             base.Initialize();
         }
@@ -35,13 +34,9 @@ namespace FBootstrapCoreMvc.Components
             MergeAttribute("value", value);
         }
 
-        //public Button SetIcon(IconType icon)
-        //{
-        //    _icon = new Icon(_helper, icon);
-        //    InnerHtml.Clear();
-        //    InnerHtml.AppendHtml(_icon);
-        //    AppendContent(_content);
-        //    return this;
-        //}
+        protected internal void SetIcon(IconType icon)
+        {
+            _icon = new Icon(icon);
+        }
     }
 }

@@ -1,0 +1,22 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.AntiForgeryToken()
+    @using (var table = Html.Bootstrap().Table().SetStyle(TableStyle.Bordered | TableStyle.Striped).SetResponsive().Begin())
+    {
+        @table.TableHeader("col1", "col2", "col3", "col4", "col5", "Edit", "Delete")
+        @for (int i = 0; i < 5; i++)
+        {
+            @using (var row = @table.TableRow().Begin())
+            {
+                @row.TableData($"val{i}_1")
+                @row.TableData($"val{i}_2")
+                @row.TableData($"val{i}_3")
+                @row.TableData(Html.Bootstrap().CheckBox().SetChecked())
+                @row.TableData(Html.Bootstrap().CheckBox().SetDisabled())
+
+                @row.TableData(Html.Bootstrap().LinkButton(null,"#").SetIcon(IconType.Edit).SetSize(ButtonSize.Sm))
+                @row.TableData(Html.Bootstrap().Button(buttonType: ButtonType.Submit).SetIcon(IconType.Trash).SetSize(ButtonSize.Sm).SetName("id"))
+            }
+        }
+    }
+}

@@ -2,8 +2,6 @@
 using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using System.Runtime.CompilerServices;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -37,30 +35,43 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         #region Dropdown
-        public static DropdownMenu DropdownMenu<TComponent>(this HtmlBuilder<TComponent> builder)
-            where TComponent : Component<TComponent>, ICanCreate<DropdownMenu>
+        public static BootstrapContent<DropdownMenu> DropdownMenu<TComponent>(this BootstrapBuilder<TComponent> builder)
+            where TComponent : HtmlComponent, ICanCreate<DropdownMenu>
         {
-            var dropdownMenu = new DropdownMenu(builder.HtmlHelper);
-            return dropdownMenu;
+            var dropdownMenu = new DropdownMenu();
+            return new BootstrapContent<DropdownMenu>(builder.HtmlHelper, dropdownMenu);
         }
 
-        public static DropdownItem DropdownItem<TComponent>(this HtmlBuilder<TComponent> builder, string? text, string action, string controller, object? routeValues = null)
-            where TComponent : Component<TComponent>, ICanCreate<DropdownItem>
+        public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this BootstrapBuilder<TComponent> builder, string? text, string? href)
+            where TComponent : HtmlComponent, ICanCreate<DropdownItem>
         {
-            var dropdownItem = new DropdownItem(builder.HtmlHelper, text);
+            var dropdownItem = new DropdownItem(text);
+            dropdownItem.SetHref(href);
+            return new BootstrapContent<DropdownItem>(builder.HtmlHelper, dropdownItem);
+        }
+
+        public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this BootstrapBuilder<TComponent> builder, string? text, string action, string controller, object? routeValues = null)
+            where TComponent : HtmlComponent, ICanCreate<DropdownItem>
+        {
+            var dropdownItem = new DropdownItem(text);
             var url = builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
             dropdownItem.SetHref(url);
-            return dropdownItem;
+            return new BootstrapContent<DropdownItem>(builder.HtmlHelper, dropdownItem);
         }
         #endregion
 
-        public static ListItem ListItem<TComponent>(this HtmlBuilder<TComponent> builder, object? content = null)
-            where TComponent : Component<TComponent>, ICanCreate<ListItem>
+        public static BootstrapContent<ListItem> ListItem<TComponent>(this BootstrapBuilder<TComponent> builder, object? content = null)
+            where TComponent : HtmlComponent, ICanCreate<ListItem>
         {
-            return new ListItem(builder.HtmlHelper)
-                .SetContent(content);
+            var listItem = new ListItem();
+            listItem.SetContent(content);
+            return new BootstrapContent<ListItem>(builder.HtmlHelper, listItem);
         }
 
-        public static Container SetAlignment(this Container container, TextAlignment alignment) => container.AddCss(alignment.GetCssDescription());
+        public static BootstrapContent<Container> SetAlignment(this BootstrapContent<Container> content, TextAlignment alignment)
+        {
+            content.Component.AddCss(alignment.GetCssDescription());
+            return content;
+        }
     }
 }

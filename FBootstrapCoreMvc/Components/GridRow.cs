@@ -1,13 +1,12 @@
 ﻿using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class GridRow : Component<GridRow>,
+    public class GridRow : HtmlComponent,
         ICanCreate<GridColumn>
     {
-        public GridRow(IHtmlHelper helper)
-            : base(helper, "div", Css.Row)
+        public GridRow()
+            : base("div", Css.Row)
         {
         }
     }

@@ -1,33 +1,39 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Table : Component<Table>,
+    public class Table : HtmlComponent,
         ICanCreate<TableHeader>,
         ICanCreate<TableRow>,
         ICanCreate<TableCell>
     {
-        private Component _caption;
-        public Table(IHtmlHelper helper, string? caption = null)
-            : base(helper, "table", Css.Table)
+        private HtmlElement? _caption;
+        public Table(string? caption = null)
+            : base("table", Css.Table)
         {
             if (caption != null)
                 SetCaption(caption);
         }
 
-        public Table SetStyle(TableStyle tableStyle) => AddCss(tableStyle.GetCssDescription());
+        public Table SetStyle(TableStyle tableStyle)
+        {
+            AddCss(tableStyle.GetCssDescription());
+            return this;
+        }
 
-        public Table SetResponsive() => AddCss(Css.TableResponsive);
+        public Table SetResponsive()
+        {
+            AddCss(Css.TableResponsive);
+            return this;
+        }
 
         public Table SetCaption(string caption)
         {
-            _caption = new Component(_helper, "caption");
-            _caption.InnerHtml.SetContent(caption);
-            InnerHtml.SetHtmlContent(_caption);
+            _caption = new HtmlElement("caption");
+            _caption.AppendContent(caption);
+            AddChild(_caption);
             return this;
         }
     }

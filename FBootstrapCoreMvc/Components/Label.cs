@@ -1,15 +1,11 @@
-﻿using FBootstrapCoreMvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
-    public class Label : Component<Label>
+    public class Label : HtmlComponent
     {
-        public Label(IHtmlHelper helper, string? text = null)
-            : base(helper, "label")
+        public Label(object? content = null)
+            : base("label")
         {
-            if (text != null)
-                InnerHtml.Append(text);
+            Content = content;
         }
     }
 }

@@ -3,11 +3,28 @@ using System;
 
 namespace FBootstrapCoreMvc
 {
+    public class BootstrapBuilder<TComponent, TModel> : BootstrapBuilder<TComponent>
+        where TComponent : HtmlComponent
+    {
+        protected new readonly IHtmlHelper<TModel> _htmlHelper;
+
+        internal new IHtmlHelper<TModel> HtmlHelper => _htmlHelper;
+
+        public BootstrapBuilder(IHtmlHelper<TModel> htmlHelper, TComponent component)
+            : base(htmlHelper, component)
+        {
+            _htmlHelper = htmlHelper;
+            //_component = component;
+            //_htmlHelper.ViewContext.Writer.Write(_component.Begin());
+            //_htmlHelper.ViewContext.Writer.Write(_component.Body());
+        }
+    }
+
     public class BootstrapBuilder<TComponent> : IDisposable
         where TComponent : HtmlComponent
     {
-        private readonly IHtmlHelper _htmlHelper;
-        private readonly TComponent _component;
+        protected readonly IHtmlHelper _htmlHelper;
+        protected readonly TComponent _component;
 
         internal IHtmlHelper HtmlHelper => _htmlHelper;
 

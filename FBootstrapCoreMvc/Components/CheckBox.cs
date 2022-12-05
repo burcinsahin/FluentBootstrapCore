@@ -1,22 +1,22 @@
-﻿using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class CheckBox : Component<CheckBox>,
-        ICanBeDisabled, ICanHaveName, ICanHaveValue
+    public class CheckBox : BaseInput,
+        ICanBeDisabled,
+        ICanHaveName,
+        ICanHaveValue,
+        ICanBeChecked
     {
-        public CheckBox(IHtmlHelper helper)
-            : base(helper, "input")
+        public CheckBox() : base(FormInputType.Checkbox)
         {
-            AddAttribute("type", "checkbox");
         }
 
-        public CheckBox SetChecked(bool? value = null)
+        protected internal void SetChecked(bool? value = false)
         {
-            if (!value.HasValue || value.Value)
-                return AddAttribute("checked");
-            return this;
+            if (value == null || value.Value)
+                MergeAttribute("checked");
         }
     }
 }

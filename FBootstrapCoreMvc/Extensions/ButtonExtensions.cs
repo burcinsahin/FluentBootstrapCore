@@ -24,7 +24,7 @@ namespace FBootstrapCoreMvc.Extensions
             where TComponent : HtmlComponent
         {
             var icon = new Icon(iconType);
-            bootstrapContent.Component.AddChild(icon, ChildType.Header);
+            bootstrapContent.Component.AddChild(icon, ChildLocation.Header);
             return bootstrapContent;
         }
 

@@ -1,12 +1,9 @@
-﻿using FBootstrapCoreMvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
-    public class ListItem : Component<ListItem>
+    public class ListItem : HtmlComponent
     {
-        public ListItem(IHtmlHelper helper)
-            : base(helper, "li", Css.ListGroupItem)
+        public ListItem()
+            : base("li", Css.ListGroupItem)
         {
         }
     }

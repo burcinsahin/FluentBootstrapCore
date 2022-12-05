@@ -1,27 +1,31 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Extensions;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using FBootstrapCoreMvc.Extensions;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class PageItem : Component<PageItem>
+    public class PageItem : HtmlComponent
     {
         private Link _link;
 
-        public PageItem(IHtmlHelper helper)
-            : base(helper, "li", Css.PageItem)
+        public PageItem()
+            : base("li", Css.PageItem)
         {
-            _link = new Link(_helper).AddCss(Css.PageLink);
+            _link = new Link();
+            _link.AddCss(Css.PageLink);
         }
 
-        public PageItem SetLink(string? href, object? content)
+        protected override void Initialize()
+        {
+            AddChild(_link);
+            base.Initialize();
+        }
+
+        protected internal PageItem SetLink(string? href, object? content)
         {
             _link.SetHref(href).SetContent(content);
-            AppendContent(_link);
             return this;
         }
 
-        public PageItem SetActive(bool active)
+        public PageItem SetActive(bool active = true)
         {
             if (active)
                 AddCss(Css.Active);
@@ -29,7 +33,7 @@ namespace FBootstrapCoreMvc.Components
             return this;
         }
 
-        public PageItem SetDisabled(bool disabled)
+        public PageItem SetDisabled(bool disabled = true)
         {
             if (disabled)
                 AddCss(Css.Disabled);

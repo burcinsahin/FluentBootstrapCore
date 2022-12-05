@@ -1,10 +1,8 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Form<TModel> : MvcComponent<Form<TModel>, TModel>,
+    public class Form : HtmlComponent,
         ICanCreate<FormInput>,
         ICanCreate<FormSelect>,
         ICanCreate<FormCheck>,
@@ -12,24 +10,24 @@ namespace FBootstrapCoreMvc.Components
         ICanCreate<Button>,
         ICanCreate<Label>
     {
-        public Form(IHtmlHelper<TModel> helper)
-            : base(helper, "form")
+        public Form()
+            : base("form")
         {
         }
 
-        public Form<TModel> SetAction(string? action)
+        protected internal Form SetAction(string? action)
         {
             MergeAttribute("action", action);
             return this;
         }
 
-        public Form<TModel> SetMethod(string method)
+        protected internal Form SetMethod(string method)
         {
             MergeAttribute("method", method);
             return this;
         }
 
-        public Form<TModel> SetConfirm(string message)
+        protected internal Form SetConfirm(string message)
         {
             MergeAttribute("onsubmit", $"return confirm('{message}');");
             return this;

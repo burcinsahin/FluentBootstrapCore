@@ -1,12 +1,9 @@
-﻿using FBootstrapCoreMvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
-    public class Image : Component<Image>
+    public class Image : HtmlComponent
     {
-        public Image(IHtmlHelper helper)
-            : base(helper, "img")
+        public Image()
+            : base("img")
         {
         }
     }

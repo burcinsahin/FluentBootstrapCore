@@ -1,14 +1,12 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class NavbarCollapse : Component<NavbarCollapse>,
+    public class NavbarCollapse : HtmlComponent,
         ICanCreate<NavbarNav>
     {
-        public NavbarCollapse(IHtmlHelper helper, string? id)
-            : base(helper, "div", Css.Collapse, Css.NavbarCollapse)
+        public NavbarCollapse(string? id) 
+            : base("div", Css.Collapse, Css.NavbarCollapse)
         {
         }
     }

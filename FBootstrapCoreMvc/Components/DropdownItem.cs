@@ -1,21 +1,18 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Extensions;
+﻿using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class DropdownItem : Component<DropdownItem>,
+    public class DropdownItem : HtmlComponent,
         ILink<DropdownItem>
     {
         private Link _link;
-        public DropdownItem(IHtmlHelper helper, string? text)
-            : base(helper, "li")
+        public DropdownItem(string? text)
+            : base("li")
         {
-            _link = new Link(helper, text).AddCss(Css.DropdownItem);
-            _childComponents.Add(_link);
-            AppendChildrenToHtml();
+            _link = new Link(text);
+            _link.AddCss(Css.DropdownItem);
+            AddChild(_link);
         }
 
         public DropdownItem SetHref(string? href)

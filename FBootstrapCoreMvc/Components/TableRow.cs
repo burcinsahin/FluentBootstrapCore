@@ -1,13 +1,11 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class TableRow : Component<TableRow>,
+    public class TableRow : HtmlComponent,
         ICanCreate<TableData>
     {
-        public TableRow(IHtmlHelper helper) : base(helper, "tr")
+        public TableRow() : base("tr")
         {
         }
     }

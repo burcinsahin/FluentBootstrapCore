@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace FBootstrapCoreMvc.Enums
 {
@@ -7,13 +6,19 @@ namespace FBootstrapCoreMvc.Enums
     {
         [Description(Css.TextBgPrimary)]
         Primary,
+        [Description(Css.TextBgSecondary)]
+        Secondary,
         [Description(Css.TextBgSuccess)]
         Success,
-        [Description(Css.TextBgInfo)]
-        Info,
+        [Description(Css.TextBgDanger)]
+        Danger,
         [Description(Css.TextBgWarning)]
         Warning,
-        [Description(Css.TextBgDanger)]
-        Danger
+        [Description(Css.TextBgInfo)]
+        Info,
+        [Description(Css.TextBgLight)]
+        Light,
+        [Description(Css.TextBgDark)]
+        Dark
     }
 }

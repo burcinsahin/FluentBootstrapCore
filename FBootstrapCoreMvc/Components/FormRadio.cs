@@ -1,35 +1,32 @@
 ﻿using FBootstrapCoreMvc.Extensions;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormRadio : Component<FormRadio>
+    public class FormRadio : HtmlComponent
     {
         private readonly Label _label;
         private readonly RadioButton _radioButton;
 
-        public FormRadio(IHtmlHelper helper, string? name, string? label, bool value = false)
-            : base(helper, "div", Css.FormCheck)
+        public FormRadio(string? name, string? label, bool value = false)
+            : base("div", Css.FormCheck)
         {
-            _radioButton = new RadioButton(helper)
-                .AddCss(Css.FormCheckInput)
-                .SetId()
-                .AddAttribute("checked", value)
-                .SetName(name);
-            _label = new Label(helper)
-                .AddCss(Css.FormCheckLabel)
-                .AddAttribute("for", _radioButton.Id)
-                .SetContent(label);
+            _radioButton = new RadioButton();
+            _radioButton.AddCss(Css.FormCheckInput);
+            _radioButton.SetId();
+            _radioButton.MergeAttribute("checked", value);
+            _radioButton.SetName(name);
+            _label = new Label();
+            _label.AddCss(Css.FormCheckLabel);
+            _label.MergeAttribute("for", _radioButton.Id);
+            _label.SetContent(label);
 
-            _childComponents.Add(_radioButton);
-            _childComponents.Add(_label);
-            AppendChildrenToHtml();
+            AddChild(_radioButton);
+            AddChild(_label);
         }
 
         public FormRadio SetReadonly()
         {
             _radioButton.SetDisabled(true);
-            AppendChildrenToHtml(true);
             return this;
         }
     }

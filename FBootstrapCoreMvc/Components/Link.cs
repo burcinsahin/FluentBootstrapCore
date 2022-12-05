@@ -1,18 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
-    public class Link : Component<Link>
+    public class Link : HtmlComponent
     {
-        public Link(IHtmlHelper helper, object? content = null)
-            : base(helper, "a")
+        public Link(object? content = null)
+            : base("a")
         {
-            AppendContent(content);
+            Content = content;
         }
 
-        internal Link SetRole(string role) => AddAttribute("role", role);
+        protected internal void SetRole(string role)
+        {
+            MergeAttribute("role", role);
+        }
 
-        //public Link SetHref(string href) => AddAttribute("href", href);
+        protected internal Link SetHref(string href)
+        {
+            MergeAttribute("href", href);
+            return this;
+        }
     }
 }

@@ -6,54 +6,55 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class NavbarExtensions
     {
-        public static TComponent SetHref<TComponent>(this TComponent component, string? href)
+        public static BootstrapContent<TComponent> SetHref<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? href)
             where TComponent : Link
         {
-            component.AddAttribute("href", href);
-            return component;
+            bootstrapContent.Component.MergeAttribute("href", href);
+            return bootstrapContent;
         }
 
-        public static NavbarBrand Brand<TComponent>(this HtmlBuilder<TComponent> builder, string? text)
-            where TComponent : Component<TComponent>, ICanCreate<NavbarBrand>
+        public static BootstrapContent<NavbarBrand> Brand<TComponent>(this BootstrapBuilder<TComponent> builder, string? text)
+            where TComponent : HtmlComponent, ICanCreate<NavbarBrand>
         {
-            var brand = new NavbarBrand(builder.HtmlHelper, text);
-            return brand;
+            var brand = new NavbarBrand(text);
+            return new BootstrapContent<NavbarBrand>(builder.HtmlHelper, brand);
         }
 
-        public static NavbarToggler NavbarToggler<TComponent>(this HtmlBuilder<TComponent> builder, string? collapseId)
-            where TComponent : Component<TComponent>, ICanCreate<NavbarToggler>
+        public static BootstrapContent<NavbarToggler> NavbarToggler<TComponent>(this BootstrapBuilder<TComponent> builder, string? collapseId)
+            where TComponent : HtmlComponent, ICanCreate<NavbarToggler>
         {
-            var brand = new NavbarToggler(builder.HtmlHelper, collapseId);
-            return brand;
+            var toggler = new NavbarToggler(collapseId);
+            return new BootstrapContent<NavbarToggler>(builder.HtmlHelper, toggler);
         }
 
-        public static NavbarCollapse NavbarCollapse<TComponent>(this HtmlBuilder<TComponent> builder, string? id)
-            where TComponent : Component<TComponent>, ICanCreate<NavbarCollapse>
+        public static BootstrapContent<NavbarCollapse> NavbarCollapse<TComponent>(this BootstrapBuilder<TComponent> builder, string? id)
+            where TComponent : HtmlComponent, ICanCreate<NavbarCollapse>
         {
-            var navbarCollapse = new NavbarCollapse(builder.HtmlHelper, id);
-            return navbarCollapse;
+            var navbarCollapse = new NavbarCollapse(id);
+            return new BootstrapContent<NavbarCollapse>(builder.HtmlHelper, navbarCollapse);
         }
 
-        public static NavbarNav NavbarNav<TComponent>(this HtmlBuilder<TComponent> builder)
-            where TComponent : Component<TComponent>, ICanCreate<NavbarNav>
+        public static BootstrapContent<NavbarNav> NavbarNav<TComponent>(this BootstrapBuilder<TComponent> builder)
+            where TComponent : HtmlComponent, ICanCreate<NavbarNav>
         {
-            var navbarNav = new NavbarNav(builder.HtmlHelper);
-            return navbarNav;
+            var navbarNav = new NavbarNav();
+            return new BootstrapContent<NavbarNav>(builder.HtmlHelper, navbarNav);
         }
 
-        public static NavbarLink NavbarLink<TComponent>(this HtmlBuilder<TComponent> builder, string text, string action, string controller, object? routeValues = null)
-            where TComponent : Component<TComponent>, ICanCreate<NavbarLink>
+        public static BootstrapContent<NavbarLink> NavbarLink<TComponent>(this BootstrapBuilder<TComponent> builder, string text, string action, string controller, object? routeValues = null)
+            where TComponent : HtmlComponent, ICanCreate<NavbarLink>
         {
-            var navbarNav = new NavbarLink(builder.HtmlHelper, text);
-            navbarNav.SetHref(builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues));
-            return navbarNav;
+            var navbarLink = new NavbarLink(text);
+            navbarLink.SetHref(builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues));
+            return new BootstrapContent<NavbarLink>(builder.HtmlHelper, navbarLink);
+
         }
 
-        public static NavbarDropdown Dropdown<TComponent>(this HtmlBuilder<TComponent> builder, string text)
-            where TComponent : Component<TComponent>, ICanCreate<NavbarDropdown>
+        public static BootstrapContent<NavbarDropdown> Dropdown<TComponent>(this BootstrapBuilder<TComponent> builder, string text)
+            where TComponent : HtmlComponent, ICanCreate<NavbarDropdown>
         {
-            var dropdown = new NavbarDropdown(builder.HtmlHelper, text);
-            return dropdown;
+            var dropdown = new NavbarDropdown(text);
+            return new BootstrapContent<NavbarDropdown>(builder.HtmlHelper, dropdown);
         }
     }
 }

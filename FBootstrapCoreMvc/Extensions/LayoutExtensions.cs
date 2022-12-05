@@ -1,24 +1,47 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Components;
+﻿using FBootstrapCoreMvc.Components;
+using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FBootstrapCoreMvc.Extensions
 {
     public static class LayoutExtensions
     {
-        public static GridRow Row<TComponent>(this HtmlBuilder<TComponent> builder)
-            where TComponent : Component<TComponent>, ICanCreate<GridRow>
+        #region Container
+        public static BootstrapContent<Container> SetFluid(this BootstrapContent<Container> bootstrapContent)
         {
-            return new GridRow(builder.HtmlHelper);
+            bootstrapContent.Component.RemoveCss(Css.Container);
+            bootstrapContent.Component.AddCss(Css.ContainerFluid);
+            return bootstrapContent;
         }
 
-        public static GridColumn Column<TComponent>(this HtmlBuilder<TComponent> builder)
-            where TComponent : Component<TComponent>, ICanCreate<GridColumn>
+        public static BootstrapContent<Container> SetResponsive(this BootstrapContent<Container> bootstrapContent, ContainerSize size)
         {
-            return new GridColumn(builder.HtmlHelper);
+            bootstrapContent.Component.RemoveCss(Css.Container);
+            bootstrapContent.Component.AddCss(size.GetCssDescription());
+            return bootstrapContent;
         }
+
+        public static BootstrapContent<Container> TextCenter(this BootstrapContent<Container> bootstrapContent)
+        {
+            bootstrapContent.Component.TextCenter();
+            return bootstrapContent;
+        }
+        #endregion
+
+        #region Grid
+        public static BootstrapContent<GridRow> Row<TComponent>(this BootstrapBuilder<TComponent> builder)
+    where TComponent : HtmlComponent, ICanCreate<GridRow>
+        {
+            var gridRow = new GridRow();
+            return new BootstrapContent<GridRow>(builder.HtmlHelper, gridRow);
+        }
+
+        public static BootstrapContent<GridColumn> Column<TComponent>(this BootstrapBuilder<TComponent> builder)
+            where TComponent : HtmlComponent, ICanCreate<GridColumn>
+        {
+            var gridColumn = new GridColumn();
+            return new BootstrapContent<GridColumn>(builder.HtmlHelper, gridColumn);
+        } 
+        #endregion
     }
 }

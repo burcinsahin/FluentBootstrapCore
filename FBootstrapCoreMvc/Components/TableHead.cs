@@ -1,13 +1,12 @@
-﻿using FBootstrapCoreMvc;
-using Microsoft.AspNetCore.Html;
+﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class TableHeader : Component<TableHeader>
+    public class TableHeader : HtmlComponent
     {
-        public TableHeader(IHtmlHelper helper, params string[] headers) : base(helper, "thead")
+        public TableHeader(params string[] headers) : base("thead")
         {
             if (headers.Any())
             {
@@ -19,10 +18,8 @@ namespace FBootstrapCoreMvc.Components
                     th.InnerHtml.SetContent(header);
                     tr.InnerHtml.AppendHtml(th);
                 }
-                InnerHtml.AppendHtml(tr);
+                AppendContent(tr);
             }
         }
-
-
     }
 }

@@ -1,22 +1,21 @@
 ﻿using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class NavbarDropdown : Component<NavbarDropdown>,
+    public class NavbarDropdown : HtmlComponent,
         ICanCreate<DropdownMenu>
     {
-        public NavbarDropdown(IHtmlHelper helper, string text)
-            : base(helper, "li", Css.NavItem, Css.Dropdown)
+        public NavbarDropdown(string text)
+            : base("li", Css.NavItem, Css.Dropdown)
         {
-            var link = new Link(helper, text);
-            link.AddCss(Css.NavLink, Css.DropdownToggle)
-                .SetHref("#")
-                .SetRole("button")
-                .AddAttribute("data-bs-toggle", "dropdown")
-                .AddAttribute("aria-expanded", false);
-            InnerHtml.AppendHtml(link);
+            var link = new Link(text);
+            link.AddCss(Css.NavLink, Css.DropdownToggle);
+            link.SetHref("#");
+            link.SetRole("button");
+            link.MergeAttribute("data-bs-toggle", "dropdown");
+            link.MergeAttribute("aria-expanded", false);
+            AddChild(link);
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using FBootstrapCoreMvc.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net.Mail;
 using System.Reflection;
 
 namespace FBootstrapCoreMvc.Extensions
@@ -35,6 +37,23 @@ namespace FBootstrapCoreMvc.Extensions
                 return attribute.Description;
 
             return value.ToString();
+        }
+
+        internal static string GetSuffix(this ComponentSize size) 
+        {
+            switch (size)
+            {
+                case ComponentSize.ExtraSmall:
+                    return "sm";
+                case ComponentSize.Small:
+                    return "sm";
+                case ComponentSize.Normal:
+                    return "";
+                case ComponentSize.Large:
+                    return "lg";
+                default:
+                    return "";
+            }
         }
     }
 }

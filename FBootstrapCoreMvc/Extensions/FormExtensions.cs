@@ -1,13 +1,10 @@
-﻿using FBootstrapCoreMvc;
-using FBootstrapCoreMvc.Components;
+﻿using FBootstrapCoreMvc.Components;
 using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -16,160 +13,159 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class FormExtensions
     {
-        public static Form<TModel> SetAction<TModel>(this Form<TModel> component, string action, string controller, object? routeValues = null)
+        public static BootstrapContent<Form, TModel> SetAction<TModel>(this BootstrapContent<Form, TModel> content, string action, string controller, object? routeValues = null)
         {
-            var url = component.Helper.GetUrlHelper().Action(action, controller, routeValues);
-            component.SetAction(url);
-            return component;
+            var url = content.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
+            content.Component.SetAction(url);
+            return content;
         }
 
-        public static Form<TModel> SetFormMethod<TModel>(this Form<TModel> component, FormMethod formMethod)
+        public static BootstrapContent<Form, TModel> SetFormMethod<TModel>(this BootstrapContent<Form, TModel> content, FormMethod formMethod)
         {
-            component.SetMethod(formMethod.ToString());
-            return component;
+            content.Component.SetMethod(formMethod.ToString());
+            return content;
         }
 
-
-        public static Icon FormIcon<TComponent>(this HtmlBuilder<TComponent> builder)
-            where TComponent : Component<TComponent>, ICanCreate<Icon>
+        public static BootstrapContent<Form, TModel> SetConfirm<TModel>(this BootstrapContent<Form, TModel> content, string message)
         {
-            return new Icon(IconType.Chat);
+            content.Component.SetConfirm(message);
+            return content;
         }
 
-        public static FormInput Input<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string? name = null, string? label = null, object? value = null, FormInputType inputType = FormInputType.Text)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormInput>
+        public static BootstrapContent<FormInput> Input<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, object? value = null, FormInputType inputType = FormInputType.Text)
+            where TComponent : HtmlComponent, ICanCreate<FormInput>
         {
-            var input = new FormInput(builder.HtmlHelper);
+            var input = new FormInput();
             input.SetType(inputType)
                 .SetName(name)
                 .SetValue(value)
                 .SetPlaceholder(label);
-            return input;
+            return new BootstrapContent<FormInput>(builder.HtmlHelper, input);
         }
 
-        public static Component DisplayFor<TComponent, TModel, TValue>(this MvcBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormInput>
+        public static BootstrapContent<HtmlElement> DisplayFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+            where TComponent : HtmlComponent, ICanCreate<FormInput>
         {
             throw new NotImplementedException();
         }
 
-        public static Component EditorFor<TComponent, TModel, TValue>(this MvcBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormInput>
+        public static BootstrapContent<HtmlElement> EditorFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+            where TComponent : HtmlComponent, ICanCreate<FormInput>
         {
             throw new NotImplementedException();
         }
 
-        public static FormCheck CheckFor<TComponent, TModel, TValue>(this MvcBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormCheck>
+        public static BootstrapContent<FormCheck> CheckFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+            where TComponent : HtmlComponent, ICanCreate<FormCheck>
         {
-            var htmlHelper = builder.HtmlHelper;
-            var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
-            var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
-            var formCheck = new FormCheck(builder.HtmlHelper, modelExpression.Name, modelExpression.Name, modelExpression.Model as bool?);
-            return formCheck;
+            var modelExpressionProvider = builder.HtmlHelper.GetModelExpressionProvider();
+            var modelExpression = modelExpressionProvider.CreateModelExpression(builder.HtmlHelper.ViewData, expression);
+            var formCheck = new FormCheck(modelExpression.Name, modelExpression.Name, modelExpression.Model as bool?);
+            return new BootstrapContent<FormCheck>(builder.HtmlHelper, formCheck);
         }
 
-        public static FormInput InputFor<TComponent, TModel, TValue>(this MvcBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormInput>
+        public static BootstrapContent<FormInput> InputFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+            where TComponent : HtmlComponent, ICanCreate<FormInput>
         {
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
             var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
-            var input = new FormInput(builder.HtmlHelper);
+            var input = new FormInput();
             input.SetName(modelExpression.Name);
             input.SetPlaceholder(modelExpression.Name);
             if (modelExpression.Model != null)
                 input.SetValue((TValue)modelExpression.Model);
-            return input;
+            return new BootstrapContent<FormInput>(builder.HtmlHelper, input);
         }
 
-        public static FormInput PasswordFor<TComponent, TModel, TValue>(this MvcBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormInput>
+        public static BootstrapContent<FormInput> PasswordFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+            where TComponent : HtmlComponent, ICanCreate<FormInput>
         {
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
             var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
-            var input = new FormInput(builder.HtmlHelper);
-            return input.SetPlaceholder(modelExpression.Name)
+            var input = new FormInput();
+            input.SetPlaceholder(modelExpression.Name)
                 .SetType(FormInputType.Password)
                 .SetName(modelExpression.Name);
+            return new BootstrapContent<FormInput>(builder.HtmlHelper, input);
         }
 
-        public static IHtmlContent HiddenFor<TComponent, TModel, TValue>(this MvcBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormInput>
+        public static IHtmlContent HiddenFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+            where TComponent : HtmlComponent, ICanCreate<FormInput>
         {
             return builder.HtmlHelper.HiddenFor(expression);
         }
 
-        public static Label LabelFor<TComponent, TModel, TValue>(this MvcBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<Label>
+        public static BootstrapContent<Label> LabelFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+            where TComponent : HtmlComponent, ICanCreate<Label>
         {
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
             var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
-            var label = new Label(builder.HtmlHelper)
-                .AddAttribute("for", modelExpression.Name)
-                .SetContent(modelExpression.Name);
-            return label;
+            var label = new Label();
+            label.MergeAttribute("for", modelExpression.Name);
+            label.SetContent(modelExpression.Name);
+            return new BootstrapContent<Label>(htmlHelper, label);
         }
 
-        public static FormSelect SelectFor<TComponent, TModel, TValue>(this MvcBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListItem> selectList)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormSelect>
+        public static BootstrapContent<FormSelect> SelectFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListItem> selectList)
+            where TComponent : HtmlComponent, ICanCreate<FormSelect>
         {
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
             var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
-            var formSelect = new FormSelect(builder.HtmlHelper, modelExpression.Name);
+            var formSelect = new FormSelect(modelExpression.Name);
             formSelect.SetName(modelExpression.Name);
             formSelect.SetOptions(selectList);
-            return formSelect;
+            formSelect.SetSelected(modelExpression.Model);
+            return new BootstrapContent<FormSelect>(htmlHelper, formSelect);
         }
 
-
-        public static FormSelect Select<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string name, string label, IEnumerable<SelectListItem> selectList)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormSelect>
+        public static BootstrapContent<FormSelect> Select<TComponent>(this BootstrapBuilder<TComponent> builder, string name, string label, IEnumerable<SelectListItem> selectList)
+            where TComponent : HtmlComponent, ICanCreate<FormSelect>
         {
-            var formSelect = new FormSelect(builder.HtmlHelper, label);
+            var formSelect = new FormSelect(label);
             formSelect.SetName(name);
             formSelect.SetOptions(selectList);
-            return formSelect;
+            return new BootstrapContent<FormSelect>(builder.HtmlHelper, formSelect);
         }
 
-        public static FormCheck CheckBox<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string name = null, string label = null, string description = null, bool isChecked = false)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<FormCheck>
+        public static BootstrapContent<FormCheck> CheckBox<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, string? description = null, bool isChecked = false)
+            where TComponent : HtmlComponent, ICanCreate<FormCheck>
         {
-            var checkbox = new FormCheck(builder.HtmlHelper, name, label, isChecked);
-            return checkbox;
+            var checkbox = new FormCheck(name, label, isChecked);
+            return new BootstrapContent<FormCheck>(builder.HtmlHelper, checkbox);
         }
 
-        public static Button Button<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string text = "Button", ButtonState buttonState = ButtonState.Primary, object? value = null)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<Button>
+        public static BootstrapContent<Button> Button<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Button", ButtonState buttonState = ButtonState.Primary, object? value = null)
+            where TComponent : HtmlComponent, ICanCreate<Button>
         {
             var button = new Button(buttonState, text);
             button.SetType(ButtonType.Button);
             if (value != null)
                 button.SetValue(value.ToString());
-            return button;
+            return new BootstrapContent<Button>(builder.HtmlHelper, button);
         }
 
-        public static Button Submit<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string text = "Submit", ButtonState buttonState = ButtonState.Primary, object? value = null)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<Button>
+        public static BootstrapContent<Button> Submit<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Submit", ButtonState buttonState = ButtonState.Primary, object? value = null)
+            where TComponent : HtmlComponent, ICanCreate<Button>
         {
             var submit = new Button(buttonState, text);
             submit.SetType(ButtonType.Submit);
             if (value != null)
                 submit.SetValue(value.ToString());
-            return submit;
+            return new BootstrapContent<Button>(builder.HtmlHelper, submit);
         }
 
-        public static Button Reset<TComponent, TModel>(this MvcBuilder<TComponent, TModel> builder, string text = "Reset", ButtonState buttonState = ButtonState.Primary, object? value = null)
-            where TComponent : MvcComponent<TComponent, TModel>, ICanCreate<Button>
+        public static BootstrapContent<Button> Reset<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Reset", ButtonState buttonState = ButtonState.Primary, object? value = null)
+            where TComponent : HtmlComponent, ICanCreate<Button>
         {
             var reset = new Button(buttonState, text);
             reset.SetType(ButtonType.Reset);
             if (value != null)
                 reset.SetValue(value.ToString());
-            return reset;
+            return new BootstrapContent<Button>(builder.HtmlHelper, reset);
         }
     }
 }

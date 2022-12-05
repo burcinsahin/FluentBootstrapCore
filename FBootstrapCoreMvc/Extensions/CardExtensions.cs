@@ -1,7 +1,4 @@
-﻿
-using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
+﻿using FBootstrapCoreMvc.Components;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -11,20 +8,48 @@ namespace FBootstrapCoreMvc.Extensions
         /// Card is new version of old Panel
         /// </summary>
         /// <returns></returns>
-        public static BootstrapContent<Card> Card(this IBootstrapHelper bootstrapHelper, string? header = null, string? footer = null)
+        public static BootstrapContent<Card> Card(
+            this IBootstrapHelper bootstrapHelper,
+            string? header = null,
+            string? footer = null)
         {
             var card = new Card();
             if (header != null)
-                card.SetHeader(header);
+                card.Header = header;
             if (footer != null)
-                card.SetFooter(footer);
+                card.Footer = footer;
             return new BootstrapContent<Card>(bootstrapHelper.HtmlHelper, card);
         }
 
-        public static BootstrapContent<TComponent> SetHeader<TComponent>(this BootstrapContent<TComponent> bootstrapContent,
-            string? header = null, string? footer = null)
-            where TComponent : HtmlComponent
+        public static BootstrapContent<TComponent> SetHeader<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string header, bool collapsible = false)
+            where TComponent : Card
         {
+            bootstrapContent.Component.Header = header;
+            bootstrapContent.Component.Collapsible = collapsible;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> SetTitle<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string title)
+            where TComponent : Card
+        {
+            bootstrapContent.Component.BodyTitle = title;
+            return bootstrapContent;
+        }
+
+        /// <summary>
+        /// Skips rendering card body. Use if you will manually add cardbody component.
+        /// </summary>
+        /// <typeparam name="TComponent"></typeparam>
+        /// <param name="bootstrapContent"></param>
+        /// <returns></returns>
+        public static BootstrapContent<TComponent> NoCardBody<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : Card
+        {
+            bootstrapContent.Component.HasCardBody = false;
             return bootstrapContent;
         }
 
@@ -46,13 +71,26 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<CardFooter>(builder.HtmlHelper, component);
         }
 
-        public static BootstrapContent<CardBody> Body(this BootstrapBuilder<Card> builder, object? content = null)
+        public static BootstrapContent<CardBody> Body(this BootstrapBuilder<Card> builder, object? content = null, string? title = null, string? subtitle = null)
         {
-            var component = new CardBody
+            var cardBody = new CardBody
             {
-                Content = content
+                Content = content,
+                Title = title,
+                Subtitle = subtitle
             };
-            return new BootstrapContent<CardBody>(builder.HtmlHelper, component);
+            return new BootstrapContent<CardBody>(builder.HtmlHelper, cardBody);
         }
+
+
+        //public void SetBackground(BackgroundState backgroundState = BackgroundState.Primary)
+        //{
+        //    AddCss(backgroundState.GetCssDescription());
+        //}
+
+        //public void SetState(TextBgState textBgState = TextBgState.Primary)
+        //{
+        //    AddCss(textBgState.GetCssDescription());
+        //}
     }
 }

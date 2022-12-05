@@ -19,135 +19,126 @@ namespace FBootstrapCoreMvc
         }
 
         #region Typography
-        public HtmlElement Div()
+        public BootstrapContent<HtmlElement> Div()
         {
-            return new HtmlElement(HtmlHelper, "div");
+            var div = new HtmlElement("div");
+            return new BootstrapContent<HtmlElement>(HtmlHelper, div);
         }
 
-        public List List(ListType listType = ListType.Unstyled)
+        public BootstrapContent<List> List(ListType listType = ListType.Unstyled)
         {
-            return new List(HtmlHelper, listType);
+            var list = new List(listType);
+            return new BootstrapContent<List>(HtmlHelper, list);
         }
         #endregion
 
-        public Container Container()
+        public BootstrapContent<Container> Container()
         {
-            return new Container(HtmlHelper);
+            return new BootstrapContent<Container>(HtmlHelper, new Container());
         }
 
-        ///// <summary>
-        ///// Card is new version of old Panel
-        ///// </summary>
-        ///// <returns></returns>
-        //public Card Card(string? header = null, string? footer = null)
-        //{
-        //    var card = new Card(HtmlHelper);
-        //    if (header != null)
-        //        card.SetHeader(header);
-        //    if (footer != null)
-        //        card.SetFooter(footer);
-        //    return card;
-        //}
-
-        public Navbar Navbar()
+        public BootstrapContent<Navbar> Navbar()
         {
-            var navbar = new Navbar(HtmlHelper);
-            return navbar;
+            var navbar = new Navbar();
+            return new BootstrapContent<Navbar>(_htmlHelper, navbar);
         }
 
-        public Component Element(string tagName, string text)
+        public BootstrapContent<HtmlElement> Element(string tagName, string text)
         {
-            var element = new Component(HtmlHelper, tagName);
-            element.InnerHtml.SetContent(text);
-            return element;
+            var element = new HtmlElement(tagName);
+            element.SetContent(text);
+            return new BootstrapContent<HtmlElement>(_htmlHelper, element);
         }
 
-        public Input Hidden(string? name = null, object? value = null)
+        public BootstrapContent<Input> Hidden(string? name = null, object? value = null)
         {
-            var input = new Input(HtmlHelper);
+            var input = new Input();
             input.SetType(FormInputType.Hidden);
             input.MergeAttribute("name", name);
             input.MergeAttribute("value", value?.ToString());
-            return input;
+            return new BootstrapContent<Input>(_htmlHelper, input);
         }
 
-        public Image Image(string src, string? alt = null)
+        public BootstrapContent<Image> Image(string src, string? alt = null)
         {
-            return new Image(HtmlHelper).AddAttribute("src", src).AddAttribute("alt", alt);
+            var image = new Image();
+            image.MergeAttribute("src", src);
+            image.MergeAttribute("alt", alt);
+            return new BootstrapContent<Image>(_htmlHelper, image);
         }
 
-        public Component Paragraph()
+        public BootstrapContent<HtmlElement> Paragraph()
         {
-            //TODO:
-            var p = new Component(HtmlHelper, "p");
-            return p;
+            var p = new HtmlElement("p");
+            return new BootstrapContent<HtmlElement>(_htmlHelper, p);
         }
 
-        public Link Link(object? content, string href = "#")
+        public BootstrapContent<Link> Link(object? content, string href = "#")
         {
-            return new Link(HtmlHelper, content).SetHref(href);
+            var link = new Link(content);
+            link.SetHref(href);
+            return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
-        public Link Link(string text, string action, string controller, object routeValues = null)
+        public BootstrapContent<Link> Link(string text, string action, string controller, object? routeValues = null)
         {
-            var link = new Link(HtmlHelper, text);
+            var link = new Link(text);
             var urlHelper = HtmlHelper.GetUrlHelper();
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
             var url = urlHelper?.Action(urlActionContext);
             link.MergeAttribute("href", url);
-            return link;
+            return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
-        public LinkButton LinkButton(string text, string action, string controller, object routeValues = null)
+        public BootstrapContent<LinkButton> LinkButton(object? content, string href = "#")
         {
-            var linkButton = new LinkButton(HtmlHelper, ButtonState.Primary, text);
-            var htmlHelper = HtmlHelper;
-            var urlHelperFactory = htmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;
-            var urlHelper = urlHelperFactory?.GetUrlHelper(htmlHelper.ViewContext);
+            var linkButton = new LinkButton(ButtonState.Primary, content);
+            linkButton.MergeAttribute("href", href);
+            return new BootstrapContent<LinkButton>(HtmlHelper, linkButton);
+        }
+
+        public BootstrapContent<LinkButton> LinkButton(string text, string action, string controller, object? routeValues = null)
+        {
+            var linkButton = new LinkButton(ButtonState.Primary, text);
+            var urlHelperFactory = HtmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;
+            var urlHelper = urlHelperFactory?.GetUrlHelper(HtmlHelper.ViewContext);
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
             var url = urlHelper?.Action(urlActionContext);
             linkButton.MergeAttribute("href", url);
-            return linkButton;
+            return new BootstrapContent<LinkButton>(HtmlHelper, linkButton);
         }
 
-        public Form<TModel> Form()
+        public BootstrapContent<Form> Form()
         {
-            return new Form<TModel>(_htmlHelper);
+            var form = new Form();
+            return new BootstrapContent<Form>(_htmlHelper, form);
         }
 
-        public Form<TModel> Form(string action, string controller, FormMethod method = FormMethod.Post, object routeValues = null)
+        public BootstrapContent<Form, TModel> Form(string action, string controller, FormMethod method = FormMethod.Post, object? routeValues = null)
         {
             var htmlHelper = HtmlHelper;
             var urlHelperFactory = htmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;
             var urlHelper = urlHelperFactory?.GetUrlHelper(htmlHelper.ViewContext);
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
             var url = urlHelper?.Action(urlActionContext);
-            return new Form<TModel>(_htmlHelper).SetAction(url).SetMethod(method.ToString());
+            var form = new Form();
+            form.SetAction(url);
+            form.SetMethod(method.ToString());
+            return new BootstrapContent<Form, TModel>(_htmlHelper, form);
         }
 
-        public Table Table()
-        {
-            return new Table(HtmlHelper);
-        }
-
-        public Button Button(ButtonType buttonType = ButtonType.Button, object? value = null)
+        public BootstrapContent<Button> Button(ButtonType buttonType = ButtonType.Button, object? value = null)
         {
             var button = new Button();
             button.SetType(buttonType);
             button.SetValue(value);
-            return button;
+            return new BootstrapContent<Button>(_htmlHelper, button);
         }
 
-        public CheckBox CheckBox()
+        public BootstrapContent<CheckBox> CheckBox()
         {
-            var checkbox = new CheckBox(HtmlHelper);
-            return checkbox;
+            var checkbox = new CheckBox();
+            return new BootstrapContent<CheckBox>(HtmlHelper, checkbox);
         }
-
-        //public HtmlBuilder<TComponent> Begin<TComponent>(TComponent component)
-        //    where TComponent : Component
-        //{
-        //    return new HtmlBuilder<TComponent>(_htmlHelper, component);
-        //}
     }
 }

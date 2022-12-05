@@ -1,39 +1,74 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Components;
+using FBootstrapCoreMvc.Enums;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.Design;
 using System.Globalization;
 using System.Linq;
 
 namespace FBootstrapCoreMvc
 {
-    public class HtmlComponent : IHtmlComponent
+    public abstract class HtmlComponent : IHtmlComponent
     {
         #region Props&Fields
         private object? _content;
         private readonly TagBuilder _tagBuilder;
-        private List<IHtmlComponent> _headerChildren;
-        private List<IHtmlComponent> _bodyChildren;
-        private List<IHtmlComponent> _footerChildren;
+        private readonly List<HtmlComponent> _headerChildren;
+        private readonly List<HtmlComponent> _bodyChildren;
+        private readonly List<HtmlComponent> _footerChildren;
+        private readonly List<HtmlComponent> _fullWrapperChildren;
+        private readonly List<HtmlComponent> _bodyWrapperChildren;
 
-        internal object? Content { get => _content; set => _content = value; } 
+        private RenderMode _renderMode;
+
+        public string? Id { get; protected internal set; }
+
+        internal object? Content
+        {
+            get => _content;
+            set => _content = value;
+        }
+        internal RenderMode RenderMode
+        {
+            get => _renderMode;
+            set => _renderMode = value;
+        }
         #endregion
 
         #region Ctors
         public HtmlComponent(string tagName, params string[] cssClasses)
         {
             _tagBuilder = new TagBuilder(tagName);
+            _renderMode = RenderMode.Normal;
             _tagBuilder.AddCssClass(string.Join(" ", cssClasses));
-            _headerChildren = new List<IHtmlComponent>();
-            _bodyChildren = new List<IHtmlComponent>();
-            _footerChildren = new List<IHtmlComponent>();
+            _headerChildren = new List<HtmlComponent>();
+            _bodyChildren = new List<HtmlComponent>();
+            _footerChildren = new List<HtmlComponent>();
+            _fullWrapperChildren = new List<HtmlComponent>();
+            _bodyWrapperChildren = new List<HtmlComponent>();
         }
         #endregion
 
         #region Methods
+        private void SetTagRenderMode()
+        {
+            switch (RenderMode)
+            {
+                case RenderMode.Start:
+                    _tagBuilder.TagRenderMode = TagRenderMode.StartTag;
+                    break;
+                case RenderMode.End:
+                    _tagBuilder.TagRenderMode = TagRenderMode.EndTag;
+                    break;
+                case RenderMode.SelfClosing:
+                    _tagBuilder.TagRenderMode = TagRenderMode.SelfClosing;
+                    break;
+            }
+        }
+
+        #region DOM Methods
         protected internal void AddCss(params string[] cssClasses)
         {
             foreach (var cssClass in cssClasses)
@@ -57,24 +92,30 @@ namespace FBootstrapCoreMvc
             AddCss(currentClasses.Except(cssClasses).ToArray());
         }
 
-        protected internal void AddStyle(string key, string value) 
+        protected internal void MergeStyle(string key, string value)
         {
             _tagBuilder.MergeAttribute("style", $"{key}:{value};", false);
         }
 
-        protected internal void AddStyles(object styles)
+        /// <summary>
+        /// Replaces '_' char with '-'
+        /// </summary>
+        /// <param name="styles"></param>
+        protected internal void MergeStyles(object styles)
         {
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
             {
-                var key = property.Name;
+                var key = property.Name.ToLowerInvariant().Replace("_", "-");
                 var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
-                AddStyle(key, value);
+                MergeStyle(key, value);
             }
         }
+        #endregion
 
         public string ToHtml()
         {
             Build();
+            SetTagRenderMode();
             return _tagBuilder.ToHtmlString();
         }
 
@@ -90,11 +131,16 @@ namespace FBootstrapCoreMvc
         /// </summary>
         protected virtual void Initialize()
         {
+            if (Id != null)
+                MergeAttribute("id", Id);
         }
 
         internal IHtmlContent Begin()
         {
             Initialize();
+
+            _fullWrapperChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
+
             foreach (var child in _headerChildren)
             {
                 _tagBuilder.InnerHtml.AppendHtml(child.ToHtml());
@@ -102,10 +148,16 @@ namespace FBootstrapCoreMvc
             return _tagBuilder.RenderStartTag();
         }
 
-        internal IHtmlContent Body()//TODO: virtual??
+        internal IHtmlContent Body()
         {
+            _bodyWrapperChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
+
             AppendContent(_content);
+
             _bodyChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
+
+
+
             return _tagBuilder.RenderBody();
         }
 
@@ -113,32 +165,57 @@ namespace FBootstrapCoreMvc
         {
             var htmlContentBuilder = new HtmlContentBuilder();
 
+            foreach (var wrapper in _bodyWrapperChildren.Reverse<HtmlComponent>())
+            {
+                var clone = wrapper.Clone();
+                clone.RenderMode = RenderMode.End;
+                _tagBuilder.InnerHtml.AppendHtml(clone.ToHtml());
+                htmlContentBuilder.AppendHtml(clone.ToHtml());
+            }
+
             foreach (var child in _footerChildren)
             {
                 _tagBuilder.InnerHtml.AppendHtml(child.ToHtml());
                 htmlContentBuilder.AppendHtml(child.ToHtml());
             }
+            foreach (var wrapper in _fullWrapperChildren.Reverse<HtmlComponent>())
+            {
+                var clone = wrapper.Clone();
+                clone.RenderMode = RenderMode.End;
+                _tagBuilder.InnerHtml.AppendHtml(clone.ToHtml());
+                htmlContentBuilder.AppendHtml(clone.ToHtml());
+            }
             htmlContentBuilder.AppendHtml(_tagBuilder.RenderEndTag());
             return htmlContentBuilder;
         }
 
-        internal void AddChild(IHtmlComponent component, ChildType childType = ChildType.Body)
+        protected internal void AddChild(HtmlComponent? component, ChildLocation childType = ChildLocation.Body)
         {
+            if (component == null) return;
+
             switch (childType)
             {
-                case ChildType.Header:
+                case ChildLocation.Header:
                     _headerChildren.Add(component);
                     break;
-                case ChildType.Body:
+                case ChildLocation.Body:
                     _bodyChildren.Add(component);
                     break;
-                case ChildType.Footer:
+                case ChildLocation.Footer:
                     _footerChildren.Add(component);
                     break;
             }
         }
 
-        internal void AppendContent(object? content, bool clear = false)
+        protected internal void RemoveChild(HtmlComponent component)
+        {
+            if (component == null) return;
+            _headerChildren.Remove(component);
+            _bodyChildren.Remove(component);
+            _footerChildren.Remove(component);
+        }
+
+        protected internal void AppendContent(object? content, bool clear = false)
         {
             if (content == null)
                 return;
@@ -151,10 +228,26 @@ namespace FBootstrapCoreMvc
                 _tagBuilder.InnerHtml.AppendHtml(htmlComponent.ToHtml());
                 return;
             }
+            if (content is IHtmlContent htmlContent)
+            {
+                _tagBuilder.InnerHtml.AppendHtml(htmlContent);
+                return;
+            }
             _tagBuilder.InnerHtml.Append(content.ToString());
         }
 
-        internal void MergeAttribute(string key, object? value = null, bool replaceExisting = false)
+        protected internal void AppendHtml(string? htmlString, bool clear = false)
+        {
+            if (htmlString == null)
+                return;
+
+            if (clear)
+                _tagBuilder.InnerHtml.Clear();
+
+            _tagBuilder.InnerHtml.AppendHtml(htmlString);
+        }
+
+        protected internal void MergeAttribute(string key, object? value = null, bool replaceExisting = false)
         {
             if (value == null)
             {
@@ -163,6 +256,43 @@ namespace FBootstrapCoreMvc
             }
 
             _tagBuilder.MergeAttribute(key, value.ToString(), replaceExisting);
+        }
+
+        protected internal string? GetAttribute(string key)
+        {
+            _tagBuilder.Attributes.TryGetValue(key, out var attr);
+            return attr;
+        }
+
+        protected TComponent GetChild<TComponent>()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected void AddWrappingChild<TComponent>(TComponent component, WrapperType wrapperType = WrapperType.All)
+            where TComponent : HtmlComponent
+        {
+            component.RenderMode = RenderMode.Start;
+            switch (wrapperType)
+            {
+                case WrapperType.All:
+                    _fullWrapperChildren.Add(component);
+                    break;
+                case WrapperType.Body:
+                    _bodyWrapperChildren.Add(component);
+                    break;
+            }
+        }
+
+        public TComponent Clone<TComponent>()
+            where TComponent : HtmlComponent
+        {
+            return (TComponent)MemberwiseClone();
+        }
+
+        public HtmlComponent Clone()
+        {
+            return Clone<HtmlComponent>();
         }
         #endregion
     }

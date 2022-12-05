@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace FBootstrapCoreMvc.Enums
 {
