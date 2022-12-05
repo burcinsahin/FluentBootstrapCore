@@ -13,6 +13,13 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> SetDark<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : Navbar
+        {
+            bootstrapContent.Component.AddCss(Css.NavbarDark);
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<NavbarBrand> Brand<TComponent>(this BootstrapBuilder<TComponent> builder, string? text)
             where TComponent : HtmlComponent, ICanCreate<NavbarBrand>
         {
@@ -30,7 +37,8 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<NavbarCollapse> NavbarCollapse<TComponent>(this BootstrapBuilder<TComponent> builder, string? id)
             where TComponent : HtmlComponent, ICanCreate<NavbarCollapse>
         {
-            var navbarCollapse = new NavbarCollapse(id);
+            var navbarCollapse = new NavbarCollapse();
+            navbarCollapse.SetId(id);
             return new BootstrapContent<NavbarCollapse>(builder.HtmlHelper, navbarCollapse);
         }
 
