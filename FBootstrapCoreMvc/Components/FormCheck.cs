@@ -1,4 +1,5 @@
 ﻿using FBootstrapCoreMvc.Extensions;
+using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
