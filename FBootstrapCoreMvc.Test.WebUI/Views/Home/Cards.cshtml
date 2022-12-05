@@ -1,13 +1,13 @@
-﻿@using (Html.Bootstrap().Div().AddStyles(new { width = "300px" }).Begin())
+﻿@using (Html.Bootstrap().Div().AddStyles(new { width = "500px" }).Begin())
 {
-    @using (Html.Bootstrap().Card("Header text").SetTextBgState(TextBgState.Primary).Begin())
+    @using (Html.Bootstrap().Card("Simple Card (Primary)").SetTextBgState(TextBgState.Primary).Begin())
     {
         <p>
             Hello world!
         </p>
     }
     <hr />
-    @using (Html.Bootstrap().Card("Summary").SetTextBgState(TextBgState.Secondary).Begin())
+    @using (Html.Bootstrap().Card("List Including Card (Secondary)").SetTextBgState(TextBgState.Secondary).Begin())
     {
         using (var list = Html.Bootstrap().List(ListType.Unordered).Begin())
         {
@@ -20,7 +20,7 @@
     <hr />
     @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Success).Begin())
     {
-        @card.Header("Header")
+        @card.Header("Customized Card Body (Success)")
         @using (@card.Body().Begin())
         {
             <p>
@@ -32,7 +32,7 @@
     <hr />
     @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Danger).Begin())
     {
-        @card.Header("Header")
+        @card.Header("Customized body with title, subtitle (Danger)")
         @using (@card.Body(null, "title", "subtitle").Begin())
         {
             <p>
@@ -42,28 +42,16 @@
         @card.Footer("Footer")
     }
     <hr />
-    @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Warning).Begin())
+    @using (var card = Html.Bootstrap().Card().SetHeader("Collapsible (Warning)", true).SetTextBgState(TextBgState.Warning).Begin())
     {
-        @card.Header("Header")
-        @using (@card.Body(null, "title", "subtitle").Begin())
-        {
-            <p>
-                Hello world!
-            </p>
-        }
-        @card.Footer("Footer")
+        <p>
+            Hello world!
+        </p>
     }
     <hr />
-    @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Info).Begin())
+    @using (var card = Html.Bootstrap().Card().SetHeader("Collapsible with customized body (Info)", true).SetTextBgState(TextBgState.Info).NoCardBody().Begin())
     {
-        @card.Header("Header")
-        @using (@card.Body(null, "title", "subtitle").Begin())
-        {
-            <p>
-                Hello world!
-            </p>
-        }
-        @card.Footer("Footer")
+        @card.Body("text content", "title")
     }
     <hr />
     @using (var card = Html.Bootstrap().Card().NoCardBody().SetTextBgState(TextBgState.Light).Begin())
@@ -89,5 +77,4 @@
         }
         @card.Footer("Footer")
     }
-    <hr />
 }

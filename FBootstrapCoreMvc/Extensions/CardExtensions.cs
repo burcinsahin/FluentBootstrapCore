@@ -8,24 +8,44 @@ namespace FBootstrapCoreMvc.Extensions
         /// Card is new version of old Panel
         /// </summary>
         /// <returns></returns>
-        public static BootstrapContent<Card> Card(this IBootstrapHelper bootstrapHelper, string? header = null, string? footer = null)
+        public static BootstrapContent<Card> Card(
+            this IBootstrapHelper bootstrapHelper,
+            string? header = null,
+            string? footer = null)
         {
             var card = new Card();
             if (header != null)
-                card.SetHeader(header);
+                card.Header = header;
             if (footer != null)
-                card.SetFooter(footer);
+                card.Footer = footer;
             return new BootstrapContent<Card>(bootstrapHelper.HtmlHelper, card);
         }
 
-        public static BootstrapContent<TComponent> SetHeader<TComponent>(this BootstrapContent<TComponent> bootstrapContent,
-            string? header = null)
+        public static BootstrapContent<TComponent> SetHeader<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string header, bool collapsible = false)
             where TComponent : Card
         {
-            bootstrapContent.Component.SetHeader(header);
+            bootstrapContent.Component.Header = header;
+            bootstrapContent.Component.Collapsible = collapsible;
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> SetTitle<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string title)
+            where TComponent : Card
+        {
+            bootstrapContent.Component.BodyTitle = title;
+            return bootstrapContent;
+        }
+
+        /// <summary>
+        /// Skips rendering card body. Use if you will manually add cardbody component.
+        /// </summary>
+        /// <typeparam name="TComponent"></typeparam>
+        /// <param name="bootstrapContent"></param>
+        /// <returns></returns>
         public static BootstrapContent<TComponent> NoCardBody<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
             where TComponent : Card
         {

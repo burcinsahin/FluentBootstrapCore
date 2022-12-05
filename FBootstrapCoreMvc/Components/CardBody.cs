@@ -6,47 +6,52 @@ namespace FBootstrapCoreMvc.Components
 {
     public class CardBody : HtmlComponent
     {
-        internal string? Title { get; set; }
-        internal string? Subtitle { get; set; }
+        internal object? Title { get; set; }
+        internal object? Subtitle { get; set; }
         internal string? CardText { get; set; }
         internal IEnumerable<Link> CardLinks { get; set; }
-        
+
         public CardBody(string? title = null, string? subtitle = null)
             : base("div", Css.CardBody)
         {
             Title = title;
             Subtitle = subtitle;
-            CardLinks= new List<Link>();
+            CardLinks = new List<Link>();
         }
 
         protected override void Initialize()
         {
             if (Title != null)
             {
-                var h5 = new Heading(5);
+                var h5 = new Heading(5)
+                {
+                    Content = Title
+                };
+
                 h5.AddCss(Css.CardTitle);
-                h5.Content = Title;
-                AddChild(h5);
+                AddChild(h5, ChildLocation.Header);
             }
 
             if (Subtitle != null)
             {
-                var h6 = new Heading(6);
+                var h6 = new Heading(6)
+                {
+                    Content = Subtitle
+                };
                 h6.AddCss(Css.CardSubtitle, Css.Mb2, Css.TextMuted);
-                h6.Content = Subtitle;
-                AddChild(h6);
+                AddChild(h6, ChildLocation.Header);
             }
 
-            if (CardText != null) 
+            if (Content is string)
             {
                 var p = new HtmlElement("p", Css.CardText)
                 {
-                    Content = CardText
+                    Content = Content
                 };
-                AddChild(p);
+                Content = p;
             }
 
-            if (CardLinks.Any()) 
+            if (CardLinks.Any())
             {
                 foreach (var link in CardLinks)
                 {

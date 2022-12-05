@@ -13,7 +13,7 @@ namespace FBootstrapCoreMvc
 
         internal new IHtmlHelper<TModel> HtmlHelper => _htmlHelper;
 
-        public BootstrapContent(IHtmlHelper<TModel> htmlHelper, TComponent component) 
+        public BootstrapContent(IHtmlHelper<TModel> htmlHelper, TComponent component)
             : base(htmlHelper, component)
         {
             _htmlHelper = htmlHelper;

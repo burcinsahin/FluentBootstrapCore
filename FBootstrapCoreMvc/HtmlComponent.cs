@@ -1,4 +1,5 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Components;
+using FBootstrapCoreMvc.Enums;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -14,9 +15,11 @@ namespace FBootstrapCoreMvc
         #region Props&Fields
         private object? _content;
         private readonly TagBuilder _tagBuilder;
-        private readonly List<IHtmlComponent> _headerChildren;
-        private readonly List<IHtmlComponent> _bodyChildren;
-        private readonly List<IHtmlComponent> _footerChildren;
+        private readonly List<HtmlComponent> _headerChildren;
+        private readonly List<HtmlComponent> _bodyChildren;
+        private readonly List<HtmlComponent> _footerChildren;
+        private readonly List<HtmlComponent> _fullWrapperChildren;
+        private readonly List<HtmlComponent> _bodyWrapperChildren;
 
         private RenderMode _renderMode;
 
@@ -40,11 +43,12 @@ namespace FBootstrapCoreMvc
             _tagBuilder = new TagBuilder(tagName);
             _renderMode = RenderMode.Normal;
             _tagBuilder.AddCssClass(string.Join(" ", cssClasses));
-            _headerChildren = new List<IHtmlComponent>();
-            _bodyChildren = new List<IHtmlComponent>();
-            _footerChildren = new List<IHtmlComponent>();
+            _headerChildren = new List<HtmlComponent>();
+            _bodyChildren = new List<HtmlComponent>();
+            _footerChildren = new List<HtmlComponent>();
+            _fullWrapperChildren = new List<HtmlComponent>();
+            _bodyWrapperChildren = new List<HtmlComponent>();
         }
-
         #endregion
 
         #region Methods
@@ -64,6 +68,7 @@ namespace FBootstrapCoreMvc
             }
         }
 
+        #region DOM Methods
         protected internal void AddCss(params string[] cssClasses)
         {
             foreach (var cssClass in cssClasses)
@@ -105,6 +110,7 @@ namespace FBootstrapCoreMvc
                 MergeStyle(key, value);
             }
         }
+        #endregion
 
         public string ToHtml()
         {
@@ -132,6 +138,9 @@ namespace FBootstrapCoreMvc
         internal IHtmlContent Begin()
         {
             Initialize();
+
+            _fullWrapperChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
+
             foreach (var child in _headerChildren)
             {
                 _tagBuilder.InnerHtml.AppendHtml(child.ToHtml());
@@ -141,8 +150,14 @@ namespace FBootstrapCoreMvc
 
         internal IHtmlContent Body()
         {
+            _bodyWrapperChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
+
             AppendContent(_content);
+
             _bodyChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
+
+
+
             return _tagBuilder.RenderBody();
         }
 
@@ -150,16 +165,31 @@ namespace FBootstrapCoreMvc
         {
             var htmlContentBuilder = new HtmlContentBuilder();
 
+            foreach (var wrapper in _bodyWrapperChildren.Reverse<HtmlComponent>())
+            {
+                var clone = wrapper.Clone();
+                clone.RenderMode = RenderMode.End;
+                _tagBuilder.InnerHtml.AppendHtml(clone.ToHtml());
+                htmlContentBuilder.AppendHtml(clone.ToHtml());
+            }
+
             foreach (var child in _footerChildren)
             {
                 _tagBuilder.InnerHtml.AppendHtml(child.ToHtml());
                 htmlContentBuilder.AppendHtml(child.ToHtml());
             }
+            foreach (var wrapper in _fullWrapperChildren.Reverse<HtmlComponent>())
+            {
+                var clone = wrapper.Clone();
+                clone.RenderMode = RenderMode.End;
+                _tagBuilder.InnerHtml.AppendHtml(clone.ToHtml());
+                htmlContentBuilder.AppendHtml(clone.ToHtml());
+            }
             htmlContentBuilder.AppendHtml(_tagBuilder.RenderEndTag());
             return htmlContentBuilder;
         }
 
-        protected internal void AddChild(IHtmlComponent? component, ChildLocation childType = ChildLocation.Body)
+        protected internal void AddChild(HtmlComponent? component, ChildLocation childType = ChildLocation.Body)
         {
             if (component == null) return;
 
@@ -177,7 +207,7 @@ namespace FBootstrapCoreMvc
             }
         }
 
-        protected internal void RemoveChild(IHtmlComponent component)
+        protected internal void RemoveChild(HtmlComponent component)
         {
             if (component == null) return;
             _headerChildren.Remove(component);
@@ -232,6 +262,37 @@ namespace FBootstrapCoreMvc
         {
             _tagBuilder.Attributes.TryGetValue(key, out var attr);
             return attr;
+        }
+
+        protected TComponent GetChild<TComponent>()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected void AddWrappingChild<TComponent>(TComponent component, WrapperType wrapperType = WrapperType.All)
+            where TComponent : HtmlComponent
+        {
+            component.RenderMode = RenderMode.Start;
+            switch (wrapperType)
+            {
+                case WrapperType.All:
+                    _fullWrapperChildren.Add(component);
+                    break;
+                case WrapperType.Body:
+                    _bodyWrapperChildren.Add(component);
+                    break;
+            }
+        }
+
+        public TComponent Clone<TComponent>()
+            where TComponent : HtmlComponent
+        {
+            return (TComponent)MemberwiseClone();
+        }
+
+        public HtmlComponent Clone()
+        {
+            return Clone<HtmlComponent>();
         }
         #endregion
     }
