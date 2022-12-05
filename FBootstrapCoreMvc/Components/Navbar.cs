@@ -1,4 +1,5 @@
-﻿using FBootstrapCoreMvc.Interfaces;
+﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -8,8 +9,18 @@ namespace FBootstrapCoreMvc.Components
         ICanCreate<NavbarToggler>
     {
         public Navbar()
-            : base("nav", Css.Navbar, Css.NavbarExpandLg, Css.NavbarDark, Css.BgDark)
+            : base("nav", Css.Navbar, Css.NavbarExpandLg)
         {
+        }
+
+        protected override void Initialize()
+        {
+            var container = new Container();
+            container.ClearCss();
+            container.AddCss(Css.ContainerFluid);
+            AddWrappingChild(container, WrapperType.All);
+
+            base.Initialize();
         }
     }
 }

@@ -6,6 +6,8 @@ namespace FBootstrapCoreMvc.Enums
     {
         [Description(Css.BgPrimary)]
         Primary,
+        [Description(Css.BgSecondary)]
+        Secondary,
         [Description(Css.BgSuccess)]
         Success,
         [Description(Css.BgInfo)]
@@ -13,6 +15,10 @@ namespace FBootstrapCoreMvc.Enums
         [Description(Css.BgWarning)]
         Warning,
         [Description(Css.BgDanger)]
-        Danger
+        Danger,
+        [Description(Css.BgLight)]
+        Light,
+        [Description(Css.BgDark)]
+        Dark
     }
 }

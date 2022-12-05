@@ -5,7 +5,7 @@ namespace FBootstrapCoreMvc.Components
     public class NavbarCollapse : HtmlComponent,
         ICanCreate<NavbarNav>
     {
-        public NavbarCollapse(string? id) 
+        public NavbarCollapse() 
             : base("div", Css.Collapse, Css.NavbarCollapse)
         {
         }
