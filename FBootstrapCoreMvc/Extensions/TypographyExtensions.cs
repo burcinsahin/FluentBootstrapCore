@@ -58,6 +58,12 @@ namespace FBootstrapCoreMvc.Extensions
             dropdownItem.SetHref(url);
             return new BootstrapContent<DropdownItem>(builder.HtmlHelper, dropdownItem);
         }
+
+        public static BootstrapContent<DropdownMenu> Dark(this BootstrapContent<DropdownMenu> bootstrapContent)
+        {
+            bootstrapContent.Component.AddCss(Css.DropdownMenuDark);
+            return bootstrapContent;
+        }
         #endregion
 
         public static BootstrapContent<ListItem> ListItem<TComponent>(this BootstrapBuilder<TComponent> builder, object? content = null)

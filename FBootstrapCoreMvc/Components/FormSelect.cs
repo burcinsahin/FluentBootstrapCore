@@ -6,37 +6,39 @@ namespace FBootstrapCoreMvc.Components
 {
     public class FormSelect : HtmlComponent
     {
-        private Select _select;
-        private Label _label;
+        public string? LabelText { get; set; }
+        public string? Name { get; set; }
+        public IEnumerable<SelectListItem>? SelectList { get; set; }
+        public object? SelectedValue { get; internal set; }
 
-        public FormSelect(string? label)
-            : base("div", Css.FormFloating)
+        public FormSelect(string? label = null)
+            : base("div")
         {
-            _select = new Select().SetId();
-            _label = new Label();
-            _label.SetContent(label);
-            _label.MergeAttribute("for", _select.Id);
-            AddChild(_select);
-            AddChild(_label);
+            LabelText = label;
         }
 
-        public FormSelect SetName(string? name)
+        protected override void Initialize()
         {
-            _select.MergeAttribute("name", name);
-            return this;
-        }
+            var select = new Select().SetId();
 
-        public FormSelect SetOptions(IEnumerable<SelectListItem> selectList)
-        {
-            _select.SetOptions(selectList);
-            return this;
-        }
+            if (Name != null)
+                select.MergeAttribute("name", Name);
 
-        public FormSelect SetSelected(object? value)
-        {
-            _select.SetSelected(value);
-            return this;
-        }
+            select.SelectList = SelectList;
+            select.SelectedValue = SelectedValue;
 
+            AddChild(select);
+
+            if (LabelText != null)
+            {
+                AddCss(Css.FormFloating);
+                var label = new Label();
+                label.SetContent(LabelText);
+                label.MergeAttribute("for", select.Id);
+                AddChild(label);
+            }
+
+            base.Initialize();
+        }
     }
 }

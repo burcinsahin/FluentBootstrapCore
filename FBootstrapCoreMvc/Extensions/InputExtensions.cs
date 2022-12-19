@@ -1,7 +1,9 @@
 ﻿using FBootstrapCoreMvc.Components;
 using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FBootstrapCoreMvc.Extensions
@@ -62,5 +64,14 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.AutoFocus();
             return bootstrapContent;
         }
+
+        public static BootstrapContent<Select> Select(this IBootstrapHelper bootstrapHelper, string name, IEnumerable<SelectListItem> selectList)
+        {
+            var select = new Select();
+            select.MergeAttribute("name", name);
+            select.SelectList = selectList;
+            return new BootstrapContent<Select>(bootstrapHelper.HtmlHelper, select);
+        }
+
     }
 }

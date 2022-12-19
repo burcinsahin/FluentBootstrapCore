@@ -36,7 +36,7 @@
             {
                 using (row.Column().Begin())
                 {
-                    @form.Select("isActive", "Gender", genderOpts)
+                    @form.Select("isActive", genderOpts, "Gender")
                 }
                 using (row.Column().Begin())
                 {

@@ -115,19 +115,23 @@ namespace FBootstrapCoreMvc.Extensions
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
             var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
-            var formSelect = new FormSelect(modelExpression.Name);
-            formSelect.SetName(modelExpression.Name);
-            formSelect.SetOptions(selectList);
-            formSelect.SetSelected(modelExpression.Model);
+            var formSelect = new FormSelect(modelExpression.Name)
+            {
+                Name = modelExpression.Name,
+                SelectList = selectList,
+                SelectedValue = modelExpression.Model
+            };
             return new BootstrapContent<FormSelect>(htmlHelper, formSelect);
         }
 
-        public static BootstrapContent<FormSelect> Select<TComponent>(this BootstrapBuilder<TComponent> builder, string name, string label, IEnumerable<SelectListItem> selectList)
+        public static BootstrapContent<FormSelect> Select<TComponent>(this BootstrapBuilder<TComponent> builder, string name, IEnumerable<SelectListItem> selectList, string? label = null)
             where TComponent : HtmlComponent, ICanCreate<FormSelect>
         {
-            var formSelect = new FormSelect(label);
-            formSelect.SetName(name);
-            formSelect.SetOptions(selectList);
+            var formSelect = new FormSelect(label)
+            {
+                Name = name,
+                SelectList = selectList
+            };
             return new BootstrapContent<FormSelect>(builder.HtmlHelper, formSelect);
         }
 
