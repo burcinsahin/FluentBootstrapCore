@@ -92,14 +92,17 @@ namespace FBootstrapCoreMvc
 
         public BootstrapContent<LinkButton> LinkButton(object? content, string href = "#")
         {
-            var linkButton = new LinkButton(ButtonState.Primary, content);
+            var linkButton = new LinkButton
+            {
+                Content = content
+            };
             linkButton.MergeAttribute("href", href);
             return new BootstrapContent<LinkButton>(HtmlHelper, linkButton);
         }
 
         public BootstrapContent<LinkButton> LinkButton(string text, string action, string controller, object? routeValues = null)
         {
-            var linkButton = new LinkButton(ButtonState.Primary, text);
+            var linkButton = new LinkButton(text);
             var urlHelperFactory = HtmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;
             var urlHelper = urlHelperFactory?.GetUrlHelper(HtmlHelper.ViewContext);
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
@@ -127,11 +130,9 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Form, TModel>(_htmlHelper, form);
         }
 
-        public BootstrapContent<Button> Button(ButtonType buttonType = ButtonType.Button, object? value = null)
+        public BootstrapContent<Button> Button(object? content = null)
         {
-            var button = new Button();
-            button.SetType(buttonType);
-            button.SetValue(value);
+            var button = new Button() { Content = content };
             return new BootstrapContent<Button>(_htmlHelper, button);
         }
 

@@ -145,8 +145,10 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<Button> Button<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Button", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : HtmlComponent, ICanCreate<Button>
         {
-            var button = new Button(buttonState, text);
-            button.SetType(ButtonType.Button);
+            var button = new Button(text)
+            {
+                ButtonType = ButtonType.Button
+            };
             if (value != null)
                 button.SetValue(value.ToString());
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
@@ -155,8 +157,11 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<Button> Submit<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Submit", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : HtmlComponent, ICanCreate<Button>
         {
-            var submit = new Button(buttonState, text);
-            submit.SetType(ButtonType.Submit);
+            var submit = new Button(text)
+            {
+                ButtonState = buttonState,
+                ButtonType = ButtonType.Submit
+            };
             if (value != null)
                 submit.SetValue(value.ToString());
             return new BootstrapContent<Button>(builder.HtmlHelper, submit);
@@ -165,8 +170,11 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<Button> Reset<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Reset", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : HtmlComponent, ICanCreate<Button>
         {
-            var reset = new Button(buttonState, text);
-            reset.SetType(ButtonType.Reset);
+            var reset = new Button(text)
+            {
+                ButtonState = buttonState,
+                ButtonType = ButtonType.Reset
+            };
             if (value != null)
                 reset.SetValue(value.ToString());
             return new BootstrapContent<Button>(builder.HtmlHelper, reset);

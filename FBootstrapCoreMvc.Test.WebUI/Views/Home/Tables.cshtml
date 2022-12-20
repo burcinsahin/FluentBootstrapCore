@@ -15,7 +15,7 @@
                 @row.TableData(Html.Bootstrap().CheckBox().SetDisabled())
 
                 @row.TableData(Html.Bootstrap().LinkButton(null,"#").SetIcon(IconType.Edit).SetSize(ButtonSize.Sm))
-                @row.TableData(Html.Bootstrap().Button(buttonType: ButtonType.Submit).SetIcon(IconType.Trash).SetSize(ButtonSize.Sm).SetName("id"))
+                @row.TableData(Html.Bootstrap().Button().SetIcon(IconType.Trash).SetSize(ButtonSize.Sm).SetName("id"))
             }
         }
     }

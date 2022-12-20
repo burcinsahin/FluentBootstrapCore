@@ -44,7 +44,7 @@ namespace FBootstrapCoreMvc.Extensions
             where TComponent : HtmlComponent, ICanHaveValue
         {
             if (value != null)
-                component.MergeAttribute("value", value);
+                component.MergeAttribute("value", value, true);
             return component;
         }
 

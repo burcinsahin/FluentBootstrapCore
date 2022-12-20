@@ -132,7 +132,7 @@ namespace FBootstrapCoreMvc.Extensions
             if (value == null)
                 return bootstrapContent;
 
-            bootstrapContent.Component.MergeAttribute("value", value);
+            bootstrapContent.Component.MergeAttribute("value", value, true);
             return bootstrapContent;
         }
 

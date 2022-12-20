@@ -40,7 +40,7 @@
                 }
                 using (row.Column().Begin())
                 {
-                    @Html.Bootstrap().Button(ButtonType.Submit, "Filter").SetIcon(IconType.Filter)
+                    @Html.Bootstrap().Button("Filter").SetType(ButtonType.Submit).SetIcon(IconType.Filter)
                 }
             }
         }
