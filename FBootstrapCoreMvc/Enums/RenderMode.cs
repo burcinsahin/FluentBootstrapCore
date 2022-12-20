@@ -5,6 +5,7 @@
         Normal,
         Start,
         End,
-        SelfClosing
+        SelfClosing,
+        None
     }
 }

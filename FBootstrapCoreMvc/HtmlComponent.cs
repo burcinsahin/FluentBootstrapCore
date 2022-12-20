@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -114,6 +113,9 @@ namespace FBootstrapCoreMvc
 
         public string ToHtml()
         {
+            if (RenderMode == RenderMode.None)
+                return string.Empty;
+
             Build();
             SetTagRenderMode();
             return _tagBuilder.ToHtmlString();

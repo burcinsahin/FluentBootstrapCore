@@ -6,6 +6,16 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class ComponentExtensions
     {
+        public static BootstrapContent<TComponent> RenderIf<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            bool condition) 
+            where TComponent : HtmlComponent
+        {
+            if (condition == false)
+                bootstrapContent.Component.RenderMode = RenderMode.None;
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<TComponent> MergeAttribute<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string key,

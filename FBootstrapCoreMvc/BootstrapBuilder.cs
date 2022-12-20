@@ -14,9 +14,6 @@ namespace FBootstrapCoreMvc
             : base(htmlHelper, component)
         {
             _htmlHelper = htmlHelper;
-            //_component = component;
-            //_htmlHelper.ViewContext.Writer.Write(_component.Begin());
-            //_htmlHelper.ViewContext.Writer.Write(_component.Body());
         }
     }
 
