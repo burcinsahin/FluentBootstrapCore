@@ -3,7 +3,9 @@
 namespace FBootstrapCoreMvc.Components
 {
     public class SelectOption : HtmlComponent,
-        ICanHaveValue, ICanBeDisabled, ICanBeSelected
+        ICanHaveValue, 
+        ICanBeDisabled, 
+        ICanBeSelected
     {
         public SelectOption()
             : base("option")

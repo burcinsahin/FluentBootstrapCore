@@ -1,96 +1,68 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormInput : HtmlComponent,
-        ICanBeReadonly
+    public class FormInput : FormControl, ICanHaveMaxLength
     {
-        private Input _input;
-        private Label _label;
-
-        public bool Readonly { get; set; }
+        public FormInputType Type { get; set; }
+        public bool Required { get; set; }
+        public int MaxLength { get; set; }
+        public bool AutoFocus { get; set; }
+        public string? Placeholder { get; set; }
 
         public FormInput(FormInputType inputType = FormInputType.Text, string? label = null)
-            : base("div", Css.Mb3)
+            : base()
         {
-            _input = new Input();
-            _input.AddCss(Css.FormControl);
-            _input.SetType(inputType);
-            _input.SetId();
-
-            _label = new Label();
-            if (label != null)
-            {
-                _label.AddCss(Css.FormLabel);
-                _label.MergeAttribute("for", _input.Id);
-                _label.SetContent(label);
-
-                AddChild(_label);
-            }
-            AddChild(_input);
+            Label = label;
+            Type = inputType;
         }
 
         protected override void Initialize()
         {
             if (Readonly)
                 MergeAttribute("readonly");
+
+            var input = new Input
+            {
+                Type = Type
+            };
+
+            input.AddCss(Css.FormControl);
+            input.SetId();
+
+            input.Required = Required;
+            input.AutoFocus = AutoFocus;
+            input.MaxLength = MaxLength;
+            input.Name = Name;
+            input.Placeholder = Placeholder;
+
+            AddChild(input);
+
+            if (Label != null)
+            {
+                var label = new Label()
+                {
+                    Content = Label
+                };
+                label.AddCss(Css.FormLabel);
+                label.For = input.Id;
+                AddChild(label, ChildLocation.Header);
+            }
+            else if (FloatingLabel != null)
+            {
+                AddCss(Css.FormFloating);
+
+                input.Placeholder = FloatingLabel;
+                var label = new Label
+                {
+                    Content = FloatingLabel,
+                    For = input.Id
+                };
+                AddChild(label);
+            }
+
             base.Initialize();
-        }
-
-        public FormInput IsRequired()
-        {
-            _input.IsRequired();
-            return this;
-        }
-
-        public FormInput AutoFocus()
-        {
-            _input.AutoFocus();
-            return this;
-        }
-
-        public FormInput SetMaxLength(short value = 100)
-        {
-            _input.SetMaxLength(value);
-            return this;
-        }
-
-        public FormInput SetPlaceholder(string? text)
-        {
-            _input.SetPlaceholder(text);
-            return this;
-        }
-
-        public FormInput SetName(string? text)
-        {
-            _input.SetName(text);
-            return this;
-        }
-
-        public FormInput SetValue(object? value)
-        {
-            _input.SetValue(value);
-            return this;
-        }
-
-        public FormInput SetType(FormInputType inputType)
-        {
-            _input.SetType(inputType);
-            return this;
-        }
-
-        public FormInput SetFloatingLabel(string? label)
-        {
-            AddCss(Css.FormFloating);
-            _input.SetPlaceholder(label);
-            _label.MergeAttribute("for", _input.Id);
-            _label.SetContent(label);
-
-            RemoveChild(_label);
-            AddChild(_label);
-            return this;
         }
     }
 }

@@ -13,7 +13,7 @@
             MergeAttribute("role", role);
         }
 
-        protected internal Link SetHref(string href)
+        protected internal Link SetHref(string? href)
         {
             MergeAttribute("href", href);
             return this;

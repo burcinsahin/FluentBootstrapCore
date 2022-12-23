@@ -1,21 +1,10 @@
 ﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
 
 namespace FBootstrapCoreMvc.Extensions
 {
     public static class AlertExtensions
     {
-        public static BootstrapContent<Alert> Alert(this IBootstrapHelper bootstrapHelper, 
-            AlertState alertState = AlertState.Primary, string? heading = null, object? content = null)
-        {
-            var component = new Alert();
-            component.AddCss(alertState.GetCssDescription());
-            component.Heading = heading;
-            component.Content = content;
-            return new BootstrapContent<Alert>(bootstrapHelper.HtmlHelper, component);
-        }
-
-        public static BootstrapContent<Alert> SetDismissible(this BootstrapContent<Alert> content) 
+        public static BootstrapContent<Alert> SetDismissible(this BootstrapContent<Alert> content)
         {
             content.Component.Dismissible = true;
             return content;

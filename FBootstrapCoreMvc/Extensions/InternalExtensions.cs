@@ -19,7 +19,7 @@ namespace FBootstrapCoreMvc.Extensions
             where TComponent : HtmlComponent
         {
             if (id == null)
-                id = $"{typeof(TComponent).Name}_{DateTime.Now.Ticks}";
+                id = $"{component.Tag}_{DateTime.Now.Ticks}";
             component.Id = id;
             return component;
         }

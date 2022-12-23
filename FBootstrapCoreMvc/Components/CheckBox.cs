@@ -9,14 +9,21 @@ namespace FBootstrapCoreMvc.Components
         ICanHaveValue,
         ICanBeChecked
     {
+        public bool Checked { get; set; }
+        public bool Disabled { get; set; }
+
         public CheckBox() : base(FormInputType.Checkbox)
         {
         }
 
-        protected internal void SetChecked(bool? value = false)
+        protected override void Initialize()
         {
-            if (value == null || value.Value)
+            if (Checked)
                 MergeAttribute("checked");
+            if (Disabled)
+                MergeAttribute("disabled");
+
+            base.Initialize();
         }
     }
 }

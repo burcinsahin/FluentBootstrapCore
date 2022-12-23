@@ -24,6 +24,7 @@ namespace FBootstrapCoreMvc
         protected readonly TComponent _component;
 
         internal IHtmlHelper HtmlHelper => _htmlHelper;
+        internal TComponent Component => _component;
 
         public BootstrapBuilder(IHtmlHelper htmlHelper, TComponent component)
         {

@@ -5,29 +5,30 @@
 }
 @using (Html.Bootstrap().Container().SetResponsive(ContainerSize.Small).Begin())
 {
-    @Html.Bootstrap().Heading1("Form-Example-1")
+    @Html.Bootstrap().Heading1("Form-Example-Default")
     using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Begin())
     {
         @form.InputFor(model => model.Name).SetMaxLength(50)
         @form.InputFor(model => model.Surname).SetMaxLength(50)
+        @form.TextArea("SomeName","SomeLabel","SomeValue").SetMaxLength(200)
         @form.SelectFor(model => model.Gender, genderOpts)
         @form.CheckFor(model => model.IsMarried)
         @form.PasswordFor(model => model.Password).SetMaxLength(16).IsRequired()
         @form.Submit()
     }
     <hr />
-    @Html.Bootstrap().Heading1("Form-Example-2")
+    @Html.Bootstrap().Heading1("Form-Example-With-Labels")
     using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).SetConfirm("confirm submit?").Begin())
     {
-        @form.InputFor(model => model.Name).SetMaxLength(50)
-        @form.InputFor(model => model.Surname).SetMaxLength(50)
-        @form.SelectFor(model => model.Gender, genderOpts)
-        @form.CheckFor(model => model.IsMarried)
-        @form.PasswordFor(model => model.Password).SetMaxLength(16).IsRequired()
+        @form.InputFor(model => model.Name).SetMaxLength(50).SetLabel("Name")
+        @form.InputFor(model => model.Surname).SetMaxLength(50).SetLabel("Surname")
+        @form.SelectFor(model => model.Gender, genderOpts).SetLabel("Gender")
+        @form.CheckFor(model => model.IsMarried).SetLabel("Married")
+        @form.PasswordFor(model => model.Password).SetLabel("Password").SetMaxLength(16).IsRequired()
         @form.Submit()
     }
     <hr />
-    @Html.Bootstrap().Heading1("Form-Example-3")
+    @Html.Bootstrap().Heading1("Form-Example-With-Grid")
     @using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Get).Begin())
     {
         using (var grid = Html.Bootstrap().Container().AddCss(Css.Mb3, Css.Mt3).Begin())
@@ -36,7 +37,7 @@
             {
                 using (row.Column().Begin())
                 {
-                    @form.Select("isActive", genderOpts, "Gender")
+                    @form.Select("isActive", genderOpts).SetLabel("Gender")
                 }
                 using (row.Column().Begin())
                 {

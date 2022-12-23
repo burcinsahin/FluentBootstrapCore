@@ -6,17 +6,26 @@ namespace FBootstrapCoreMvc.Components
     public class List : HtmlComponent,
         ICanCreate<ListItem>
     {
+        public ListType Type { get; set; }
         public List(ListType listType)
-            : base(listType == ListType.Ordered ? "ol" : "ul", Css.ListUnstyled)
+            : base(listType == ListType.Ordered ? "ol" : "ul")
         {
-            //if (listType == ListType.Ordered)
-            //    SetNumbered();
+            Type = listType;
         }
 
-        public List SetInline()
+        protected override void Initialize()
         {
-            AddCss(Css.ListInline);
-            return this;
+            switch (Type)
+            {
+                case ListType.Unstyled:
+                    AddCss(Css.ListUnstyled);
+                    break;
+                case ListType.Inline:
+                    AddCss(Css.ListInline);
+                    break;
+            }
+
+            base.Initialize();
         }
     }
 }

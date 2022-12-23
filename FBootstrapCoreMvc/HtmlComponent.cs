@@ -23,6 +23,7 @@ namespace FBootstrapCoreMvc
         private RenderMode _renderMode;
 
         public string? Id { get; protected internal set; }
+        public string Tag => _tagBuilder.TagName;
 
         internal object? Content
         {

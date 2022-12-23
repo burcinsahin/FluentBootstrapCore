@@ -7,31 +7,26 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class TypographyExtensions
     {
-        public static BootstrapContent<Heading> Heading(this IBootstrapHelper bootstrapHelper, byte size = 1, object? content = null)
-        {
-            if (size < 1) size = 1;
-            else if (size > 6) size = 6;
+        //public static BootstrapContent<Heading> Heading(this IBootstrapHelper bootstrapHelper, byte size = 1, object? content = null)
+        //{
+        //    if (size < 1) size = 1;
+        //    else if (size > 6) size = 6;
 
-            var heading = new Heading(size);
-            heading.AppendContent(content);
-            return new BootstrapContent<Heading>(bootstrapHelper.HtmlHelper, heading);
-        }
+        //    var heading = new Heading(size);
+        //    heading.AppendContent(content);
+        //    return new BootstrapContent<Heading>(bootstrapHelper.HtmlHelper, heading);
+        //}
 
-        public static BootstrapContent<Heading> Heading1(this IBootstrapHelper bootstrapHelper, object? content = null)
-        {
-            return bootstrapHelper.Heading(1, content);
-        }
+        //public static BootstrapContent<Heading> Heading1(this IBootstrapHelper bootstrapHelper, object? content = null)
+        //{
+        //    return bootstrapHelper.Heading(1, content);
+        //}
 
         public static BootstrapContent<Icon> Icon(this IBootstrapHelper bootstrapHelper, IconType iconType, object? content = null)
         {
             var icon = new Icon(iconType);
             icon.AppendContent(content);
             return new BootstrapContent<Icon>(bootstrapHelper.HtmlHelper, icon);
-        }
-
-        public static BootstrapContent<Alert> Alert<TModel>(this BootstrapHelper<TModel> bootstrap)
-        {
-            return new BootstrapContent<Alert>(bootstrap.HtmlHelper, new Alert());
         }
 
         #region Dropdown
@@ -67,10 +62,13 @@ namespace FBootstrapCoreMvc.Extensions
         #endregion
 
         public static BootstrapContent<ListItem> ListItem<TComponent>(this BootstrapBuilder<TComponent> builder, object? content = null)
-            where TComponent : HtmlComponent, ICanCreate<ListItem>
+            where TComponent : List
         {
-            var listItem = new ListItem();
-            listItem.SetContent(content);
+            var listItem = new ListItem() { Content = content };
+
+            if (builder.Component.Type == ListType.Inline)
+                listItem.Inline = true;
+
             return new BootstrapContent<ListItem>(builder.HtmlHelper, listItem);
         }
 
