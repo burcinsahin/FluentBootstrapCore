@@ -5,26 +5,39 @@
 }
 @using (Html.Bootstrap().Container().SetResponsive(ContainerSize.Small).Begin())
 {
-    @Html.Bootstrap().Heading1("Form-Example-Default")
+    @Html.Bootstrap().Heading1("Form Default")
     using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Begin())
     {
         @form.InputFor(model => model.Name).SetMaxLength(50)
         @form.InputFor(model => model.Surname).SetMaxLength(50)
-        @form.TextArea("SomeName","SomeLabel","SomeValue").SetMaxLength(200)
+        @form.TextAreaFor(model => model.Description).SetMaxLength(200)
         @form.SelectFor(model => model.Gender, genderOpts)
         @form.CheckFor(model => model.IsMarried)
         @form.PasswordFor(model => model.Password).SetMaxLength(16).IsRequired()
         @form.Submit()
     }
     <hr />
-    @Html.Bootstrap().Heading1("Form-Example-With-Labels")
+    @Html.Bootstrap().Heading1("Form Controls With Labels")
     using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).SetConfirm("confirm submit?").Begin())
     {
         @form.InputFor(model => model.Name).SetMaxLength(50).SetLabel("Name")
         @form.InputFor(model => model.Surname).SetMaxLength(50).SetLabel("Surname")
+        @form.TextAreaFor(model => model.Description).SetMaxLength(200).SetLabel("Description")
         @form.SelectFor(model => model.Gender, genderOpts).SetLabel("Gender")
         @form.CheckFor(model => model.IsMarried).SetLabel("Married")
         @form.PasswordFor(model => model.Password).SetLabel("Password").SetMaxLength(16).IsRequired()
+        @form.Submit()
+    }
+    <hr />
+    @Html.Bootstrap().Heading1("Form Controls With Floating Labels")
+    using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).SetConfirm("confirm submit?").Begin())
+    {
+        @form.InputFor(model => model.Name).SetMaxLength(50).SetFloatingLabel("Name")
+        @form.InputFor(model => model.Surname).SetMaxLength(50).SetFloatingLabel("Surname")
+        @form.TextAreaFor(model => model.Description).SetMaxLength(200).SetFloatingLabel("Description")
+        @form.SelectFor(model => model.Gender, genderOpts).SetFloatingLabel("Gender")
+        @form.CheckFor(model => model.IsMarried).SetFloatingLabel("Married")
+        @form.PasswordFor(model => model.Password).SetFloatingLabel("Password").SetMaxLength(16).IsRequired()
         @form.Submit()
     }
     <hr />
@@ -47,7 +60,7 @@
         }
     }
     <hr />
-    @Html.Bootstrap().Heading1("Form-Example-4")
+    @Html.Bootstrap().Heading1("Form Example Complex")
     @using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post, new { area = "Admin" }).AddCss("form-signin").Begin())
     {
         @form.InputFor(model => model.Email).SetFloatingLabel("Email").SetMaxLength().IsRequired().AutoFocus()

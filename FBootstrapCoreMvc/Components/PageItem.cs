@@ -1,6 +1,4 @@
-﻿using FBootstrapCoreMvc.Extensions;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
     public class PageItem : HtmlComponent
     {
@@ -21,7 +19,8 @@ namespace FBootstrapCoreMvc.Components
 
         protected internal PageItem SetLink(string? href, object? content)
         {
-            _link.SetHref(href).SetContent(content);
+            _link.Href = href;
+            _link.Content = content;
             return this;
         }
 

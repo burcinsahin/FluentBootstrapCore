@@ -204,8 +204,10 @@ namespace FBootstrapCoreMvc
 
         public BootstrapContent<Link> Link(object? content, string href = "#")
         {
-            var link = new Link(content);
-            link.SetHref(href);
+            var link = new Link(content)
+            {
+                Href = href
+            };
             return new BootstrapContent<Link>(HtmlHelper, link);
         }
 

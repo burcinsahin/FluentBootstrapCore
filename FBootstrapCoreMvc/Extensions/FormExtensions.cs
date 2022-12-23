@@ -5,6 +5,7 @@ using FBootstrapCoreMvc.Interfaces;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -71,6 +72,25 @@ namespace FBootstrapCoreMvc.Extensions
                 Value = value,
                 Placeholder = label
             };
+            return new BootstrapContent<FormTextArea>(builder.HtmlHelper, textarea);
+        }
+
+        public static BootstrapContent<FormTextArea> TextAreaFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+            where TComponent : Form
+        {
+            var htmlHelper = builder.HtmlHelper;
+            var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
+            var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
+
+            var textarea = new FormTextArea
+            {
+                Name = modelExpression.Name,
+                Placeholder = modelExpression.Name
+            };
+
+            if (modelExpression.Model != null)
+                textarea.Content = (TValue)modelExpression.Model;
+
             return new BootstrapContent<FormTextArea>(builder.HtmlHelper, textarea);
         }
 
@@ -170,8 +190,7 @@ namespace FBootstrapCoreMvc.Extensions
             {
                 Name = modelExpression.Name,
                 SelectList = selectList,
-                SelectedValue = modelExpression.Model,
-                Label = modelExpression.Name
+                SelectedValue = modelExpression.Model
             };
             return new BootstrapContent<FormSelect>(htmlHelper, formSelect);
         }

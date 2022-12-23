@@ -1,24 +1,27 @@
-﻿using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
     public class DropdownItem : HtmlComponent,
-        ILink<DropdownItem>
+        ILink
     {
-        private Link _link;
-        public DropdownItem(string? text)
+        public string? Href { get; set; }
+        public DropdownItem()
             : base("li")
         {
-            _link = new Link(text);
-            _link.AddCss(Css.DropdownItem);
-            AddChild(_link);
         }
 
-        public DropdownItem SetHref(string? href)
+        protected override void PreBuild()
         {
-            _link.SetHref(href);
-            return this;
+            var link = new Link
+            {
+                Content = Content,
+                Href = Href
+            };
+            link.AddCss(Css.DropdownItem);
+            AddChild(link);
+            Content = null;
+            base.PreBuild();
         }
     }
 }

@@ -5,15 +5,18 @@ namespace FBootstrapCoreMvc.Components
     public class Container : HtmlComponent,
         ICanCreate<GridRow>
     {
+        public bool TextCentered { get; set; }
+
         public Container()
             : base("div", Css.Container)
         {
         }
 
-        protected internal Container TextCenter()
+        protected override void PreBuild()
         {
-            AddCss(Css.TextCenter);
-            return this;
+            if (TextCentered)
+                AddCss(Css.TextCenter);
+            base.PreBuild();
         }
     }
 }

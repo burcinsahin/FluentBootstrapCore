@@ -4,9 +4,6 @@ using FBootstrapCoreMvc.Interfaces;
 namespace FBootstrapCoreMvc.Components
 {
     public class CheckBox : BaseInput,
-        ICanBeDisabled,
-        ICanHaveName,
-        ICanHaveValue,
         ICanBeChecked
     {
         public bool Checked { get; set; }

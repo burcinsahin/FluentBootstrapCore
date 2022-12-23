@@ -1,7 +1,7 @@
 ﻿namespace FBootstrapCoreMvc.Interfaces
 {
-    public interface ILink<TComponent>
+    public interface ILink
     {
-        TComponent SetHref(string? href);
+        string? Href { get; set; }
     }
 }

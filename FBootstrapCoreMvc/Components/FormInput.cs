@@ -25,18 +25,18 @@ namespace FBootstrapCoreMvc.Components
 
             var input = new Input
             {
-                Type = Type
+                Type = Type,
+                Required = Required,
+                AutoFocus = AutoFocus,
+                MaxLength = MaxLength,
+                Name = Name,
+                Placeholder = Placeholder,
+                Value = Value,
+                Content = Content
             };
 
             input.AddCss(Css.FormControl);
             input.SetId();
-
-            input.Required = Required;
-            input.AutoFocus = AutoFocus;
-            input.MaxLength = MaxLength;
-            input.Name = Name;
-            input.Placeholder = Placeholder;
-
             AddChild(input);
 
             if (Label != null)

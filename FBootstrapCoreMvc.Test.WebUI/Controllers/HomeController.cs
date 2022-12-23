@@ -23,6 +23,7 @@ namespace FBootstrapCoreMvc.Test.WebUI.Controllers
             {
                 Name = "Behzat",
                 Surname = "Ç",
+                Description= "Tüm meslektaşları daha üst makamlara gelirken, Behzat dedektif olarak kalır. Her zaman başını belaya soksa da, suçluları yakalamak için kendi yöntemleri vardır.",
                 Age = 42,
                 Gender = "Male",
                 IsMarried = true,

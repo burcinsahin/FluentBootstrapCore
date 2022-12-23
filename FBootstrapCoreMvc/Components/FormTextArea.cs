@@ -20,7 +20,8 @@ namespace FBootstrapCoreMvc.Components
                 textarea.MergeAttribute("placeholder", Placeholder);
             if (MaxLength > 0)
                 textarea.MergeAttribute("maxlength", MaxLength);
-
+            textarea.Content = Content;
+            Content = null;
             AddChild(textarea);
 
             if (FloatingLabel != null)
