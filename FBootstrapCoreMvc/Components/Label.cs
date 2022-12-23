@@ -10,14 +10,14 @@
             Content = content;
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             if (For != null)
             {
                 MergeAttribute("for", For);
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

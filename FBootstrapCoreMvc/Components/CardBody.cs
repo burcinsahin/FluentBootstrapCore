@@ -19,7 +19,7 @@ namespace FBootstrapCoreMvc.Components
             CardLinks = new List<Link>();
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             if (Title != null)
             {
@@ -59,7 +59,7 @@ namespace FBootstrapCoreMvc.Components
                 }
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace FBootstrapCoreMvc.Components
             ButtonState = ButtonState.Primary;
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             AddCss(ButtonState.GetCssDescription());
             MergeAttribute("type", ButtonType.GetCssDescription());
@@ -30,7 +30,7 @@ namespace FBootstrapCoreMvc.Components
                 var icon = new Icon(IconType.Value);
                 AddChild(icon, ChildLocation.Header);
             }
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

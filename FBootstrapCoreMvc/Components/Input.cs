@@ -14,7 +14,7 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             if (Required)
                 MergeAttribute("required", true);
@@ -27,7 +27,7 @@ namespace FBootstrapCoreMvc.Components
             if (Name != null)
                 MergeAttribute("name", Name);
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

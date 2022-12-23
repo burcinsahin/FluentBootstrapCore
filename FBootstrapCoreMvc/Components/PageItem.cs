@@ -13,10 +13,10 @@ namespace FBootstrapCoreMvc.Components
             _link.AddCss(Css.PageLink);
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             AddChild(_link);
-            base.Initialize();
+            base.PreBuild();
         }
 
         protected internal PageItem SetLink(string? href, object? content)

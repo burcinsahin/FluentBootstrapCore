@@ -16,14 +16,14 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             if (Checked)
                 MergeAttribute("checked");
             if (Disabled)
                 MergeAttribute("disabled");
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace FBootstrapCoreMvc.Components
         public string? Placeholder { get; set; }
         public int MaxLength { get; set; }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             var textarea = new HtmlElement("textarea", Css.FormControl);
             textarea.SetId();
@@ -35,7 +35,7 @@ namespace FBootstrapCoreMvc.Components
                 AddChild(label);
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
 
     }

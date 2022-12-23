@@ -13,7 +13,7 @@ namespace FBootstrapCoreMvc.Components
             Type = listType;
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             switch (Type)
             {
@@ -25,7 +25,7 @@ namespace FBootstrapCoreMvc.Components
                     break;
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

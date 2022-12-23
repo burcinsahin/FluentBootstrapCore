@@ -132,7 +132,7 @@ namespace FBootstrapCoreMvc
         /// <summary>
         /// Invoked before Begin
         /// </summary>
-        protected virtual void Initialize()
+        protected virtual void PreBuild()
         {
             if (Id != null)
                 MergeAttribute("id", Id);
@@ -140,7 +140,7 @@ namespace FBootstrapCoreMvc
 
         internal IHtmlContent Begin()
         {
-            Initialize();
+            PreBuild();
 
             _fullWrapperChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
 

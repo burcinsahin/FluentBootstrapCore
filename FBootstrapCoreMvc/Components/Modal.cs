@@ -15,7 +15,7 @@ namespace FBootstrapCoreMvc.Components
             MergeAttribute("tabindex", "-1");
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             var modalDialog = new HtmlElement("div", Css.ModalDialog);
             if (VCentered)
@@ -50,7 +50,7 @@ namespace FBootstrapCoreMvc.Components
                 Content = modalBody;
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

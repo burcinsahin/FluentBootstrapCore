@@ -18,7 +18,7 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             if (SelectList != null)
             {
@@ -40,7 +40,7 @@ namespace FBootstrapCoreMvc.Components
                 }
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

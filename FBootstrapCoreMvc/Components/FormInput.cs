@@ -18,7 +18,7 @@ namespace FBootstrapCoreMvc.Components
             Type = inputType;
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             if (Readonly)
                 MergeAttribute("readonly");
@@ -62,7 +62,7 @@ namespace FBootstrapCoreMvc.Components
                 AddChild(label);
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

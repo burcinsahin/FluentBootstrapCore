@@ -17,9 +17,9 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

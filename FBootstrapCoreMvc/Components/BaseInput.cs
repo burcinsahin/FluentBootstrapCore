@@ -19,7 +19,7 @@ namespace FBootstrapCoreMvc.Components
             Type = inputType;
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             MergeAttribute("type", Type.GetDescription());
             if (Value != null)
@@ -27,7 +27,7 @@ namespace FBootstrapCoreMvc.Components
             if (Name != null)
                 MergeAttribute("name", Name);
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

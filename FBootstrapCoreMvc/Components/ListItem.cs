@@ -9,11 +9,11 @@
         {
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             if (Inline)
                 AddCss(Css.ListInlineItem);
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

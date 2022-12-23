@@ -19,7 +19,7 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             var select = new Select();
             select.SetId();
@@ -53,7 +53,7 @@ namespace FBootstrapCoreMvc.Components
                 AddChild(label, ChildLocation.Header);
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

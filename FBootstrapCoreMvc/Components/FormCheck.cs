@@ -15,7 +15,7 @@ namespace FBootstrapCoreMvc.Components
             AddCss(Css.FormCheck);
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             var checkbox = new CheckBox();
             checkbox.AddCss(Css.FormCheckInput);
@@ -49,7 +49,7 @@ namespace FBootstrapCoreMvc.Components
             };
             AddChild(hidden);
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

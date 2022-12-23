@@ -12,7 +12,7 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             if (Heading != null)
             {
@@ -28,7 +28,7 @@ namespace FBootstrapCoreMvc.Components
                 AddChild(button, ChildLocation.Footer);
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

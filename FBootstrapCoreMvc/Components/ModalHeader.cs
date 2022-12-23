@@ -8,7 +8,7 @@
             Content = content;
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             var h5 = new Heading(5)
             {
@@ -22,7 +22,7 @@
             closeBtn.MergeAttribute("data-bs-dismiss", "modal");
             AddChild(closeBtn);
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }
