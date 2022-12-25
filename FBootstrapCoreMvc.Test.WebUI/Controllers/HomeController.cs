@@ -19,14 +19,15 @@ namespace FBootstrapCoreMvc.Test.WebUI.Controllers
 
         public virtual IActionResult MvcTest(string view)
         {
-            var customer = new Customer
+            var customer = new Person
             {
                 Name = "Behzat",
                 Surname = "Ç",
-                Description= "Tüm meslektaşları daha üst makamlara gelirken, Behzat dedektif olarak kalır. Her zaman başını belaya soksa da, suçluları yakalamak için kendi yöntemleri vardır.",
+                Bio = "Tüm meslektaşları daha üst makamlara gelirken, Behzat dedektif olarak kalır. Her zaman başını belaya soksa da, suçluları yakalamak için kendi yöntemleri vardır.",
+                Email = "amirim4530@gmail.com",
                 Age = 42,
-                Gender = "Male",
-                IsMarried = true,
+                Gender = 1,
+                Married = true,
                 Address = new Address()
                 {
                     City = "Ankara"
@@ -38,7 +39,7 @@ namespace FBootstrapCoreMvc.Test.WebUI.Controllers
         }
 
         [HttpPost]
-        public virtual IActionResult Submit(Customer model)
+        public virtual IActionResult Submit(Person model)
         {
             return View("MvcForms", model);
         }

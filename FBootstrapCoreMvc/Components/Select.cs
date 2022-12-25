@@ -9,7 +9,7 @@ namespace FBootstrapCoreMvc.Components
     public class Select : HtmlComponent,
         ICanCreate<SelectOption>
     {
-        internal string? Name { get; set; }
+        public string? Name { get; set; }
         internal IEnumerable<SelectListItem>? SelectList { get; set; }
         public object? SelectedValue { get; set; }
 
@@ -20,6 +20,9 @@ namespace FBootstrapCoreMvc.Components
 
         protected override void PreBuild()
         {
+            if (Name != null)
+                MergeAttribute("name", Name);
+
             if (SelectList != null)
             {
                 var options = new List<SelectOption>(SelectList.Count());

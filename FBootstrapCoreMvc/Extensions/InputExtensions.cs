@@ -31,7 +31,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> IsRequired<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
-            where TComponent : FormInput
+            where TComponent : HtmlComponent, ICanBeRequired
         {
             bootstrapContent.Component.Required = true;
             return bootstrapContent;

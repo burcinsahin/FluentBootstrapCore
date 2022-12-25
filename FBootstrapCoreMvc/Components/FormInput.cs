@@ -6,7 +6,6 @@ namespace FBootstrapCoreMvc.Components
     public class FormInput : FormControl, ICanHaveMaxLength
     {
         public FormInputType Type { get; set; }
-        public bool Required { get; set; }
         public int MaxLength { get; set; }
         public bool AutoFocus { get; set; }
         public string? Placeholder { get; set; }

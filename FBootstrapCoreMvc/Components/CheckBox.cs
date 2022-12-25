@@ -8,6 +8,7 @@ namespace FBootstrapCoreMvc.Components
     {
         public bool Checked { get; set; }
         public bool Disabled { get; set; }
+        public string? Role { get; set; }
 
         public CheckBox() : base(FormInputType.Checkbox)
         {
@@ -19,7 +20,8 @@ namespace FBootstrapCoreMvc.Components
                 MergeAttribute("checked");
             if (Disabled)
                 MergeAttribute("disabled");
-
+            if (Role != null)
+                MergeAttribute("role", Role);
             base.PreBuild();
         }
     }

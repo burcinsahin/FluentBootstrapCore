@@ -70,7 +70,8 @@ namespace FBootstrapCoreMvc.Extensions
             {
                 Name = name,
                 Value = value,
-                Placeholder = label
+                Placeholder = label,
+                Content = value
             };
             return new BootstrapContent<FormTextArea>(builder.HtmlHelper, textarea);
         }
@@ -106,7 +107,7 @@ namespace FBootstrapCoreMvc.Extensions
             throw new NotImplementedException();
         }
 
-        public static BootstrapContent<FormCheck> CheckBox<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, string? description = null, bool isChecked = false)
+        public static BootstrapContent<FormCheck> CheckBox<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, bool isChecked = false)
             where TComponent : HtmlComponent, ICanCreate<FormCheck>
         {
             var formCheck = new FormCheck
@@ -134,6 +135,13 @@ namespace FBootstrapCoreMvc.Extensions
                 formCheck.Checked = checkedVal;
             }
             return new BootstrapContent<FormCheck>(builder.HtmlHelper, formCheck);
+        }
+
+        public static BootstrapContent<FormInput> Password<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null)
+            where TComponent : HtmlComponent, ICanCreate<FormInput>
+        {
+
+            return builder.Input(name, label, null, FormInputType.Password);
         }
 
         public static BootstrapContent<FormInput> PasswordFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)

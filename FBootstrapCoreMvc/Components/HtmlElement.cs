@@ -6,5 +6,7 @@
             : base(tagName, cssClasses)
         {
         }
+
+        public string Placeholder { get; internal set; }
     }
 }

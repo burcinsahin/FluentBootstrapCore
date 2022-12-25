@@ -1,4 +1,5 @@
-﻿using FBootstrapCoreMvc.Extensions;
+﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Extensions;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -24,7 +25,17 @@ namespace FBootstrapCoreMvc.Components
             Content = null;
             AddChild(textarea);
 
-            if (FloatingLabel != null)
+            if (Label != null)
+            {
+                var label = new Label()
+                {
+                    Content = Label
+                };
+                label.AddCss(Css.FormLabel);
+                label.For = textarea.Id;
+                AddChild(label, ChildLocation.Header);
+            }
+            else if (FloatingLabel != null)
             {
                 AddCss(Css.FormFloating);
                 var label = new Label()
@@ -32,8 +43,8 @@ namespace FBootstrapCoreMvc.Components
                     Content = FloatingLabel,
                     For = textarea.Id
                 };
-
-                AddChild(label);
+                textarea.Placeholder = FloatingLabel;
+                AddChild(label, ChildLocation.Footer);
             }
 
             base.PreBuild();
