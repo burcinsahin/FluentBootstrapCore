@@ -5,17 +5,6 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class ModalExtensions
     {
-        public static BootstrapContent<Modal> Modal(this IBootstrapHelper bootstrapHelper,
-            string? title = null, object? content = null)
-        {
-            var modal = new Modal
-            {
-                Title = title,
-                Content = content
-            };
-            return new BootstrapContent<Modal>(bootstrapHelper.HtmlHelper, modal);
-        }
-
         public static BootstrapContent<ModalBody> ModalBody(this BootstrapBuilder<Modal> builder, object? content = null)
         {
             var modalBody = new ModalBody

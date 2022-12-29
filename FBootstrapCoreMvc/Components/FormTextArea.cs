@@ -43,12 +43,11 @@ namespace FBootstrapCoreMvc.Components
                     Content = FloatingLabel,
                     For = textarea.Id
                 };
-                textarea.Placeholder = FloatingLabel;
+                textarea.MergeAttribute("placeholder", FloatingLabel);
                 AddChild(label, ChildLocation.Footer);
             }
 
             base.PreBuild();
         }
-
     }
 }

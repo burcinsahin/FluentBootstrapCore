@@ -10,11 +10,6 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class InputExtensions
     {
-        public static BootstrapContent<CheckBox> CheckBox(this IBootstrapHelper bootstrapHelper)
-        {
-            return new BootstrapContent<CheckBox>(bootstrapHelper.HtmlHelper, new CheckBox());
-        }
-
         public static BootstrapContent<TComponent> SetChecked<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool? value = null)
             where TComponent : HtmlComponent, ICanBeChecked
         {
@@ -58,12 +53,12 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<Select> Select(this IBootstrapHelper bootstrapHelper, string name, IEnumerable<SelectListItem> selectList)
-        {
-            var select = new Select();
-            select.MergeAttribute("name", name);
-            select.SelectList = selectList;
-            return new BootstrapContent<Select>(bootstrapHelper.HtmlHelper, select);
-        }
+        //public static BootstrapContent<Select> Select(this IBootstrapHelper bootstrapHelper, string name, IEnumerable<SelectListItem> selectList)
+        //{
+        //    var select = new Select();
+        //    select.MergeAttribute("name", name);
+        //    select.SelectList = selectList;
+        //    return new BootstrapContent<Select>(bootstrapHelper.HtmlHelper, select);
+        //}
     }
 }

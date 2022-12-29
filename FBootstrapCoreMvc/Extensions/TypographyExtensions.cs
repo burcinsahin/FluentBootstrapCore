@@ -7,28 +7,6 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class TypographyExtensions
     {
-        //public static BootstrapContent<Heading> Heading(this IBootstrapHelper bootstrapHelper, byte size = 1, object? content = null)
-        //{
-        //    if (size < 1) size = 1;
-        //    else if (size > 6) size = 6;
-
-        //    var heading = new Heading(size);
-        //    heading.AppendContent(content);
-        //    return new BootstrapContent<Heading>(bootstrapHelper.HtmlHelper, heading);
-        //}
-
-        //public static BootstrapContent<Heading> Heading1(this IBootstrapHelper bootstrapHelper, object? content = null)
-        //{
-        //    return bootstrapHelper.Heading(1, content);
-        //}
-
-        public static BootstrapContent<Icon> Icon(this IBootstrapHelper bootstrapHelper, IconType iconType, object? content = null)
-        {
-            var icon = new Icon(iconType);
-            icon.AppendContent(content);
-            return new BootstrapContent<Icon>(bootstrapHelper.HtmlHelper, icon);
-        }
-
         #region Dropdown
         public static BootstrapContent<DropdownMenu> DropdownMenu<TComponent>(this BootstrapBuilder<TComponent> builder)
             where TComponent : HtmlComponent, ICanCreate<DropdownMenu>

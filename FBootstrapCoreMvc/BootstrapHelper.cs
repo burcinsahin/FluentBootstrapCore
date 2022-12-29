@@ -4,6 +4,7 @@ using FBootstrapCoreMvc.Extensions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
+using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc
 {
@@ -118,9 +119,9 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<HtmlElement>(_htmlHelper, element);
         }
 
-        public BootstrapContent<HtmlElement> Paragraph()
+        public BootstrapContent<HtmlElement> Paragraph(object? content = null)
         {
-            var p = new HtmlElement("p");
+            var p = new HtmlElement("p") { Content = content };
             return new BootstrapContent<HtmlElement>(_htmlHelper, p);
         }
 
@@ -157,10 +158,32 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Alert>(HtmlHelper, component);
         }
 
+        public BootstrapContent<Badge> Badge()
+        {
+            var badge = new Badge();
+            return new BootstrapContent<Badge>(HtmlHelper, badge);
+        }
+
         public BootstrapContent<Button> Button(object? content = null)
         {
             var button = new Button() { Content = content };
             return new BootstrapContent<Button>(_htmlHelper, button);
+        }
+
+        /// <summary>
+        /// Card is new version of old Panel
+        /// </summary>
+        /// <returns></returns>
+        public BootstrapContent<Card> Card(
+            string? header = null,
+            string? footer = null)
+        {
+            var card = new Card();
+            if (header != null)
+                card.Header = header;
+            if (footer != null)
+                card.Footer = footer;
+            return new BootstrapContent<Card>(HtmlHelper, card);
         }
 
         public BootstrapContent<CheckBox> CheckBox()
@@ -181,6 +204,14 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Input>(_htmlHelper, input);
         }
 
+        public BootstrapContent<Icon> Icon(IconType iconType, object? content = null)
+        {
+            var icon = new Icon(iconType)
+            {
+                Content = content
+            };
+            return new BootstrapContent<Icon>(HtmlHelper, icon);
+        }
         public BootstrapContent<LinkButton> LinkButton(object? content, string href = "#")
         {
             var linkButton = new LinkButton
@@ -221,10 +252,61 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
+        public BootstrapContent<Modal> Modal(
+            string? title = null,
+            object? content = null)
+        {
+            var modal = new Modal
+            {
+                Title = title,
+                Content = content
+            };
+            return new BootstrapContent<Modal>(HtmlHelper, modal);
+        }
         public BootstrapContent<Navbar> Navbar()
         {
             var navbar = new Navbar();
             return new BootstrapContent<Navbar>(_htmlHelper, navbar);
+        }
+
+        public BootstrapContent<Pagination> Pagination()
+        {
+            var component = new Pagination();
+            return new BootstrapContent<Pagination>(HtmlHelper, component);
+        }
+
+        public BootstrapContent<RadioButton> Radio()
+        {
+            var component = new RadioButton();
+            return new BootstrapContent<RadioButton>(HtmlHelper, component);
+        }
+
+
+        public BootstrapContent<Range> Range(int min = 0, int max = 0, double step = 0)
+        {
+            var component = new Range()
+            {
+                Min = min,
+                Max = max,
+                Step = step
+            };
+            return new BootstrapContent<Range>(HtmlHelper, component);
+        }
+
+        public BootstrapContent<Select> Select(string name, IEnumerable<SelectListItem> selectList)
+        {
+            var select = new Select
+            {
+                Name = name,
+                SelectList = selectList
+            };
+            return new BootstrapContent<Select>(_htmlHelper, select);
+        }
+
+        public BootstrapContent<Table> Table()
+        {
+            var table = new Table();
+            return new BootstrapContent<Table>(HtmlHelper, table);
         }
         #endregion
 
@@ -246,7 +328,7 @@ namespace FBootstrapCoreMvc
             form.SetAction(url);
             form.SetMethod(method.ToString());
             return new BootstrapContent<Form, TModel>(_htmlHelper, form);
-        } 
+        }
         #endregion
     }
 }

@@ -6,9 +6,19 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class ComponentExtensions
     {
+        #region Common
+        public static BootstrapContent<TComponent> SetContent<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            object content)
+            where TComponent : HtmlComponent
+        {
+            bootstrapContent.Component.Content = content;
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<TComponent> RenderIf<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
-            bool condition) 
+            bool condition)
             where TComponent : HtmlComponent
         {
             if (condition == false)
@@ -133,6 +143,17 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.Id = id;
             return bootstrapContent;
         }
+        #endregion
+
+        #region Interface Filtered
+        public static BootstrapContent<TComponent> SetDisabled<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            bool value = true)
+            where TComponent : HtmlComponent, ICanBeDisabled
+        {
+            bootstrapContent.Component.Disabled = value;
+            return bootstrapContent;
+        }
 
         public static BootstrapContent<TComponent> SetValue<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
@@ -154,16 +175,6 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.MergeAttribute("name", name);
             return bootstrapContent;
         }
-
-        public static BootstrapContent<TComponent> SetDisabled<TComponent>(
-            this BootstrapContent<TComponent> bootstrapContent,
-            bool? value = true)
-            where TComponent : HtmlComponent, ICanBeDisabled
-        {
-            if (value.HasValue && value == false)
-                return bootstrapContent;
-            bootstrapContent.Component.MergeAttribute("disabled");
-            return bootstrapContent;
-        }
+        #endregion
     }
 }

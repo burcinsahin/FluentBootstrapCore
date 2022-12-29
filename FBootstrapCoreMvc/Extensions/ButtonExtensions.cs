@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Extensions
@@ -51,6 +50,5 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.ButtonState = buttonState;
             return bootstrapContent;
         }
-
     }
 }

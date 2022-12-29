@@ -4,23 +4,6 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class CardExtensions
     {
-        /// <summary>
-        /// Card is new version of old Panel
-        /// </summary>
-        /// <returns></returns>
-        public static BootstrapContent<Card> Card(
-            this IBootstrapHelper bootstrapHelper,
-            string? header = null,
-            string? footer = null)
-        {
-            var card = new Card();
-            if (header != null)
-                card.Header = header;
-            if (footer != null)
-                card.Footer = footer;
-            return new BootstrapContent<Card>(bootstrapHelper.HtmlHelper, card);
-        }
-
         public static BootstrapContent<TComponent> SetHeader<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string header, bool collapsible = false)
@@ -81,16 +64,5 @@ namespace FBootstrapCoreMvc.Extensions
             };
             return new BootstrapContent<CardBody>(builder.HtmlHelper, cardBody);
         }
-
-
-        //public void SetBackground(BackgroundState backgroundState = BackgroundState.Primary)
-        //{
-        //    AddCss(backgroundState.GetCssDescription());
-        //}
-
-        //public void SetState(TextBgState textBgState = TextBgState.Primary)
-        //{
-        //    AddCss(textBgState.GetCssDescription());
-        //}
     }
 }

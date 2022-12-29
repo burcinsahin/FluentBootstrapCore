@@ -34,9 +34,7 @@ namespace FBootstrapCoreMvc.Extensions
         internal static TComponent SetDisabled<TComponent>(this TComponent component, bool value = true)
             where TComponent : HtmlComponent, ICanBeDisabled
         {
-            if (value)
-                component.MergeAttribute("disabled");
-
+            component.Disabled = value;
             return component;
         }
 

@@ -12,6 +12,8 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
+        public bool Disabled { get; set ; }
+
         protected internal SelectOption SetSelected(bool selected = true)
         {
             if (!selected) return this;

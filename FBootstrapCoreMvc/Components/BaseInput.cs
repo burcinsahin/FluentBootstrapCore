@@ -12,6 +12,7 @@ namespace FBootstrapCoreMvc.Components
         public FormInputType Type { get; set; }
         public object? Value { get; internal set; }
         public string? Name { get; set; }
+        public bool Disabled { get; set; }
 
         public BaseInput(FormInputType inputType, params string[] cssClasses)
             : base("input", cssClasses)
@@ -26,7 +27,8 @@ namespace FBootstrapCoreMvc.Components
                 MergeAttribute("value", Value);
             if (Name != null)
                 MergeAttribute("name", Name);
-
+            if (Disabled)
+                MergeAttribute("disabled");
             base.PreBuild();
         }
     }

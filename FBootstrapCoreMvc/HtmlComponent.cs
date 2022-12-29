@@ -103,12 +103,14 @@ namespace FBootstrapCoreMvc
         /// <param name="styles"></param>
         protected internal void MergeStyles(object styles)
         {
+            var style = "";
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
             {
                 var key = property.Name.ToLowerInvariant().Replace("_", "-");
                 var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
-                MergeStyle(key, value);
+                style += $"{key}:{value};";
             }
+            MergeAttribute("style", style, true);
         }
         #endregion
 
