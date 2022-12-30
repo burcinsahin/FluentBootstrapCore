@@ -23,7 +23,7 @@ namespace FBootstrapCoreMvc.Extensions
 
         public static BootstrapContent<Container> TextCenter(this BootstrapContent<Container> bootstrapContent)
         {
-            bootstrapContent.Component.TextCenter();
+            bootstrapContent.Component.TextCentered = true;
             return bootstrapContent;
         }
         #endregion
@@ -41,7 +41,7 @@ namespace FBootstrapCoreMvc.Extensions
         {
             var gridColumn = new GridColumn();
             return new BootstrapContent<GridColumn>(builder.HtmlHelper, gridColumn);
-        } 
+        }
         #endregion
     }
 }

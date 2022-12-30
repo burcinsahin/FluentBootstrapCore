@@ -7,11 +7,12 @@ namespace FBootstrapCoreMvc.Components
         public bool Dismissible { get; set; }
         public string? Heading { get; internal set; }
 
-        public Alert() : base("div", Css.Alert) 
-        { 
+        public Alert()
+            : base("div", Css.Alert)
+        {
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             if (Heading != null)
             {
@@ -27,7 +28,7 @@ namespace FBootstrapCoreMvc.Components
                 AddChild(button, ChildLocation.Footer);
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

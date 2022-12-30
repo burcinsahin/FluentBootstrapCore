@@ -4,26 +4,32 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class LinkButton : HtmlComponent, 
+    public class LinkButton : HtmlComponent,
         IHaveButtonExtensions
     {
-        private Icon? _icon;
-        private object? _content;
-        public LinkButton(ButtonState buttonState = ButtonState.Primary, object? content = null)
+        public IconType? IconType { get; set; }
+        public ButtonState ButtonState { get; set; }
+        public ButtonType ButtonType { get; set; }
+
+        public LinkButton(object? content = null)
             : base("a", Css.Btn)
         {
-            _content = content;
+            Content = content;
             MergeAttribute("role", "button");
-            AddCss(buttonState.GetCssDescription());
-            AppendContent(content);
+            ButtonState = ButtonState.Primary;
         }
 
-        public LinkButton SetIcon(IconType icon)
+        protected override void PreBuild()
         {
-            _icon = new Icon(icon);
-            AddChild(_icon);
-            AppendContent(_content);
-            return this;
+            AddCss(ButtonState.GetCssDescription());
+
+            if (IconType.HasValue)
+            {
+                var icon = new Icon(IconType.Value);
+                AddChild(icon, ChildLocation.Header);
+            }
+
+            base.PreBuild();
         }
     }
 }

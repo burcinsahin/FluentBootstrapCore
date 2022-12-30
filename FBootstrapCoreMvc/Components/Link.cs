@@ -1,22 +1,27 @@
-﻿namespace FBootstrapCoreMvc.Components
+﻿using FBootstrapCoreMvc.Interfaces;
+using System.Data;
+
+namespace FBootstrapCoreMvc.Components
 {
-    public class Link : HtmlComponent
+    public class Link : HtmlComponent, ILink
     {
+        public string? Href { get; set; }
+        public string? Role { get; set; }
+
         public Link(object? content = null)
             : base("a")
         {
             Content = content;
+            Role = "button";
+            Href= "#";
         }
 
-        protected internal void SetRole(string role)
+        protected override void PreBuild()
         {
-            MergeAttribute("role", role);
-        }
+            MergeAttribute("href", Href);
+            MergeAttribute("role", Role);
 
-        protected internal Link SetHref(string href)
-        {
-            MergeAttribute("href", href);
-            return this;
+            base.PreBuild();
         }
     }
 }

@@ -4,6 +4,7 @@ using FBootstrapCoreMvc.Extensions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
+using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc
 {
@@ -18,11 +19,73 @@ namespace FBootstrapCoreMvc
             _htmlHelper = helper;
         }
 
+        #region Content
         #region Typography
-        public BootstrapContent<HtmlElement> Div()
+        public BootstrapContent<Heading> Heading(byte size = 1, object? content = null)
         {
-            var div = new HtmlElement("div");
-            return new BootstrapContent<HtmlElement>(HtmlHelper, div);
+            if (size < 1) size = 1;
+            else if (size > 6) size = 6;
+
+            var heading = new Heading(size);
+            heading.AppendContent(content);
+            return new BootstrapContent<Heading>(HtmlHelper, heading);
+        }
+
+        public BootstrapContent<Heading> Heading1(object? content = null) => Heading(1, content);
+
+        public BootstrapContent<Heading> Heading2(object? content = null) => Heading(2, content);
+
+        public BootstrapContent<Heading> Heading3(object? content = null) => Heading(3, content);
+
+        public BootstrapContent<Heading> Heading4(object? content = null) => Heading(4, content);
+
+        public BootstrapContent<Heading> Heading5(object? content = null) => Heading(5, content);
+
+        public BootstrapContent<Heading> Heading6(object? content = null) => Heading(6, content);
+
+        public BootstrapContent<HtmlElement> Lead(object? content = null)
+        {
+            var lead = new HtmlElement("p", Css.Lead);
+            lead.SetContent(content);
+            return new BootstrapContent<HtmlElement>(HtmlHelper, lead);
+        }
+
+        public BootstrapContent<HtmlElement> Mark(object? content = null)
+        {
+            var mark = new HtmlElement("mark");
+            mark.SetContent(content);
+            return new BootstrapContent<HtmlElement>(HtmlHelper, mark);
+        }
+
+        public BootstrapContent<HtmlElement> Abbr(object? content = null, bool initialism = false)
+        {
+            var abbr = new HtmlElement("abbr")
+            {
+                Content = content
+            };
+            if (initialism)
+                abbr.AddCss(Css.Initialism);
+            return new BootstrapContent<HtmlElement>(HtmlHelper, abbr);
+        }
+
+        public BootstrapContent<HtmlElement> Blockquote(object? content = null, object? footerContent = null)
+        {
+            //TODO: Convert to an HtmlComponent
+            var figure = new HtmlElement("figure");
+            var blockquote = new HtmlElement("blockquote", Css.Blockquote)
+            {
+                Content = content
+            };
+            figure.AddChild(blockquote);
+            if (footerContent != null)
+            {
+                var figcaption = new HtmlElement("figcaption", Css.BlockquoteFooter)
+                {
+                    Content = footerContent
+                };
+                figure.AddChild(figcaption);
+            }
+            return new BootstrapContent<HtmlElement>(HtmlHelper, figure);
         }
 
         public BootstrapContent<List> List(ListType listType = ListType.Unstyled)
@@ -32,33 +95,6 @@ namespace FBootstrapCoreMvc
         }
         #endregion
 
-        public BootstrapContent<Container> Container()
-        {
-            return new BootstrapContent<Container>(HtmlHelper, new Container());
-        }
-
-        public BootstrapContent<Navbar> Navbar()
-        {
-            var navbar = new Navbar();
-            return new BootstrapContent<Navbar>(_htmlHelper, navbar);
-        }
-
-        public BootstrapContent<HtmlElement> Element(string tagName, string text)
-        {
-            var element = new HtmlElement(tagName);
-            element.SetContent(text);
-            return new BootstrapContent<HtmlElement>(_htmlHelper, element);
-        }
-
-        public BootstrapContent<Input> Hidden(string? name = null, object? value = null)
-        {
-            var input = new Input();
-            input.SetType(FormInputType.Hidden);
-            input.MergeAttribute("name", name);
-            input.MergeAttribute("value", value?.ToString());
-            return new BootstrapContent<Input>(_htmlHelper, input);
-        }
-
         public BootstrapContent<Image> Image(string src, string? alt = null)
         {
             var image = new Image();
@@ -66,17 +102,143 @@ namespace FBootstrapCoreMvc
             image.MergeAttribute("alt", alt);
             return new BootstrapContent<Image>(_htmlHelper, image);
         }
+        #endregion
 
-        public BootstrapContent<HtmlElement> Paragraph()
+        #region Layout
+        public BootstrapContent<Container> Container()
         {
-            var p = new HtmlElement("p");
+            return new BootstrapContent<Container>(HtmlHelper, new Container());
+        }
+        #endregion
+
+        #region DOM
+        public BootstrapContent<HtmlElement> Element(string tagName, object? content = null)
+        {
+            var element = new HtmlElement(tagName);
+            element.SetContent(content);
+            return new BootstrapContent<HtmlElement>(_htmlHelper, element);
+        }
+
+        public BootstrapContent<HtmlElement> Paragraph(object? content = null)
+        {
+            var p = new HtmlElement("p") { Content = content };
             return new BootstrapContent<HtmlElement>(_htmlHelper, p);
+        }
+
+        public BootstrapContent<HtmlElement> Div()
+        {
+            var div = new HtmlElement("div");
+            return new BootstrapContent<HtmlElement>(HtmlHelper, div);
+        }
+
+        public BootstrapContent<HtmlElement> IFrame(string src, string? width = null, string? height = null, byte frameborder = 0)
+        {
+            var iframe = new HtmlElement("iframe");
+            iframe.MergeAttribute("src", src);
+            if (width != null)
+                iframe.MergeAttribute("width", width);
+            if (height != null)
+                iframe.MergeAttribute("height", height);
+            if (frameborder > 0)
+                iframe.MergeAttribute("frameborder", frameborder);
+            return new BootstrapContent<HtmlElement>(HtmlHelper, iframe);
+        }
+        #endregion
+
+        #region Components
+        public BootstrapContent<Alert> Alert(
+            AlertState alertState = AlertState.Primary,
+            string? heading = null,
+            object? content = null)
+        {
+            var component = new Alert();
+            component.AddCss(alertState.GetCssDescription());
+            component.Heading = heading;
+            component.Content = content;
+            return new BootstrapContent<Alert>(HtmlHelper, component);
+        }
+
+        public BootstrapContent<Badge> Badge()
+        {
+            var badge = new Badge();
+            return new BootstrapContent<Badge>(HtmlHelper, badge);
+        }
+
+        public BootstrapContent<Button> Button(object? content = null)
+        {
+            var button = new Button() { Content = content };
+            return new BootstrapContent<Button>(_htmlHelper, button);
+        }
+
+        /// <summary>
+        /// Card is new version of old Panel
+        /// </summary>
+        /// <returns></returns>
+        public BootstrapContent<Card> Card(
+            string? header = null,
+            string? footer = null)
+        {
+            var card = new Card();
+            if (header != null)
+                card.Header = header;
+            if (footer != null)
+                card.Footer = footer;
+            return new BootstrapContent<Card>(HtmlHelper, card);
+        }
+
+        public BootstrapContent<CheckBox> CheckBox()
+        {
+            var checkbox = new CheckBox();
+            return new BootstrapContent<CheckBox>(HtmlHelper, checkbox);
+        }
+
+        public BootstrapContent<Input> Hidden(string? name = null, object? value = null)
+        {
+            var input = new Input
+            {
+                Type = FormInputType.Hidden,
+                Name = name,
+                Value = value
+            };
+
+            return new BootstrapContent<Input>(_htmlHelper, input);
+        }
+
+        public BootstrapContent<Icon> Icon(IconType iconType, object? content = null)
+        {
+            var icon = new Icon(iconType)
+            {
+                Content = content
+            };
+            return new BootstrapContent<Icon>(HtmlHelper, icon);
+        }
+        public BootstrapContent<LinkButton> LinkButton(object? content, string href = "#")
+        {
+            var linkButton = new LinkButton
+            {
+                Content = content
+            };
+            linkButton.MergeAttribute("href", href);
+            return new BootstrapContent<LinkButton>(HtmlHelper, linkButton);
+        }
+
+        public BootstrapContent<LinkButton> LinkButton(string text, string action, string controller, object? routeValues = null)
+        {
+            var linkButton = new LinkButton(text);
+            var urlHelperFactory = HtmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;
+            var urlHelper = urlHelperFactory?.GetUrlHelper(HtmlHelper.ViewContext);
+            var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
+            var url = urlHelper?.Action(urlActionContext);
+            linkButton.MergeAttribute("href", url);
+            return new BootstrapContent<LinkButton>(HtmlHelper, linkButton);
         }
 
         public BootstrapContent<Link> Link(object? content, string href = "#")
         {
-            var link = new Link(content);
-            link.SetHref(href);
+            var link = new Link(content)
+            {
+                Href = href
+            };
             return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
@@ -90,24 +252,65 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
-        public BootstrapContent<LinkButton> LinkButton(object? content, string href = "#")
+        public BootstrapContent<Modal> Modal(
+            string? title = null,
+            object? content = null)
         {
-            var linkButton = new LinkButton(ButtonState.Primary, content);
-            linkButton.MergeAttribute("href", href);
-            return new BootstrapContent<LinkButton>(HtmlHelper, linkButton);
+            var modal = new Modal
+            {
+                Title = title,
+                Content = content
+            };
+            return new BootstrapContent<Modal>(HtmlHelper, modal);
+        }
+        public BootstrapContent<Navbar> Navbar()
+        {
+            var navbar = new Navbar();
+            return new BootstrapContent<Navbar>(_htmlHelper, navbar);
         }
 
-        public BootstrapContent<LinkButton> LinkButton(string text, string action, string controller, object? routeValues = null)
+        public BootstrapContent<Pagination> Pagination()
         {
-            var linkButton = new LinkButton(ButtonState.Primary, text);
-            var urlHelperFactory = HtmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;
-            var urlHelper = urlHelperFactory?.GetUrlHelper(HtmlHelper.ViewContext);
-            var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
-            var url = urlHelper?.Action(urlActionContext);
-            linkButton.MergeAttribute("href", url);
-            return new BootstrapContent<LinkButton>(HtmlHelper, linkButton);
+            var component = new Pagination();
+            return new BootstrapContent<Pagination>(HtmlHelper, component);
         }
 
+        public BootstrapContent<RadioButton> Radio()
+        {
+            var component = new RadioButton();
+            return new BootstrapContent<RadioButton>(HtmlHelper, component);
+        }
+
+
+        public BootstrapContent<Range> Range(int min = 0, int max = 0, double step = 0)
+        {
+            var component = new Range()
+            {
+                Min = min,
+                Max = max,
+                Step = step
+            };
+            return new BootstrapContent<Range>(HtmlHelper, component);
+        }
+
+        public BootstrapContent<Select> Select(string name, IEnumerable<SelectListItem> selectList)
+        {
+            var select = new Select
+            {
+                Name = name,
+                SelectList = selectList
+            };
+            return new BootstrapContent<Select>(_htmlHelper, select);
+        }
+
+        public BootstrapContent<Table> Table()
+        {
+            var table = new Table();
+            return new BootstrapContent<Table>(HtmlHelper, table);
+        }
+        #endregion
+
+        #region Forms
         public BootstrapContent<Form> Form()
         {
             var form = new Form();
@@ -126,19 +329,6 @@ namespace FBootstrapCoreMvc
             form.SetMethod(method.ToString());
             return new BootstrapContent<Form, TModel>(_htmlHelper, form);
         }
-
-        public BootstrapContent<Button> Button(ButtonType buttonType = ButtonType.Button, object? value = null)
-        {
-            var button = new Button();
-            button.SetType(buttonType);
-            button.SetValue(value);
-            return new BootstrapContent<Button>(_htmlHelper, button);
-        }
-
-        public BootstrapContent<CheckBox> CheckBox()
-        {
-            var checkbox = new CheckBox();
-            return new BootstrapContent<CheckBox>(HtmlHelper, checkbox);
-        }
+        #endregion
     }
 }

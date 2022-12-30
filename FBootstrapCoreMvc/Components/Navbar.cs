@@ -13,14 +13,14 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             var container = new Container();
             container.ClearCss();
             container.AddCss(Css.ContainerFluid);
             AddWrappingChild(container, WrapperType.All);
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

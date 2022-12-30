@@ -1,42 +1,61 @@
-﻿using FBootstrapCoreMvc.Extensions;
+﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Extensions;
+using FBootstrapCoreMvc.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormSelect : HtmlComponent
+    public class FormSelect : HtmlComponent,
+        ICanHaveLabel,
+        ICanHaveFloatingLabel
     {
-        private Select _select;
-        private Label _label;
+        public string? Label { get; set; }
+        public string? Name { get; set; }
+        public IEnumerable<SelectListItem>? SelectList { get; set; }
+        public object? SelectedValue { get; internal set; }
+        public string? FloatingLabel { get; set; }
 
-        public FormSelect(string? label)
-            : base("div", Css.FormFloating)
+        public FormSelect()
+            : base("div", Css.Mb3)
         {
-            _select = new Select().SetId();
-            _label = new Label();
-            _label.SetContent(label);
-            _label.MergeAttribute("for", _select.Id);
-            AddChild(_select);
-            AddChild(_label);
         }
 
-        public FormSelect SetName(string? name)
+        protected override void PreBuild()
         {
-            _select.MergeAttribute("name", name);
-            return this;
-        }
+            var select = new Select();
+            select.SetId();
 
-        public FormSelect SetOptions(IEnumerable<SelectListItem> selectList)
-        {
-            _select.SetOptions(selectList);
-            return this;
-        }
+            if (Name != null)
+                select.Name = Name;
 
-        public FormSelect SetSelected(object? value)
-        {
-            _select.SetSelected(value);
-            return this;
-        }
+            select.SelectList = SelectList;
+            select.SelectedValue = SelectedValue;
 
+            AddChild(select);
+
+            if (FloatingLabel != null)
+            {
+                AddCss(Css.FormFloating);
+                var label = new Label
+                {
+                    Content = FloatingLabel,
+                    For = select.Id
+                };
+                AddChild(label);
+            }
+            else if (Label != null)
+            {
+                var label = new Label
+                {
+                    Content = Label,
+                    For = select.Id
+                };
+                label.AddCss(Css.FormLabel);
+                AddChild(label, ChildLocation.Header);
+            }
+
+            base.PreBuild();
+        }
     }
 }

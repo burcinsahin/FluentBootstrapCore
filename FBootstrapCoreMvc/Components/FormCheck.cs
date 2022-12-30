@@ -1,55 +1,55 @@
 ﻿using FBootstrapCoreMvc.Extensions;
+using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormCheck : HtmlComponent,
-        ICanBeReadonly
+    public class FormCheck : FormControl,
+        ICanBeReadonly,
+        ICanHaveLabel
     {
-        private readonly Label _label;
-        private readonly CheckBox _checkbox;
-        private readonly Hidden _hidden;
-
-        public bool Readonly { get; set; }
-
-        public FormCheck(string? name, string? label, bool? value = false)
-            : base("div", Css.FormCheck)
+        public bool Checked { get; set; }
+        public bool Inline { get; set; }
+        public FormCheck()
+            : base()
         {
-            _checkbox = new CheckBox();
-            _checkbox.AddCss(Css.FormCheckInput);
-            _checkbox.SetId();
-            _checkbox.SetValue(true);
-            _checkbox.SetChecked(value);
-            _checkbox.SetName(name);
-
-            _label = new Label();
-            _label.AddCss(Css.FormCheckLabel);
-            _label.MergeAttribute("for", _checkbox.Id);
-            _label.SetContent(label);
-            _hidden = new Hidden();
-            _hidden.SetValue(false);
-            _hidden.SetName(name);
-            AddChild(_checkbox);
-            AddChild(_label);
-            AddChild(_hidden);
+            AddCss(Css.FormCheck);
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
+            var checkbox = new CheckBox();
+            checkbox.AddCss(Css.FormCheckInput);
+            checkbox.SetId();
+            checkbox.Value = true;
+            checkbox.Checked = Checked;
+            checkbox.Name = Name;
+
             if (Readonly)
-                _checkbox.SetDisabled();
-            base.Initialize();
-        }
+                checkbox.Disabled = true;
 
-        protected internal FormCheck SetReadonly()
-        {
-            _checkbox.SetDisabled(true);
-            return this;
-        }
+            if (Inline)
+                AddCss(Css.FormCheckInline);
 
-        protected internal FormCheck SetInline()
-        {
-            AddCss(Css.FormCheckInline);
-            return this;
+            AddChild(checkbox);
+
+            if (Label != null)
+            {
+                var label = new Label
+                {
+                    Content = Label
+                };
+                label.AddCss(Css.FormCheckLabel);
+                label.For = checkbox.Id;
+                AddChild(label);
+            }
+            var hidden = new Hidden
+            {
+                Value = false,
+                Name = Name
+            };
+            AddChild(hidden);
+
+            base.PreBuild();
         }
     }
 }

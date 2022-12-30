@@ -1,50 +1,33 @@
 ﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Input : BaseInput,
-        ICanHaveValue
+    public class Input : BaseInput
     {
-        public Input() : base(FormInputType.Text)
+        public bool Required { get; set; }
+        public bool AutoFocus { get; set; }
+        public int MaxLength { get; set; }
+        public string? Placeholder { get; set; }
+
+        public Input()
+            : base(FormInputType.Text)
         {
         }
 
-        public Input IsRequired()
+        protected override void PreBuild()
         {
-            MergeAttribute("required", true);
-            return this;
-        }
+            if (Required)
+                MergeAttribute("required", true);
+            if (AutoFocus)
+                MergeAttribute("autofocus", true);
+            if (MaxLength > 0)
+                MergeAttribute("maxlength", MaxLength);
+            if (Placeholder != null)
+                MergeAttribute("placeholder", Placeholder);
+            if (Name != null)
+                MergeAttribute("name", Name);
 
-        public Input AutoFocus()
-        {
-            MergeAttribute("autofocus", true);
-            return this;
-        }
-
-        public Input SetMaxLength(int value)
-        {
-            MergeAttribute("maxlength", value);
-            return this;
-        }
-
-        public Input SetPlaceholder(string? text)
-        {
-            MergeAttribute("placeholder", text);
-            return this;
-        }
-
-        public Input SetType(FormInputType inputType)
-        {
-            MergeAttribute("type", inputType.GetDescription(), true);
-            return this;
-        }
-
-        public Input SetName(string? name)
-        {
-            MergeAttribute("name", name);
-            return this;
+            base.PreBuild();
         }
     }
 }

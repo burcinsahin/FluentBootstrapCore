@@ -29,6 +29,8 @@ namespace FBootstrapCoreMvc.Enums
         [Description("check-circle")]
         Ok,
         [Description("filter")]
-        Filter
+        Filter,
+        [Description("window")]
+        Window
     }
 }

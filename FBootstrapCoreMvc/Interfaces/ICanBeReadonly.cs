@@ -1,4 +1,4 @@
-﻿namespace FBootstrapCoreMvc.Extensions
+﻿namespace FBootstrapCoreMvc.Interfaces
 {
     public interface ICanBeReadonly
     {

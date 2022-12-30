@@ -13,11 +13,11 @@
             MergeAttribute("aria-label", "Toggle");
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             var span = new HtmlElement("span", Css.NavbarTogglerIcon);
             AddChild(span);
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

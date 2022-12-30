@@ -22,7 +22,7 @@ namespace FBootstrapCoreMvc.Components
             HasCardBody = true;
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
             var uid = $"cb_{DateTime.Now.Ticks}";
 
@@ -72,7 +72,7 @@ namespace FBootstrapCoreMvc.Components
                 AddWrappingChild(cardBody, WrapperType.Body);
             }
 
-            base.Initialize();
+            base.PreBuild();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<NavbarBrand> Brand<TComponent>(this BootstrapBuilder<TComponent> builder, string? text)
+        public static BootstrapContent<NavbarBrand> Brand<TComponent>(this BootstrapBuilder<TComponent> builder, object? text)
             where TComponent : HtmlComponent, ICanCreate<NavbarBrand>
         {
             var brand = new NavbarBrand(text);

@@ -14,9 +14,6 @@ namespace FBootstrapCoreMvc
             : base(htmlHelper, component)
         {
             _htmlHelper = htmlHelper;
-            //_component = component;
-            //_htmlHelper.ViewContext.Writer.Write(_component.Begin());
-            //_htmlHelper.ViewContext.Writer.Write(_component.Body());
         }
     }
 
@@ -27,6 +24,7 @@ namespace FBootstrapCoreMvc
         protected readonly TComponent _component;
 
         internal IHtmlHelper HtmlHelper => _htmlHelper;
+        internal TComponent Component => _component;
 
         public BootstrapBuilder(IHtmlHelper htmlHelper, TComponent component)
         {

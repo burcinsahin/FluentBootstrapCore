@@ -4,10 +4,10 @@ namespace FBootstrapCoreMvc.Enums
 {
     public enum ButtonState
     {
-        [Description(Css.BtnInfo)]
-        Default,
         [Description(Css.BtnPrimary)]
         Primary,
+        [Description(Css.BtnSecondary)]
+        Secondary,
         [Description(Css.BtnSuccess)]
         Success,
         [Description(Css.BtnInfo)]
@@ -16,6 +16,10 @@ namespace FBootstrapCoreMvc.Enums
         Warning,
         [Description(Css.BtnDanger)]
         Danger,
+        [Description(Css.BtnLight)]
+        Light,
+        [Description(Css.BtnDark)]
+        Dark,
         [Description(Css.BtnLink)]
         Link
     }

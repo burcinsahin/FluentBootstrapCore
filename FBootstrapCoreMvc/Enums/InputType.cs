@@ -37,6 +37,8 @@ namespace FBootstrapCoreMvc.Enums
         [Description("checkbox")]
         Checkbox,
         [Description("radio")]
-        Radio
+        Radio,
+        [Description("range")]
+        Range
     }
 }

@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -24,6 +23,7 @@ namespace FBootstrapCoreMvc
         private RenderMode _renderMode;
 
         public string? Id { get; protected internal set; }
+        public string Tag => _tagBuilder.TagName;
 
         internal object? Content
         {
@@ -103,17 +103,22 @@ namespace FBootstrapCoreMvc
         /// <param name="styles"></param>
         protected internal void MergeStyles(object styles)
         {
+            var style = "";
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
             {
                 var key = property.Name.ToLowerInvariant().Replace("_", "-");
                 var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
-                MergeStyle(key, value);
+                style += $"{key}:{value};";
             }
+            MergeAttribute("style", style, true);
         }
         #endregion
 
         public string ToHtml()
         {
+            if (RenderMode == RenderMode.None)
+                return string.Empty;
+
             Build();
             SetTagRenderMode();
             return _tagBuilder.ToHtmlString();
@@ -129,7 +134,7 @@ namespace FBootstrapCoreMvc
         /// <summary>
         /// Invoked before Begin
         /// </summary>
-        protected virtual void Initialize()
+        protected virtual void PreBuild()
         {
             if (Id != null)
                 MergeAttribute("id", Id);
@@ -137,7 +142,7 @@ namespace FBootstrapCoreMvc
 
         internal IHtmlContent Begin()
         {
-            Initialize();
+            PreBuild();
 
             _fullWrapperChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
 

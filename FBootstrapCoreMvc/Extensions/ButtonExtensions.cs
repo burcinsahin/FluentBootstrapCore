@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Extensions
@@ -21,18 +20,35 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> SetIcon<TComponent>(this BootstrapContent<TComponent> bootstrapContent, IconType iconType)
-            where TComponent : HtmlComponent
+            where TComponent : HtmlComponent, ICanHaveIcon
         {
-            var icon = new Icon(iconType);
-            bootstrapContent.Component.AddChild(icon, ChildLocation.Header);
+            bootstrapContent.Component.IconType = iconType;
             return bootstrapContent;
         }
 
-        //public static TComponent SetName<TComponent>(this TComponent component, string name)
-        //    where TComponent : Component<TComponent>, IHaveButtonExtensions
-        //{
-        //    return component.AddAttribute("name", name);
-        //}
+        public static BootstrapContent<TComponent> SetActive<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool active = true)
+            where TComponent : HtmlComponent, IHaveButtonExtensions
+        {
+            if (active)
+                bootstrapContent.Component.AddCss(Css.Active);
 
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> SetDisabled<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool disabled = true)
+            where TComponent : HtmlComponent, IHaveButtonExtensions
+        {
+            if (disabled)
+                bootstrapContent.Component.AddCss(Css.Disabled);
+
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> SetState<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonState buttonState)
+            where TComponent : HtmlComponent, IHaveButtonExtensions
+        {
+            bootstrapContent.Component.ButtonState = buttonState;
+            return bootstrapContent;
+        }
     }
 }

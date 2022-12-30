@@ -20,12 +20,6 @@ namespace FBootstrapCoreMvc
             _component = component;
         }
 
-        //public void WriteTo(TextWriter writer, HtmlEncoder encoder)
-        //{
-        //    var html = _component.ToHtml();
-        //    writer.Write(html);
-        //}
-
         public new BootstrapBuilder<TComponent, TModel> Begin()
         {
             return new BootstrapBuilder<TComponent, TModel>(_htmlHelper, _component);

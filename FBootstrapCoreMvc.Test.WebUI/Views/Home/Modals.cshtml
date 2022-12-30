@@ -1,0 +1,14 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading1("Basic Modal")
+    @Html.Bootstrap().Button("Click me").SetIcon(IconType.Window).MergeAttribute("data-bs-target", "#testModal").MergeAttribute("data-bs-toggle", "modal")
+    using (var modal = Html.Bootstrap().Modal("Title").SetId("testModal").Begin())
+    {
+        using (modal.ModalBody().Begin())
+        {
+            <p>Content...</p>
+        }
+    }
+    <hr />
+}
+

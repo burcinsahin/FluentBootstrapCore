@@ -12,7 +12,7 @@
             @nav.NavbarLink("Item4", "Index", "Home")
             using (var dropdown = nav.Dropdown("DropHeader").Begin())
             {
-                using (var dropdownMenu = dropdown.DropdownMenu().Begin())
+                using (var dropdownMenu = dropdown.DropdownMenu().Dark().Begin())
                 {
                     @dropdownMenu.DropdownItem("Drop1","#")
                     @dropdownMenu.DropdownItem("Drop2","#")
@@ -22,7 +22,7 @@
         }
         using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).AddCss(Css.DFlex).SetId("formLanguage").Begin())
         {
-            @form.Select("CurrentLanguage", "Gender", (IEnumerable<SelectListItem>)ViewBag.GenderOptions)
+            @form.Select("CurrentLanguage", (IEnumerable<SelectListItem>)ViewBag.GenderOptions)
         }
     }
 }

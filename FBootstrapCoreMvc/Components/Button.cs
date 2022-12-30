@@ -5,38 +5,32 @@ using FBootstrapCoreMvc.Interfaces;
 namespace FBootstrapCoreMvc.Components
 {
     public class Button : HtmlComponent,
-        IHaveButtonExtensions, ICanHaveName
+        IHaveButtonExtensions,
+        ICanHaveName,
+        ICanHaveValue
     {
-        private Icon? _icon;
-        public Button(ButtonState buttonState = ButtonState.Primary, object? content = null)
+        public IconType? IconType { get; set; }
+        public ButtonState ButtonState { get; set; }
+        public ButtonType ButtonType { get; set; }
+
+        public Button(object? content = null)
             : base("button", Css.Btn)
         {
             Content = content;
-            AddCss(buttonState.GetCssDescription());
+            ButtonState = ButtonState.Primary;
         }
 
-        protected override void Initialize()
+        protected override void PreBuild()
         {
-            if (_icon != null)
+            AddCss(ButtonState.GetCssDescription());
+            MergeAttribute("type", ButtonType.GetCssDescription());
+
+            if (IconType.HasValue)
             {
-                AddChild(_icon, ChildLocation.Header);
+                var icon = new Icon(IconType.Value);
+                AddChild(icon, ChildLocation.Header);
             }
-            base.Initialize();
-        }
-
-        protected internal void SetType(ButtonType type = ButtonType.Button)
-        {
-            MergeAttribute("type", type.GetCssDescription());
-        }
-
-        protected internal void SetValue(object? value)
-        {
-            MergeAttribute("value", value);
-        }
-
-        protected internal void SetIcon(IconType icon)
-        {
-            _icon = new Icon(icon);
+            base.PreBuild();
         }
     }
 }

@@ -2,11 +2,11 @@
 {
     public class NavbarBrand : Link
     {
-        public NavbarBrand(string? text = null)
+        public NavbarBrand(object? content = null)
             : base()
         {
             AddCss(Css.NavbarBrand);
-            Content = text;
+            Content = content;
         }
     }
 }

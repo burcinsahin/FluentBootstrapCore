@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -9,13 +8,23 @@ namespace FBootstrapCoreMvc.Components
         public NavbarDropdown(string text)
             : base("li", Css.NavItem, Css.Dropdown)
         {
-            var link = new Link(text);
+            Content = text;
+        }
+
+        protected override void PreBuild()
+        {
+            var link = new Link(Content)
+            {
+                Href = "#",
+                Role = "button"
+            };
             link.AddCss(Css.NavLink, Css.DropdownToggle);
-            link.SetHref("#");
-            link.SetRole("button");
             link.MergeAttribute("data-bs-toggle", "dropdown");
             link.MergeAttribute("aria-expanded", false);
             AddChild(link);
+
+            Content = null;
+            base.PreBuild();
         }
     }
 }

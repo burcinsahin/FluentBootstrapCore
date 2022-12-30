@@ -1,0 +1,39 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading1("Link Buttons")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().LinkButton("Default")
+        @Html.Bootstrap().LinkButton("Small").SetSize(ButtonSize.Sm)
+        @Html.Bootstrap().LinkButton("Large").SetSize(ButtonSize.Lg)
+        @Html.Bootstrap().LinkButton("Like","action","controller").SetIcon(IconType.ThumbsUp)
+        @Html.Bootstrap().LinkButton("Active","action","controller").SetActive()
+        @Html.Bootstrap().LinkButton("Disabled","action","controller").SetDisabled()
+        @Html.Bootstrap().LinkButton("Warning","action","controller").SetBgState(BackgroundState.Warning)
+        @Html.Bootstrap().LinkButton("Warning","action","controller").SetTextBgState(TextBgState.Warning)
+    }
+    <hr />
+    @Html.Bootstrap().Heading1("Buttons")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Button("Default")
+        @Html.Bootstrap().Button("Default Named").SetName("Name")
+        @Html.Bootstrap().Button("Submit").SetType(ButtonType.Submit)
+        @Html.Bootstrap().Button("Icon").SetIcon(IconType.Plus)
+    }
+    <hr />
+    @Html.Bootstrap().Heading1("Button States")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Button("Primary").SetState(ButtonState.Primary)
+        @Html.Bootstrap().Button("Secondary").SetState(ButtonState.Secondary)
+        @Html.Bootstrap().Button("Info").SetState(ButtonState.Info)
+        @Html.Bootstrap().Button("Success").SetState(ButtonState.Success)
+        @Html.Bootstrap().Button("Warning").SetState(ButtonState.Warning)
+        @Html.Bootstrap().Button("Danger").SetState(ButtonState.Danger)
+        @Html.Bootstrap().Button("Dark").SetState(ButtonState.Dark)
+        @Html.Bootstrap().Button("Light").SetState(ButtonState.Light)
+        @Html.Bootstrap().Button("Link").SetState(ButtonState.Link)
+    }
+    <hr />
+}

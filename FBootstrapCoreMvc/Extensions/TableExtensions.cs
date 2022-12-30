@@ -6,11 +6,6 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class TableExtensions
     {
-        public static BootstrapContent<Table> Table(this IBootstrapHelper helper)
-        {
-            return new BootstrapContent<Table>(helper.HtmlHelper, new Table());
-        }
-
         public static BootstrapContent<Table> SetStyle(this BootstrapContent<Table> bootstrapContent, TableStyle tableStyle)
         {
             bootstrapContent.Component.SetStyle(tableStyle);

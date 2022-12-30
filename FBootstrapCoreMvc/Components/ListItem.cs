@@ -2,9 +2,18 @@
 {
     public class ListItem : HtmlComponent
     {
+        public bool Inline { get; set; }
+
         public ListItem()
-            : base("li", Css.ListGroupItem)
+            : base("li")
         {
+        }
+
+        protected override void PreBuild()
+        {
+            if (Inline)
+                AddCss(Css.ListInlineItem);
+            base.PreBuild();
         }
     }
 }

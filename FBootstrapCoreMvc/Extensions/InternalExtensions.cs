@@ -19,7 +19,7 @@ namespace FBootstrapCoreMvc.Extensions
             where TComponent : HtmlComponent
         {
             if (id == null)
-                id = $"{typeof(TComponent).Name}_{DateTime.Now.Ticks}";
+                id = $"{component.Tag}_{DateTime.Now.Ticks}";
             component.Id = id;
             return component;
         }
@@ -34,9 +34,7 @@ namespace FBootstrapCoreMvc.Extensions
         internal static TComponent SetDisabled<TComponent>(this TComponent component, bool value = true)
             where TComponent : HtmlComponent, ICanBeDisabled
         {
-            if (value)
-                component.MergeAttribute("disabled");
-
+            component.Disabled = value;
             return component;
         }
 
@@ -44,7 +42,7 @@ namespace FBootstrapCoreMvc.Extensions
             where TComponent : HtmlComponent, ICanHaveValue
         {
             if (value != null)
-                component.MergeAttribute("value", value);
+                component.MergeAttribute("value", value, true);
             return component;
         }
 

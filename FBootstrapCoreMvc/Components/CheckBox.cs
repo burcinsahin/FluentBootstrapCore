@@ -4,19 +4,25 @@ using FBootstrapCoreMvc.Interfaces;
 namespace FBootstrapCoreMvc.Components
 {
     public class CheckBox : BaseInput,
-        ICanBeDisabled,
-        ICanHaveName,
-        ICanHaveValue,
         ICanBeChecked
     {
+        public bool Checked { get; set; }
+        public bool Disabled { get; set; }
+        public string? Role { get; set; }
+
         public CheckBox() : base(FormInputType.Checkbox)
         {
         }
 
-        protected internal void SetChecked(bool? value = false)
+        protected override void PreBuild()
         {
-            if (value == null || value.Value)
+            if (Checked)
                 MergeAttribute("checked");
+            if (Disabled)
+                MergeAttribute("disabled");
+            if (Role != null)
+                MergeAttribute("role", Role);
+            base.PreBuild();
         }
     }
 }

@@ -2,5 +2,6 @@
 {
     public interface ICanBeDisabled
     {
+        bool Disabled { get; set; }
     }
 }

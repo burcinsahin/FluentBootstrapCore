@@ -6,12 +6,6 @@ namespace FBootstrapCoreMvc.Extensions
     public static class PaginationExtensions
     {
         #region Pagination
-        public static BootstrapContent<Pagination> Pagination(this IBootstrapHelper bootstrapHelper)
-        {
-            var component = new Pagination();
-            return new BootstrapContent<Pagination>(bootstrapHelper.HtmlHelper, component);
-        }
-
         public static BootstrapContent<Pagination> AddPageItem(this BootstrapContent<Pagination> bootstrapContent, string? href, object? content, bool active = false, bool disabled = false)
         {
             var pageItem = new PageItem()
@@ -35,7 +29,6 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.AddCss($"{Css.Pagination}-{size.GetSuffix()}");
             return bootstrapContent;
         }
-
         #endregion
 
         #region PageItem
