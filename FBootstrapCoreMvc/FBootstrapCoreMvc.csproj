@@ -14,9 +14,14 @@
     <PackageProjectUrl>https://github.com/burcinsahin/FBootstrapCoreMvc</PackageProjectUrl>
     <RepositoryUrl>https://github.com/burcinsahin/FBootstrapCoreMvc</RepositoryUrl>
     <PackageTags>fluent;bootstrap;fluentapi;</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="Css.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
