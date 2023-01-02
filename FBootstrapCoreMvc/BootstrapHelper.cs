@@ -158,9 +158,9 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Alert>(HtmlHelper, component);
         }
 
-        public BootstrapContent<Badge> Badge()
+        public BootstrapContent<Badge> Badge(object? content = null)
         {
-            var badge = new Badge();
+            var badge = new Badge() { Content = content };
             return new BootstrapContent<Badge>(HtmlHelper, badge);
         }
 

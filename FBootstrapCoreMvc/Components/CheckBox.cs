@@ -7,7 +7,6 @@ namespace FBootstrapCoreMvc.Components
         ICanBeChecked
     {
         public bool Checked { get; set; }
-        public bool Disabled { get; set; }
         public string? Role { get; set; }
 
         public CheckBox() : base(FormInputType.Checkbox)

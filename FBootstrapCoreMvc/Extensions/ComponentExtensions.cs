@@ -175,6 +175,23 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.MergeAttribute("name", name);
             return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> AddBadge<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string? badge)
+            where TComponent : HtmlComponent, ICanHaveBadge
+        {
+            bootstrapContent.Component.Badge = badge;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> PositionBadge<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : HtmlComponent, ICanPositionBadge
+        {
+            bootstrapContent.Component.PositionBadge = true;
+            return bootstrapContent;
+        }
         #endregion
     }
 }

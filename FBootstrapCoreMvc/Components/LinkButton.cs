@@ -10,6 +10,8 @@ namespace FBootstrapCoreMvc.Components
         public IconType? IconType { get; set; }
         public ButtonState ButtonState { get; set; }
         public ButtonType ButtonType { get; set; }
+        public string? Badge { get; set; }
+        public bool PositionBadge { get; set; }
 
         public LinkButton(object? content = null)
             : base("a", Css.Btn)
