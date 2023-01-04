@@ -299,6 +299,11 @@ namespace FBootstrapCoreMvc
         {
             return Clone<HtmlComponent>();
         }
+
+        protected void GenerateId()
+        {
+            Id = $"{Tag}_{DateTime.Now.Ticks}";
+        }
         #endregion
     }
 }

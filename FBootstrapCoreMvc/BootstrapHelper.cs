@@ -146,6 +146,12 @@ namespace FBootstrapCoreMvc
         #endregion
 
         #region Components
+        public BootstrapContent<Accordion> Accordion()
+        {
+            var accordion = new Accordion();
+            return new BootstrapContent<Accordion>(HtmlHelper, accordion);
+        }
+
         public BootstrapContent<Alert> Alert(
             AlertState alertState = AlertState.Primary,
             string? heading = null,
