@@ -192,6 +192,22 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.PositionBadge = true;
             return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> Active<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : HtmlComponent, ICanBeActive
+        {
+            bootstrapContent.Component.Active = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Href<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent, string href = "#")
+            where TComponent : HtmlComponent, ILink
+        {
+            bootstrapContent.Component.Href = href;
+            return bootstrapContent;
+        }
         #endregion
     }
 }

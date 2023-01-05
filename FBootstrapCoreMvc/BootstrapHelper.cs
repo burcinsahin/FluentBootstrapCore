@@ -170,6 +170,16 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Badge>(HtmlHelper, badge);
         }
 
+        public BootstrapContent<Breadcrumb> Breadcrumb(string? divider = null)
+        {
+            var breadcrumb = new Breadcrumb();
+            if (divider != null) 
+            {
+                breadcrumb.MergeStyle("--bs-breadcrumb-divider", $"'{divider}'");
+            }
+            return new BootstrapContent<Breadcrumb>(HtmlHelper, breadcrumb);
+        }
+
         public BootstrapContent<Button> Button(object? content = null)
         {
             var button = new Button() { Content = content };

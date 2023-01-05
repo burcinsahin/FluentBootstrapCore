@@ -94,7 +94,15 @@ namespace FBootstrapCoreMvc
 
         protected internal void MergeStyle(string key, string value)
         {
-            _tagBuilder.MergeAttribute("style", $"{key}:{value};", false);
+            var style = "";
+            if (_tagBuilder.Attributes.ContainsKey("style"))
+                style = _tagBuilder.Attributes["style"];
+
+            if (!style.EndsWith(";"))
+                style += ";";
+
+            style += $"{key}:{value};";
+            _tagBuilder.MergeAttribute("style", style, true);
         }
 
         /// <summary>
@@ -104,6 +112,12 @@ namespace FBootstrapCoreMvc
         protected internal void MergeStyles(object styles)
         {
             var style = "";
+            if (_tagBuilder.Attributes.ContainsKey("style"))
+                style = _tagBuilder.Attributes["style"];
+
+            if (!style.EndsWith(";"))
+                style += ";";
+
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
             {
                 var key = property.Name.ToLowerInvariant().Replace("_", "-");

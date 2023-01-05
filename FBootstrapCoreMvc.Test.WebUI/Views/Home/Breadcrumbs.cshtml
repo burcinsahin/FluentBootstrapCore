@@ -1,0 +1,33 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Example")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var breadcrumb = Html.Bootstrap().Breadcrumb().Begin())
+        {
+            @breadcrumb.BreadcrumbItem("Home").Active()
+        }
+        @using (var breadcrumb = Html.Bootstrap().Breadcrumb().Begin())
+        {
+            @breadcrumb.BreadcrumbItem("Home").Href("#")
+            @breadcrumb.BreadcrumbItem("Library").Active()
+        }
+        @using (var breadcrumb = Html.Bootstrap().Breadcrumb().Begin())
+        {
+            @breadcrumb.BreadcrumbItem("Home").Href("#")
+            @breadcrumb.BreadcrumbItem("Library").Href("#")
+            @breadcrumb.BreadcrumbItem("Data").Active()
+        }
+    }
+    <hr />
+
+    @Html.Bootstrap().Heading2("Dividers")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var breadcrumb = Html.Bootstrap().Breadcrumb(">").Begin())
+        {
+            @breadcrumb.BreadcrumbItem("Home").Href("#")
+            @breadcrumb.BreadcrumbItem("Library").Active()
+        }
+    }
+}
