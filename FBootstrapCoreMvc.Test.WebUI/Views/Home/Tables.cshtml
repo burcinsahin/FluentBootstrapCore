@@ -14,8 +14,8 @@
                 @row.TableData(Html.Bootstrap().CheckBox().SetChecked())
                 @row.TableData(Html.Bootstrap().CheckBox().SetDisabled())
 
-                @row.TableData(Html.Bootstrap().LinkButton(null,"#").SetIcon(IconType.Edit).SetSize(ButtonSize.Sm))
-                @row.TableData(Html.Bootstrap().Button().SetIcon(IconType.Trash).SetSize(ButtonSize.Sm).SetName("id"))
+                @row.TableData(Html.Bootstrap().LinkButton(null,"#").AddIcon(IconType.Edit).Size(ButtonSize.Sm))
+                @row.TableData(Html.Bootstrap().Button().AddIcon(IconType.Trash).Size(ButtonSize.Sm).SetName("id"))
             }
         }
     }

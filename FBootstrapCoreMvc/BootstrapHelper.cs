@@ -173,7 +173,7 @@ namespace FBootstrapCoreMvc
         public BootstrapContent<Breadcrumb> Breadcrumb(string? divider = null)
         {
             var breadcrumb = new Breadcrumb();
-            if (divider != null) 
+            if (divider != null)
             {
                 breadcrumb.MergeStyle("--bs-breadcrumb-divider", $"'{divider}'");
             }
@@ -184,6 +184,12 @@ namespace FBootstrapCoreMvc
         {
             var button = new Button() { Content = content };
             return new BootstrapContent<Button>(_htmlHelper, button);
+        }
+
+        public BootstrapContent<ButtonGroup> ButtonGroup()
+        {
+            var buttonGroup = new ButtonGroup();
+            return new BootstrapContent<ButtonGroup>(_htmlHelper, buttonGroup);
         }
 
         /// <summary>

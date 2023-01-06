@@ -2,12 +2,13 @@
 
 namespace FBootstrapCoreMvc.Interfaces
 {
-    public interface IHaveButtonExtensions :
+    public interface IButton :
         ICanHaveIcon,
         ICanHaveBadge,
         ICanPositionBadge
     {
         ButtonState ButtonState { get; set; }
         ButtonType ButtonType { get; set; }
+        ButtonOutlineState? OutlineState { get; set; }
     }
 }

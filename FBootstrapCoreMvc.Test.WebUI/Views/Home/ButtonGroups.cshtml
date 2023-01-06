@@ -1,0 +1,67 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Basic example")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.Button("Left")
+            @buttonGroup.Button("Middle")
+            @buttonGroup.Button("Right")
+        }
+        <br />
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.LinkButton("Left").Active()
+            @buttonGroup.LinkButton("Middle")
+            @buttonGroup.LinkButton("Right")
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Mixed styles")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.Button("Left").State(ButtonState.Danger)
+            @buttonGroup.Button("Middle").State(ButtonState.Warning)
+            @buttonGroup.Button("Right").State(ButtonState.Success)
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Outlined styles")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.Button("Left").State(ButtonState.None).Outline(ButtonOutlineState.Primary)
+            @buttonGroup.Button("Middle").State(ButtonState.None).Outline(ButtonOutlineState.Primary)
+            @buttonGroup.Button("Right").State(ButtonState.None).Outline(ButtonOutlineState.Primary)
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Checkbox and radio button groups")
+    using (Html.Bootstrap().Div().Begin())
+    {
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Button toolbar")
+    using (Html.Bootstrap().Div().Begin())
+    {
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Sizing")
+    using (Html.Bootstrap().Div().Begin())
+    {
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Nesting")
+    using (Html.Bootstrap().Div().Begin())
+    {
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Vertical variation")
+    using (Html.Bootstrap().Div().Begin())
+    {
+    }
+}
