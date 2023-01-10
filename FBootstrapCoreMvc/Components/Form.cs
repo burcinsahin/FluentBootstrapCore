@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Form : HtmlComponent,
+    public class Form : SingleComponent,
         ICanCreate<FormInput>,
         ICanCreate<FormSelect>,
         ICanCreate<FormCheck>,

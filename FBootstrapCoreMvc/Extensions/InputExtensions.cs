@@ -11,7 +11,7 @@ namespace FBootstrapCoreMvc.Extensions
     public static class InputExtensions
     {
         public static BootstrapContent<TComponent> SetChecked<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool? value = null)
-            where TComponent : HtmlComponent, ICanBeChecked
+            where TComponent : SingleComponent, ICanBeChecked
         {
             if (!value.HasValue || value.Value)
                 bootstrapContent.Component.MergeAttribute("checked");
@@ -19,21 +19,21 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> SetMaxLength<TComponent>(this BootstrapContent<TComponent> bootstrapContent, short maxLength = 100)
-            where TComponent : HtmlComponent, ICanHaveMaxLength
+            where TComponent : SingleComponent, ICanHaveMaxLength
         {
             bootstrapContent.Component.MaxLength = maxLength;
             return bootstrapContent;
         }
 
         public static BootstrapContent<TComponent> IsRequired<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
-            where TComponent : HtmlComponent, ICanBeRequired
+            where TComponent : SingleComponent, ICanBeRequired
         {
             bootstrapContent.Component.Required = true;
             return bootstrapContent;
         }
 
         public static BootstrapContent<TComponent> SetReadonly<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
-            where TComponent : HtmlComponent, ICanBeReadonly
+            where TComponent : SingleComponent, ICanBeReadonly
         {
             bootstrapContent.Component.Readonly = true;
             return bootstrapContent;

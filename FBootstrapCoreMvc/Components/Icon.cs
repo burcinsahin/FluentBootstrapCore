@@ -3,7 +3,7 @@ using FBootstrapCoreMvc.Extensions;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Icon : HtmlComponent
+    public class Icon : SingleComponent
     {
         public Icon(IconType icon)
             : base("i")

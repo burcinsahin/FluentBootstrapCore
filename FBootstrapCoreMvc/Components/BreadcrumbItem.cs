@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class BreadcrumbItem : HtmlComponent,
+    public class BreadcrumbItem : SingleComponent,
         ICanBeActive, ILink
     {
         public bool Active { get; set; }

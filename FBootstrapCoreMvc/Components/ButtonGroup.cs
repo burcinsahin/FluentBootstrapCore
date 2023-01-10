@@ -3,7 +3,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class ButtonGroup : HtmlComponent, ICanCreate<IButton>
+    public class ButtonGroup : SingleComponent, ICanCreate<IButton>
     {
         public ButtonGroup() : base("div", Css.BtnGroup)
         {

@@ -3,7 +3,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Navbar : HtmlComponent,
+    public class Navbar : SingleComponent,
         ICanCreate<NavbarBrand>,
         ICanCreate<NavbarCollapse>,
         ICanCreate<NavbarToggler>

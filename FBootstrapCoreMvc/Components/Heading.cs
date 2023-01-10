@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Heading : HtmlComponent,
+    public class Heading : SingleComponent,
         ICanHaveBadge
     {
         public string? Badge { get; set; }

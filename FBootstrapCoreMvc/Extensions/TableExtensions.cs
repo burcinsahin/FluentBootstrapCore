@@ -58,19 +58,19 @@ namespace FBootstrapCoreMvc.Extensions
 
         // Cells
         public static BootstrapContent<TableHeader> TableHeader<TComponent>(this BootstrapBuilder<TComponent> builder, params string[] headers)
-            where TComponent : HtmlComponent, ICanCreate<TableHeader>
+            where TComponent : SingleComponent, ICanCreate<TableHeader>
         {
             return new BootstrapContent<TableHeader>(builder.HtmlHelper, new TableHeader(headers));
         }
 
         public static BootstrapContent<TableRow> TableRow<TComponent>(this BootstrapBuilder<TComponent> builder)
-            where TComponent : HtmlComponent, ICanCreate<TableRow>
+            where TComponent : SingleComponent, ICanCreate<TableRow>
         {
             return new BootstrapContent<TableRow>(builder.HtmlHelper, new TableRow());
         }
 
         public static BootstrapContent<TableData> TableData<TComponent>(this BootstrapBuilder<TComponent> builder, object? content = null)
-            where TComponent : HtmlComponent, ICanCreate<TableData>
+            where TComponent : SingleComponent, ICanCreate<TableData>
         {
             return new BootstrapContent<TableData>(builder.HtmlHelper, new TableData(content));
         }

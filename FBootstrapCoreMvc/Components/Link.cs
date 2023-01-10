@@ -3,7 +3,7 @@ using System.Data;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Link : HtmlComponent, ILink
+    public class Link : SingleComponent, ILink
     {
         public string? Href { get; set; }
         public string? Role { get; set; }

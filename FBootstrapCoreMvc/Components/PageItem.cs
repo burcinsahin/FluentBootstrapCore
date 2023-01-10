@@ -1,6 +1,6 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class PageItem : HtmlComponent
+    public class PageItem : SingleComponent
     {
         private Link _link;
 

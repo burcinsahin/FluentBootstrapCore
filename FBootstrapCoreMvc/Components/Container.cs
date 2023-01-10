@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Container : HtmlComponent,
+    public class Container : SingleComponent,
         ICanCreate<GridRow>
     {
         public bool TextCentered { get; set; }

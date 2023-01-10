@@ -1,6 +1,6 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class NavbarLink : HtmlComponent
+    public class NavbarLink : SingleComponent
     {
         private Link _link;
 

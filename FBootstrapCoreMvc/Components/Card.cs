@@ -5,7 +5,7 @@ using System;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Card : HtmlComponent,
+    public class Card : SingleComponent,
         ICanCreate<CardBody>,
         ICanCreate<CardHeader>,
         ICanCreate<CardFooter>

@@ -43,6 +43,20 @@
     @Html.Bootstrap().Heading2("Checkbox and radio button groups")
     using (Html.Bootstrap().Div().Begin())
     {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.CheckButton("Checkbox 1")
+            @buttonGroup.CheckButton("Checkbox 2")
+            @buttonGroup.CheckButton("Checkbox 3")
+        }
+        <br />
+        <br />
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.RadioButton("Radio 1").Name("btnradio").Checked()
+            @buttonGroup.RadioButton("Radio 2").Name("btnradio")
+            @buttonGroup.RadioButton("Radio 3").Name("btnradio")
+        }
     }
     <hr />
     @Html.Bootstrap().Heading2("Button toolbar")

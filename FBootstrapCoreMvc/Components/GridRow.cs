@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class GridRow : HtmlComponent,
+    public class GridRow : SingleComponent,
         ICanCreate<GridColumn>
     {
         public GridRow()

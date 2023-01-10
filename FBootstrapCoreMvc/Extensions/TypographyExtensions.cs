@@ -9,14 +9,14 @@ namespace FBootstrapCoreMvc.Extensions
     {
         #region Dropdown
         public static BootstrapContent<DropdownMenu> DropdownMenu<TComponent>(this BootstrapBuilder<TComponent> builder)
-            where TComponent : HtmlComponent, ICanCreate<DropdownMenu>
+            where TComponent : SingleComponent, ICanCreate<DropdownMenu>
         {
             var dropdownMenu = new DropdownMenu();
             return new BootstrapContent<DropdownMenu>(builder.HtmlHelper, dropdownMenu);
         }
 
         public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this BootstrapBuilder<TComponent> builder, string? text, string? href)
-            where TComponent : HtmlComponent, ICanCreate<DropdownItem>
+            where TComponent : SingleComponent, ICanCreate<DropdownItem>
         {
             var dropdownItem = new DropdownItem
             {
@@ -27,7 +27,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this BootstrapBuilder<TComponent> builder, string? text, string action, string controller, object? routeValues = null)
-            where TComponent : HtmlComponent, ICanCreate<DropdownItem>
+            where TComponent : SingleComponent, ICanCreate<DropdownItem>
         {
             var url = builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
             var dropdownItem = new DropdownItem

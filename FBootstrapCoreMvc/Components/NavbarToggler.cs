@@ -1,6 +1,6 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class NavbarToggler : HtmlComponent
+    public class NavbarToggler : SingleComponent
     {
         public NavbarToggler(string? collapseId)
             : base("button", Css.NavbarToggler)

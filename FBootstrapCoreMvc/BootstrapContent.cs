@@ -6,7 +6,7 @@ using System.Text.Encodings.Web;
 namespace FBootstrapCoreMvc
 {
     public class BootstrapContent<TComponent, TModel> : BootstrapContent<TComponent>
-        where TComponent : HtmlComponent
+        where TComponent : SingleComponent
     {
         private readonly TComponent _component;
         private readonly IHtmlHelper<TModel> _htmlHelper;
@@ -27,7 +27,7 @@ namespace FBootstrapCoreMvc
     }
 
     public class BootstrapContent<TComponent> : IHtmlContent
-        where TComponent : HtmlComponent
+        where TComponent : SingleComponent
     {
         private readonly TComponent _component;
         private readonly IHtmlHelper _htmlHelper;

@@ -16,7 +16,7 @@ namespace FBootstrapCoreMvc.Extensions
         /// <param name="id">optional</param>
         /// <returns></returns>
         internal static TComponent SetId<TComponent>(this TComponent component, string? id = null)
-            where TComponent : HtmlComponent
+            where TComponent : SingleComponent
         {
             if (id == null)
                 id = $"{component.Tag}_{DateTime.Now.Ticks}";
@@ -25,21 +25,21 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         internal static TComponent SetContent<TComponent>(this TComponent component, object? content)
-            where TComponent : HtmlComponent
+            where TComponent : SingleComponent
         {
             component.Content = content;
             return component;
         }
 
         internal static TComponent SetDisabled<TComponent>(this TComponent component, bool value = true)
-            where TComponent : HtmlComponent, ICanBeDisabled
+            where TComponent : SingleComponent, ICanBeDisabled
         {
             component.Disabled = value;
             return component;
         }
 
         internal static TComponent SetValue<TComponent>(this TComponent component, object? value = null)
-            where TComponent : HtmlComponent, ICanHaveValue
+            where TComponent : SingleComponent, ICanHaveValue
         {
             if (value != null)
                 component.MergeAttribute("value", value, true);
@@ -47,9 +47,9 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         internal static TComponent SetName<TComponent>(this TComponent component, string? name)
-            where TComponent : HtmlComponent, ICanHaveName
+            where TComponent : SingleComponent, ICanHaveName
         {
-            component.MergeAttribute("name", name);
+            component.Name = name;
             return component;
         }
     }

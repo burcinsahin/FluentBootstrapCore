@@ -4,7 +4,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public abstract class BaseButton : HtmlComponent, IButton
+    public abstract class BaseButton : SingleComponent, ICanHaveName, IButton
     {
         public ButtonState ButtonState { get; set; }
         public ButtonType ButtonType { get; set; }
@@ -12,16 +12,19 @@ namespace FBootstrapCoreMvc.Components
         public IconType? IconType { get; set; }
         public string? Badge { get; set; }
         public bool PositionBadge { get; set; }
+        public string? Name { get; set; }
 
         protected BaseButton(string tagName)
             : base(tagName, Css.Btn)
         {
-            ButtonState= ButtonState.Primary;
+            ButtonState = ButtonState.Primary;
         }
 
         protected override void PreBuild()
         {
             AddCss(ButtonState.GetCssDescription());
+            if (Name != null)
+                MergeAttribute("name", Name);
             if (OutlineState.HasValue)
                 AddCss(OutlineState.GetCssDescription());
 

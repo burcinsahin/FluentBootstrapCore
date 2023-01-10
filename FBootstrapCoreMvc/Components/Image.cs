@@ -1,6 +1,6 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class Image : HtmlComponent
+    public class Image : SingleComponent
     {
         public Image()
             : base("img")

@@ -4,7 +4,7 @@ using System;
 namespace FBootstrapCoreMvc
 {
     public class BootstrapBuilder<TComponent, TModel> : BootstrapBuilder<TComponent>
-        where TComponent : HtmlComponent
+        where TComponent : SingleComponent
     {
         protected new readonly IHtmlHelper<TModel> _htmlHelper;
 
@@ -18,7 +18,7 @@ namespace FBootstrapCoreMvc
     }
 
     public class BootstrapBuilder<TComponent> : IDisposable
-        where TComponent : HtmlComponent
+        where TComponent : SingleComponent
     {
         protected readonly IHtmlHelper _htmlHelper;
         protected readonly TComponent _component;

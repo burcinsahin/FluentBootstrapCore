@@ -3,7 +3,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class List : HtmlComponent,
+    public class List : SingleComponent,
         ICanCreate<ListItem>
     {
         public ListType Type { get; set; }

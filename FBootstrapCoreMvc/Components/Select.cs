@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Select : HtmlComponent,
+    public class Select : SingleComponent,
         ICanCreate<SelectOption>
     {
         public string? Name { get; set; }

@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Breadcrumb : HtmlComponent,
+    public class Breadcrumb : SingleComponent,
         ICanCreate<BreadcrumbItem>
     {
         public Breadcrumb()

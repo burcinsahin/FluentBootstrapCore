@@ -2,5 +2,6 @@
 {
     public interface ICanBeChecked
     {
+        bool Checked { get; set; }
     }
 }
