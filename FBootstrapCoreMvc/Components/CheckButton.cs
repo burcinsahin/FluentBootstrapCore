@@ -1,16 +1,24 @@
-﻿using FBootstrapCoreMvc.Extensions;
+﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
     public class CheckButton : HtmlComponent,
         ICanBeChecked,
-        ICanHaveName
+        ICanHaveName,
+        IButtonOutlineState
     {
         public bool Radio { get; set; }
         public bool Checked { get; set; }
         public object? Content { get; set; }
         public string? Name { get; set; }
+        public ButtonOutlineState? OutlineState { get; set; }
+
+        public CheckButton()
+        {
+            OutlineState = ButtonOutlineState.Primary;
+        }
 
         public override string ToHtml()
         {
@@ -35,7 +43,7 @@ namespace FBootstrapCoreMvc.Components
             }
 
             var label = new HtmlElement("label");
-            label.AddCss(Css.Btn, Css.BtnOutlinePrimary);
+            label.AddCss(Css.Btn, OutlineState.GetCssDescription());
             label.MergeAttribute("for", input.Id);
             label.AppendContent(Content);
 

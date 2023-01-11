@@ -52,7 +52,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> Outline<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonOutlineState state)
-            where TComponent : SingleComponent, IButton
+            where TComponent : SingleComponent, IButtonOutlineState
         {
             bootstrapContent.Component.OutlineState = state;
             return bootstrapContent;

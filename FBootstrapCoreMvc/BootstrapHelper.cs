@@ -192,6 +192,12 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<ButtonGroup>(_htmlHelper, buttonGroup);
         }
 
+        public BootstrapContent<ButtonToolbar> ButtonToolbar()
+        {
+            var buttonToolbar = new ButtonToolbar();
+            return new BootstrapContent<ButtonToolbar>(_htmlHelper, buttonToolbar);
+        }
+
         /// <summary>
         /// Card is new version of old Panel
         /// </summary>
