@@ -4,6 +4,8 @@ namespace FBootstrapCoreMvc.Enums
 {
     public enum ButtonState
     {
+        [Description("")]
+        None,
         [Description(Css.BtnPrimary)]
         Primary,
         [Description(Css.BtnSecondary)]

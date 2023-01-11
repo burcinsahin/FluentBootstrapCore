@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormRadio : HtmlComponent
+    public class FormRadio : SingleComponent
     {
         private readonly Label _label;
         private readonly RadioButton _radioButton;

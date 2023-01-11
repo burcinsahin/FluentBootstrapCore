@@ -1,6 +1,6 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class TableData : HtmlComponent
+    public class TableData : SingleComponent
     {
         public TableData(object? content = null)
             : base("td")

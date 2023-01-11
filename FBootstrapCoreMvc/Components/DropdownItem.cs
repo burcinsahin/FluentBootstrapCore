@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class DropdownItem : HtmlComponent,
+    public class DropdownItem : SingleComponent,
         ILink
     {
         public string? Href { get; set; }

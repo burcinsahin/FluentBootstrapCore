@@ -4,7 +4,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public abstract class BaseInput : HtmlComponent,
+    public abstract class BaseInput : SingleComponent,
         ICanHaveValue,
         ICanHaveName,
         ICanBeDisabled

@@ -35,7 +35,7 @@ namespace FBootstrapCoreMvc.Extensions
 
         #region Form Controls
         public static BootstrapContent<FormInput> Input<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, object? value = null, FormInputType inputType = FormInputType.Text)
-            where TComponent : HtmlComponent, ICanCreate<FormInput>
+            where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             var input = new FormInput
             {
@@ -48,7 +48,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<FormInput> InputFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : HtmlComponent, ICanCreate<FormInput>
+            where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
@@ -96,19 +96,19 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<HtmlElement> DisplayFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : HtmlComponent, ICanCreate<FormInput>
+            where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             throw new NotImplementedException();
         }
 
         public static BootstrapContent<HtmlElement> EditorFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : HtmlComponent, ICanCreate<FormInput>
+            where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             throw new NotImplementedException();
         }
 
         public static BootstrapContent<FormCheck> CheckBox<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, bool isChecked = false)
-            where TComponent : HtmlComponent, ICanCreate<FormCheck>
+            where TComponent : SingleComponent, ICanCreate<FormCheck>
         {
             var formCheck = new FormCheck
             {
@@ -120,7 +120,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<FormCheck> CheckFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : HtmlComponent, ICanCreate<FormCheck>
+            where TComponent : SingleComponent, ICanCreate<FormCheck>
         {
             var modelExpressionProvider = builder.HtmlHelper.GetModelExpressionProvider();
             var modelExpression = modelExpressionProvider.CreateModelExpression(builder.HtmlHelper.ViewData, expression);
@@ -138,14 +138,14 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<FormInput> Password<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null)
-            where TComponent : HtmlComponent, ICanCreate<FormInput>
+            where TComponent : SingleComponent, ICanCreate<FormInput>
         {
 
             return builder.Input(name, label, null, FormInputType.Password);
         }
 
         public static BootstrapContent<FormInput> PasswordFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : HtmlComponent, ICanCreate<FormInput>
+            where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
@@ -160,13 +160,13 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static IHtmlContent HiddenFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : HtmlComponent, ICanCreate<FormInput>
+            where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             return builder.HtmlHelper.HiddenFor(expression);
         }
 
         public static BootstrapContent<Label> LabelFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
-            where TComponent : HtmlComponent, ICanCreate<Label>
+            where TComponent : SingleComponent, ICanCreate<Label>
         {
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
@@ -178,7 +178,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<FormSelect> Select<TComponent>(this BootstrapBuilder<TComponent> builder, string name, IEnumerable<SelectListItem> selectList)
-            where TComponent : HtmlComponent, ICanCreate<FormSelect>
+            where TComponent : SingleComponent, ICanCreate<FormSelect>
         {
             var formSelect = new FormSelect()
             {
@@ -189,7 +189,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<FormSelect> SelectFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListItem> selectList)
-            where TComponent : HtmlComponent, ICanCreate<FormSelect>
+            where TComponent : SingleComponent, ICanCreate<FormSelect>
         {
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
@@ -204,7 +204,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<Button> Button<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Button", ButtonState buttonState = ButtonState.Primary, object? value = null)
-            where TComponent : HtmlComponent, ICanCreate<Button>
+            where TComponent : SingleComponent, ICanCreate<Button>
         {
             var button = new Button(text)
             {
@@ -216,7 +216,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<Button> Submit<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Submit", ButtonState buttonState = ButtonState.Primary, object? value = null)
-            where TComponent : HtmlComponent, ICanCreate<Button>
+            where TComponent : SingleComponent, ICanCreate<Button>
         {
             var submit = new Button(text)
             {
@@ -229,7 +229,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<Button> Reset<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Reset", ButtonState buttonState = ButtonState.Primary, object? value = null)
-            where TComponent : HtmlComponent, ICanCreate<Button>
+            where TComponent : SingleComponent, ICanCreate<Button>
         {
             var reset = new Button(text)
             {
@@ -243,14 +243,14 @@ namespace FBootstrapCoreMvc.Extensions
         #endregion
 
         public static BootstrapContent<TComponent> SetFloatingLabel<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? label)
-            where TComponent : HtmlComponent, ICanHaveFloatingLabel
+            where TComponent : SingleComponent, ICanHaveFloatingLabel
         {
             bootstrapContent.Component.FloatingLabel = label;
             return bootstrapContent;
         }
 
         public static BootstrapContent<TComponent> SetLabel<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? label)
-            where TComponent : HtmlComponent, ICanHaveLabel
+            where TComponent : SingleComponent, ICanHaveLabel
         {
             bootstrapContent.Component.Label = label;
             return bootstrapContent;

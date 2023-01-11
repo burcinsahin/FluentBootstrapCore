@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class SelectOption : HtmlComponent,
+    public class SelectOption : SingleComponent,
         ICanHaveValue, 
         ICanBeDisabled, 
         ICanBeSelected

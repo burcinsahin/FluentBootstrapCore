@@ -1,4 +1,4 @@
-﻿namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Interfaces
 {
     public interface ICanHaveMaxLength
     {

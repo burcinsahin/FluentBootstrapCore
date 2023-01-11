@@ -30,14 +30,14 @@ namespace FBootstrapCoreMvc.Extensions
 
         #region Grid
         public static BootstrapContent<GridRow> Row<TComponent>(this BootstrapBuilder<TComponent> builder)
-    where TComponent : HtmlComponent, ICanCreate<GridRow>
+    where TComponent : SingleComponent, ICanCreate<GridRow>
         {
             var gridRow = new GridRow();
             return new BootstrapContent<GridRow>(builder.HtmlHelper, gridRow);
         }
 
         public static BootstrapContent<GridColumn> Column<TComponent>(this BootstrapBuilder<TComponent> builder)
-            where TComponent : HtmlComponent, ICanCreate<GridColumn>
+            where TComponent : SingleComponent, ICanCreate<GridColumn>
         {
             var gridColumn = new GridColumn();
             return new BootstrapContent<GridColumn>(builder.HtmlHelper, gridColumn);

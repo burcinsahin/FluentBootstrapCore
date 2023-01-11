@@ -16,12 +16,12 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<HtmlComponent> AlertLink(this BootstrapBuilder<Alert> builder, object? content, string? href = "#")
+        public static BootstrapContent<SingleComponent> AlertLink(this BootstrapBuilder<Alert> builder, object? content, string? href = "#")
         {
             var link = new HtmlElement("a", Css.AlertLink);
             link.AppendContent(content);
             link.MergeAttribute("href", href);
-            return new BootstrapContent<HtmlComponent>(builder.HtmlHelper, link);
+            return new BootstrapContent<SingleComponent>(builder.HtmlHelper, link);
         }
     }
 }

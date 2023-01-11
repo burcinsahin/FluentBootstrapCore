@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public abstract class FormControl : HtmlComponent,
+    public abstract class FormControl : SingleComponent,
         ICanBeReadonly,
         ICanHaveFloatingLabel,
         ICanHaveLabel,
@@ -15,7 +15,7 @@ namespace FBootstrapCoreMvc.Components
         public object? Value { get; set; }
         public bool Required { get; set; }
 
-        protected HtmlComponent? _inputComponent;
+        protected SingleComponent? _inputComponent;
 
         public FormControl() : base("div", Css.Mb3)
         {

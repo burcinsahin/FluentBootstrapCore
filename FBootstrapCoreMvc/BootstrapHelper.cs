@@ -146,6 +146,12 @@ namespace FBootstrapCoreMvc
         #endregion
 
         #region Components
+        public BootstrapContent<Accordion> Accordion()
+        {
+            var accordion = new Accordion();
+            return new BootstrapContent<Accordion>(HtmlHelper, accordion);
+        }
+
         public BootstrapContent<Alert> Alert(
             AlertState alertState = AlertState.Primary,
             string? heading = null,
@@ -158,16 +164,38 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Alert>(HtmlHelper, component);
         }
 
-        public BootstrapContent<Badge> Badge()
+        public BootstrapContent<Badge> Badge(object? content = null)
         {
-            var badge = new Badge();
+            var badge = new Badge() { Content = content };
             return new BootstrapContent<Badge>(HtmlHelper, badge);
+        }
+
+        public BootstrapContent<Breadcrumb> Breadcrumb(string? divider = null)
+        {
+            var breadcrumb = new Breadcrumb();
+            if (divider != null)
+            {
+                breadcrumb.MergeStyle("--bs-breadcrumb-divider", $"'{divider}'");
+            }
+            return new BootstrapContent<Breadcrumb>(HtmlHelper, breadcrumb);
         }
 
         public BootstrapContent<Button> Button(object? content = null)
         {
             var button = new Button() { Content = content };
             return new BootstrapContent<Button>(_htmlHelper, button);
+        }
+
+        public BootstrapContent<ButtonGroup> ButtonGroup()
+        {
+            var buttonGroup = new ButtonGroup();
+            return new BootstrapContent<ButtonGroup>(_htmlHelper, buttonGroup);
+        }
+
+        public BootstrapContent<ButtonToolbar> ButtonToolbar()
+        {
+            var buttonToolbar = new ButtonToolbar();
+            return new BootstrapContent<ButtonToolbar>(_htmlHelper, buttonToolbar);
         }
 
         /// <summary>

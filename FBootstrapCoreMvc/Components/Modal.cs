@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Modal : HtmlComponent
+    public class Modal : SingleComponent
     {
         internal string? Title { get; set; }
         internal bool VCentered { get; set; }

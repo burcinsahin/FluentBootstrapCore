@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class DropdownMenu : HtmlComponent,
+    public class DropdownMenu : SingleComponent,
         ICanCreate<DropdownItem>
     {
         public DropdownMenu()

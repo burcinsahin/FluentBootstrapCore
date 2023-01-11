@@ -1,6 +1,6 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class CardHeader : HtmlComponent
+    public class CardHeader : SingleComponent
     {
         public CardHeader()
             : base("div", Css.CardHeader)

@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Alert : HtmlComponent
+    public class Alert : SingleComponent
     {
         public bool Dismissible { get; set; }
         public string? Heading { get; internal set; }

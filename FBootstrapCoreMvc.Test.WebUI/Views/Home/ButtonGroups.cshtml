@@ -1,0 +1,247 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Basic example")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.Button("Left")
+            @buttonGroup.Button("Middle")
+            @buttonGroup.Button("Right")
+        }
+        <br />
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.LinkButton("Left").Active()
+            @buttonGroup.LinkButton("Middle")
+            @buttonGroup.LinkButton("Right")
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Mixed styles")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.Button("Left").State(ButtonState.Danger)
+            @buttonGroup.Button("Middle").State(ButtonState.Warning)
+            @buttonGroup.Button("Right").State(ButtonState.Success)
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Outlined styles")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.Button("Left").State(ButtonState.None).Outline(ButtonOutlineState.Primary)
+            @buttonGroup.Button("Middle").State(ButtonState.None).Outline(ButtonOutlineState.Primary)
+            @buttonGroup.Button("Right").State(ButtonState.None).Outline(ButtonOutlineState.Primary)
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Checkbox and radio button groups")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.CheckButton("Checkbox 1")
+            @buttonGroup.CheckButton("Checkbox 2")
+            @buttonGroup.CheckButton("Checkbox 3")
+        }
+        <br />
+        <br />
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.RadioButton("Radio 1").Name("btnradio").Checked()
+            @buttonGroup.RadioButton("Radio 2").Name("btnradio")
+            @buttonGroup.RadioButton("Radio 3").Name("btnradio")
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Button toolbar")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().Begin())
+        {
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
+            {
+                @buttonGroup.Button("1")
+                @buttonGroup.Button("2")
+                @buttonGroup.Button("3")
+                @buttonGroup.Button("4")
+            }
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
+            {
+                @buttonGroup.Button("5").State(ButtonState.Secondary)
+                @buttonGroup.Button("6").State(ButtonState.Secondary)
+                @buttonGroup.Button("7").State(ButtonState.Secondary)
+            }
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().Begin())
+            {
+                @buttonGroup.Button("8").State(ButtonState.Info)
+            }
+        }
+        <br />
+        @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().AddCss(Css.Mb3).Begin())
+        {
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
+            {
+                @buttonGroup.Button("1")
+                @buttonGroup.Button("2")
+                @buttonGroup.Button("3")
+                @buttonGroup.Button("4")
+            }
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
+            {
+                @buttonGroup.Button("5").State(ButtonState.Secondary)
+                @buttonGroup.Button("6").State(ButtonState.Secondary)
+                @buttonGroup.Button("7").State(ButtonState.Secondary)
+            }
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().Begin())
+            {
+                @buttonGroup.Button("8").State(ButtonState.Info)
+            }
+        }
+
+        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-outline-secondary">1</button>
+                <button type="button" class="btn btn-outline-secondary">2</button>
+                <button type="button" class="btn btn-outline-secondary">3</button>
+                <button type="button" class="btn btn-outline-secondary">4</button>
+            </div>
+            <div class="input-group">
+                <div class="input-group-text" id="btnGroupAddon">@@</div>
+                <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
+            </div>
+        </div>
+
+        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group" role="group" aria-label="First group">
+                <button type="button" class="btn btn-outline-secondary">1</button>
+                <button type="button" class="btn btn-outline-secondary">2</button>
+                <button type="button" class="btn btn-outline-secondary">3</button>
+                <button type="button" class="btn btn-outline-secondary">4</button>
+            </div>
+            <div class="input-group">
+                <div class="input-group-text" id="btnGroupAddon2">@@</div>
+                <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+            </div>
+        </div>
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Sizing")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Size(ButtonGroupSize.Lg).Begin())
+        {
+            @buttonGroup.Button("Left").State(ButtonState.None).Outline(ButtonOutlineState.Dark)
+            @buttonGroup.Button("Middle").State(ButtonState.None).Outline(ButtonOutlineState.Dark)
+            @buttonGroup.Button("Right").State(ButtonState.None).Outline(ButtonOutlineState.Dark)
+        }
+        <br>
+
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Size(ButtonGroupSize.Default).Begin())
+        {
+            @buttonGroup.Button("Left").State(ButtonState.None).Outline(ButtonOutlineState.Dark)
+            @buttonGroup.Button("Middle").State(ButtonState.None).Outline(ButtonOutlineState.Dark)
+            @buttonGroup.Button("Right").State(ButtonState.None).Outline(ButtonOutlineState.Dark)
+        }
+        <br>
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Size(ButtonGroupSize.Sm).Begin())
+        {
+            @buttonGroup.Button("Left").State(ButtonState.None).Outline(ButtonOutlineState.Dark)
+            @buttonGroup.Button("Middle").State(ButtonState.None).Outline(ButtonOutlineState.Dark)
+            @buttonGroup.Button("Right").State(ButtonState.None).Outline(ButtonOutlineState.Dark)
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Nesting")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.Button("1")
+            @buttonGroup.Button("2")
+            @using (var buttonGroup2 = buttonGroup.ButtonGroup().Begin())
+            {
+                @buttonGroup.DropdownToggle("Dropdown")
+                @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+                {
+                    @dropdownMenu.DropdownItem("Dropdown link","#")
+                    @dropdownMenu.DropdownItem("Dropdown link","#")
+                }
+            }
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Vertical variation")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Vertical().Begin())
+        {
+            @buttonGroup.Button("Button").State(ButtonState.Dark)
+            @buttonGroup.Button("Button").State(ButtonState.Dark)
+            @buttonGroup.Button("Button").State(ButtonState.Dark)
+            @buttonGroup.Button("Button").State(ButtonState.Dark)
+            @buttonGroup.Button("Button").State(ButtonState.Dark)
+            @buttonGroup.Button("Button").State(ButtonState.Dark)
+        }
+
+        <br />
+
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Vertical().Begin())
+        {
+            @buttonGroup.Button("Button")
+            @buttonGroup.Button("Button")
+            @using (var buttonGroup2 = buttonGroup.ButtonGroup().Begin())
+            {
+                @buttonGroup.DropdownToggle("Dropdown")
+                @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+                {
+                    @dropdownMenu.DropdownItem("Dropdown link","#")
+                    @dropdownMenu.DropdownItem("Dropdown link","#")
+                }
+            }
+            @buttonGroup.Button("Button")
+            @buttonGroup.Button("Button")
+            @using (var buttonGroup2 = buttonGroup.ButtonGroup().Begin())
+            {
+                @buttonGroup.DropdownToggle("Dropdown")
+                @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+                {
+                    @dropdownMenu.DropdownItem("Dropdown link","#")
+                    @dropdownMenu.DropdownItem("Dropdown link","#")
+                }
+            }
+            @using (var buttonGroup2 = buttonGroup.ButtonGroup().Begin())
+            {
+                @buttonGroup.DropdownToggle("Dropdown")
+                @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+                {
+                    @dropdownMenu.DropdownItem("Dropdown link","#")
+                    @dropdownMenu.DropdownItem("Dropdown link","#")
+                }
+            }
+            @using (var buttonGroup2 = buttonGroup.ButtonGroup().Begin())
+            {
+                @buttonGroup.DropdownToggle("Dropdown")
+                @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+                {
+                    @dropdownMenu.DropdownItem("Dropdown link","#")
+                    @dropdownMenu.DropdownItem("Dropdown link","#")
+                }
+            }
+        }
+
+        <br />
+
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Vertical().Begin())
+        {
+            @buttonGroup.RadioButton("Radio 1").Outline(ButtonOutlineState.Danger).Name("btnradio").Checked()
+            @buttonGroup.RadioButton("Radio 2").Outline(ButtonOutlineState.Danger).Name("btnradio")
+            @buttonGroup.RadioButton("Radio 3").Outline(ButtonOutlineState.Danger).Name("btnradio")
+        }
+    }
+}
