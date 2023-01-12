@@ -1,10 +1,6 @@
 ﻿using FBootstrapCoreMvc.Components;
 using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -53,6 +49,14 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> Placeholder<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string placeholder)
+            where TComponent : SingleComponent, IPlaceholder
+        {
+            bootstrapContent.Component.Placeholder = placeholder;
+            return bootstrapContent;
+        }
+
+
         //public static BootstrapContent<Select> Select(this IBootstrapHelper bootstrapHelper, string name, IEnumerable<SelectListItem> selectList)
         //{
         //    var select = new Select();
@@ -60,5 +64,28 @@ namespace FBootstrapCoreMvc.Extensions
         //    select.SelectList = selectList;
         //    return new BootstrapContent<Select>(bootstrapHelper.HtmlHelper, select);
         //}
+
+        public static BootstrapContent<InputGroup> InputGroup<TComponent>(this BootstrapBuilder<TComponent> builder)
+            where TComponent : SingleComponent, ICanCreate<InputGroup>
+        {
+            var inputGroup = new InputGroup();
+            return new BootstrapContent<InputGroup>(builder.HtmlHelper, inputGroup);
+        }
+
+        public static BootstrapContent<HtmlElement> InputGroupText(this BootstrapBuilder<InputGroup> builder, object? content = null)
+        {
+            var inputGroupText = new HtmlElement("span", Css.InputGroupText)
+            {
+                Content = content
+            };
+            return new BootstrapContent<HtmlElement>(builder.HtmlHelper, inputGroupText);
+        }
+
+        public static BootstrapContent<Input> Input<TComponent>(this BootstrapBuilder<TComponent> builder)
+            where TComponent : SingleComponent, ICanCreate<Input>
+        {
+            var input = new Input();
+            return new BootstrapContent<Input>(builder.HtmlHelper, input);
+        }
     }
 }

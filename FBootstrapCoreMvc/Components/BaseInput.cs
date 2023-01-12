@@ -7,12 +7,14 @@ namespace FBootstrapCoreMvc.Components
     public abstract class BaseInput : SingleComponent,
         ICanHaveValue,
         ICanHaveName,
-        ICanBeDisabled
+        ICanBeDisabled,
+        IPlaceholder
     {
         public FormInputType Type { get; set; }
         public object? Value { get; internal set; }
         public string? Name { get; set; }
         public bool Disabled { get; set; }
+        public string? Placeholder { get; set; }
 
         public BaseInput(FormInputType inputType, params string[] cssClasses)
             : base("input", cssClasses)

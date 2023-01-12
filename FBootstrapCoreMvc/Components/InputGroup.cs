@@ -1,10 +1,9 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class InputGroup : SingleComponent
+    public class InputGroup : SingleComponent,
+        ICanCreate<Input>
     {
         public InputGroup() : base("div", Css.InputGroup)
         {

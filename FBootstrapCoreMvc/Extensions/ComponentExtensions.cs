@@ -1,4 +1,5 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿
+using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
 using System;
 
@@ -206,6 +207,14 @@ namespace FBootstrapCoreMvc.Extensions
             where TComponent : SingleComponent, ILink
         {
             bootstrapContent.Component.Href = href;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> JustifyContent<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent, JustifyContent justifyContent)
+            where TComponent : SingleComponent, IJustifyContent
+        {
+            bootstrapContent.Component.JustifyContent = justifyContent;
             return bootstrapContent;
         }
         #endregion

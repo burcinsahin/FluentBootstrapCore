@@ -103,32 +103,38 @@
                 @buttonGroup.Button("8").State(ButtonState.Info)
             }
         }
-
-        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group me-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-outline-secondary">1</button>
-                <button type="button" class="btn btn-outline-secondary">2</button>
-                <button type="button" class="btn btn-outline-secondary">3</button>
-                <button type="button" class="btn btn-outline-secondary">4</button>
-            </div>
-            <div class="input-group">
-                <div class="input-group-text" id="btnGroupAddon">@@</div>
-                <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
-            </div>
-        </div>
-
-        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group" role="group" aria-label="First group">
-                <button type="button" class="btn btn-outline-secondary">1</button>
-                <button type="button" class="btn btn-outline-secondary">2</button>
-                <button type="button" class="btn btn-outline-secondary">3</button>
-                <button type="button" class="btn btn-outline-secondary">4</button>
-            </div>
-            <div class="input-group">
-                <div class="input-group-text" id="btnGroupAddon2">@@</div>
-                <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-            </div>
-        </div>
+        <br />
+        @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().AddCss(Css.Mb3).Begin())
+        {
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
+            {
+                @buttonGroup.Button("1").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
+                @buttonGroup.Button("2").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
+                @buttonGroup.Button("3").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
+                @buttonGroup.Button("4").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
+            }
+            @using (var inputGroup = @buttonToolbar.InputGroup().AddCss(Css.Me2).Begin())
+            {
+                @inputGroup.InputGroupText("@")
+                @inputGroup.Input().AddCss(Css.FormControl).Placeholder("Input group example")
+            }
+        }
+        <br />
+        @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().JustifyContent(JustifyContent.Between).AddCss(Css.Mb3).Begin())
+        {
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
+            {
+                @buttonGroup.Button("1").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
+                @buttonGroup.Button("2").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
+                @buttonGroup.Button("3").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
+                @buttonGroup.Button("4").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
+            }
+            @using (var inputGroup = @buttonToolbar.InputGroup().Begin())
+            {
+                @inputGroup.InputGroupText("@")
+                @inputGroup.Input().AddCss(Css.FormControl).Placeholder("Input group example")
+            }
+        }
     }
     <hr />
     @Html.Bootstrap().Heading2("Sizing")
@@ -141,7 +147,6 @@
             @buttonGroup.Button("Right").State(ButtonState.None).Outline(ButtonOutlineState.Dark)
         }
         <br>
-
         @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Size(ButtonGroupSize.Default).Begin())
         {
             @buttonGroup.Button("Left").State(ButtonState.None).Outline(ButtonOutlineState.Dark)

@@ -42,7 +42,6 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
         }
 
-
         public static CompositeContent<CheckButton> CheckButton(this BootstrapBuilder<ButtonGroup> builder, object? content = null)
         {
             var button = new CheckButton

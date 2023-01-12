@@ -7,7 +7,6 @@ namespace FBootstrapCoreMvc.Components
         public bool Required { get; set; }
         public bool AutoFocus { get; set; }
         public int MaxLength { get; set; }
-        public string? Placeholder { get; set; }
 
         public Input()
             : base(FormInputType.Text)
