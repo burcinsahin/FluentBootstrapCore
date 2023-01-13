@@ -38,14 +38,14 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Css.cs</LastGenOutput>
     </None>
-    <None Update="Icons.tmp">
+    <None Update="Icons.cs.tmp">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Icons.tt</DependentUpon>
     </None>
     <None Update="Icons.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Icons.tmp</LastGenOutput>
+      <LastGenOutput>Icons.cs.tmp</LastGenOutput>
     </None>
   </ItemGroup>
   

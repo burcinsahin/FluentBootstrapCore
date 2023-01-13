@@ -5,7 +5,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Globalization" #>
 <#@ import namespace="System.IO" #>
-<#@ output extension=".tmp" #>
+<#@ output extension=".cs.tmp" #>
 <# Process(); #>
 <#+
 	public void Process()
