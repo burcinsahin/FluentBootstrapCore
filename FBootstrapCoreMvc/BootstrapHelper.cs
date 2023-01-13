@@ -153,14 +153,14 @@ namespace FBootstrapCoreMvc
         }
 
         public BootstrapContent<Alert> Alert(
-            AlertState alertState = AlertState.Primary,
-            string? heading = null,
-            object? content = null)
+            object? content = null,
+            string? heading = null)
         {
-            var component = new Alert();
-            component.AddCss(alertState.GetCssDescription());
-            component.Heading = heading;
-            component.Content = content;
+            var component = new Alert
+            {
+                Heading = heading,
+                Content = content
+            };
             return new BootstrapContent<Alert>(HtmlHelper, component);
         }
 

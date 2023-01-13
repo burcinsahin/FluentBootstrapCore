@@ -1,50 +1,75 @@
 ﻿@using (Html.Bootstrap().Container().Begin())
 {
-    @Html.Bootstrap().Heading1("States")
-    using (Html.Bootstrap().Div().SetId("test-states").Begin())
+    @Html.Bootstrap().Heading1("Examples")
+    using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().Alert(AlertState.Primary,content: "Primary")
-        @Html.Bootstrap().Alert(AlertState.Secondary, content:"Secondary")
-        @Html.Bootstrap().Alert(AlertState.Success,content: "Success")
-        @Html.Bootstrap().Alert(AlertState.Danger, content:"Danger")
-        @Html.Bootstrap().Alert(AlertState.Warning,content: "Warning")
-        @Html.Bootstrap().Alert(AlertState.Info, content:"Info")
-        @Html.Bootstrap().Alert(AlertState.Light,content: "Light")
-        @Html.Bootstrap().Alert(AlertState.Dark, content:"Dark")
+        @Html.Bootstrap().Alert("A simple primary alert—check it out!")
+        @Html.Bootstrap().Alert("A simple secondary alert—check it out!").State(AlertState.Secondary)
+        @Html.Bootstrap().Alert("A simple success alert—check it out!").State(AlertState.Success)
+        @Html.Bootstrap().Alert("A simple danger alert—check it out!").State(AlertState.Danger)
+        @Html.Bootstrap().Alert("A simple warning alert—check it out!").State(AlertState.Warning)
+        @Html.Bootstrap().Alert("A simple info alert—check it out!").State(AlertState.Info)
+        @Html.Bootstrap().Alert("A simple light alert—check it out!").State(AlertState.Light)
+        @Html.Bootstrap().Alert("A simple dark alert—check it out!").State(AlertState.Dark)
     }
-
     <hr />
-
-    @Html.Bootstrap().Heading1("Heading")
-    using (Html.Bootstrap().Div().SetId("test-heading").Begin())
+    @Html.Bootstrap().Heading1("Link color")
+    using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().Alert(AlertState.Warning, "Warning", "Yikes, this is a warning.")
-    }
-
-    <hr />
-
-    @Html.Bootstrap().Heading1("Dismissible")
-    using (Html.Bootstrap().Div().SetId("test-dismissible").Begin())
-    {
-        @Html.Bootstrap().Alert(AlertState.Warning, "Yikes, this is a warning.").SetDismissible()
-    }
-
-    <hr />
-
-    @Html.Bootstrap().Heading1("Dismissible With Heading")
-    using (Html.Bootstrap().Div().SetId("test-dismissible-with-heading").Begin())
-    {
-        @Html.Bootstrap().Alert(AlertState.Warning, "Warning", "Yikes, this is a warning.").SetDismissible()
-    }
-
-    <hr />
-
-    @Html.Bootstrap().Heading1("Links")
-    using (Html.Bootstrap().Div().SetId("test-links").Begin())
-    {
-        using (var alert = Html.Bootstrap().Alert(AlertState.Warning).SetHeading("Yikes!").SetDismissible().Begin())
+        @using (var alert = Html.Bootstrap().Alert().Begin())
         {
-            <text>This is @alert.AlertLink("link") inside the alert.</text>
+            <text>A simple primary alert with @alert.AlertLink("an example link"). Give it a click if you like.</text>
         }
+        @using (var alert = Html.Bootstrap().Alert().State(AlertState.Secondary).Begin())
+        {
+            <text>A simple secondary alert with @alert.AlertLink("an example link"). Give it a click if you like.</text>
+        }
+        @using (var alert = Html.Bootstrap().Alert().State(AlertState.Success).Begin())
+        {
+            <text>A simple success alert with @alert.AlertLink("an example link"). Give it a click if you like.</text>
+        }
+        @using (var alert = Html.Bootstrap().Alert().State(AlertState.Danger).Begin())
+        {
+            <text>A simple danger alert with @alert.AlertLink("an example link"). Give it a click if you like.</text>
+        }
+        @using (var alert = Html.Bootstrap().Alert().State(AlertState.Warning).Begin())
+        {
+            <text>A simple warning alert with @alert.AlertLink("an example link"). Give it a click if you like.</text>
+        }
+        @using (var alert = Html.Bootstrap().Alert().State(AlertState.Info).Begin())
+        {
+            <text>A simple info alert with @alert.AlertLink("an example link"). Give it a click if you like.</text>
+        }
+        @using (var alert = Html.Bootstrap().Alert().State(AlertState.Light).Begin())
+        {
+            <text>A simple light alert with @alert.AlertLink("an example link"). Give it a click if you like.</text>
+        }
+        @using (var alert = Html.Bootstrap().Alert().State(AlertState.Dark).Begin())
+        {
+            <text>A simple dark alert with @alert.AlertLink("an example link"). Give it a click if you like.</text>
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading1("Additional content")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var alert = Html.Bootstrap().Alert().Heading("Well done!").State(AlertState.Success).Begin())
+        {
+            @Html.Bootstrap().Paragraph("Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.")
+            <hr>
+            @Html.Bootstrap().Paragraph("Whenever you need to, be sure to use margin utilities to keep things nice and tidy.").AddCss(Css.Mb0)
+        }
+    }
+    @Html.Bootstrap().Heading1("Icons")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Alert("An example alert with an icon").Icon(IconType.ExclamationTriangleFill)
+    }
+
+    <hr />
+    @Html.Bootstrap().Heading1("Dismissing")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Alert("Holy guacamole! You should check in on some of those fields below.").Dismissible()
     }
 }

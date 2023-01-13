@@ -18,6 +18,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Icons.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Icons.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -37,6 +45,15 @@
     <None Update="Css.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Css.cs</LastGenOutput>
+    </None>
+    <None Update="Icons.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Icons.txt</LastGenOutput>
+    </None>
+    <None Update="Icons.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Icons.tt</DependentUpon>
     </None>
   </ItemGroup>
   

@@ -31,6 +31,8 @@ namespace FBootstrapCoreMvc.Enums
         [Description("filter")]
         Filter,
         [Description("window")]
-        Window
+        Window,
+        [Description("exclamation-triangle-fill")]
+        ExclamationTriangleFill
     }
 }

@@ -1,6 +1,6 @@
 ﻿using FBootstrapCoreMvc.Enums;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FBootstrapCoreMvc.Interfaces
 {
     public interface IJustifyContent
     {
