@@ -6,17 +6,17 @@
 <#@ import namespace="System.Globalization" #>
 <#@ import namespace="System.IO" #>
 <#@ output extension=".cs.tmp" #>
-<# Process(); #>
+<# Write(); #>
 <#+
-	public void Process()
+	public void Write()
 	{
         WriteLine("using System.ComponentModel;");
         WriteLine("namespace FBootstrapCoreMvc.Enums");
         WriteLine("{");
 
         
-        WriteLine("public enum IconType");
-        WriteLine("{");
+        WriteLine("\tpublic enum IconType");
+        WriteLine("\t{");
 
             var textInfo = new CultureInfo("en-US", false).TextInfo;
             var dir = new DirectoryInfo(@"C:\Users\burci\Downloads\bootstrap-icons-1.10.3");
@@ -34,10 +34,10 @@
                 var enumVal = string.Join("", words);
                 if (char.IsDigit(enumVal[0]))
                     enumVal = $"_{enumVal}";
-                WriteLine(@$"[Description(""{name}"")]");
-                WriteLine(@$"{enumVal},");
+                WriteLine($"\t\t[Description(\"{name}\")]");
+                WriteLine($"\t\t{enumVal},");
             }
-        WriteLine("}");
+        WriteLine("\t}");
         WriteLine("}");
 	}
 #>

@@ -83,26 +83,6 @@
             }
         }
         <br />
-        @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().AddCss(Css.Mb3).Begin())
-        {
-            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
-            {
-                @buttonGroup.Button("1")
-                @buttonGroup.Button("2")
-                @buttonGroup.Button("3")
-                @buttonGroup.Button("4")
-            }
-            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
-            {
-                @buttonGroup.Button("5").State(ButtonState.Secondary)
-                @buttonGroup.Button("6").State(ButtonState.Secondary)
-                @buttonGroup.Button("7").State(ButtonState.Secondary)
-            }
-            @using (var buttonGroup = buttonToolbar.ButtonGroup().Begin())
-            {
-                @buttonGroup.Button("8").State(ButtonState.Info)
-            }
-        }
         <br />
         @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().AddCss(Css.Mb3).Begin())
         {
