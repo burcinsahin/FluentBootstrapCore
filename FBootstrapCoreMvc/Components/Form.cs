@@ -10,27 +10,24 @@ namespace FBootstrapCoreMvc.Components
         ICanCreate<Button>,
         ICanCreate<Label>
     {
+        public string? Action { get; set; }
+        public string? Method { get; set; }
+        public string? ConfirmMessage { get; set; }
         public Form()
             : base("form")
         {
         }
 
-        protected internal Form SetAction(string? action)
+        protected override void PreBuild()
         {
-            MergeAttribute("action", action);
-            return this;
-        }
+            if (Action != null)
+                MergeAttribute("action", Action);
+            if (Method != null)
+                MergeAttribute("method", Method);
+            if (ConfirmMessage != null)
+                MergeAttribute("onsubmit", $"return confirm('{ConfirmMessage}');");
 
-        protected internal Form SetMethod(string method)
-        {
-            MergeAttribute("method", method);
-            return this;
-        }
-
-        protected internal Form SetConfirm(string message)
-        {
-            MergeAttribute("onsubmit", $"return confirm('{message}');");
-            return this;
+            base.PreBuild();
         }
     }
 }

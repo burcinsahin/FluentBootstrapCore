@@ -17,19 +17,19 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<Form, TModel> SetAction<TModel>(this BootstrapContent<Form, TModel> content, string action, string controller, object? routeValues = null)
         {
             var url = content.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
-            content.Component.SetAction(url);
+            content.Component.Action = url;
             return content;
         }
 
         public static BootstrapContent<Form, TModel> SetFormMethod<TModel>(this BootstrapContent<Form, TModel> content, FormMethod formMethod)
         {
-            content.Component.SetMethod(formMethod.ToString());
+            content.Component.Method = formMethod.ToString();
             return content;
         }
 
         public static BootstrapContent<Form, TModel> SetConfirm<TModel>(this BootstrapContent<Form, TModel> content, string message)
         {
-            content.Component.SetConfirm(message);
+            content.Component.ConfirmMessage = message;
             return content;
         }
 
