@@ -2,5 +2,6 @@
 {
     public interface ICanHaveValue
     {
+        object? Value { get; set; }
     }
 }

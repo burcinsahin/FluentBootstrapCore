@@ -1,33 +1,39 @@
-﻿using FBootstrapCoreMvc.Extensions;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormRadio : SingleComponent
+    public class FormRadio : FormControl<RadioButton>,
+        ICheckedComponent,
+        ICanBeInline
     {
-        private readonly Label _label;
+        public bool Checked { get; set; }
+        public bool Inline { get; set; }
+        public bool ToggleButton { get; set; }
+        public bool Reverse { get; set; }
+
         private readonly RadioButton _radioButton;
+        protected override RadioButton Input => _radioButton;
 
-        public FormRadio(string? name, string? label, bool value = false)
-            : base("div", Css.FormCheck)
+        public FormRadio(string? label)
+            : base()
         {
+            Label = label;
             _radioButton = new RadioButton();
-            _radioButton.AddCss(Css.FormCheckInput);
-            _radioButton.SetId();
-            _radioButton.MergeAttribute("checked", value);
-            _radioButton.SetName(name);
-            _label = new Label();
-            _label.AddCss(Css.FormCheckLabel);
-            _label.MergeAttribute("for", _radioButton.Id);
-            _label.SetContent(label);
-
-            AddChild(_radioButton);
-            AddChild(_label);
         }
 
-        public FormRadio SetReadonly()
+        protected override void PreBuild()
         {
-            _radioButton.SetDisabled(true);
-            return this;
+            AddCss(Css.FormCheck);
+            
+            if (Inline)
+                AddCss(Css.FormCheckInline);
+
+            _radioButton.AddCss(Css.FormCheckInput);
+            _radioButton.Checked = Checked;
+
+            _label.AddCss(Css.FormCheckLabel);
+
+            base.PreBuild();
         }
     }
 }

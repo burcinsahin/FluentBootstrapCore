@@ -93,5 +93,19 @@ namespace FBootstrapCoreMvc.Extensions
             content.Component.OutlineState = state;
             return content;
         }
+
+        public static CompositeContent<TComponent> State<TComponent>(this CompositeContent<TComponent> content, ButtonState state)
+            where TComponent : HtmlComponent, IButtonState
+        {
+            content.Component.ButtonState = state;
+            return content;
+        }
+
+        public static CompositeContent<TComponent> Disabled<TComponent>(this CompositeContent<TComponent> content)
+            where TComponent : HtmlComponent, ICanBeDisabled
+        {
+            content.Component.Disabled = true;
+            return content;
+        }
     }
 }

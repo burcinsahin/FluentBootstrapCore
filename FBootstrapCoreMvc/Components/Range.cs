@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Range : BaseInput
+    public class Range : InputComponent
     {
         public int Min { get; set; }
         public int Max { get; set; }

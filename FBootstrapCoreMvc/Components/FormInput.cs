@@ -4,12 +4,17 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormInput : FormControl, ICanHaveMaxLength
+    public class FormInput : FormControl<Input>,
+        ICanHaveMaxLength,
+        ICanHaveFloatingLabel
     {
         public FormInputType Type { get; set; }
         public int MaxLength { get; set; }
         public bool AutoFocus { get; set; }
         public string? Placeholder { get; set; }
+        public string? FloatingLabel { get; set; }
+
+        protected override Input Input => throw new System.NotImplementedException();
 
         public FormInput(FormInputType inputType = FormInputType.Text, string? label = null)
             : base()
@@ -20,6 +25,8 @@ namespace FBootstrapCoreMvc.Components
 
         protected override void PreBuild()
         {
+            AddCss(Css.Mb3);
+
             if (Readonly)
                 MergeAttribute("readonly");
 
@@ -41,12 +48,13 @@ namespace FBootstrapCoreMvc.Components
 
             if (Label != null)
             {
-                var label = new Label()
+                var label = new Label
                 {
-                    Content = Label
+                    Content = Label,
+                    For = input.Id
                 };
+
                 label.AddCss(Css.FormLabel);
-                label.For = input.Id;
                 AddChild(label, ChildLocation.Header);
             }
             else if (FloatingLabel != null)

@@ -4,10 +4,12 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Button : BaseButton, 
-        ICanHaveValue, 
+    public class Button : BaseButton,
+        ICanHaveValue,
         ICanHaveName
     {
+        public object? Value { get; set; }
+
         public Button(object? content = null)
             : base("button")
         {
@@ -17,6 +19,8 @@ namespace FBootstrapCoreMvc.Components
         protected override void PreBuild()
         {
             MergeAttribute("type", ButtonType.GetCssDescription());
+            if (Value != null)
+                MergeAttribute("value", Value);
 
             if (Badge != null)
             {

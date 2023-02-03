@@ -11,11 +11,11 @@
                 @row.TableData($"val{i}_1")
                 @row.TableData($"val{i}_2")
                 @row.TableData($"val{i}_3")
-                @row.TableData(Html.Bootstrap().CheckBox().SetChecked())
-                @row.TableData(Html.Bootstrap().CheckBox().SetDisabled())
+                @row.TableData(Html.Bootstrap().CheckBox().Checked())
+                @row.TableData(Html.Bootstrap().CheckBox().Disabled())
 
                 @row.TableData(Html.Bootstrap().LinkButton(null,"#").AddIcon(IconType.PencilSquare).Size(ButtonSize.Sm))
-                @row.TableData(Html.Bootstrap().Button().AddIcon(IconType.Trash).Size(ButtonSize.Sm).SetName("id"))
+                @row.TableData(Html.Bootstrap().Button().AddIcon(IconType.Trash).Size(ButtonSize.Sm).Name("id"))
             }
         }
     }

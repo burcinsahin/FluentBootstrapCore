@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Hidden : BaseInput
+    public class Hidden : InputComponent
     {
         public Hidden() : base(FormInputType.Hidden)
         {

@@ -28,16 +28,19 @@ namespace FBootstrapCoreMvc.Components
                 var options = new List<SelectOption>(SelectList.Count());
                 foreach (var item in SelectList)
                 {
-                    var option = new SelectOption()
-                        .SetValue(item.Value)
-                        .SetSelected(item.Selected)
-                        .SetDisabled(item.Disabled)
-                        .SetContent(item.Text);
+                    var option = new SelectOption
+                    {
+                        Value = item.Value,
+                        Selected = item.Selected,
+                        Disabled = item.Disabled,
+                        Content = item.Text
+                    };
+
                     options.Add(option);
                     if (SelectedValue != null)
                     {
                         if (option.GetAttribute("value") == SelectedValue.ToString())
-                            option.SetSelected();
+                            option.Selected = true;
                     }
                     AddChild(option);
                 }

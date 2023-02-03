@@ -4,22 +4,22 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public abstract class BaseInput : SingleComponent,
-        ICanHaveValue,
-        ICanHaveName,
-        ICanBeDisabled,
+    public abstract class InputComponent : SingleComponent, 
+        IInput,
         IPlaceholder
     {
         public FormInputType Type { get; set; }
-        public object? Value { get; internal set; }
+        public object? Value { get; set; }
         public string? Name { get; set; }
         public bool Disabled { get; set; }
         public string? Placeholder { get; set; }
-
-        public BaseInput(FormInputType inputType, params string[] cssClasses)
+        public bool Required { get; set; }
+        public bool AutoComplete { get; set; }
+        public InputComponent(FormInputType inputType, params string[] cssClasses)
             : base("input", cssClasses)
         {
             Type = inputType;
+            AutoComplete = true;
         }
 
         protected override void PreBuild()
@@ -31,6 +31,8 @@ namespace FBootstrapCoreMvc.Components
                 MergeAttribute("name", Name);
             if (Disabled)
                 MergeAttribute("disabled");
+            if (!AutoComplete)
+                MergeAttribute("autocomplete", "off");
             base.PreBuild();
         }
     }

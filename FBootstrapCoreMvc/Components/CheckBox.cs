@@ -3,11 +3,13 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class CheckBox : BaseInput,
-        ICanBeChecked
+    public class CheckBox : InputComponent, 
+        ICheckedComponent
     {
         public bool Checked { get; set; }
         public string? Role { get; set; }
+        public bool Indeterminate { get; set; }
+        public bool ToggleButton { get; set; }
 
         public CheckBox() : base(FormInputType.Checkbox)
         {
@@ -21,6 +23,8 @@ namespace FBootstrapCoreMvc.Components
                 MergeAttribute("disabled");
             if (Role != null)
                 MergeAttribute("role", Role);
+            if (Indeterminate)
+                AddCss("indeterminate");
             base.PreBuild();
         }
     }

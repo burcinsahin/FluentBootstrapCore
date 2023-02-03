@@ -1,53 +1,56 @@
-﻿using FBootstrapCoreMvc.Extensions;
+﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormCheck : FormControl,
-        ICanBeReadonly,
-        ICanHaveLabel
+    public class FormCheck : FormControl<CheckBox>,
+        ICheckedComponent,
+        ICanBeReverse,
+        ICanBeInline
     {
         public bool Checked { get; set; }
         public bool Inline { get; set; }
+        public bool Switch { get; set; }
+        public bool Indeterminate { get; set; }
+        public bool Reverse { get; set; }
+        protected override CheckBox Input => _checkBox;
+
+        private readonly CheckBox _checkBox;
+
         public FormCheck()
             : base()
         {
-            AddCss(Css.FormCheck);
+            _checkBox = new CheckBox();
         }
 
         protected override void PreBuild()
         {
-            var checkbox = new CheckBox();
-            checkbox.AddCss(Css.FormCheckInput);
-            checkbox.SetId();
-            checkbox.Value = true;
-            checkbox.Checked = Checked;
-            checkbox.Name = Name;
-
-            if (Readonly)
-                checkbox.Disabled = true;
+            AddCss(Css.FormCheck);
+            Value = true;
 
             if (Inline)
                 AddCss(Css.FormCheckInline);
 
-            AddChild(checkbox);
-
-            if (Label != null)
+            if (Switch)
             {
-                var label = new Label
-                {
-                    Content = Label
-                };
-                label.AddCss(Css.FormCheckLabel);
-                label.For = checkbox.Id;
-                AddChild(label);
+                AddCss(Css.FormSwitch);
+                _checkBox.Role = "switch";
             }
+            if (Reverse)
+                AddCss(Css.FormCheckReverse);
+
+            _checkBox.AddCss(Css.FormCheckInput);
+            _checkBox.Checked = Checked;
+            _checkBox.Indeterminate = Indeterminate;
+
+            _label.AddCss(Css.FormCheckLabel);
+
             var hidden = new Hidden
             {
                 Value = false,
                 Name = Name
             };
-            AddChild(hidden);
+            AddChild(hidden, ChildLocation.Footer);
 
             base.PreBuild();
         }

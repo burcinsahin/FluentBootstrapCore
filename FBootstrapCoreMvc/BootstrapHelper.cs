@@ -220,6 +220,15 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<CheckBox>(HtmlHelper, checkbox);
         }
 
+        public CompositeContent<CheckButton> CheckButton(string? label = null)
+        {
+            var checkButton = new CheckButton
+            {
+                Content = label
+            };
+            return new CompositeContent<CheckButton>(HtmlHelper, checkButton);
+        }
+
         public BootstrapContent<Input> Hidden(string? name = null, object? value = null)
         {
             var input = new Input
@@ -309,6 +318,15 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<RadioButton>(HtmlHelper, component);
         }
 
+        public CompositeContent<CheckButton> RadioButton(string? content = null)
+        {
+            var button = new CheckButton
+            {
+                Content = content,
+                Radio = true
+            };
+            return new CompositeContent<CheckButton>(HtmlHelper, button);
+        }
 
         public BootstrapContent<Range> Range(int min = 0, int max = 0, double step = 0)
         {
@@ -352,11 +370,29 @@ namespace FBootstrapCoreMvc
             var urlHelper = urlHelperFactory?.GetUrlHelper(htmlHelper.ViewContext);
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
             var url = urlHelper?.Action(urlActionContext);
-            var form = new Form();
-            form.SetAction(url);
-            form.SetMethod(method.ToString());
+            var form = new Form
+            {
+                Action = url,
+                Method = method.ToString()
+            };
             return new BootstrapContent<Form, TModel>(_htmlHelper, form);
         }
+
+        public BootstrapContent<FormCheck> FormCheck(string? label = null)
+        {
+            var formCheck = new FormCheck
+            {
+                Label = label
+            };
+            return new BootstrapContent<FormCheck>(_htmlHelper, formCheck);
+        }
+
+        public BootstrapContent<FormRadio> FormRadio(string? label = null)
+        {
+            var radio = new FormRadio(label);
+            return new BootstrapContent<FormRadio>(_htmlHelper, radio);
+        }
+
         #endregion
     }
 }

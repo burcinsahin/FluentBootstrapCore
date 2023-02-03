@@ -1,0 +1,119 @@
+﻿@{
+    var genderOpts = (SelectList)ViewBag.GenderOptions;
+}
+
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading3("Checks")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormCheck("Default checkbox")
+        @Html.Bootstrap().FormCheck("Checked checkbox").Checked()
+    }
+    @Html.Bootstrap().Heading5("Indeterminate")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormCheck("Indeterminate checkbox").Indeterminate()
+    }
+    @Html.Bootstrap().Heading5("Disabled")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormCheck("Disabled indeterminate checkbox").Readonly().Indeterminate()
+        @Html.Bootstrap().FormCheck("Disabled checkbox").Readonly()
+        @Html.Bootstrap().FormCheck("Disabled checked checkbox").Checked().Readonly()
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Radios")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormRadio("Default Radio").Name("flexRadioDefault")
+        @Html.Bootstrap().FormRadio("Default checked radio").Name("flexRadioDefault").Checked()
+    }
+    @Html.Bootstrap().Heading5("Disabled")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormRadio("Disabled radio").Name("flexRadioDisabled").Readonly()
+        @Html.Bootstrap().FormRadio("Disabled checked radio").Name("flexRadioDisabled").Checked().Readonly()
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Switches")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormCheck("Default switch checkbox input").Switch()
+        @Html.Bootstrap().FormCheck("Checked switch checkbox input").Switch().Checked()
+        @Html.Bootstrap().FormCheck("Disabled switch checkbox input").Switch().Readonly()
+        @Html.Bootstrap().FormCheck("Disabled checked switch checkbox input").Switch().Checked().Readonly()
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Default (stacked)")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormCheck("Default checkbox")
+        @Html.Bootstrap().FormCheck("Disabled checkbox").Readonly()
+        <br />
+        @Html.Bootstrap().FormRadio("Default radio").Name("exampleRadios").Checked().Value("option1")
+        @Html.Bootstrap().FormRadio("Second default radio").Name("exampleRadios").Value("option2")
+        @Html.Bootstrap().FormRadio("Disabled radio").Name("exampleRadios").Value("option3").Readonly()
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Inline")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormCheck("1").Inline().Value("option1")
+        @Html.Bootstrap().FormCheck("2").Inline().Value("option2")
+        @Html.Bootstrap().FormCheck("3 (disabled)").Inline().Value("option3").Readonly()
+        <br />
+        <br />
+        @Html.Bootstrap().FormRadio("1").Inline().Value("option1").Name("inlineRadioOptions")
+        @Html.Bootstrap().FormRadio("2").Inline().Value("option2").Name("inlineRadioOptions")
+        @Html.Bootstrap().FormRadio("3 (disabled)").Inline().Value("option3").Name("inlineRadioOptions").Readonly()
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Reverse")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormCheck("Reverse checkbox").Reverse()
+        @Html.Bootstrap().FormCheck("Disabled reverse checkbox").Reverse().Readonly()
+        @Html.Bootstrap().FormCheck("Reverse switch checkbox input").Switch().Reverse()
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Without labels")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormCheck()
+        @Html.Bootstrap().FormRadio().Name("radioNoLabel")
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Toggle buttons")
+    @Html.Bootstrap().Heading5("Checkbox toggle buttons")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().CheckButton("Single toggle")
+        @Html.Bootstrap().CheckButton("Checked").Checked()
+        @Html.Bootstrap().CheckButton("Single toggle").Disabled()
+    }
+    @Html.Bootstrap().Heading5("Radio toggle buttons")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().RadioButton("Checked").State(ButtonState.Secondary).Name("options").Checked()
+        @Html.Bootstrap().RadioButton("Radio").State(ButtonState.Secondary).Name("options")
+        @Html.Bootstrap().RadioButton("Disabled").State(ButtonState.Secondary).Name("options").Disabled()
+        @Html.Bootstrap().RadioButton("Radio").State(ButtonState.Secondary).Name("options")
+    }
+    @Html.Bootstrap().Heading5("Outlined styles")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().CheckButton("Single toggle").Outline(ButtonOutlineState.Primary)
+        <br>
+        @Html.Bootstrap().CheckButton("Checked").Outline(ButtonOutlineState.Secondary).Checked()
+        <br>
+        @Html.Bootstrap().RadioButton("Checked success radio").Outline(ButtonOutlineState.Success).Name("options-outlined").Checked()
+        @Html.Bootstrap().RadioButton("Danger radio").Outline(ButtonOutlineState.Danger).Name("options-outlined")
+    }
+}
+<script>
+    document.querySelectorAll('input.indeterminate[type="checkbox"]')
+        .forEach(checkbox => {
+            checkbox.indeterminate = true;
+        })
+</script>

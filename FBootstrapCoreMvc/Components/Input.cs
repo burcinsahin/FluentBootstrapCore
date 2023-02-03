@@ -2,9 +2,8 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Input : BaseInput
+    public class Input : InputComponent
     {
-        public bool Required { get; set; }
         public bool AutoFocus { get; set; }
         public int MaxLength { get; set; }
 

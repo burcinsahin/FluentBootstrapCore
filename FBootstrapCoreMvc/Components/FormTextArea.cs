@@ -4,24 +4,30 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormTextArea : FormControl,
-        ICanHaveMaxLength
+    public class FormTextArea : FormControl<TextArea>,
+        ICanHaveMaxLength,
+        ICanHaveFloatingLabel,
+        IPlaceholder
     {
         public string? Placeholder { get; set; }
         public int MaxLength { get; set; }
+        public string? FloatingLabel { get; set; }
+
+        protected override TextArea Input => throw new System.NotImplementedException();
 
         protected override void PreBuild()
         {
-            var textarea = new HtmlElement("textarea", Css.FormControl);
+            var textarea = new TextArea();
+            textarea.AddCss(Css.FormControl);
             textarea.SetId();
             if (Name != null)
-                textarea.MergeAttribute("name", Name);
+                textarea.Name = Name;
             if (Value != null)
-                textarea.MergeAttribute("value", Value);
+                textarea.Value = Value;
             if (Placeholder != null)
-                textarea.MergeAttribute("placeholder", Placeholder);
+                textarea.Placeholder = Placeholder;
             if (MaxLength > 0)
-                textarea.MergeAttribute("maxlength", MaxLength);
+                textarea.MaxLength = MaxLength;
             textarea.Content = Content;
             Content = null;
             AddChild(textarea);

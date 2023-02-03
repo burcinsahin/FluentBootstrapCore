@@ -7,47 +7,59 @@ namespace FBootstrapCoreMvc.Components
     public class CheckButton : HtmlComponent,
         ICanBeChecked,
         ICanHaveName,
-        IButtonOutlineState
+        ICanBeDisabled,
+        IButtonOutlineState,
+        IButtonState
     {
         public bool Radio { get; set; }
         public bool Checked { get; set; }
         public object? Content { get; set; }
         public string? Name { get; set; }
+        public bool Disabled { get; set; }
         public ButtonOutlineState? OutlineState { get; set; }
+        public ButtonState ButtonState { get; set; }
 
-        public CheckButton()
+        public CheckButton(bool radio = false)
         {
-            OutlineState = ButtonOutlineState.Primary;
+            ButtonState = ButtonState.Primary;
         }
 
         public override string ToHtml()
         {
-            var input = new HtmlElement("input");
-            input.AddCss(Css.BtnCheck);
-            input.MergeAttribute("autocomplete", "off");
-            input.SetId();
+            var checkbox = new CheckBox
+            {
+                Checked = Checked,
+                Name = Name,
+                Disabled = Disabled,
+                AutoComplete = false
+            };
 
-            if (Checked)
-                input.MergeAttribute("checked");
-
-            if (Name != null)
-                input.MergeAttribute("name", Name);
+            checkbox.AddCss(Css.BtnCheck);
+            checkbox.SetId();
 
             if (Radio)
             {
-                input.MergeAttribute("type", "radio");
+                checkbox.MergeAttribute("type", "radio");
             }
             else
             {
-                input.MergeAttribute("type", "checkbox");
+                checkbox.MergeAttribute("type", "checkbox");
             }
 
-            var label = new HtmlElement("label");
-            label.AddCss(Css.Btn, OutlineState.GetCssDescription());
-            label.MergeAttribute("for", input.Id);
-            label.AppendContent(Content);
+            var label = new Label
+            {
+                For = checkbox.Id,
+                Content = Content
+            };
+            label.AddCss(Css.Btn, ButtonState.GetCssDescription());
 
-            return input.ToHtml() + label.ToHtml();
+            if (OutlineState.HasValue)
+            {
+                label.ClearCss();
+                label.AddCss(Css.Btn, OutlineState.GetCssDescription());
+            }
+
+            return checkbox.ToHtml() + label.ToHtml();
         }
     }
 }

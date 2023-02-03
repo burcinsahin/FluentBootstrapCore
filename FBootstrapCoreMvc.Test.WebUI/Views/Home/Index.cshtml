@@ -19,6 +19,7 @@
     using (var list = Html.Bootstrap().List().Begin())
     {
         @list.ListItem(Html.Bootstrap().Link("Inputs", "/Tests/Inputs"))
+        @list.ListItem(Html.Bootstrap().Link("Checks & radios", "/Tests/ChecksRadios"))
         @list.ListItem(Html.Bootstrap().Link("MvcForms", "/MvcTests/MvcForms"))
     }
     @Html.Bootstrap().Heading2("Components")

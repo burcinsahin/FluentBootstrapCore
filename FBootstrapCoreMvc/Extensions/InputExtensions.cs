@@ -6,36 +6,36 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class InputExtensions
     {
-        public static BootstrapContent<TComponent> SetChecked<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool? value = null)
+        //TODO: Move related methods to InterfaceExtensions
+        public static BootstrapContent<TComponent> Checked<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool value = true)
             where TComponent : SingleComponent, ICanBeChecked
         {
-            if (!value.HasValue || value.Value)
-                bootstrapContent.Component.MergeAttribute("checked");
+            bootstrapContent.Component.Checked = value;
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> SetMaxLength<TComponent>(this BootstrapContent<TComponent> bootstrapContent, short maxLength = 100)
+        public static BootstrapContent<TComponent> MaxLength<TComponent>(this BootstrapContent<TComponent> bootstrapContent, short maxLength = 100)
             where TComponent : SingleComponent, ICanHaveMaxLength
         {
             bootstrapContent.Component.MaxLength = maxLength;
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> IsRequired<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+        public static BootstrapContent<TComponent> Required<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
             where TComponent : SingleComponent, ICanBeRequired
         {
             bootstrapContent.Component.Required = true;
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> SetReadonly<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+        public static BootstrapContent<TComponent> Readonly<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
             where TComponent : SingleComponent, ICanBeReadonly
         {
             bootstrapContent.Component.Readonly = true;
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> SetType<TComponent>(this BootstrapContent<TComponent> bootstrapContent, FormInputType type)
+        public static BootstrapContent<TComponent> Type<TComponent>(this BootstrapContent<TComponent> bootstrapContent, FormInputType type)
             where TComponent : FormInput
         {
             bootstrapContent.Component.Type = type;
@@ -56,6 +56,31 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<FormCheck> Switch(this BootstrapContent<FormCheck> bootstrapContent)
+        {
+            bootstrapContent.Component.Switch = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Inline<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : SingleComponent, ICanBeInline
+        {
+            bootstrapContent.Component.Inline = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Reverse<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : SingleComponent, ICanBeReverse
+        {
+            bootstrapContent.Component.Reverse = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<FormCheck> Indeterminate(this BootstrapContent<FormCheck> bootstrapContent)
+        {
+            bootstrapContent.Component.Indeterminate = true;
+            return bootstrapContent;
+        }
 
         //public static BootstrapContent<Select> Select(this IBootstrapHelper bootstrapHelper, string name, IEnumerable<SelectListItem> selectList)
         //{
