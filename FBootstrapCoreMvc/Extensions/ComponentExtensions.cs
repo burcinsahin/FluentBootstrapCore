@@ -6,7 +6,7 @@ namespace FBootstrapCoreMvc.Extensions
     public static class ComponentExtensions
     {
         #region Common
-        public static BootstrapContent<TComponent> SetContent<TComponent>(
+        public static BootstrapContent<TComponent> Content<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             object content)
             where TComponent : SingleComponent

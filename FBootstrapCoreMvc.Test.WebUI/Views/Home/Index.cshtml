@@ -18,10 +18,12 @@
     @Html.Bootstrap().Heading2("Forms")
     using (var list = Html.Bootstrap().List().Begin())
     {
+        @list.ListItem(Html.Bootstrap().Link("Overview", "/Tests/Forms"))
         @list.ListItem(Html.Bootstrap().Link("Form control", "/Tests/FormControls"))
-        @list.ListItem(Html.Bootstrap().Link("Inputs", "/Tests/Inputs"))
+        @list.ListItem(Html.Bootstrap().Link("Select", "/Tests/Selects"))
         @list.ListItem(Html.Bootstrap().Link("Checks & radios", "/Tests/ChecksRadios"))
         @list.ListItem(Html.Bootstrap().Link("MvcForms", "/MvcTests/MvcForms"))
+        @list.ListItem(Html.Bootstrap().Link("Inputs", "/Tests/Inputs"))
     }
     @Html.Bootstrap().Heading2("Components")
     using (var list = Html.Bootstrap().List().Begin())

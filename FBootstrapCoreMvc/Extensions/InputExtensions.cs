@@ -1,6 +1,7 @@
 ﻿using FBootstrapCoreMvc.Components;
 using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
+using System;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -63,6 +64,14 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> Sized<TComponent, TEnum>(this BootstrapContent<TComponent> bootstrapContent, TEnum size)
+            where TComponent : SingleComponent, ISizable<TEnum>
+            where TEnum : struct, Enum
+        {
+            bootstrapContent.Component.Size = size;
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<FormCheck> Switch(this BootstrapContent<FormCheck> bootstrapContent)
         {
             bootstrapContent.Component.Switch = true;
@@ -90,6 +99,13 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> FormText<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? text)
+            where TComponent : SingleComponent, ICanHaveFormText
+        {
+            bootstrapContent.Component.FormText = text;
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<FormCheck> Indeterminate(this BootstrapContent<FormCheck> bootstrapContent)
         {
             bootstrapContent.Component.Indeterminate = true;
@@ -108,7 +124,8 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<FormInput> Multiple(this BootstrapContent<FormInput> bootstrapContent)
+        public static BootstrapContent<TComponent> Multiple<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : SingleComponent, ICanBeMultiple
         {
             bootstrapContent.Component.Multiple = true;
             return bootstrapContent;

@@ -8,7 +8,9 @@ namespace FBootstrapCoreMvc.Components
         ICanHaveMaxLength,
         ICanHaveFloatingLabel,
         IPlaceholder,
-        ICanHaveTitle
+        ICanHaveTitle,
+        ICanHaveFormText,
+        ICanBeMultiple
     {
         public FormInputType Type { get; set; }
         public int MaxLength { get; set; }
@@ -18,10 +20,10 @@ namespace FBootstrapCoreMvc.Components
         public bool PlainText { get; set; }
         public bool Multiple { get; set; }
         public string? Title { get; set; }
+        public string? FormText { get; set; }
 
         private readonly Input _input;
         protected override Input Input => _input;
-
 
         public FormInput(FormInputType inputType = FormInputType.Text, string? label = null)
             : base()
@@ -70,6 +72,15 @@ namespace FBootstrapCoreMvc.Components
             }
 
             base.PreBuild();
+
+            if (FormText != null)
+            {
+                var div = new HtmlElement("div", Css.FormText)
+                {
+                    Content = FormText
+                };
+                AddChild(div);
+            }
         }
     }
 }

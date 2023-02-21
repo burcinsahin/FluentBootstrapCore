@@ -1,0 +1,35 @@
+﻿@{
+    var list = new SelectList(new Dictionary<int, string>()
+            {
+                { 0, "Open this select menu"},
+                { 1, "One"},
+                { 2, "Two"},
+                { 3, "Three"}
+            }, "Key", "Value");
+}
+
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading3("Default")
+    @using (Html.Bootstrap().Form().Begin())
+    {
+        @Html.Bootstrap().Select("", list)
+    }
+    @Html.Bootstrap().Heading3("Sizing")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Select("", list).Sized(FormSelectSize.Lg)
+        <br />
+        @Html.Bootstrap().Select("", list).Sized(FormSelectSize.Sm)
+        <br />
+        @Html.Bootstrap().Select("", list).Multiple()
+        <br />
+        @Html.Bootstrap().Select("", list).MergeAttribute("size", 3)
+        <br />
+    }
+    @Html.Bootstrap().Heading3("Disabled")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Select("", list).Disabled()
+    }
+}
