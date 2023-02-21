@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
+﻿using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
@@ -13,45 +12,36 @@ namespace FBootstrapCoreMvc.Components
         public int MaxLength { get; set; }
         public string? FloatingLabel { get; set; }
 
-        protected override TextArea Input => throw new System.NotImplementedException();
+        public short Rows { get; set; }
+        private readonly TextArea _textArea;
+
+        public FormTextArea()
+        {
+            _textArea = new TextArea();
+            _labelFirst = true;
+        }
+
+        protected override TextArea Input => _textArea;
 
         protected override void PreBuild()
         {
-            var textarea = new TextArea();
-            textarea.AddCss(Css.FormControl);
-            textarea.SetId();
-            if (Name != null)
-                textarea.Name = Name;
-            if (Value != null)
-                textarea.Value = Value;
-            if (Placeholder != null)
-                textarea.Placeholder = Placeholder;
-            if (MaxLength > 0)
-                textarea.MaxLength = MaxLength;
-            textarea.Content = Content;
+            _textArea.AddCss(Css.FormControl);
+            _textArea.SetId();
+            _textArea.Name = Name;
+            _textArea.Value = Value;
+            _textArea.Placeholder = Placeholder;
+            _textArea.MaxLength = MaxLength;
+            _textArea.Content = Content;
+            _textArea.Rows = Rows;
             Content = null;
-            AddChild(textarea);
 
-            if (Label != null)
+            if (FloatingLabel != null)
             {
-                var label = new Label()
-                {
-                    Content = Label
-                };
-                label.AddCss(Css.FormLabel);
-                label.For = textarea.Id;
-                AddChild(label, ChildLocation.Header);
-            }
-            else if (FloatingLabel != null)
-            {
+                _labelFirst = false;
                 AddCss(Css.FormFloating);
-                var label = new Label()
-                {
-                    Content = FloatingLabel,
-                    For = textarea.Id
-                };
-                textarea.MergeAttribute("placeholder", FloatingLabel);
-                AddChild(label, ChildLocation.Footer);
+                _label.Content = FloatingLabel;
+                _label.For = _textArea.Id;
+                _textArea.Placeholder = FloatingLabel;
             }
 
             base.PreBuild();

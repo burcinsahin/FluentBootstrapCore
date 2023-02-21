@@ -28,7 +28,7 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<TComponent> MergeAttribute<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string key,
-            object? value,
+            object? value = null,
             bool replaceExisting = false)
             where TComponent : SingleComponent
         {

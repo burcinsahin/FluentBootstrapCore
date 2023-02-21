@@ -4,9 +4,10 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public abstract class InputComponent : SingleComponent, 
-        IInput,
-        IPlaceholder
+    public abstract class InputComponent : SingleComponent,
+        IInputComponent,
+        IPlaceholder,
+        ICanBeReadonly
     {
         public FormInputType Type { get; set; }
         public object? Value { get; set; }
@@ -15,6 +16,8 @@ namespace FBootstrapCoreMvc.Components
         public string? Placeholder { get; set; }
         public bool Required { get; set; }
         public bool AutoComplete { get; set; }
+        public bool Readonly { get; set; }
+
         public InputComponent(FormInputType inputType, params string[] cssClasses)
             : base("input", cssClasses)
         {
@@ -33,6 +36,8 @@ namespace FBootstrapCoreMvc.Components
                 MergeAttribute("disabled");
             if (!AutoComplete)
                 MergeAttribute("autocomplete", "off");
+            if (Readonly)
+                MergeAttribute("readonly");
             base.PreBuild();
         }
     }

@@ -1,11 +1,14 @@
 ﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Input : InputComponent
+    public class Input : InputComponent, ICanHaveTitle
     {
         public bool AutoFocus { get; set; }
         public int MaxLength { get; set; }
+        public bool Multiple { get; set; }
+        public string? Title { get; set; }
 
         public Input()
             : base(FormInputType.Text)
@@ -24,7 +27,10 @@ namespace FBootstrapCoreMvc.Components
                 MergeAttribute("placeholder", Placeholder);
             if (Name != null)
                 MergeAttribute("name", Name);
-
+            if (Multiple)
+                MergeAttribute("multiple");
+            if (Title != null)
+                MergeAttribute("title", Title);
             base.PreBuild();
         }
     }

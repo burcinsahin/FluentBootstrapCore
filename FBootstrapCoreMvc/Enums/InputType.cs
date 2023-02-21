@@ -39,6 +39,8 @@ namespace FBootstrapCoreMvc.Enums
         [Description("radio")]
         Radio,
         [Description("range")]
-        Range
+        Range,
+        [Description("file")]
+        File
     }
 }

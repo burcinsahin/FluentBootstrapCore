@@ -387,12 +387,28 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<FormCheck>(_htmlHelper, formCheck);
         }
 
+        public BootstrapContent<FormInput> FormInput(string? label = null)
+        {
+            var formInput = new FormInput
+            {
+                Label = label
+            };
+            return new BootstrapContent<FormInput>(_htmlHelper, formInput);
+        }
+
         public BootstrapContent<FormRadio> FormRadio(string? label = null)
         {
             var radio = new FormRadio(label);
             return new BootstrapContent<FormRadio>(_htmlHelper, radio);
         }
-
+        public BootstrapContent<FormTextArea> FormTextArea(string? label = null)
+        {
+            var formTextArea = new FormTextArea
+            {
+                Label = label
+            };
+            return new BootstrapContent<FormTextArea>(_htmlHelper, formTextArea);
+        }
         #endregion
     }
 }

@@ -1,9 +1,10 @@
 ﻿namespace FBootstrapCoreMvc.Interfaces
 {
-    public interface IInput : ICanHaveValue,
+    public interface IInputComponent : ICanHaveValue,
         ICanHaveName,
         ICanBeDisabled,
-        ICanBeRequired
+        ICanBeRequired,
+        ICanBeReadonly
     {
     }
 }

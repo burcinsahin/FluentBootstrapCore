@@ -6,19 +6,28 @@ namespace FBootstrapCoreMvc.Components
 {
     public class FormInput : FormControl<Input>,
         ICanHaveMaxLength,
-        ICanHaveFloatingLabel
+        ICanHaveFloatingLabel,
+        IPlaceholder,
+        ICanHaveTitle
     {
         public FormInputType Type { get; set; }
         public int MaxLength { get; set; }
         public bool AutoFocus { get; set; }
         public string? Placeholder { get; set; }
         public string? FloatingLabel { get; set; }
+        public bool PlainText { get; set; }
+        public bool Multiple { get; set; }
+        public string? Title { get; set; }
 
-        protected override Input Input => throw new System.NotImplementedException();
+        private readonly Input _input;
+        protected override Input Input => _input;
+
 
         public FormInput(FormInputType inputType = FormInputType.Text, string? label = null)
             : base()
         {
+            _input = new Input();
+            _labelFirst = true;
             Label = label;
             Type = inputType;
         }
@@ -30,44 +39,34 @@ namespace FBootstrapCoreMvc.Components
             if (Readonly)
                 MergeAttribute("readonly");
 
-            var input = new Input
+            _input.Type = Type;
+            _input.MaxLength = MaxLength;
+            _input.AutoFocus = AutoFocus;
+            _input.Name = Name;
+            _input.Placeholder = Placeholder;
+            _input.Value = Value;
+            _input.Content = Content;
+            _input.Required = Required;
+            _input.Multiple = Multiple;
+            _input.Title = Title;
+            _input.AddCss(Css.FormControl);
+            _input.SetId();
+
+            if (Type == FormInputType.Color)
+                _input.AddCss(Css.FormControlColor);
+
+            if (PlainText)
             {
-                Type = Type,
-                Required = Required,
-                AutoFocus = AutoFocus,
-                MaxLength = MaxLength,
-                Name = Name,
-                Placeholder = Placeholder,
-                Value = Value,
-                Content = Content
-            };
-
-            input.AddCss(Css.FormControl);
-            input.SetId();
-            AddChild(input);
-
-            if (Label != null)
-            {
-                var label = new Label
-                {
-                    Content = Label,
-                    For = input.Id
-                };
-
-                label.AddCss(Css.FormLabel);
-                AddChild(label, ChildLocation.Header);
+                _input.RemoveCss(Css.FormControl);
+                _input.AddCss(Css.FormControlPlaintext);
             }
-            else if (FloatingLabel != null)
-            {
-                AddCss(Css.FormFloating);
 
-                input.Placeholder = FloatingLabel;
-                var label = new Label
-                {
-                    Content = FloatingLabel,
-                    For = input.Id
-                };
-                AddChild(label);
+            if (FloatingLabel != null)
+            {
+                _label.ClearCss();
+                _label.AddCss(Css.FormFloating);
+                _input.Placeholder = FloatingLabel;
+                _labelFirst = false;
             }
 
             base.PreBuild();

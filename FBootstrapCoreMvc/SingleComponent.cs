@@ -42,7 +42,8 @@ namespace FBootstrapCoreMvc
         {
             _tagBuilder = new TagBuilder(tagName);
             _renderMode = RenderMode.Normal;
-            _tagBuilder.AddCssClass(string.Join(" ", cssClasses));
+            if (cssClasses.Any())
+                _tagBuilder.AddCssClass(string.Join(" ", cssClasses));
             _headerChildren = new List<SingleComponent>();
             _bodyChildren = new List<SingleComponent>();
             _footerChildren = new List<SingleComponent>();

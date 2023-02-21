@@ -56,6 +56,13 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> Size<TComponent>(this BootstrapContent<TComponent> bootstrapContent, FormControlSize size)
+            where TComponent : SingleComponent, IFormControl
+        {
+            bootstrapContent.Component.Size = size;
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<FormCheck> Switch(this BootstrapContent<FormCheck> bootstrapContent)
         {
             bootstrapContent.Component.Switch = true;
@@ -76,9 +83,34 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> Title<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? title)
+            where TComponent : SingleComponent, ICanHaveTitle
+        {
+            bootstrapContent.Component.Title = title;
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<FormCheck> Indeterminate(this BootstrapContent<FormCheck> bootstrapContent)
         {
             bootstrapContent.Component.Indeterminate = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<FormTextArea> Rows(this BootstrapContent<FormTextArea> bootstrapContent, short rows)
+        {
+            bootstrapContent.Component.Rows = rows;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<FormInput> PlainText(this BootstrapContent<FormInput> bootstrapContent)
+        {
+            bootstrapContent.Component.PlainText = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<FormInput> Multiple(this BootstrapContent<FormInput> bootstrapContent)
+        {
+            bootstrapContent.Component.Multiple = true;
             return bootstrapContent;
         }
 
