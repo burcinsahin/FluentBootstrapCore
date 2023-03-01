@@ -1,6 +1,6 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class LinkButton : BaseButton
+    public class LinkButton : ButtonComponent
         
     {
         public LinkButton(object? content = null)

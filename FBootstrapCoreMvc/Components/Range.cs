@@ -1,15 +1,16 @@
 ﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Interfaces;
 using System.Globalization;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Range : InputComponent
+    public class Range : InputComponent, IRange
     {
         public int Min { get; set; }
         public int Max { get; set; }
-        public double Step { get; internal set; }
+        public double Step { get; set; }
 
-        public Range() 
+        public Range()
             : base(FormInputType.Range, Css.FormRange)
         {
         }

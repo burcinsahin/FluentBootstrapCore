@@ -11,10 +11,11 @@ namespace FBootstrapCoreMvc.Components
         ICanCreate<SelectOption>,
         ICanBeMultiple,
         ICanBeDisabled,
+        ICanHaveOptions,
         ISizable<FormSelectSize>
     {
         public string? Name { get; set; }
-        internal IEnumerable<SelectListItem>? SelectList { get; set; }
+        public IEnumerable<SelectListItem>? SelectList { get; set; }
         public object? SelectedValue { get; set; }
         public bool Multiple { get; set; }
         public bool Disabled { get; set; }

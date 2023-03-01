@@ -1,0 +1,23 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading3("Overview")
+    @using (Html.Bootstrap().Form().Begin())
+    {
+        @Html.Bootstrap().FormRange("Example range")
+    }
+    @Html.Bootstrap().Heading3("Disabled")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormRange("Disabled range").Disabled()
+    }
+    @Html.Bootstrap().Heading3("Min and max")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormRange("Example range", 0, 5)
+    }
+    @Html.Bootstrap().Heading3("Steps")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormRange("Example range", 0, 5, 0.5)
+    }
+}

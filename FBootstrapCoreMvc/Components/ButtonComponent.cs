@@ -4,7 +4,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public abstract class BaseButton : SingleComponent, ICanHaveName, IButton
+    public abstract class ButtonComponent : SingleComponent, ICanHaveName, IButton
     {
         public ButtonState ButtonState { get; set; }
         public ButtonType ButtonType { get; set; }
@@ -14,7 +14,7 @@ namespace FBootstrapCoreMvc.Components
         public bool PositionBadge { get; set; }
         public string? Name { get; set; }
 
-        protected BaseButton(string tagName)
+        protected ButtonComponent(string tagName)
             : base(tagName, Css.Btn)
         {
             ButtonState = ButtonState.Primary;

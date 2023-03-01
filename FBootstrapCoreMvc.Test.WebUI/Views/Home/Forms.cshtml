@@ -1,4 +1,11 @@
-﻿@using (Html.Bootstrap().Container().Begin())
+﻿@{
+    var list = new SelectList(new Dictionary<int, string>()
+            {
+                { 0, "Disabled select"},
+            }, "Key", "Value");
+}
+
+@using (Html.Bootstrap().Container().Begin())
 {
     @Html.Bootstrap().Heading3("Overview")
     @using (Html.Bootstrap().Form().Begin())
@@ -15,7 +22,14 @@
         @Html.Bootstrap().FormInput("Password").Type(FormInputType.Password).FormText("Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.")
     }
     @Html.Bootstrap().Heading3("Disabled forms")
-    @using (Html.Bootstrap().Div().Begin())
+    @using (Html.Bootstrap().Form().Begin())
     {
+        @using (Html.Bootstrap().Element("fieldset").MergeAttribute("disabled").Begin())
+        {
+            @Html.Bootstrap().FormInput("Disabled input").Placeholder("Disabled input")
+            @Html.Bootstrap().FormSelect("Disabled select menu").Options(list)
+            @Html.Bootstrap().FormCheck("Can't check this")
+            @Html.Bootstrap().Button("Submit").Type(ButtonType.Submit)
+        }
     }
 }

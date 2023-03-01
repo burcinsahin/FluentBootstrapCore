@@ -4,7 +4,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Button : BaseButton,
+    public class Button : ButtonComponent,
         ICanHaveValue,
         ICanHaveName
     {

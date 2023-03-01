@@ -401,6 +401,28 @@ namespace FBootstrapCoreMvc
             var radio = new FormRadio(label);
             return new BootstrapContent<FormRadio>(_htmlHelper, radio);
         }
+
+        public BootstrapContent<FormRange> FormRange(string? label = null, int min = 0, int max = 0, double step = 0)
+        {
+            var range = new FormRange()
+            {
+                Label = label,
+                Min = min,
+                Max = max,
+                Step = step
+            };
+            return new BootstrapContent<FormRange>(_htmlHelper, range);
+        }
+
+        public BootstrapContent<FormSelect> FormSelect(string? label = null)
+        {
+            var select = new FormSelect()
+            {
+                Label = label
+            };
+            return new BootstrapContent<FormSelect>(_htmlHelper, select);
+        }
+
         public BootstrapContent<FormTextArea> FormTextArea(string? label = null)
         {
             var formTextArea = new FormTextArea

@@ -1,5 +1,8 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Components;
+using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -70,6 +73,14 @@ namespace FBootstrapCoreMvc.Extensions
             where TComponent : SingleComponent, IJustifyContent
         {
             bootstrapContent.Component.JustifyContent = justifyContent;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Options<TComponent>(this BootstrapContent<TComponent> bootstrapContent,
+            IEnumerable<SelectListItem> list)
+            where TComponent : SingleComponent, ICanHaveOptions
+        {
+            bootstrapContent.Component.SelectList = list;
             return bootstrapContent;
         }
     }

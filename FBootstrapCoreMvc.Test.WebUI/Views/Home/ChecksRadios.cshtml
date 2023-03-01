@@ -18,9 +18,9 @@
     @Html.Bootstrap().Heading5("Disabled")
     @using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().FormCheck("Disabled indeterminate checkbox").Readonly().Indeterminate()
-        @Html.Bootstrap().FormCheck("Disabled checkbox").Readonly()
-        @Html.Bootstrap().FormCheck("Disabled checked checkbox").Checked().Readonly()
+        @Html.Bootstrap().FormCheck("Disabled indeterminate checkbox").Disabled().Indeterminate()
+        @Html.Bootstrap().FormCheck("Disabled checkbox").Disabled()
+        @Html.Bootstrap().FormCheck("Disabled checked checkbox").Checked().Disabled()
     }
     <hr />
     @Html.Bootstrap().Heading3("Radios")
@@ -32,8 +32,8 @@
     @Html.Bootstrap().Heading5("Disabled")
     @using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().FormRadio("Disabled radio").Name("flexRadioDisabled").Readonly()
-        @Html.Bootstrap().FormRadio("Disabled checked radio").Name("flexRadioDisabled").Checked().Readonly()
+        @Html.Bootstrap().FormRadio("Disabled radio").Name("flexRadioDisabled").Disabled()
+        @Html.Bootstrap().FormRadio("Disabled checked radio").Name("flexRadioDisabled").Checked().Disabled()
     }
     <hr />
     @Html.Bootstrap().Heading3("Switches")
@@ -41,19 +41,19 @@
     {
         @Html.Bootstrap().FormCheck("Default switch checkbox input").Switch()
         @Html.Bootstrap().FormCheck("Checked switch checkbox input").Switch().Checked()
-        @Html.Bootstrap().FormCheck("Disabled switch checkbox input").Switch().Readonly()
-        @Html.Bootstrap().FormCheck("Disabled checked switch checkbox input").Switch().Checked().Readonly()
+        @Html.Bootstrap().FormCheck("Disabled switch checkbox input").Switch().Disabled()
+        @Html.Bootstrap().FormCheck("Disabled checked switch checkbox input").Switch().Checked().Disabled()
     }
     <hr />
     @Html.Bootstrap().Heading3("Default (stacked)")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormCheck("Default checkbox")
-        @Html.Bootstrap().FormCheck("Disabled checkbox").Readonly()
+        @Html.Bootstrap().FormCheck("Disabled checkbox").Disabled()
         <br />
         @Html.Bootstrap().FormRadio("Default radio").Name("exampleRadios").Checked().Value("option1")
         @Html.Bootstrap().FormRadio("Second default radio").Name("exampleRadios").Value("option2")
-        @Html.Bootstrap().FormRadio("Disabled radio").Name("exampleRadios").Value("option3").Readonly()
+        @Html.Bootstrap().FormRadio("Disabled radio").Name("exampleRadios").Value("option3").Disabled()
     }
     <hr />
     @Html.Bootstrap().Heading3("Inline")
@@ -61,19 +61,19 @@
     {
         @Html.Bootstrap().FormCheck("1").Inline().Value("option1")
         @Html.Bootstrap().FormCheck("2").Inline().Value("option2")
-        @Html.Bootstrap().FormCheck("3 (disabled)").Inline().Value("option3").Readonly()
+        @Html.Bootstrap().FormCheck("3 (disabled)").Inline().Value("option3").Disabled()
         <br />
         <br />
         @Html.Bootstrap().FormRadio("1").Inline().Value("option1").Name("inlineRadioOptions")
         @Html.Bootstrap().FormRadio("2").Inline().Value("option2").Name("inlineRadioOptions")
-        @Html.Bootstrap().FormRadio("3 (disabled)").Inline().Value("option3").Name("inlineRadioOptions").Readonly()
+        @Html.Bootstrap().FormRadio("3 (disabled)").Inline().Value("option3").Name("inlineRadioOptions").Disabled()
     }
     <hr />
     @Html.Bootstrap().Heading3("Reverse")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormCheck("Reverse checkbox").Reverse()
-        @Html.Bootstrap().FormCheck("Disabled reverse checkbox").Reverse().Readonly()
+        @Html.Bootstrap().FormCheck("Disabled reverse checkbox").Reverse().Disabled()
         @Html.Bootstrap().FormCheck("Reverse switch checkbox input").Switch().Reverse()
     }
     <hr />

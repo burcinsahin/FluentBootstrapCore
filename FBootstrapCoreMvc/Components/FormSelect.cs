@@ -8,7 +8,8 @@ namespace FBootstrapCoreMvc.Components
 {
     public class FormSelect : SingleComponent,
         ICanHaveLabel,
-        ICanHaveFloatingLabel
+        ICanHaveFloatingLabel,
+        ICanHaveOptions
     {
         public string? Label { get; set; }
         public string? Name { get; set; }

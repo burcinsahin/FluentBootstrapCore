@@ -1,4 +1,5 @@
-﻿@using (Html.Bootstrap().Container().Begin())
+﻿@Html.Bootstrap().Heading1("FluentBootstrap Visual Tests for Bootstrap v5.2.x")
+@using (Html.Bootstrap().Container().Begin())
 {
     @Html.Bootstrap().Heading2("Layout")
     using (var list = Html.Bootstrap().List().Begin())
@@ -22,8 +23,8 @@
         @list.ListItem(Html.Bootstrap().Link("Form control", "/Tests/FormControls"))
         @list.ListItem(Html.Bootstrap().Link("Select", "/Tests/Selects"))
         @list.ListItem(Html.Bootstrap().Link("Checks & radios", "/Tests/ChecksRadios"))
-        @list.ListItem(Html.Bootstrap().Link("MvcForms", "/MvcTests/MvcForms"))
-        @list.ListItem(Html.Bootstrap().Link("Inputs", "/Tests/Inputs"))
+        @list.ListItem(Html.Bootstrap().Link("Range", "/Tests/Ranges"))
+        @list.ListItem(Html.Bootstrap().Link("Input group", "/Tests/InputGroups"))
     }
     @Html.Bootstrap().Heading2("Components")
     using (var list = Html.Bootstrap().List().Begin())
@@ -57,5 +58,10 @@
     using (var list = Html.Bootstrap().List().Begin())
     {
         @list.ListItem(Html.Bootstrap().Link("Icons", "/Tests/Icons"))
+    }
+    @Html.Bootstrap().Heading2("Asp.Net MVC")
+    using (var list = Html.Bootstrap().List().Begin())
+    {
+        @list.ListItem(Html.Bootstrap().Link("MvcForms", "/MvcTests/MvcForms"))
     }
 }

@@ -14,20 +14,20 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class FormExtensions
     {
-        public static BootstrapContent<Form, TModel> SetAction<TModel>(this BootstrapContent<Form, TModel> content, string action, string controller, object? routeValues = null)
+        public static BootstrapContent<Form, TModel> Action<TModel>(this BootstrapContent<Form, TModel> content, string action, string controller, object? routeValues = null)
         {
             var url = content.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
             content.Component.Action = url;
             return content;
         }
 
-        public static BootstrapContent<Form, TModel> SetFormMethod<TModel>(this BootstrapContent<Form, TModel> content, FormMethod formMethod)
+        public static BootstrapContent<Form, TModel> FormMethod<TModel>(this BootstrapContent<Form, TModel> content, FormMethod formMethod)
         {
             content.Component.Method = formMethod.ToString();
             return content;
         }
 
-        public static BootstrapContent<Form, TModel> SetConfirm<TModel>(this BootstrapContent<Form, TModel> content, string message)
+        public static BootstrapContent<Form, TModel> Confirm<TModel>(this BootstrapContent<Form, TModel> content, string message)
         {
             content.Component.ConfirmMessage = message;
             return content;
@@ -242,14 +242,14 @@ namespace FBootstrapCoreMvc.Extensions
         }
         #endregion
 
-        public static BootstrapContent<TComponent> SetFloatingLabel<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? label)
+        public static BootstrapContent<TComponent> FloatingLabel<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? label)
             where TComponent : SingleComponent, ICanHaveFloatingLabel
         {
             bootstrapContent.Component.FloatingLabel = label;
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> SetLabel<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? label)
+        public static BootstrapContent<TComponent> Label<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? label)
             where TComponent : SingleComponent, ICanHaveLabel
         {
             bootstrapContent.Component.Label = label;
