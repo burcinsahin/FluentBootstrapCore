@@ -1,4 +1,5 @@
-﻿using FBootstrapCoreMvc.Components;
+﻿
+using FBootstrapCoreMvc.Components;
 using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
@@ -253,6 +254,13 @@ namespace FBootstrapCoreMvc.Extensions
             where TComponent : SingleComponent, ICanHaveLabel
         {
             bootstrapContent.Component.Label = label;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Invalid<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : SingleComponent, ICanBeInvalid
+        {
+            bootstrapContent.Component.Invalid = true;
             return bootstrapContent;
         }
     }

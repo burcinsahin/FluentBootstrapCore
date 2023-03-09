@@ -6,6 +6,7 @@ namespace FBootstrapCoreMvc.Extensions
     /// <summary>
     /// Internal HtmlComponent extension methods
     /// </summary>
+    [Obsolete("", true)]
     internal static class InternalExtensions
     {
         /// <summary>

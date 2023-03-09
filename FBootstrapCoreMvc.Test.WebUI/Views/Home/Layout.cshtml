@@ -1,4 +1,4 @@
-﻿@Html.Bootstrap().Heading1("Simple Container")
+﻿@Html.Bootstrap().Heading2("Simple Container")
 @using (Html.Bootstrap().Container().Begin())
 {
     <p>
@@ -7,7 +7,7 @@
     </p>
 }
 <hr />
-@Html.Bootstrap().Heading1("Fluid Container")
+@Html.Bootstrap().Heading2("Fluid Container")
 @using (Html.Bootstrap().Container().SetFluid().Begin())
 {
     <p>
@@ -16,7 +16,7 @@
     </p>
 }
 <hr />
-@Html.Bootstrap().Heading1("Responsive Container")
+@Html.Bootstrap().Heading2("Responsive Container")
 @using (Html.Bootstrap().Container().SetResponsive(ContainerSize.Small).Begin())
 {
     @Html.Bootstrap().Icon(IconType.Pencil,"pencil")

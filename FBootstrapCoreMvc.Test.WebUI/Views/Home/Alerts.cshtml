@@ -1,6 +1,6 @@
 ﻿@using (Html.Bootstrap().Container().Begin())
 {
-    @Html.Bootstrap().Heading1("Examples")
+    @Html.Bootstrap().Heading2("Examples")
     using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().Alert("A simple primary alert—check it out!")
@@ -13,7 +13,7 @@
         @Html.Bootstrap().Alert("A simple dark alert—check it out!").State(AlertState.Dark)
     }
     <hr />
-    @Html.Bootstrap().Heading1("Link color")
+    @Html.Bootstrap().Heading2("Link color")
     using (Html.Bootstrap().Div().Begin())
     {
         @using (var alert = Html.Bootstrap().Alert().Begin())
@@ -50,7 +50,7 @@
         }
     }
     <hr />
-    @Html.Bootstrap().Heading1("Additional content")
+    @Html.Bootstrap().Heading2("Additional content")
     using (Html.Bootstrap().Div().Begin())
     {
         @using (var alert = Html.Bootstrap().Alert().Heading("Well done!").State(AlertState.Success).Begin())
@@ -60,14 +60,14 @@
             @Html.Bootstrap().Paragraph("Whenever you need to, be sure to use margin utilities to keep things nice and tidy.").AddCss(Css.Mb0)
         }
     }
-    @Html.Bootstrap().Heading1("Icons")
+    @Html.Bootstrap().Heading2("Icons")
     using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().Alert("An example alert with an icon").Icon(IconType.ExclamationTriangleFill)
     }
 
     <hr />
-    @Html.Bootstrap().Heading1("Dismissing")
+    @Html.Bootstrap().Heading2("Dismissing")
     using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().Alert("Holy guacamole! You should check in on some of those fields below.").Dismissible()

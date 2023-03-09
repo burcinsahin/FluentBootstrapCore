@@ -118,6 +118,15 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> Height<TComponent>(this BootstrapContent<TComponent> bootstrapContent, short height)
+            where TComponent : SingleComponent, ICanHaveHeight
+        {
+            bootstrapContent.Component.Height = height;
+            return bootstrapContent;
+        }
+
+
+
         public static BootstrapContent<FormInput> PlainText(this BootstrapContent<FormInput> bootstrapContent)
         {
             bootstrapContent.Component.PlainText = true;
@@ -161,5 +170,7 @@ namespace FBootstrapCoreMvc.Extensions
             var input = new Input();
             return new BootstrapContent<Input>(builder.HtmlHelper, input);
         }
+
+
     }
 }

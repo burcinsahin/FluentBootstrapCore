@@ -2,5 +2,6 @@
 {
     public interface ICanCreate<TComponent>
     {
+        //TODO: add generic constraint?
     }
 }

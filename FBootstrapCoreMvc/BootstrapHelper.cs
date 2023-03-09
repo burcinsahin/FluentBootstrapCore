@@ -1,6 +1,7 @@
 ﻿using FBootstrapCoreMvc.Components;
 using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
+using FBootstrapCoreMvc.Interfaces;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -109,6 +110,11 @@ namespace FBootstrapCoreMvc
         {
             return new BootstrapContent<Container>(HtmlHelper, new Container());
         }
+
+        public BootstrapContent<GridRow> Row()
+        {
+            return new BootstrapContent<GridRow>(HtmlHelper, new GridRow());
+        }
         #endregion
 
         #region DOM
@@ -142,6 +148,15 @@ namespace FBootstrapCoreMvc
             if (frameborder > 0)
                 iframe.MergeAttribute("frameborder", frameborder);
             return new BootstrapContent<HtmlElement>(HtmlHelper, iframe);
+        }
+        
+        public BootstrapContent<HtmlElement> Span(object? content=null)
+        {
+            var span = new HtmlElement("span")
+            {
+                Content = content
+            };
+            return new BootstrapContent<HtmlElement>(HtmlHelper, span);
         }
         #endregion
 
@@ -249,6 +264,13 @@ namespace FBootstrapCoreMvc
             };
             return new BootstrapContent<Icon>(HtmlHelper, icon);
         }
+
+        public BootstrapContent<InputGroup> InputGroup()
+        {
+            var inputGroup = new InputGroup();
+            return new BootstrapContent<InputGroup>(HtmlHelper, inputGroup);
+        }
+
         public BootstrapContent<LinkButton> LinkButton(object? content, string href = "#")
         {
             var linkButton = new LinkButton

@@ -1,6 +1,6 @@
 ﻿@using (Html.Bootstrap().Container().Begin())
 {
-    @Html.Bootstrap().Heading1("Link Buttons")
+    @Html.Bootstrap().Heading2("Link Buttons")
     using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().LinkButton("Default")
@@ -13,7 +13,7 @@
         @Html.Bootstrap().LinkButton("Warning","action","controller").SetTextBgState(TextBgState.Warning)
     }
     <hr />
-    @Html.Bootstrap().Heading1("Buttons")
+    @Html.Bootstrap().Heading2("Buttons")
     using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().Button("Default")
@@ -22,7 +22,7 @@
         @Html.Bootstrap().Button("Icon").AddIcon(IconType.Plus)
     }
     <hr />
-    @Html.Bootstrap().Heading1("Button States")
+    @Html.Bootstrap().Heading2("Button States")
     using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().Button("Primary").State(ButtonState.Primary)

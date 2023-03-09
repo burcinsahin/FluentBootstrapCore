@@ -6,13 +6,15 @@ namespace FBootstrapCoreMvc.Components
     public class FormTextArea : FormControl<TextArea>,
         ICanHaveMaxLength,
         ICanHaveFloatingLabel,
-        IPlaceholder
+        IPlaceholder,
+        ICanHaveHeight
     {
         public string? Placeholder { get; set; }
         public int MaxLength { get; set; }
         public string? FloatingLabel { get; set; }
-
         public short Rows { get; set; }
+        public short Height { get; set; }
+
         private readonly TextArea _textArea;
 
         public FormTextArea()
@@ -33,6 +35,7 @@ namespace FBootstrapCoreMvc.Components
             _textArea.MaxLength = MaxLength;
             _textArea.Content = Content;
             _textArea.Rows = Rows;
+            _textArea.Height=Height;
             Content = null;
 
             if (FloatingLabel != null)
@@ -41,7 +44,8 @@ namespace FBootstrapCoreMvc.Components
                 AddCss(Css.FormFloating);
                 _label.Content = FloatingLabel;
                 _label.For = _textArea.Id;
-                _textArea.Placeholder = FloatingLabel;
+                _textArea.Placeholder ??= FloatingLabel;
+                Label = FloatingLabel;
             }
 
             base.PreBuild();

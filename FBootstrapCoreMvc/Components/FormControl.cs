@@ -14,6 +14,7 @@ namespace FBootstrapCoreMvc.Components
         public object? Value { get; set; }
         public bool Required { get; set; }
         public FormControlSize Size { get; set; }
+        public bool Invalid { get; set; }
 
         protected bool _labelFirst;
         protected abstract TComponent Input { get; }
@@ -37,7 +38,8 @@ namespace FBootstrapCoreMvc.Components
 
             if (Size != FormControlSize.Default)
                 Input.AddCss(Size.GetCssDescription());
-
+            if (Invalid)
+                Input.AddCss(Css.IsInvalid);
             if (Label != null)
             {
                 _label.AddCss(Css.FormLabel);

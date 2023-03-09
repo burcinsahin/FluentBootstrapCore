@@ -5,7 +5,8 @@ namespace FBootstrapCoreMvc.Components
     public class TextArea : SingleComponent,
         IInputComponent,
         ICanHaveMaxLength,
-        IPlaceholder
+        IPlaceholder,
+        ICanHaveHeight
     {
         public object? Value { get; set; }
         public string? Name { get; set; }
@@ -16,6 +17,7 @@ namespace FBootstrapCoreMvc.Components
         public short Rows { get; set; }
         public bool AutoFocus { get; set; }
         public bool Readonly { get; set; }
+        public short Height { get; set; }
 
         public TextArea() : base("textarea")
         {
@@ -25,6 +27,8 @@ namespace FBootstrapCoreMvc.Components
         {
             if (Rows > 0)
                 MergeAttribute("rows", Rows);
+            if (Height > 0)
+                MergeStyle("height", $"{Height}px");
             if (Required)
                 MergeAttribute("required", true);
             if (AutoFocus)

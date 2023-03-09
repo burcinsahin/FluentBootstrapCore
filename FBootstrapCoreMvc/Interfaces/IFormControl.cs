@@ -1,5 +1,4 @@
 ﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Interfaces
 {
@@ -9,7 +8,8 @@ namespace FBootstrapCoreMvc.Interfaces
         ICanHaveName,
         ICanHaveValue,
         ICanBeRequired,
-        ICanBeDisabled
+        ICanBeDisabled,
+        ICanBeInvalid
     {
         FormControlSize Size { get; set; }
     }

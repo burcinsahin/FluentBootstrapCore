@@ -10,12 +10,12 @@
 
 @using (Html.Bootstrap().Container().Begin())
 {
-    @Html.Bootstrap().Heading3("Default")
+    @Html.Bootstrap().Heading2("Default")
     @using (Html.Bootstrap().Form().Begin())
     {
         @Html.Bootstrap().Select("", list)
     }
-    @Html.Bootstrap().Heading3("Sizing")
+    @Html.Bootstrap().Heading2("Sizing")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().Select("", list).Sized(FormSelectSize.Lg)
@@ -27,7 +27,7 @@
         @Html.Bootstrap().Select("", list).MergeAttribute("size", 3)
         <br />
     }
-    @Html.Bootstrap().Heading3("Disabled")
+    @Html.Bootstrap().Heading2("Disabled")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().Select("", list).Disabled()

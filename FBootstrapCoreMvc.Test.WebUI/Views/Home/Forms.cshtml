@@ -7,7 +7,7 @@
 
 @using (Html.Bootstrap().Container().Begin())
 {
-    @Html.Bootstrap().Heading3("Overview")
+    @Html.Bootstrap().Heading2("Overview")
     @using (Html.Bootstrap().Form().Begin())
     {
         @Html.Bootstrap().FormInput("Email address").Type(FormInputType.Email).FormText("We'll never share your email with anyone else.")
@@ -16,12 +16,12 @@
         @Html.Bootstrap().Button("Submit").Type(ButtonType.Submit)
 
     }
-    @Html.Bootstrap().Heading3("Form text")
+    @Html.Bootstrap().Heading2("Form text")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormInput("Password").Type(FormInputType.Password).FormText("Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.")
     }
-    @Html.Bootstrap().Heading3("Disabled forms")
+    @Html.Bootstrap().Heading2("Disabled forms")
     @using (Html.Bootstrap().Form().Begin())
     {
         @using (Html.Bootstrap().Element("fieldset").MergeAttribute("disabled").Begin())

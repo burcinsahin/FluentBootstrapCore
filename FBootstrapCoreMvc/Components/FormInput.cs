@@ -36,11 +36,6 @@ namespace FBootstrapCoreMvc.Components
 
         protected override void PreBuild()
         {
-            AddCss(Css.Mb3);
-
-            if (Readonly)
-                MergeAttribute("readonly");
-
             _input.Type = Type;
             _input.MaxLength = MaxLength;
             _input.AutoFocus = AutoFocus;
@@ -51,6 +46,7 @@ namespace FBootstrapCoreMvc.Components
             _input.Required = Required;
             _input.Multiple = Multiple;
             _input.Title = Title;
+            _input.Readonly = Readonly;
             _input.AddCss(Css.FormControl);
             _input.SetId();
 
@@ -65,13 +61,17 @@ namespace FBootstrapCoreMvc.Components
 
             if (FloatingLabel != null)
             {
+                AddCss(Css.FormFloating);
                 _label.ClearCss();
-                _label.AddCss(Css.FormFloating);
-                _input.Placeholder = FloatingLabel;
+                _input.Placeholder ??= FloatingLabel;
+                Label = FloatingLabel;
                 _labelFirst = false;
             }
 
             base.PreBuild();
+            
+            if (FloatingLabel != null)
+                _label.ClearCss();
 
             if (FormText != null)
             {

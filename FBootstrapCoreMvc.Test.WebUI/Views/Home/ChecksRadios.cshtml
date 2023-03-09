@@ -4,18 +4,18 @@
 
 @using (Html.Bootstrap().Container().Begin())
 {
-    @Html.Bootstrap().Heading3("Checks")
+    @Html.Bootstrap().Heading2("Checks")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormCheck("Default checkbox")
         @Html.Bootstrap().FormCheck("Checked checkbox").Checked()
     }
-    @Html.Bootstrap().Heading5("Indeterminate")
+    @Html.Bootstrap().Heading3("Indeterminate")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormCheck("Indeterminate checkbox").Indeterminate()
     }
-    @Html.Bootstrap().Heading5("Disabled")
+    @Html.Bootstrap().Heading3("Disabled")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormCheck("Disabled indeterminate checkbox").Disabled().Indeterminate()
@@ -23,20 +23,20 @@
         @Html.Bootstrap().FormCheck("Disabled checked checkbox").Checked().Disabled()
     }
     <hr />
-    @Html.Bootstrap().Heading3("Radios")
+    @Html.Bootstrap().Heading2("Radios")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormRadio("Default Radio").Name("flexRadioDefault")
         @Html.Bootstrap().FormRadio("Default checked radio").Name("flexRadioDefault").Checked()
     }
-    @Html.Bootstrap().Heading5("Disabled")
+    @Html.Bootstrap().Heading3("Disabled")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormRadio("Disabled radio").Name("flexRadioDisabled").Disabled()
         @Html.Bootstrap().FormRadio("Disabled checked radio").Name("flexRadioDisabled").Checked().Disabled()
     }
     <hr />
-    @Html.Bootstrap().Heading3("Switches")
+    @Html.Bootstrap().Heading2("Switches")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormCheck("Default switch checkbox input").Switch()
@@ -45,7 +45,7 @@
         @Html.Bootstrap().FormCheck("Disabled checked switch checkbox input").Switch().Checked().Disabled()
     }
     <hr />
-    @Html.Bootstrap().Heading3("Default (stacked)")
+    @Html.Bootstrap().Heading2("Default (stacked)")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormCheck("Default checkbox")
@@ -56,7 +56,7 @@
         @Html.Bootstrap().FormRadio("Disabled radio").Name("exampleRadios").Value("option3").Disabled()
     }
     <hr />
-    @Html.Bootstrap().Heading3("Inline")
+    @Html.Bootstrap().Heading2("Inline")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormCheck("1").Inline().Value("option1")
@@ -69,7 +69,7 @@
         @Html.Bootstrap().FormRadio("3 (disabled)").Inline().Value("option3").Name("inlineRadioOptions").Disabled()
     }
     <hr />
-    @Html.Bootstrap().Heading3("Reverse")
+    @Html.Bootstrap().Heading2("Reverse")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormCheck("Reverse checkbox").Reverse()
@@ -77,22 +77,22 @@
         @Html.Bootstrap().FormCheck("Reverse switch checkbox input").Switch().Reverse()
     }
     <hr />
-    @Html.Bootstrap().Heading3("Without labels")
+    @Html.Bootstrap().Heading2("Without labels")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().FormCheck()
         @Html.Bootstrap().FormRadio().Name("radioNoLabel")
     }
     <hr />
-    @Html.Bootstrap().Heading3("Toggle buttons")
-    @Html.Bootstrap().Heading5("Checkbox toggle buttons")
+    @Html.Bootstrap().Heading2("Toggle buttons")
+    @Html.Bootstrap().Heading3("Checkbox toggle buttons")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().CheckButton("Single toggle")
         @Html.Bootstrap().CheckButton("Checked").Checked()
         @Html.Bootstrap().CheckButton("Single toggle").Disabled()
     }
-    @Html.Bootstrap().Heading5("Radio toggle buttons")
+    @Html.Bootstrap().Heading2("Radio toggle buttons")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().RadioButton("Checked").State(ButtonState.Secondary).Name("options").Checked()
@@ -100,7 +100,7 @@
         @Html.Bootstrap().RadioButton("Disabled").State(ButtonState.Secondary).Name("options").Disabled()
         @Html.Bootstrap().RadioButton("Radio").State(ButtonState.Secondary).Name("options")
     }
-    @Html.Bootstrap().Heading5("Outlined styles")
+    @Html.Bootstrap().Heading2("Outlined styles")
     @using (Html.Bootstrap().Div().Begin())
     {
         @Html.Bootstrap().CheckButton("Single toggle").Outline(ButtonOutlineState.Primary)
