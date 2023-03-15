@@ -35,6 +35,10 @@ namespace FBootstrapCoreMvc
             get => _renderMode;
             set => _renderMode = value;
         }
+
+        public HashSet<string> CssClasses { get; private set; }
+
+        public Dictionary<string, object> Styles { get; private set; }
         #endregion
 
         #region Ctors
@@ -49,6 +53,8 @@ namespace FBootstrapCoreMvc
             _footerChildren = new List<SingleComponent>();
             _fullWrapperChildren = new List<SingleComponent>();
             _bodyWrapperChildren = new List<SingleComponent>();
+            CssClasses = new HashSet<string>();
+            Styles = new Dictionary<string, object>();
         }
         #endregion
 
@@ -74,58 +80,38 @@ namespace FBootstrapCoreMvc
         {
             foreach (var cssClass in cssClasses)
             {
-                _tagBuilder.AddCssClass(cssClass);
+                CssClasses.Add(cssClass);
             }
         }
 
         protected internal void ClearCss()
         {
-            _tagBuilder.Attributes.Remove("class");
+            CssClasses.Clear();
         }
 
         protected internal void RemoveCss(params string[] cssClasses)
         {
-            if (!_tagBuilder.Attributes.ContainsKey("class"))
-                return;
-            var currentClasses = _tagBuilder.Attributes["class"]
-                .Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            ClearCss();
-            AddCss(currentClasses.Except(cssClasses).ToArray());
+            foreach (var cssClass in cssClasses)
+                CssClasses.Remove(cssClass);
         }
 
         protected internal void MergeStyle(string key, string value)
         {
-            var style = "";
-            if (_tagBuilder.Attributes.ContainsKey("style"))
-                style = _tagBuilder.Attributes["style"];
-
-            if (!style.EndsWith(";"))
-                style += ";";
-
-            style += $"{key}:{value};";
-            _tagBuilder.MergeAttribute("style", style, true);
+            Styles.Add(key, value);
         }
 
         /// <summary>
         /// Replaces '_' char with '-'
         /// </summary>
         /// <param name="styles"></param>
-        protected internal void MergeStyles(object styles)
+        protected internal void MergeStyle(object styles)
         {
-            var style = "";
-            if (_tagBuilder.Attributes.ContainsKey("style"))
-                style = _tagBuilder.Attributes["style"];
-
-            if (!style.EndsWith(";"))
-                style += ";";
-
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
             {
                 var key = property.Name.ToLowerInvariant().Replace("_", "-");
                 var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
-                style += $"{key}:{value};";
+                Styles.Add(key, value);
             }
-            MergeAttribute("style", style, true);
         }
         #endregion
 
@@ -151,6 +137,20 @@ namespace FBootstrapCoreMvc
         /// </summary>
         protected virtual void PreBuild()
         {
+            if (CssClasses.Any())
+            {
+                foreach (var cssClass in CssClasses)
+                {
+                    _tagBuilder.AddCssClass(cssClass);
+                }
+            }
+
+            if (Styles.Any())
+            {
+                var style = string.Join(";", Styles.Select(s => $"{s.Key}:{s.Value}"));
+                MergeAttribute("style", style, true);
+            }
+
             if (Id != null)
                 MergeAttribute("id", Id);
         }

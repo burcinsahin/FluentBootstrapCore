@@ -3,7 +3,7 @@
 @{
     var genderOpts = (SelectList)ViewBag.GenderOptions;
 }
-@using (Html.Bootstrap().Container().SetResponsive(ContainerSize.Small).Begin())
+@using (Html.Bootstrap().Container().Responsive(ContainerSize.Small).Begin())
 {
     @Html.Bootstrap().Heading1("Form Default (For model)")
     using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Begin())

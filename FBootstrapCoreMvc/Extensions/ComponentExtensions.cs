@@ -90,7 +90,7 @@ namespace FBootstrapCoreMvc.Extensions
             object styles)
             where TComponent : SingleComponent
         {
-            bootstrapContent.Component.MergeStyles(styles);
+            bootstrapContent.Component.MergeStyle(styles);
             return bootstrapContent;
         }
 
@@ -99,7 +99,7 @@ namespace FBootstrapCoreMvc.Extensions
             object styles)
             where TComponent : SingleComponent
         {
-            bootstrapContent.Component.MergeStyles(styles);
+            bootstrapContent.Component.MergeStyle(styles);
             return bootstrapContent;
         }
 

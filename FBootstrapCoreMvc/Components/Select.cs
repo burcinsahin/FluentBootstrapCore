@@ -19,11 +19,12 @@ namespace FBootstrapCoreMvc.Components
         public object? SelectedValue { get; set; }
         public bool Multiple { get; set; }
         public bool Disabled { get; set; }
-        public FormSelectSize Size { get; set; }
+        public FormSelectSize? Size { get; set; }
 
         public Select()
             : base("select", Css.FormSelect)
         {
+            Size = FormSelectSize.Default;
         }
 
         protected override void PreBuild()
@@ -34,8 +35,8 @@ namespace FBootstrapCoreMvc.Components
                 MergeAttribute("multiple");
             if (Disabled)
                 MergeAttribute("disabled");
-            
-            if (Size != FormSelectSize.Default)
+
+            if (Size.HasValue && Size != FormSelectSize.Default)
                 AddCss(Size.GetCssDescription());
 
             if (SelectList != null)

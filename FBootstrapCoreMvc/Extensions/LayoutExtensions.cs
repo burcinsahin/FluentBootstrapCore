@@ -7,14 +7,14 @@ namespace FBootstrapCoreMvc.Extensions
     public static class LayoutExtensions
     {
         #region Container
-        public static BootstrapContent<Container> SetFluid(this BootstrapContent<Container> bootstrapContent)
+        public static BootstrapContent<Container> Fluid(this BootstrapContent<Container> bootstrapContent)
         {
             bootstrapContent.Component.RemoveCss(Css.Container);
             bootstrapContent.Component.AddCss(Css.ContainerFluid);
             return bootstrapContent;
         }
 
-        public static BootstrapContent<Container> SetResponsive(this BootstrapContent<Container> bootstrapContent, ContainerSize size)
+        public static BootstrapContent<Container> Responsive(this BootstrapContent<Container> bootstrapContent, ContainerSize size)
         {
             bootstrapContent.Component.RemoveCss(Css.Container);
             bootstrapContent.Component.AddCss(size.GetCssDescription());
@@ -42,6 +42,26 @@ namespace FBootstrapCoreMvc.Extensions
             var gridColumn = new GridColumn();
             return new BootstrapContent<GridColumn>(builder.HtmlHelper, gridColumn);
         }
+
+        public static BootstrapContent<TComponent> Auto<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : SingleComponent, IAuto
+        {
+            bootstrapContent.Component.Auto = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<GridRow> RowColumns(this BootstrapContent<GridRow> bootstrapContent, byte columnCount, Breakpoint breakpoint = Breakpoint.Default)
+        {
+            bootstrapContent.Component.RowColumns.TryAdd(breakpoint, columnCount);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<GridColumn> Width(this BootstrapContent<GridColumn> bootstrapContent, byte? width = null, Breakpoint breakpoint = Breakpoint.Default)
+        {
+            bootstrapContent.Component.Width.TryAdd(breakpoint, width);
+            return bootstrapContent;
+        }
+
         #endregion
 
         #region Margin
