@@ -1,7 +1,9 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace FBootstrapCoreMvc.Enums
 {
+    [Flags]
     public enum Border
     {
         [Description(Css.Border)]

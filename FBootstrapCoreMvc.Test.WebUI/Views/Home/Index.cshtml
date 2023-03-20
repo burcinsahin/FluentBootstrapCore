@@ -7,7 +7,7 @@
         @list.ListItem(Html.Bootstrap().Link("Containers", "/Tests/Containers"))
         @list.ListItem(Html.Bootstrap().Link("Grid", "/Tests/Grids"))
         @list.ListItem(Html.Bootstrap().Link("Columns", "/Tests/Columns"))
-
+        @list.ListItem(Html.Bootstrap().Link("Gutters", "/Tests/Gutters"))
     }
     @Html.Bootstrap().Heading2("Content")
     using (var list = Html.Bootstrap().List().Begin())
@@ -57,6 +57,16 @@
         @list.ListItem(Html.Bootstrap().Link("Spinners", "/Tests/Spinners"))
         @list.ListItem(Html.Bootstrap().Link("Toasts", "/Tests/Toasts"))
         @list.ListItem(Html.Bootstrap().Link("Tooltips", "/Tests/Tooltips"))
+    }
+    @Html.Bootstrap().Heading2("Helpers")
+    using (var list = Html.Bootstrap().List().Begin())
+    {
+    }
+    @Html.Bootstrap().Heading2("Utilities")
+    using (var list = Html.Bootstrap().List().Begin())
+    {
+        @list.ListItem(Html.Bootstrap().Link("Background", "/Tests/Backgrounds"))
+        @list.ListItem(Html.Bootstrap().Link("Borders", "/Tests/Borders"))
     }
     @Html.Bootstrap().Heading2("Extend")
     using (var list = Html.Bootstrap().List().Begin())

@@ -4,25 +4,25 @@ namespace FBootstrapCoreMvc.Enums
 {
     public enum Display
     {
-        [Description(Css.DNone)]
+        [Description("d{0}-none")]
         None,
-        [Description(Css.DInline)]
+        [Description("d{0}-inline")]
         Inline,
-        [Description(Css.DInlineBlock)]
+        [Description("d{0}-inline-block")]
         InlineBlock,
-        [Description(Css.DBlock)]
+        [Description("d{0}-block")]
         Block,
-        [Description(Css.DGrid)]
+        [Description("d{0}-grid")]
         Grid,
-        [Description(Css.DTable)]
+        [Description("d{0}-table")]
         Table,
-        [Description(Css.DTableCell)]
+        [Description("d{0}-table-cell")]
         TableCell,
-        [Description(Css.DTableRow)]
+        [Description("d{0}-table-row")]
         TableRow,
-        [Description(Css.DFlex)]
+        [Description("d{0}-flex")]
         Flex,
-        [Description(Css.DInlineFlex)]
+        [Description("d{0}-inline-flex")]
         InlineFlex,
     }
 }

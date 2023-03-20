@@ -64,14 +64,14 @@
     {
         @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().Begin())
         {
-            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().Css(Css.Me2).Begin())
             {
                 @buttonGroup.Button("1")
                 @buttonGroup.Button("2")
                 @buttonGroup.Button("3")
                 @buttonGroup.Button("4")
             }
-            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().Css(Css.Me2).Begin())
             {
                 @buttonGroup.Button("5").State(ButtonState.Secondary)
                 @buttonGroup.Button("6").State(ButtonState.Secondary)
@@ -84,25 +84,25 @@
         }
         <br />
         <br />
-        @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().AddCss(Css.Mb3).Begin())
+        @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().Css(Css.Mb3).Begin())
         {
-            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().Css(Css.Me2).Begin())
             {
                 @buttonGroup.Button("1").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
                 @buttonGroup.Button("2").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
                 @buttonGroup.Button("3").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
                 @buttonGroup.Button("4").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
             }
-            @using (var inputGroup = @buttonToolbar.InputGroup().AddCss(Css.Me2).Begin())
+            @using (var inputGroup = @buttonToolbar.InputGroup().Css(Css.Me2).Begin())
             {
                 @inputGroup.InputGroupText("@")
-                @inputGroup.Input().AddCss(Css.FormControl).Placeholder("Input group example")
+                @inputGroup.Input().Css(Css.FormControl).Placeholder("Input group example")
             }
         }
         <br />
-        @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().JustifyContent(JustifyContent.Between).AddCss(Css.Mb3).Begin())
+        @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().JustifyContent(JustifyContent.Between).Css(Css.Mb3).Begin())
         {
-            @using (var buttonGroup = buttonToolbar.ButtonGroup().AddCss(Css.Me2).Begin())
+            @using (var buttonGroup = buttonToolbar.ButtonGroup().Css(Css.Me2).Begin())
             {
                 @buttonGroup.Button("1").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
                 @buttonGroup.Button("2").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
@@ -112,7 +112,7 @@
             @using (var inputGroup = @buttonToolbar.InputGroup().Begin())
             {
                 @inputGroup.InputGroupText("@")
-                @inputGroup.Input().AddCss(Css.FormControl).Placeholder("Input group example")
+                @inputGroup.Input().Css(Css.FormControl).Placeholder("Input group example")
             }
         }
     }

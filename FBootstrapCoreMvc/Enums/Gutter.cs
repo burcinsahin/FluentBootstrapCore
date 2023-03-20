@@ -9,6 +9,6 @@ namespace FBootstrapCoreMvc.Enums
         [Description("gy")]
         Vertical,
         [Description("g")]
-        Full
+        All
     }
 }

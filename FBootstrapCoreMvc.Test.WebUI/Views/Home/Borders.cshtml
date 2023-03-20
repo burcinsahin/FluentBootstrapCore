@@ -1,0 +1,33 @@
+﻿@Html.Bootstrap().Heading2("Border")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Heading3("Additive")
+    @Html.Bootstrap().Span().Border(Border.All)
+    @Html.Bootstrap().Span().Border(Border.Top)
+    @Html.Bootstrap().Span().Border(Border.End)
+    @Html.Bootstrap().Span().Border(Border.Bottom)
+    @Html.Bootstrap().Span().Border(Border.Start)
+    <span class="border"></span>
+    <span class="border-top"></span>
+    <span class="border-end"></span>
+    <span class="border-bottom"></span>
+    <span class="border-start"></span>
+    <br />
+    @Html.Bootstrap().Heading3("Subtractive")
+    @Html.Bootstrap().Span().Border(Border.All|Border.NoAll)
+    @Html.Bootstrap().Span().Border(Border.All|Border.NoTop)
+    @Html.Bootstrap().Span().Border(Border.All|Border.NoEnd)
+    @Html.Bootstrap().Span().Border(Border.All|Border.NoBottom)
+    @Html.Bootstrap().Span().Border(Border.All|Border.NoStart)
+    <span class="border border-0"></span>
+    <span class="border border-top-0"></span>
+    <span class="border border-end-0"></span>
+    <span class="border border-bottom-0"></span>
+    <span class="border border-start-0"></span>
+}
+<hr />
+@Html.Bootstrap().Heading2("Color")
+@using (Html.Bootstrap().Div().Begin())
+{
+
+}

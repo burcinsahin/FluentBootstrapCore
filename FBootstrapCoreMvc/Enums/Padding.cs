@@ -14,5 +14,9 @@ namespace FBootstrapCoreMvc.Enums
         Top,
         [Description("pb")]
         Bottom,
+        [Description("px")]
+        Horizontal,
+        [Description("py")]
+        Vertical,
     }
 }

@@ -20,7 +20,7 @@
             }
             @Html.Bootstrap().Hidden("logintime", DateTime.Now.ToString())
         }
-        using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).AddCss(Css.DFlex).SetId("formLanguage").Begin())
+        using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Css(Css.DFlex).Id("formLanguage").Begin())
         {
             @form.Select("CurrentLanguage", (IEnumerable<SelectListItem>)ViewBag.GenderOptions)
         }

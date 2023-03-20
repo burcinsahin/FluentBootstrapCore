@@ -1,7 +1,7 @@
 ﻿@using (Html.Bootstrap().Container().Begin())
 {
     @Html.Bootstrap().Heading2("Example")
-    @using (Html.Bootstrap().Div().AddCss(Css.BgSecondary, Css.P5).Begin())
+    @using (Html.Bootstrap().Div().Css(Css.BgSecondary, Css.P5).Begin())
     {
         @using (var acc = Html.Bootstrap().Accordion().Begin())
         {
@@ -29,7 +29,7 @@
     <hr />
 
     @Html.Bootstrap().Heading2("Flush")
-    using (Html.Bootstrap().Div().AddCss(Css.BgSecondary, Css.P5).Begin())
+    using (Html.Bootstrap().Div().Css(Css.BgSecondary, Css.P5).Begin())
     {
         @using (var acc = Html.Bootstrap().Accordion().Flush().Begin())
         {
@@ -57,7 +57,7 @@
     <hr />
 
     @Html.Bootstrap().Heading2("Always open")
-    using (Html.Bootstrap().Div().AddCss(Css.BgSecondary, Css.P5).Begin())
+    using (Html.Bootstrap().Div().Css(Css.BgSecondary, Css.P5).Begin())
     {
         @using (var acc = Html.Bootstrap().Accordion().AlwaysOpen().Begin())
         {

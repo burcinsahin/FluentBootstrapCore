@@ -48,7 +48,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> AddCss<TComponent>(
+        public static BootstrapContent<TComponent> Css<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             params string[] cssClasses)
             where TComponent : SingleComponent
@@ -57,7 +57,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent, TModel> AddCss<TComponent, TModel>(
+        public static BootstrapContent<TComponent, TModel> Css<TComponent, TModel>(
             this BootstrapContent<TComponent, TModel> bootstrapContent,
             params string[] cssClasses)
             where TComponent : SingleComponent
@@ -66,7 +66,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> AddStyle<TComponent>(
+        public static BootstrapContent<TComponent> Style<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string name,
             string value)
@@ -76,7 +76,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent, TModel> AddStyle<TComponent, TModel>(
+        public static BootstrapContent<TComponent, TModel> Style<TComponent, TModel>(
             this BootstrapContent<TComponent, TModel> bootstrapContent,
             string name,
             string value)
@@ -86,7 +86,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> AddStyles<TComponent>(
+        public static BootstrapContent<TComponent> Style<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             object styles)
             where TComponent : SingleComponent
@@ -95,7 +95,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent, TModel> AddStyles<TComponent, TModel>(
+        public static BootstrapContent<TComponent, TModel> Style<TComponent, TModel>(
             this BootstrapContent<TComponent, TModel> bootstrapContent,
             object styles)
             where TComponent : SingleComponent
@@ -122,7 +122,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> SetId<TComponent>(
+        public static BootstrapContent<TComponent> Id<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string? id = null)
             where TComponent : SingleComponent
@@ -133,7 +133,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent, TModel> SetId<TComponent, TModel>(
+        public static BootstrapContent<TComponent, TModel> Id<TComponent, TModel>(
             this BootstrapContent<TComponent, TModel> bootstrapContent,
             string? id = null)
             where TComponent : SingleComponent
@@ -148,7 +148,7 @@ namespace FBootstrapCoreMvc.Extensions
             this BootstrapContent<TComponent> bootstrapContent)
             where TComponent : SingleComponent
         {
-            bootstrapContent.Component.AddCss(Css.Clearfix);
+            bootstrapContent.Component.AddCss(FBootstrapCoreMvc.Css.Clearfix);
             return bootstrapContent;
         }
         #endregion

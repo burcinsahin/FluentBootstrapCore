@@ -18,7 +18,7 @@
 @using (Html.Bootstrap().Div().Begin())
 {
     @Html.Bootstrap().Heading3("Vertical alignment")
-    @using (var container = Html.Bootstrap().Container().AddCss("vertical-example").TextCenter().Begin())
+    @using (var container = Html.Bootstrap().Container().Css("vertical-example").TextCenter().Begin())
     {
         @using (var row = container.Row().AlignItems(AlignItem.Start).Begin())
         {
@@ -40,7 +40,7 @@
         }
     }
     <br />
-    @using (var container = Html.Bootstrap().Container().AddCss("vertical-example").TextCenter().Begin())
+    @using (var container = Html.Bootstrap().Container().Css("vertical-example").TextCenter().Begin())
     {
         @using (var row = container.Row().Begin())
         {
@@ -112,7 +112,7 @@
         {
             @row.Column().Columnize(6).Columnize(4, Breakpoint.Small).Content(".col-6 .col-sm-4")
             @row.Column().Columnize(6).Columnize(4, Breakpoint.Small).Content(".col-6 .col-sm-4")
-            @row.Break().AddCss(Css.DNone, Css.DMdBlock)
+            @row.Break().Display(Display.None).Display(Display.Block, Breakpoint.Medium)
             @row.Column().Columnize(6).Columnize(4, Breakpoint.Small).Content(".col-6 .col-sm-4")
             @row.Column().Columnize(6).Columnize(4, Breakpoint.Small).Content(".col-6 .col-sm-4")
         }
@@ -197,7 +197,7 @@
 }
 <hr />
 @Html.Bootstrap().Heading2("Standalone column classes")
-@using (Html.Bootstrap().Div().AddStyle("width", "800px").Begin())
+@using (Html.Bootstrap().Div().Style("width", "800px").Begin())
 {
     @Html.Bootstrap().Column().Columnize(3).Background(BackgroundState.Light).Padding(Padding.All, 3).Border(Border.All).Content(".col-3: width of 25%")
     @Html.Bootstrap().Column().Columnize(9, Breakpoint.Small).Background(BackgroundState.Light).Padding(Padding.All, 3).Border(Border.All).Content(".col-sm-9: width of 75% above sm breakpoint")

@@ -50,7 +50,7 @@
     @Html.Bootstrap().Heading2("Layout")
     @using (Html.Bootstrap().Div().Begin())
     {
-        @using (var row = Html.Bootstrap().Row().Gutter(Gutter.Full, 2).Begin())
+        @using (var row = Html.Bootstrap().Row().Gutter(Gutter.All, 2).Begin())
         {
             @using (var col = row.Column().Columnize(breakpoint: Breakpoint.Medium).Begin())
             {
