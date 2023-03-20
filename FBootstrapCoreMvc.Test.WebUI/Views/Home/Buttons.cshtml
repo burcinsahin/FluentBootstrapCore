@@ -9,8 +9,8 @@
         @Html.Bootstrap().LinkButton("Like","action","controller").AddIcon(IconType.HandThumbsUp)
         @Html.Bootstrap().LinkButton("Active","action","controller").Active()
         @Html.Bootstrap().LinkButton("Disabled","action","controller").Disabled()
-        @Html.Bootstrap().LinkButton("Warning","action","controller").SetBgState(BackgroundState.Warning)
-        @Html.Bootstrap().LinkButton("Warning","action","controller").SetTextBgState(TextBgState.Warning)
+        @Html.Bootstrap().LinkButton("Warning","action","controller").Background(BackgroundState.Warning)
+        @Html.Bootstrap().LinkButton("Warning","action","controller").TextBackground(TextBgState.Warning)
     }
     <hr />
     @Html.Bootstrap().Heading2("Buttons")

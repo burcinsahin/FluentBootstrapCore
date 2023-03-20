@@ -50,13 +50,13 @@
     @Html.Bootstrap().Heading2("Layout")
     @using (Html.Bootstrap().Div().Begin())
     {
-        @using (var row = Html.Bootstrap().Row().AddCss(Css.G2).Begin())
+        @using (var row = Html.Bootstrap().Row().Gutter(Gutter.Full, 2).Begin())
         {
-            @using (var col = row.Column().Begin())
+            @using (var col = row.Column().Columnize(breakpoint: Breakpoint.Medium).Begin())
             {
                 @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Email address").Placeholder("name@example.com").Value("mdo@example.com").Margin(0,0,3,0)
             }
-            @using (var col = row.Column().Begin())
+            @using (var col = row.Column().Columnize(breakpoint: Breakpoint.Medium).Begin())
             {
                 @Html.Bootstrap().FormSelect().Options(selectList).FloatingLabel("Works with selects")
             }

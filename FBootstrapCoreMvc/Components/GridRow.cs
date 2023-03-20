@@ -9,11 +9,13 @@ namespace FBootstrapCoreMvc.Components
 {
     public class GridRow : SingleComponent,
         ICanCreate<GridColumn>,
-        IJustifyContent
+        IJustifyContent,
+        IAlignItem,
+        IGutterable
     {
         public JustifyContent? JustifyContent { get; set; }
         public Dictionary<Breakpoint, byte> RowColumns { get; set; }
-
+        public AlignItem? AlignItem { get; set; }
         public GridRow()
             : base("div", Css.Row)
         {
@@ -23,8 +25,11 @@ namespace FBootstrapCoreMvc.Components
         protected override void PreBuild()
         {
             if (JustifyContent.HasValue)
-                AddCss(JustifyContent.Value.GetCssDescription());
+                AddCss(JustifyContent.GetCssDescription());
             
+            if (AlignItem.HasValue)
+                AddCss(AlignItem.GetCssDescription());
+
             if (RowColumns.Any())
             {
                 var br = "";

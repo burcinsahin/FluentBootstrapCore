@@ -8,10 +8,11 @@ namespace FBootstrapCoreMvc.Extensions
         #region Common
         public static BootstrapContent<TComponent> Content<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
-            object content)
+            object content, bool isHtml = false)
             where TComponent : SingleComponent
         {
             bootstrapContent.Component.Content = content;
+            bootstrapContent.Component.IsContentHtml = isHtml;
             return bootstrapContent;
         }
 
@@ -103,7 +104,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> SetTextBgState<TComponent>(
+        public static BootstrapContent<TComponent> TextBackground<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             TextBgState state = TextBgState.Primary)
             where TComponent : SingleComponent
@@ -112,7 +113,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> SetBgState<TComponent>(
+        public static BootstrapContent<TComponent> Background<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             BackgroundState state = BackgroundState.Primary)
             where TComponent : SingleComponent
@@ -140,6 +141,14 @@ namespace FBootstrapCoreMvc.Extensions
             if (id == null)
                 id = $"{typeof(TComponent).Name}_{DateTime.Now.Ticks}";
             bootstrapContent.Component.Id = id;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Clearfix<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : SingleComponent
+        {
+            bootstrapContent.Component.AddCss(Css.Clearfix);
             return bootstrapContent;
         }
         #endregion

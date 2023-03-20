@@ -1,6 +1,8 @@
 ﻿using FBootstrapCoreMvc.Components;
 using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
+using Newtonsoft.Json.Linq;
+using System;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -43,6 +45,13 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<GridColumn>(builder.HtmlHelper, gridColumn);
         }
 
+        public static BootstrapContent<HtmlElement> Break<TComponent>(this BootstrapBuilder<TComponent> builder)
+            where TComponent : SingleComponent
+        {
+            var div = new HtmlElement("div", Css.W100);
+            return new BootstrapContent<HtmlElement>(builder.HtmlHelper, div);
+        }
+
         public static BootstrapContent<TComponent> Auto<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
             where TComponent : SingleComponent, IAuto
         {
@@ -56,15 +65,75 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<GridColumn> Width(this BootstrapContent<GridColumn> bootstrapContent, byte? width = null, Breakpoint breakpoint = Breakpoint.Default)
+        public static BootstrapContent<TComponent> AlignItems<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignItem alignItem)
+            where TComponent : SingleComponent, IAlignItem
         {
-            bootstrapContent.Component.Width.TryAdd(breakpoint, width);
+            bootstrapContent.Component.AlignItem = alignItem;
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> AlignSelf<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignSelf alignSelf)
+            where TComponent : SingleComponent, IAlignSelf
+        {
+            bootstrapContent.Component.AlignSelf = alignSelf;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Order<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte order)
+            where TComponent : SingleComponent, IOrderable
+        {
+            if (order == byte.MinValue)
+                bootstrapContent.Component.AddCss(Css.OrderFirst);
+            else if (order == byte.MaxValue)
+                bootstrapContent.Component.AddCss(Css.OrderLast);
+            else
+            {
+                if (order < 0) order = 0;
+                if (order > 5) order = 5;
+                bootstrapContent.Component.AddCss($"order-{order}");
+            }
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Offset<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte offset, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : SingleComponent, IOffsetable
+        {
+            if (offset < 0) offset = 0;
+            if (offset > 11) offset = 11;
+            var offsetCss = $"offset{breakpoint.GetHyphenatedDescription()}-{offset}";
+            bootstrapContent.Component.AddCss(offsetCss);
+            return bootstrapContent;
+        }
+
+        /// <summary>
+        /// Sets column width
+        /// </summary>
+        /// <param name="bootstrapContent"></param>
+        /// <param name="width">0 for auto.</param>
+        /// <param name="breakpoint">Optional. Default xs.</param>
+        /// <returns></returns>
+        //public static BootstrapContent<GridColumn> Columnize(this BootstrapContent<GridColumn> bootstrapContent, byte? width = null, Breakpoint breakpoint = Breakpoint.Default)
+        //{
+        //    bootstrapContent.Component.Width.TryAdd(breakpoint, width);
+        //    return bootstrapContent;
+        //}
         #endregion
 
-        #region Margin
+        #region Margin, Padding, Float
+        public static BootstrapContent<TComponent> Margin<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Margin margin, byte? value = null, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : SingleComponent
+        {
+            if (!value.HasValue)
+            {
+                bootstrapContent.Component.AddCss($"{margin.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-auto");
+                return bootstrapContent;
+            }
+
+            value = value.Trim((byte)0, (byte)5);
+            bootstrapContent.Component.AddCss($"{margin.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-{value}");
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<TComponent> Margin<TComponent>(this BootstrapContent<TComponent> bootstrapContent, int top = 0, int right = 0, int bottom = 0, int left = 0)
             where TComponent : SingleComponent
         {
@@ -110,6 +179,56 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.AddCss(Css.MAuto);
             return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> Padding<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Padding padding, byte? value = null, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : SingleComponent
+        {
+            if (!value.HasValue)
+            {
+                bootstrapContent.Component.AddCss($"{padding.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-auto");
+                return bootstrapContent;
+            }
+
+            value = value.Value.Trim((byte)0, (byte)5);
+            bootstrapContent.Component.AddCss($"{padding.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-{value}");
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Gutter<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Gutter gutter, byte value, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : SingleComponent, IGutterable
+        {
+            value = value.Trim((byte)0, (byte)5);
+            bootstrapContent.Component.AddCss($"{gutter.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-{value}");
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Float<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Float @float, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : SingleComponent
+        {
+            var floatCss = string.Format(@float.GetCssDescription(), breakpoint.GetHyphenatedDescription());
+            bootstrapContent.Component.AddCss(floatCss);
+            return bootstrapContent;
+        }
         #endregion
+
+        public static BootstrapContent<TComponent> Columnize<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte? value = null, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : SingleComponent, IColumnizable
+        {
+            bootstrapContent.Component.RemoveCss(Css.Col);
+            if (!value.HasValue)
+            {
+                bootstrapContent.Component.AddCss($"col{breakpoint.GetHyphenatedDescription()}");
+                return bootstrapContent;
+            }
+
+            value = value.Value.Trim((byte)0, (byte)10);
+            if (value == 0)
+            {
+                bootstrapContent.Component.AddCss($"col{breakpoint.GetHyphenatedDescription()}-auto");
+                return bootstrapContent;
+            }
+            bootstrapContent.Component.AddCss($"col{breakpoint.GetHyphenatedDescription()}-{value}");
+            return bootstrapContent;
+        }
     }
 }

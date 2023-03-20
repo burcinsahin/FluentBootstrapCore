@@ -115,6 +115,11 @@ namespace FBootstrapCoreMvc
         {
             return new BootstrapContent<GridRow>(HtmlHelper, new GridRow());
         }
+
+        public BootstrapContent<GridColumn> Column()
+        {
+            return new BootstrapContent<GridColumn>(HtmlHelper, new GridColumn());
+        }
         #endregion
 
         #region DOM

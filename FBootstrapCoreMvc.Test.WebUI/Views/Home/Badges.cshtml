@@ -32,27 +32,27 @@
     @Html.Bootstrap().Heading2("Background colors")
     using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().Badge("Primary").SetTextBgState(TextBgState.Primary)
-        @Html.Bootstrap().Badge("Secondary").SetTextBgState(TextBgState.Secondary)
-        @Html.Bootstrap().Badge("Success").SetTextBgState(TextBgState.Success)
-        @Html.Bootstrap().Badge("Danger").SetTextBgState(TextBgState.Danger)
-        @Html.Bootstrap().Badge("Warning").SetTextBgState(TextBgState.Warning)
-        @Html.Bootstrap().Badge("Info").SetTextBgState(TextBgState.Info)
-        @Html.Bootstrap().Badge("Light").SetTextBgState(TextBgState.Light)
-        @Html.Bootstrap().Badge("Dark").SetTextBgState(TextBgState.Dark)
+        @Html.Bootstrap().Badge("Primary").TextBackground(TextBgState.Primary)
+        @Html.Bootstrap().Badge("Secondary").TextBackground(TextBgState.Secondary)
+        @Html.Bootstrap().Badge("Success").TextBackground(TextBgState.Success)
+        @Html.Bootstrap().Badge("Danger").TextBackground(TextBgState.Danger)
+        @Html.Bootstrap().Badge("Warning").TextBackground(TextBgState.Warning)
+        @Html.Bootstrap().Badge("Info").TextBackground(TextBgState.Info)
+        @Html.Bootstrap().Badge("Light").TextBackground(TextBgState.Light)
+        @Html.Bootstrap().Badge("Dark").TextBackground(TextBgState.Dark)
     }
 
     <hr />
     @Html.Bootstrap().Heading2("Pill badges")
     using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().Badge("Primary").SetTextBgState(TextBgState.Primary).RoundedPill()
-        @Html.Bootstrap().Badge("Secondary").SetTextBgState(TextBgState.Secondary).RoundedPill()
-        @Html.Bootstrap().Badge("Success").SetTextBgState(TextBgState.Success).RoundedPill()
-        @Html.Bootstrap().Badge("Danger").SetTextBgState(TextBgState.Danger).RoundedPill()
-        @Html.Bootstrap().Badge("Warning").SetTextBgState(TextBgState.Warning).RoundedPill()
-        @Html.Bootstrap().Badge("Info").SetTextBgState(TextBgState.Info).RoundedPill()
-        @Html.Bootstrap().Badge("Light").SetTextBgState(TextBgState.Light).RoundedPill()
-        @Html.Bootstrap().Badge("Dark").SetTextBgState(TextBgState.Dark).RoundedPill()
+        @Html.Bootstrap().Badge("Primary").TextBackground(TextBgState.Primary).RoundedPill()
+        @Html.Bootstrap().Badge("Secondary").TextBackground(TextBgState.Secondary).RoundedPill()
+        @Html.Bootstrap().Badge("Success").TextBackground(TextBgState.Success).RoundedPill()
+        @Html.Bootstrap().Badge("Danger").TextBackground(TextBgState.Danger).RoundedPill()
+        @Html.Bootstrap().Badge("Warning").TextBackground(TextBgState.Warning).RoundedPill()
+        @Html.Bootstrap().Badge("Info").TextBackground(TextBgState.Info).RoundedPill()
+        @Html.Bootstrap().Badge("Light").TextBackground(TextBgState.Light).RoundedPill()
+        @Html.Bootstrap().Badge("Dark").TextBackground(TextBgState.Dark).RoundedPill()
     }
 }

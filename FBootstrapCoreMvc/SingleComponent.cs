@@ -35,7 +35,7 @@ namespace FBootstrapCoreMvc
             get => _renderMode;
             set => _renderMode = value;
         }
-
+        public bool IsContentHtml { get; set; }
         public HashSet<string> CssClasses { get; private set; }
 
         public Dictionary<string, object> Styles { get; private set; }
@@ -46,15 +46,16 @@ namespace FBootstrapCoreMvc
         {
             _tagBuilder = new TagBuilder(tagName);
             _renderMode = RenderMode.Normal;
+            CssClasses = new HashSet<string>();
+            Styles = new Dictionary<string, object>();
             if (cssClasses.Any())
-                _tagBuilder.AddCssClass(string.Join(" ", cssClasses));
+                AddCss(cssClasses);
             _headerChildren = new List<SingleComponent>();
             _bodyChildren = new List<SingleComponent>();
             _footerChildren = new List<SingleComponent>();
             _fullWrapperChildren = new List<SingleComponent>();
             _bodyWrapperChildren = new List<SingleComponent>();
-            CssClasses = new HashSet<string>();
-            Styles = new Dictionary<string, object>();
+
         }
         #endregion
 
@@ -172,11 +173,9 @@ namespace FBootstrapCoreMvc
         {
             _bodyWrapperChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
 
-            AppendContent(_content);
+            AppendContent(_content, false, IsContentHtml);
 
             _bodyChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
-
-
 
             return _tagBuilder.RenderBody();
         }
@@ -235,7 +234,7 @@ namespace FBootstrapCoreMvc
             _footerChildren.Remove(component);
         }
 
-        protected internal void AppendContent(object? content, bool clear = false)
+        protected internal void AppendContent(object? content, bool clear = false, bool isHtml = false)
         {
             if (content == null)
                 return;
@@ -253,18 +252,12 @@ namespace FBootstrapCoreMvc
                 _tagBuilder.InnerHtml.AppendHtml(htmlContent);
                 return;
             }
-            _tagBuilder.InnerHtml.Append(content.ToString());
-        }
-
-        protected internal void AppendHtml(string? htmlString, bool clear = false)
-        {
-            if (htmlString == null)
+            if (isHtml)
+            {
+                _tagBuilder.InnerHtml.AppendHtml(content.ToString());
                 return;
-
-            if (clear)
-                _tagBuilder.InnerHtml.Clear();
-
-            _tagBuilder.InnerHtml.AppendHtml(htmlString);
+            }
+            _tagBuilder.InnerHtml.Append(content.ToString());
         }
 
         protected internal void MergeAttribute(string key, object? value = null, bool replaceExisting = false)

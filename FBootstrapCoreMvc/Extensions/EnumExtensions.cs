@@ -54,5 +54,13 @@ namespace FBootstrapCoreMvc.Extensions
                     return "";
             }
         }
+
+        internal static string GetHyphenatedDescription(this Breakpoint breakpoint) 
+        {
+            var desc = breakpoint.GetCssDescription();
+            if (string.IsNullOrWhiteSpace(desc))
+                return desc;
+            return $"-{desc}";
+        }
     }
 }
