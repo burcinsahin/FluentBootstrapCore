@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
+
     <Title>FBootstrapCoreMvc</Title>
     <Description>Fluent bootstrap (v5.2) library for netcore MVC applications.</Description>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>

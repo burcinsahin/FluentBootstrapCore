@@ -56,10 +56,24 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<ListItem>(builder.HtmlHelper, listItem);
         }
 
-        public static BootstrapContent<Container> SetAlignment(this BootstrapContent<Container> content, TextAlignment alignment)
+        public static BootstrapContent<Container> AlignText(this BootstrapContent<Container> content, TextAlignment alignment)
         {
             content.Component.AddCss(alignment.GetCssDescription());
             return content;
         }
+
+        #region Image
+        public static BootstrapContent<Image> Fluid(this BootstrapContent<Image> content)
+        {
+            content.Component.Fluid = true;
+            return content;
+        }
+
+        public static BootstrapContent<Image> Thumbnail(this BootstrapContent<Image> content)
+        {
+            content.Component.Thumbnail = true;
+            return content;
+        } 
+        #endregion
     }
 }

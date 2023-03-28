@@ -125,8 +125,6 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-
-
         public static BootstrapContent<FormInput> PlainText(this BootstrapContent<FormInput> bootstrapContent)
         {
             bootstrapContent.Component.PlainText = true;

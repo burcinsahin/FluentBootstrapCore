@@ -3,6 +3,7 @@ using FBootstrapCoreMvc.Components;
 using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
+using FBootstrapCoreMvc.Options;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -34,7 +35,7 @@ namespace FBootstrapCoreMvc.Extensions
             return content;
         }
 
-        #region Form Controls
+        #region Form Components
         public static BootstrapContent<FormInput> Input<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, object? value = null, FormInputType inputType = FormInputType.Text)
             where TComponent : SingleComponent, ICanCreate<FormInput>
         {
@@ -242,6 +243,26 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<Button>(builder.HtmlHelper, reset);
         }
         #endregion
+
+        public static BootstrapContent<TComponent> InputOpts<TComponent, TInput>(this BootstrapContent<TComponent> bootstrapContent, UtilityOptions opts)
+            where TComponent : FormControl<TInput>
+            where TInput : SingleComponent, IInputComponent
+        {
+            bootstrapContent.Component.InputOpts = opts;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<FormInput> InputOpts(this BootstrapContent<FormInput> bootstrapContent, UtilityOptions opts) => bootstrapContent.InputOpts<FormInput, Input>(opts);
+
+        public static BootstrapContent<TComponent> InputCss<TComponent, TInput>(this BootstrapContent<TComponent> bootstrapContent, params string[] cssClasses)
+            where TComponent : FormControl<TInput>
+            where TInput : SingleComponent, IInputComponent
+        {
+            bootstrapContent.Component.Input.AddCss(cssClasses);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<FormInput> InputCss(this BootstrapContent<FormInput> bootstrapContent, params string[] cssClasses) => bootstrapContent.InputCss<FormInput, Input>(cssClasses);
 
         public static BootstrapContent<TComponent> FloatingLabel<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? label)
             where TComponent : SingleComponent, ICanHaveFloatingLabel

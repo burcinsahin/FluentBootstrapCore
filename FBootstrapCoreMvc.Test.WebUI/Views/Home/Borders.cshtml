@@ -1,4 +1,14 @@
-﻿@Html.Bootstrap().Heading2("Border")
+﻿@using FBootstrapCoreMvc.Options;
+<style>
+    span[class^="border"] {
+        display: inline-block;
+        width: 5rem;
+        height: 5rem;
+        margin: .25rem;
+        background-color: #f5f5f5;
+    }
+</style>
+@Html.Bootstrap().Heading2("Border")
 @using (Html.Bootstrap().Div().Begin())
 {
     @Html.Bootstrap().Heading3("Additive")
@@ -7,27 +17,29 @@
     @Html.Bootstrap().Span().Border(Border.End)
     @Html.Bootstrap().Span().Border(Border.Bottom)
     @Html.Bootstrap().Span().Border(Border.Start)
-    <span class="border"></span>
-    <span class="border-top"></span>
-    <span class="border-end"></span>
-    <span class="border-bottom"></span>
-    <span class="border-start"></span>
-    <br />
     @Html.Bootstrap().Heading3("Subtractive")
     @Html.Bootstrap().Span().Border(Border.All|Border.NoAll)
     @Html.Bootstrap().Span().Border(Border.All|Border.NoTop)
     @Html.Bootstrap().Span().Border(Border.All|Border.NoEnd)
     @Html.Bootstrap().Span().Border(Border.All|Border.NoBottom)
     @Html.Bootstrap().Span().Border(Border.All|Border.NoStart)
-    <span class="border border-0"></span>
-    <span class="border border-top-0"></span>
-    <span class="border border-end-0"></span>
-    <span class="border border-bottom-0"></span>
-    <span class="border border-start-0"></span>
 }
 <hr />
 @Html.Bootstrap().Heading2("Color")
 @using (Html.Bootstrap().Div().Begin())
 {
+    @Html.Bootstrap().Span().Border(Border.All, BorderColor.Primary)
+    @Html.Bootstrap().Span().Border(Border.All, BorderColor.Secondary)
+    @Html.Bootstrap().Span().Border(Border.All, BorderColor.Success)
+    @Html.Bootstrap().Span().Border(Border.All, BorderColor.Danger)
+    @Html.Bootstrap().Span().Border(Border.All, BorderColor.Warning)
+    @Html.Bootstrap().Span().Border(Border.All, BorderColor.Info)
+    @Html.Bootstrap().Span().Border(Border.All, BorderColor.Light)
+    @Html.Bootstrap().Span().Border(Border.All, BorderColor.Dark)
+    @Html.Bootstrap().Span().Border(Border.All, BorderColor.White)
 
+    <br />
+    @Html.Bootstrap().FormInput("Email address").Type(FormInputType.Email).Placeholder("name@example.com").Margin(Margin.Bottom, 4).InputCss(Css.BorderSuccess)
+    @Html.Bootstrap().Div().Padding(Padding.Bottom, 2).Margin(Margin.Bottom, 4).Content("Dangerous heading").Border(Border.Bottom, BorderColor.Danger).Css(Css.H4, Css.TextDanger)
+    @Html.Bootstrap().Div().Padding(Padding.All, 3).Background(BackgroundState.Info).Content("Changing border color and width").Border(Border.All|Border.NoStart, BorderColor.Info).Css(Css.BgOpacity10, Css.RoundedEnd)
 }

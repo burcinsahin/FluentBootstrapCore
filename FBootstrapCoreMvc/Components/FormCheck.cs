@@ -13,7 +13,7 @@ namespace FBootstrapCoreMvc.Components
         public bool Switch { get; set; }
         public bool Indeterminate { get; set; }
         public bool Reverse { get; set; }
-        protected override CheckBox Input => _checkBox;
+        internal override CheckBox Input => _checkBox;
 
         private readonly CheckBox _checkBox;
 

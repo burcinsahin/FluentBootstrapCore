@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("FBootstrapCoreMvc.Test")]
 namespace FBootstrapCoreMvc.Extensions
 {
     internal static class NumericExtensions

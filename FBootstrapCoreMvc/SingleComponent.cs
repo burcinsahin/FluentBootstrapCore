@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace FBootstrapCoreMvc
 {
-    public abstract class SingleComponent : HtmlComponent, IHtmlComponent
+    public abstract class SingleComponent : HtmlComponent
     {
         #region Props&Fields
         private object? _content;

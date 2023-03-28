@@ -4,10 +4,14 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class UtilExtensions
     {
-        public static BootstrapContent<TComponent> Border<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Border border = Enums.Border.All)
+        public static BootstrapContent<TComponent> Border<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Border border = Enums.Border.All, BorderColor borderColor = BorderColor.None)
             where TComponent : SingleComponent
         {
             bootstrapContent.Component.AddCss(border.GetCssDescription());
+
+            if (!borderColor.Equals(BorderColor.None))
+                bootstrapContent.Component.AddCss(borderColor.GetCssDescription());
+
             return bootstrapContent;
         }
 

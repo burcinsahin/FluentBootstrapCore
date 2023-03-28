@@ -12,7 +12,7 @@ namespace FBootstrapCoreMvc.Components
         public bool Reverse { get; set; }
 
         private readonly RadioButton _radioButton;
-        protected override RadioButton Input => _radioButton;
+        internal override RadioButton Input => _radioButton;
 
         public FormRadio(string? label)
             : base()

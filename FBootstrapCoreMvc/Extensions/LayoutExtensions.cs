@@ -173,13 +173,6 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> AutoMargin<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
-            where TComponent : SingleComponent
-        {
-            bootstrapContent.Component.AddCss(Css.MAuto);
-            return bootstrapContent;
-        }
-
         public static BootstrapContent<TComponent> Padding<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Padding padding, byte? value = null, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : SingleComponent
         {

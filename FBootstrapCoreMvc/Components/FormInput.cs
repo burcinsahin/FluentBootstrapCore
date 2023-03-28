@@ -1,6 +1,7 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
+using FBootstrapCoreMvc.Options;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -23,7 +24,7 @@ namespace FBootstrapCoreMvc.Components
         public string? FormText { get; set; }
 
         private readonly Input _input;
-        protected override Input Input => _input;
+        internal override Input Input => _input;
 
         public FormInput(FormInputType inputType = FormInputType.Text, string? label = null)
             : base()

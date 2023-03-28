@@ -23,7 +23,7 @@ namespace FBootstrapCoreMvc.Components
             _labelFirst = true;
         }
 
-        protected override TextArea Input => _textArea;
+        internal override TextArea Input => _textArea;
 
         protected override void PreBuild()
         {

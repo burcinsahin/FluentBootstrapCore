@@ -8,7 +8,7 @@ namespace FBootstrapCoreMvc.Components
         public int Max { get; set; }
         public double Step { get; set; }
 
-        protected override Range Input => _range;
+        internal override Range Input => _range;
 
         private readonly Range _range;
 

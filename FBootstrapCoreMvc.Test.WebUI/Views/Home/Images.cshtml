@@ -1,1 +1,17 @@
-﻿@Html.Bootstrap().Image("http://picsum.photos/400","photo").Style(new{@float="left",border="double 2px"})
+﻿@Html.Bootstrap().Heading2("Responsive images")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Image("http://picsum.photos/400","photo").Fluid()
+}
+@Html.Bootstrap().Heading2("Responsive images")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Image("http://picsum.photos/400","photo").Thumbnail()
+}
+@Html.Bootstrap().Heading2("Responsive images")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Image("http://picsum.photos/400","photo").Border()
+    <img src="..." class="rounded float-start" alt="...">
+    <img src="..." class="rounded float-end" alt="...">
+}

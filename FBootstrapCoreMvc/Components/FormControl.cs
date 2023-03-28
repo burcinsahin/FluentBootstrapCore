@@ -1,6 +1,7 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
+using FBootstrapCoreMvc.Options;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -17,7 +18,8 @@ namespace FBootstrapCoreMvc.Components
         public bool Invalid { get; set; }
 
         protected bool _labelFirst;
-        protected abstract TComponent Input { get; }
+        internal abstract TComponent Input { get; }
+        public UtilityOptions? InputOpts { get; set; }
 
         protected readonly Label _label;
 
