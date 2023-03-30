@@ -16,6 +16,8 @@
         /// <summary>
         /// Render before ending tag
         /// </summary>
-        Footer
+        Footer,
+        FullWrap,
+        BodyWrap
     }
 }

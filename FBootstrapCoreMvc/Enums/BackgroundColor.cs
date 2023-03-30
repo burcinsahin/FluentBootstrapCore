@@ -2,8 +2,10 @@
 
 namespace FBootstrapCoreMvc.Enums
 {
-    public enum BackgroundState
+    public enum BackgroundColor
     {
+        [Description()]
+        None,
         [Description(Css.BgPrimary)]
         Primary,
         [Description(Css.BgSecondary)]
@@ -19,6 +21,12 @@ namespace FBootstrapCoreMvc.Enums
         [Description(Css.BgLight)]
         Light,
         [Description(Css.BgDark)]
-        Dark
+        Dark,
+        [Description(Css.BgBody)]
+        Body,
+        [Description(Css.BgWhite)]
+        White,
+        [Description(Css.BgTransparent)]
+        Transparent
     }
 }

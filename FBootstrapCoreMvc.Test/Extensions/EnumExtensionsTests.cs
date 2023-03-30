@@ -19,9 +19,6 @@ namespace FBootstrapCoreMvc.Test.Extensions
 
             var css = EnumExtensions.GetCssDescription(TableStyle.Striped | TableStyle.Bordered);
             WriteLine(css);
-            var formInput = new FormInput();
-            var content = new BootstrapContent<FormInput>(null, formInput);
-            content.InputOpts<FormInput, Input>(null);
         }
 
         private void WriteLine(object obj)

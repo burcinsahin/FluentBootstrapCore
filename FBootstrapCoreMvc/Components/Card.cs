@@ -56,7 +56,7 @@ namespace FBootstrapCoreMvc.Components
             {
                 var div = new HtmlElement("div", Css.Collapse);
                 div.SetId(uid.ToString());
-                AddWrappingChild(div, WrapperType.Body);
+                AddChild(div, ChildLocation.BodyWrap);
             }
 
             if (HasCardBody)
@@ -69,7 +69,7 @@ namespace FBootstrapCoreMvc.Components
                 //{
                 //    cardBody.Content = Content;
                 //}
-                AddWrappingChild(cardBody, WrapperType.Body);
+                AddChild(cardBody, ChildLocation.BodyWrap);
             }
 
             base.PreBuild();

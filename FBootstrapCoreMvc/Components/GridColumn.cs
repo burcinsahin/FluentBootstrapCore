@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class GridColumn : SingleComponent,
+    public class GridColumn : BootstrapComponent,
         IAlignSelf,
         IOrderable,
         IOffsetable,

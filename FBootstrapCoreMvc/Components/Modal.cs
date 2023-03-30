@@ -30,10 +30,10 @@ namespace FBootstrapCoreMvc.Components
                 MergeAttribute("data-bs-keyboard", "false");
             }
 
-            AddWrappingChild(modalDialog, WrapperType.All);
+            AddChild(modalDialog, ChildLocation.FullWrap);
 
             var modalContent = new HtmlElement("div", Css.ModalContent);
-            AddWrappingChild(modalContent, WrapperType.All);
+            AddChild(modalContent, ChildLocation.FullWrap);
 
             if (Title != null)
             {

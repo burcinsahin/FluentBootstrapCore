@@ -4,7 +4,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public abstract class ButtonComponent : SingleComponent, ICanHaveName, IButton
+    public abstract class ButtonComponent : BootstrapComponent, ICanHaveName, IButton
     {
         public ButtonState ButtonState { get; set; }
         public ButtonType ButtonType { get; set; }

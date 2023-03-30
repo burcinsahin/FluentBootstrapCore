@@ -42,8 +42,9 @@ namespace FBootstrapCoreMvc.Components
             var accordionBody = new HtmlElement("div", Css.AccordionBody);
 
             AddChild(h2, ChildLocation.Header);
-            AddWrappingChild(accordionCollapse, WrapperType.Body);
-            AddWrappingChild(accordionBody, WrapperType.Body);
+            AddChild(accordionCollapse, ChildLocation.BodyWrap);
+            AddChild(accordionBody, ChildLocation.BodyWrap);
+
             base.PreBuild();
         }
     }

@@ -1,9 +1,44 @@
 ﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Options;
 
 namespace FBootstrapCoreMvc.Extensions
 {
     public static class UtilExtensions
     {
+        public static BootstrapContent<TComponent> Background<TComponent>(this BootstrapContent<TComponent> bootstrapContent, BackgroundColor bgColor, bool gradient = false, byte? opacity = null)
+            where TComponent : BootstrapComponent
+        {
+            bootstrapContent.Component.UtilityOpts.BackgroundOpts = new BackgroundOptions()
+            {
+                BgColor = bgColor,
+                Gradient = gradient,
+                Opacity = opacity
+            };
+
+            return bootstrapContent;
+        }
+
+        /// <summary>
+        /// Color utilities.
+        /// </summary>
+        /// <typeparam name="TComponent"></typeparam>
+        /// <param name="bootstrapContent"></param>
+        /// <param name="bgColor"></param>
+        /// <param name="gradient"></param>
+        /// <param name="opacity"></param>
+        /// <returns></returns>
+        public static BootstrapContent<TComponent> Color<TComponent>(this BootstrapContent<TComponent> bootstrapContent, TextColor txtColor, byte? opacity = null)
+            where TComponent : BootstrapComponent
+        {
+            bootstrapContent.Component.UtilityOpts.ColorOpts = new ColorOptions()
+            {
+                TextColor = txtColor,
+                Opacity = opacity
+            };
+
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<TComponent> Border<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Border border = Enums.Border.All, BorderColor borderColor = BorderColor.None)
             where TComponent : SingleComponent
         {

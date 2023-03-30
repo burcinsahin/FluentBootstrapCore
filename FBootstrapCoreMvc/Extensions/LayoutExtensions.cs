@@ -173,6 +173,13 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> Padding<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte value, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : SingleComponent
+        {
+            bootstrapContent.Padding(Enums.Padding.All, value, breakpoint);
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<TComponent> Padding<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Padding padding, byte? value = null, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : SingleComponent
         {

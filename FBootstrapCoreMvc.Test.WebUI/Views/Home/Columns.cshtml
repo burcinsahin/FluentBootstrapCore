@@ -199,8 +199,8 @@
 @Html.Bootstrap().Heading2("Standalone column classes")
 @using (Html.Bootstrap().Div().Style("width", "800px").Begin())
 {
-    @Html.Bootstrap().Column().Columnize(3).Background(BackgroundState.Light).Padding(Padding.All, 3).Border(Border.All).Content(".col-3: width of 25%")
-    @Html.Bootstrap().Column().Columnize(9, Breakpoint.Small).Background(BackgroundState.Light).Padding(Padding.All, 3).Border(Border.All).Content(".col-sm-9: width of 75% above sm breakpoint")
+    @Html.Bootstrap().Column().Columnize(3).Background(BackgroundColor.Light).Padding(Padding.All, 3).Border(Border.All).Content(".col-3: width of 25%")
+    @Html.Bootstrap().Column().Columnize(9, Breakpoint.Small).Background(BackgroundColor.Light).Padding(Padding.All, 3).Border(Border.All).Content(".col-sm-9: width of 75% above sm breakpoint")
     <br />
     @using (Html.Bootstrap().Div().Clearfix().Begin())
     {

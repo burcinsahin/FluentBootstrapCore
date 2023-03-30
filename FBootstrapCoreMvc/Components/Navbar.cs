@@ -3,7 +3,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Navbar : SingleComponent,
+    public class Navbar : BootstrapComponent,
         ICanCreate<NavbarBrand>,
         ICanCreate<NavbarCollapse>,
         ICanCreate<NavbarToggler>
@@ -18,7 +18,7 @@ namespace FBootstrapCoreMvc.Components
             var container = new Container();
             container.ClearCss();
             container.AddCss(Css.ContainerFluid);
-            AddWrappingChild(container, WrapperType.All);
+            AddChild(container, ChildLocation.FullWrap);
 
             base.PreBuild();
         }
