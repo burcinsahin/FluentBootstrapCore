@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class TextArea : SingleComponent,
+    public class TextArea : BootstrapComponent,
         IInputComponent,
         ICanHaveMaxLength,
         IPlaceholder,

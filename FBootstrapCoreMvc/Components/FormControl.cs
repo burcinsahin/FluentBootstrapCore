@@ -5,8 +5,8 @@ using FBootstrapCoreMvc.Options;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public abstract class FormControl<TComponent> : SingleComponent, IFormControl
-        where TComponent : SingleComponent, IInputComponent
+    public abstract class FormControl<TComponent> : BootstrapComponent, IFormControl
+        where TComponent : BootstrapComponent, IInputComponent
     {
         public bool Readonly { get; set; }
         public bool Disabled { get; set; }
@@ -37,6 +37,9 @@ namespace FBootstrapCoreMvc.Components
             Input.Name = Name;
             Input.Required = Required;
             Input.SetId();
+
+            if (InputOpts != null)
+                Input.UtilityOpts = InputOpts;
 
             if (Size != FormControlSize.Default)
                 Input.AddCss(Size.GetCssDescription());

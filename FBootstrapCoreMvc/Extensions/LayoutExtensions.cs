@@ -201,14 +201,6 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.AddCss($"{gutter.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-{value}");
             return bootstrapContent;
         }
-
-        public static BootstrapContent<TComponent> Float<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Float @float, Breakpoint breakpoint = Breakpoint.Default)
-            where TComponent : SingleComponent
-        {
-            var floatCss = string.Format(@float.GetCssDescription(), breakpoint.GetHyphenatedDescription());
-            bootstrapContent.Component.AddCss(floatCss);
-            return bootstrapContent;
-        }
         #endregion
 
         public static BootstrapContent<TComponent> Columnize<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte? value = null, Breakpoint breakpoint = Breakpoint.Default)

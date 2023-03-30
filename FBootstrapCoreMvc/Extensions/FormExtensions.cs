@@ -246,7 +246,7 @@ namespace FBootstrapCoreMvc.Extensions
 
         public static BootstrapContent<TComponent> InputOpts<TComponent, TInput>(this BootstrapContent<TComponent> bootstrapContent, UtilityOptions opts)
             where TComponent : FormControl<TInput>
-            where TInput : SingleComponent, IInputComponent
+            where TInput : BootstrapComponent, IInputComponent
         {
             bootstrapContent.Component.InputOpts = opts;
             return bootstrapContent;
@@ -256,7 +256,7 @@ namespace FBootstrapCoreMvc.Extensions
 
         public static BootstrapContent<TComponent> InputCss<TComponent, TInput>(this BootstrapContent<TComponent> bootstrapContent, params string[] cssClasses)
             where TComponent : FormControl<TInput>
-            where TInput : SingleComponent, IInputComponent
+            where TInput : BootstrapComponent, IInputComponent
         {
             bootstrapContent.Component.Input.AddCss(cssClasses);
             return bootstrapContent;

@@ -74,7 +74,8 @@ namespace FBootstrapCoreMvc
         {
             foreach (var cssClass in cssClasses)
             {
-                CssClasses.Add(cssClass);
+                if (!string.IsNullOrWhiteSpace(cssClass))
+                    CssClasses.Add(cssClass);
             }
         }
 

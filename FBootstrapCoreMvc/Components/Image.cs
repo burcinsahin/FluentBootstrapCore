@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Image : SingleComponent,
+    public class Image : BootstrapComponent,
         IColumnizable
     {
         public bool Fluid { get; set; }

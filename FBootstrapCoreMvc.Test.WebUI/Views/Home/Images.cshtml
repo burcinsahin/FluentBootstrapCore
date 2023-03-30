@@ -1,17 +1,28 @@
 ﻿@Html.Bootstrap().Heading2("Responsive images")
-@using (Html.Bootstrap().Container().Begin())
+@using (Html.Bootstrap().Div().Begin())
 {
     @Html.Bootstrap().Image("http://picsum.photos/400","photo").Fluid()
 }
-@Html.Bootstrap().Heading2("Responsive images")
-@using (Html.Bootstrap().Container().Begin())
+@Html.Bootstrap().Heading2("Image thumbnails")
+@using (Html.Bootstrap().Div().Begin())
 {
-    @Html.Bootstrap().Image("http://picsum.photos/400","photo").Thumbnail()
+    @Html.Bootstrap().Image("http://picsum.photos/200","photo").Thumbnail()
 }
-@Html.Bootstrap().Heading2("Responsive images")
-@using (Html.Bootstrap().Container().Begin())
+@Html.Bootstrap().Heading2("Aligning images")
+@using (Html.Bootstrap().Div().Begin())
 {
-    @Html.Bootstrap().Image("http://picsum.photos/400","photo").Border()
-    <img src="..." class="rounded float-start" alt="...">
-    <img src="..." class="rounded float-end" alt="...">
+    @using (Html.Bootstrap().Div().Style("overflow","hidden").Begin())
+    {
+        @Html.Bootstrap().Image("http://picsum.photos/200","photo").Border(borderRadius:BorderRadius.Rounded).Float(Float.Start)
+        @Html.Bootstrap().Image("http://picsum.photos/200","photo").Border(borderRadius:BorderRadius.Rounded).Float(Float.End)
+    }
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Image("http://picsum.photos/200","photo").Border(borderRadius:BorderRadius.Rounded).Margin(Margin.Horizontal).Display(Display.Block)
+    }
+    @using (Html.Bootstrap().Div().Css(Css.TextCenter).Begin())
+    {
+        @Html.Bootstrap().Image("http://picsum.photos/200","photo").Border(borderRadius:BorderRadius.Rounded)
+    }
+
 }

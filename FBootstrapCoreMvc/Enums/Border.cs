@@ -27,14 +27,14 @@ namespace FBootstrapCoreMvc.Enums
         [Description(Css.BorderBottom0)]
         NoBottom = 1 << 9,
         [Description(Css.Border1)]
-        All1 = 3 << 1,
+        All1 = (1 << 10) | All,
         [Description(Css.Border2)]
-        All2 = 3 << 2,
+        All2 = (1 << 11) | All,
         [Description(Css.Border3)]
-        All3 = 3 << 3,
+        All3 = (1 << 12) | All,
         [Description(Css.Border4)]
-        All4 = 3 << 4,
+        All4 = (1 << 13) | All,
         [Description(Css.Border5)]
-        All5 = 3 << 5
+        All5 = (1 << 14) | All
     }
 }

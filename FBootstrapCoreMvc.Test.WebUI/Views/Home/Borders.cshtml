@@ -7,6 +7,10 @@
         margin: .25rem;
         background-color: #f5f5f5;
     }
+
+    img[class^="rounded"] {
+        margin-right: .25rem;
+    }
 </style>
 @Html.Bootstrap().Heading2("Border")
 @using (Html.Bootstrap().Div().Begin())
@@ -39,7 +43,46 @@
     @Html.Bootstrap().Span().Border(Border.All, BorderColor.White)
 
     <br />
-    @Html.Bootstrap().FormInput("Email address").Type(FormInputType.Email).Placeholder("name@example.com").Margin(Margin.Bottom, 4).InputCss(Css.BorderSuccess)
-    @Html.Bootstrap().Div().Padding(Padding.Bottom, 2).Margin(Margin.Bottom, 4).Content("Dangerous heading").Border(Border.Bottom, BorderColor.Danger).Css(Css.H4, Css.TextDanger)
-    @Html.Bootstrap().Div().Padding(Padding.All, 3).Background(BackgroundColor.Info).Content("Changing border color and width").Border(Border.All|Border.NoStart, BorderColor.Info).Css(Css.BgOpacity10, Css.RoundedEnd)
+    @Html.Bootstrap().FormInput("Email address").Type(FormInputType.Email).Placeholder("name@example.com").Margin(Margin.Bottom, 4).InputOpts(new UtilityOptions{BorderOpts=new BorderOptions{BorderColor=BorderColor.Success}})
+    @Html.Bootstrap().Div().Padding(Padding.Bottom, 2).Margin(Margin.Bottom, 4).Content("Dangerous heading").Border(Border.Bottom, BorderColor.Danger).Color(TextColor.Danger).Css(Css.H4)
+    @Html.Bootstrap().Div().Padding(3).Background(BackgroundColor.Info, opacity:10).Content("Changing border color and width").Border(Border.All|Border.NoStart, BorderColor.Info,BorderRadius.RoundedEnd)
+}
+<hr />
+@Html.Bootstrap().Heading2("Opacity")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Div().Padding(2).Margin(Margin.Bottom, 2).Border(borderColor: BorderColor.Success).Content("This is default success border")
+    @Html.Bootstrap().Div().Padding(2).Margin(Margin.Bottom, 2).Border(borderColor: BorderColor.Success, opacity:75).Content("This is 75% opacity success border")
+    @Html.Bootstrap().Div().Padding(2).Margin(Margin.Bottom, 2).Border(borderColor: BorderColor.Success, opacity:50).Content("This is 50% opacity success border")
+    @Html.Bootstrap().Div().Padding(2).Margin(Margin.Bottom, 2).Border(borderColor: BorderColor.Success, opacity:25).Content("This is 25% opacity success border")
+    @Html.Bootstrap().Div().Padding(2).Border(borderColor: BorderColor.Success, opacity:10).Content("This is 10% opacity success border")
+}
+<hr />
+@Html.Bootstrap().Heading2("Width")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Span().Border(Border.All1)
+    @Html.Bootstrap().Span().Border(Border.All2)
+    @Html.Bootstrap().Span().Border(Border.All3)
+    @Html.Bootstrap().Span().Border(Border.All4)
+    @Html.Bootstrap().Span().Border(Border.All5)
+}
+<hr />
+@Html.Bootstrap().Heading2("Radius")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius: BorderRadius.Rounded)
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius:BorderRadius.RoundedTop)
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius:BorderRadius.RoundedEnd)
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius:BorderRadius.RoundedBottom)
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius:BorderRadius.RoundedStart)
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius:BorderRadius.RoundedCircle)
+    @Html.Bootstrap().Image("http://picsum.photos/150/75", "photo").Border(borderRadius:BorderRadius.RoundedPill)
+    @Html.Bootstrap().Heading3("Sizes")
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius: BorderRadius.Rounded0)
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius: BorderRadius.Rounded1)
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius: BorderRadius.Rounded2)
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius: BorderRadius.Rounded3)
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius: BorderRadius.Rounded4)
+    @Html.Bootstrap().Image("http://picsum.photos/75", "photo").Border(borderRadius: BorderRadius.Rounded5)
 }

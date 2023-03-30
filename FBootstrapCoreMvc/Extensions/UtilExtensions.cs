@@ -39,13 +39,19 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> Border<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Border border = Enums.Border.All, BorderColor borderColor = BorderColor.None)
-            where TComponent : SingleComponent
+        public static BootstrapContent<TComponent> Border<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Border? border = null, BorderColor borderColor = BorderColor.None, BorderRadius? borderRadius = null, byte? opacity = null)
+            where TComponent : BootstrapComponent
         {
-            bootstrapContent.Component.AddCss(border.GetCssDescription());
+            if (!borderColor.Equals(BorderColor.None) && border == null)
+                border = Enums.Border.All;
 
-            if (!borderColor.Equals(BorderColor.None))
-                bootstrapContent.Component.AddCss(borderColor.GetCssDescription());
+            bootstrapContent.Component.UtilityOpts.BorderOpts = new BorderOptions()
+            {
+                Border = border,
+                BorderColor = borderColor,
+                BorderRadius = borderRadius,
+                Opacity = opacity
+            };
 
             return bootstrapContent;
         }
@@ -55,6 +61,14 @@ namespace FBootstrapCoreMvc.Extensions
         {
             var displayCss = string.Format(display.GetCssDescription(), br.GetHyphenatedDescription());
             bootstrapContent.Component.AddCss(displayCss);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Float<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Float @float, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : SingleComponent
+        {
+            var floatCss = string.Format(@float.GetCssDescription(), breakpoint.GetHyphenatedDescription());
+            bootstrapContent.Component.AddCss(floatCss);
             return bootstrapContent;
         }
 

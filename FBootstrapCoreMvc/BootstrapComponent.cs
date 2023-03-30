@@ -31,6 +31,15 @@ namespace FBootstrapCoreMvc
 
             if (UtilityOpts.BorderOpts != null)
             {
+                var borderOpts = UtilityOpts.BorderOpts;
+                if (borderOpts.Border.HasValue)
+                    AddCss(borderOpts.Border.GetCssDescription());
+                if (borderOpts.BorderColor.HasValue)
+                    AddCss(borderOpts.BorderColor.GetCssDescription());
+                if (borderOpts.BorderRadius.HasValue)
+                    AddCss(borderOpts.BorderRadius.GetCssDescription());
+                if (borderOpts.Opacity.HasValue)
+                    AddCss($"border-opacity-{borderOpts.Opacity}");
                 //TODO: implement
             }
 
