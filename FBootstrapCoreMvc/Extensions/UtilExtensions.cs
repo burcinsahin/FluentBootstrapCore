@@ -1,5 +1,6 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Options;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -57,18 +58,32 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> Display<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Display display, Breakpoint br = Breakpoint.Default)
-            where TComponent : SingleComponent
+            where TComponent : BootstrapComponent
         {
-            var displayCss = string.Format(display.GetCssDescription(), br.GetHyphenatedDescription());
-            bootstrapContent.Component.AddCss(displayCss);
+            if (bootstrapContent.Component.UtilityOpts.DisplayOpts == null)
+                bootstrapContent.Component.UtilityOpts.DisplayOpts = new DisplayOptions();
+
+            bootstrapContent.Component.UtilityOpts.DisplayOpts.Display.TryAdd(br, display);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Display<TComponent>(this BootstrapContent<TComponent> bootstrapContent, DisplayPrint displayPrint)
+            where TComponent : BootstrapComponent
+        {
+            if (bootstrapContent.Component.UtilityOpts.DisplayOpts == null)
+                bootstrapContent.Component.UtilityOpts.DisplayOpts = new DisplayOptions();
+
+            bootstrapContent.Component.UtilityOpts.DisplayOpts.DisplayPrint = displayPrint;
             return bootstrapContent;
         }
 
         public static BootstrapContent<TComponent> Float<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Float @float, Breakpoint breakpoint = Breakpoint.Default)
-            where TComponent : SingleComponent
+            where TComponent : BootstrapComponent
         {
-            var floatCss = string.Format(@float.GetCssDescription(), breakpoint.GetHyphenatedDescription());
-            bootstrapContent.Component.AddCss(floatCss);
+            if (bootstrapContent.Component.UtilityOpts.FloatOpts == null)
+                bootstrapContent.Component.UtilityOpts.FloatOpts = new FloatOptions();
+
+            bootstrapContent.Component.UtilityOpts.FloatOpts.Float.TryAdd(breakpoint, @float);
             return bootstrapContent;
         }
 

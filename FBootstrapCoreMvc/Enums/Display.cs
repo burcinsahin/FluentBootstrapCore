@@ -23,6 +23,6 @@ namespace FBootstrapCoreMvc.Enums
         [Description("d{0}-flex")]
         Flex,
         [Description("d{0}-inline-flex")]
-        InlineFlex,
+        InlineFlex
     }
 }

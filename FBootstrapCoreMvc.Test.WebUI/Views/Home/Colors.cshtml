@@ -1,0 +1,25 @@
+﻿@Html.Bootstrap().Heading2("Colors")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Paragraph(".text-primary").Color(TextColor.Primary)
+    @Html.Bootstrap().Paragraph(".text-secondary").Color(TextColor.Secondary)
+    @Html.Bootstrap().Paragraph(".text-success").Color(TextColor.Success)
+    @Html.Bootstrap().Paragraph(".text-danger").Color(TextColor.Danger)
+    @Html.Bootstrap().Paragraph(".text-warning").Color(TextColor.Warning).Background(BackgroundColor.Dark)
+    @Html.Bootstrap().Paragraph(".text-info").Color(TextColor.Info).Background(BackgroundColor.Dark)
+    @Html.Bootstrap().Paragraph(".text-light").Color(TextColor.Light).Background(BackgroundColor.Dark)
+    @Html.Bootstrap().Paragraph(".text-dark").Color(TextColor.Dark)
+    @Html.Bootstrap().Paragraph(".text-body").Color(TextColor.Body)
+    @Html.Bootstrap().Paragraph(".text-muted").Color(TextColor.Muted)
+    @Html.Bootstrap().Paragraph(".text-white").Color(TextColor.White).Background(BackgroundColor.Dark)
+    @Html.Bootstrap().Paragraph(".text-black-50").Color(TextColor.Black50)
+    @Html.Bootstrap().Paragraph(".text-white-50").Color(TextColor.White50).Background(BackgroundColor.Dark)
+}
+@Html.Bootstrap().Heading2("Opacity")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Div().Color(TextColor.Primary).Content("This is default primary text")
+    @Html.Bootstrap().Div().Color(TextColor.Primary, opacity:75).Content("This is 75% opacity primary text")
+    @Html.Bootstrap().Div().Color(TextColor.Primary, opacity:50).Content("This is 50% opacity primary text")
+    @Html.Bootstrap().Div().Color(TextColor.Primary, opacity:25).Content("This is 25% opacity primary text")
+}

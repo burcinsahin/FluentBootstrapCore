@@ -1,0 +1,22 @@
+﻿@Html.Bootstrap().Heading2("Examples")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Div().Padding(2).Display(Display.Inline).TextBackground(TextBgState.Primary).Content("d-inline")
+    @Html.Bootstrap().Div().Padding(2).Display(Display.Inline).TextBackground(TextBgState.Dark).Content("d-inline")
+    <br />
+    @Html.Bootstrap().Span().Padding(2).Display(Display.Block).TextBackground(TextBgState.Primary).Content("d-block")
+    @Html.Bootstrap().Span().Padding(2).Display(Display.Block).TextBackground(TextBgState.Dark).Content("d-block")
+}
+@Html.Bootstrap().Heading2("Hiding elements")
+@using (Html.Bootstrap().Container().Begin())
+{   
+    @Html.Bootstrap().Div().Display(Display.None, Breakpoint.Large).Content("hide on lg and wider screens")
+    @Html.Bootstrap().Div().Display(Display.None).Display(Display.Block, Breakpoint.Large).Content("hide on screens smaller than lg")
+}
+@Html.Bootstrap().Heading2("Display in print")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Div().Display(DisplayPrint.PrintNone).Content("Screen Only (Hide on print only)")
+    @Html.Bootstrap().Div().Display(Display.None).Display(DisplayPrint.PrintBlock).Content("Print Only (Hide on screen only)")
+    @Html.Bootstrap().Div().Display(Display.None).Display(Display.Block, Breakpoint.Large).Display(DisplayPrint.PrintBlock).Content("Hide up to large on screen, but always show on print")
+}
