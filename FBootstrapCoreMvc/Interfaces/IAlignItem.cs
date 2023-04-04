@@ -4,6 +4,6 @@ namespace FBootstrapCoreMvc.Interfaces
 {
     public interface IAlignItem
     {
-        AlignItem? AlignItem { get; set; }
+        EnumList<AlignItems>? AlignItem { get; set; }
     }
 }

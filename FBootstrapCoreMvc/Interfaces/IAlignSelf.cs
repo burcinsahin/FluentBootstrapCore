@@ -4,6 +4,6 @@ namespace FBootstrapCoreMvc.Interfaces
 {
     public interface IAlignSelf
     {
-        AlignSelf? AlignSelf { get; set; }
+        EnumList<AlignSelf>? AlignSelf { get; set; }
     }
 }

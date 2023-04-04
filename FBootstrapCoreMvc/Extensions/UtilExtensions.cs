@@ -85,6 +85,33 @@ namespace FBootstrapCoreMvc.Extensions
             flexOpts.JustifyContent.TryAdd(breakpoint, justifyContent);
             return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> Flex<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignItems alignItems, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            bootstrapContent.Display(Enums.Display.Flex);
+
+            var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
+            flexOpts.AlignItems.TryAdd(breakpoint, alignItems);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Flex<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignSelf alignSelf, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
+            flexOpts.AlignSelf.TryAdd(breakpoint, alignSelf);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Flex<TComponent>(this BootstrapContent<TComponent> bootstrapContent, FlexAbility flexFill, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
+            flexOpts.FlexFill.TryAdd(breakpoint, flexFill);
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<TComponent> Float<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Float @float, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : BootstrapComponent
         {

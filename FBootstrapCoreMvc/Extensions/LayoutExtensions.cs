@@ -77,17 +77,23 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> AlignItems<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignItem alignItem)
+        public static BootstrapContent<TComponent> AlignItems<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignItems alignItem, Breakpoint br = Breakpoint.Default)
             where TComponent : SingleComponent, IAlignItem
         {
-            bootstrapContent.Component.AlignItem = alignItem;
+            if (bootstrapContent.Component.AlignItem == null)
+                bootstrapContent.Component.AlignItem = new EnumList<AlignItems>();
+
+            bootstrapContent.Component.AlignItem.TryAdd(br, alignItem);
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> AlignSelf<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignSelf alignSelf)
+        public static BootstrapContent<TComponent> AlignSelf<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignSelf alignSelf, Breakpoint br = Breakpoint.Default)
             where TComponent : SingleComponent, IAlignSelf
         {
-            bootstrapContent.Component.AlignSelf = alignSelf;
+            if (bootstrapContent.Component.AlignSelf == null)
+                bootstrapContent.Component.AlignSelf = new EnumList<AlignSelf>();
+
+            bootstrapContent.Component.AlignSelf.TryAdd(br, alignSelf);
             return bootstrapContent;
         }
 

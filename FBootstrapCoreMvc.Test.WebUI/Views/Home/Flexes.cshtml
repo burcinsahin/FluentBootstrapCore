@@ -1,9 +1,16 @@
-﻿@Html.Bootstrap().Heading2("Enable flex behaviors")
+﻿<style>
+    div.container div {
+        background-color: rgba(76,11,206,0.15);
+        border: 1px solid rgba(76,11,206,0.15);
+    }
+</style>
+@Html.Bootstrap().Heading2("Enable flex behaviors")
 @using (Html.Bootstrap().Container().Begin())
 {
     @Html.Bootstrap().Div().Padding(2).Display(Display.Flex).Content("I'm a flexbox container!")
     @Html.Bootstrap().Div().Padding(2).Display(Display.InlineFlex).Content("I'm an inline flexbox container!")
 }
+<hr />
 @Html.Bootstrap().Heading2("Direction")
 @using (Html.Bootstrap().Container().Begin())
 {
@@ -33,13 +40,50 @@
         @Html.Bootstrap().Div().Padding(2).Content("Flex item 3")
     }
 }
+<hr />
 @Html.Bootstrap().Heading2("Justify content")
 @using (Html.Bootstrap().Container().Begin())
 {
-    @Html.Bootstrap().Div().Flex(JustifyContent.Start).Content("...")
-    @Html.Bootstrap().Div().Flex(JustifyContent.End).Content("...")
-    @Html.Bootstrap().Div().Flex(JustifyContent.Center).Content("...")
-    @Html.Bootstrap().Div().Flex(JustifyContent.Between).Content("...")
-    @Html.Bootstrap().Div().Flex(JustifyContent.Around).Content("...")
-    @Html.Bootstrap().Div().Flex(JustifyContent.Evenly).Content("...")
+    @Html.Bootstrap().Div().Flex(JustifyContent.Start).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().Flex(JustifyContent.End).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>",  true)
+    @Html.Bootstrap().Div().Flex(JustifyContent.Center).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().Flex(JustifyContent.Between).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().Flex(JustifyContent.Around).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().Flex(JustifyContent.Evenly).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
 }
+<hr />
+@Html.Bootstrap().Heading2("Align items")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Div().Flex(AlignItems.Start).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().Flex(AlignItems.End).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().Flex(AlignItems.Center).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().Flex(AlignItems.Baseline).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().Flex(AlignItems.Stretch).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+}
+<hr />
+@Html.Bootstrap().Heading2("Align self")
+@using (Html.Bootstrap().Container().Begin())
+{
+
+    @using (Html.Bootstrap().Div().Display(Display.Flex).Style(new { height = "100px" }).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Flex(AlignSelf.Start).Content("Aligned flex item")
+        @Html.Bootstrap().Div().Padding(2).Flex(AlignSelf.End).Content("Aligned flex item")
+        @Html.Bootstrap().Div().Padding(2).Flex(AlignSelf.Center).Content("Aligned flex item")
+        @Html.Bootstrap().Div().Padding(2).Flex(AlignSelf.Baseline).Content("Aligned flex item")
+        @Html.Bootstrap().Div().Padding(2).Flex(AlignSelf.Stretch).Content("Aligned flex item")
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Fill")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @using (Html.Bootstrap().Div().Display(Display.Flex).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Flex(FlexAbility.Fill).Content("Flex item with a lot of content")
+        @Html.Bootstrap().Div().Padding(2).Flex(FlexAbility.Fill).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Flex(FlexAbility.Fill).Content("Flex item")
+    }
+}
+<hr />

@@ -8,11 +8,17 @@ namespace FBootstrapCoreMvc.Options
     {
         public EnumList<FlexDirection> Direction { get; set; }
         public EnumList<JustifyContent> JustifyContent { get; set; }
+        public EnumList<AlignItems> AlignItems { get; set; }
+        public EnumList<AlignSelf> AlignSelf { get; set; }
+        public EnumList<FlexAbility> FlexFill { get; set; }
 
         public FlexOptions()
         {
             Direction = new EnumList<FlexDirection>();
             JustifyContent = new EnumList<JustifyContent>();
+            AlignItems = new EnumList<AlignItems>();
+            AlignSelf = new EnumList<AlignSelf>();
+            FlexFill = new EnumList<FlexAbility>();
         }
 
         public override IEnumerable<string> GetCssList()
@@ -20,15 +26,9 @@ namespace FBootstrapCoreMvc.Options
             var cssList = new List<string>();
             cssList.AddRange(Direction.GetCssDescriptions());
             cssList.AddRange(JustifyContent.GetCssDescriptions());
-
-            //foreach (var item in Direction)
-            //{
-            //    cssList.Add(string.Format(item.Value.GetCssDescription(), item.Key.GetHyphenatedDescription()));
-            //}
-            //foreach (var item in JustifyContent)
-            //{
-            //    cssList.Add(string.Format(item.Value.GetCssDescription(), item.Key.GetHyphenatedDescription()));
-            //}
+            cssList.AddRange(AlignItems.GetCssDescriptions());
+            cssList.AddRange(AlignSelf.GetCssDescriptions());
+            cssList.AddRange(FlexFill.GetCssDescriptions());
             return cssList;
         }
     }

@@ -4,11 +4,15 @@ namespace FBootstrapCoreMvc.Enums
 {
     public enum AlignSelf
     {
-        [Description(Css.AlignSelfStart)]
+        [Description("align-self{0}-start")]
         Start,
-        [Description(Css.AlignSelfCenter)]
+        [Description("align-self{0}-center")]
         Center,
-        [Description(Css.AlignSelfEnd)]
+        [Description("align-self{0}-end")]
         End,
+        [Description("align-self{0}-baseline")]
+        Baseline,
+        [Description("align-self{0}-stretch")]
+        Stretch
     }
 }

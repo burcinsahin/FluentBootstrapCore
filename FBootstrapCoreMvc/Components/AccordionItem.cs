@@ -26,7 +26,8 @@ namespace FBootstrapCoreMvc.Components
             };
             button.MergeAttribute("type", "button");
             button.MergeAttribute("data-bs-toggle", "collapse");
-
+            if (!Show) 
+                button.AddCss(Css.Collapsed);
             h2.Content = button;
 
             var accordionCollapse = new HtmlElement("div", Css.AccordionCollapse, Css.Collapse);

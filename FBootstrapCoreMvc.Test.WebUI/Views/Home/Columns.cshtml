@@ -20,19 +20,19 @@
     @Html.Bootstrap().Heading3("Vertical alignment")
     @using (var container = Html.Bootstrap().Container().Css("vertical-example").TextCenter().Begin())
     {
-        @using (var row = container.Row().AlignItems(AlignItem.Start).Begin())
+        @using (var row = container.Row().AlignItems(AlignItems.Start).Begin())
         {
             @row.Column().Content("One of three columns")
             @row.Column().Content("One of three columns")
             @row.Column().Content("One of three columns")
         }
-        @using (var row = container.Row().AlignItems(AlignItem.Center).Begin())
+        @using (var row = container.Row().AlignItems(AlignItems.Center).Begin())
         {
             @row.Column().Content("One of three columns")
             @row.Column().Content("One of three columns")
             @row.Column().Content("One of three columns")
         }
-        @using (var row = container.Row().AlignItems(AlignItem.End).Begin())
+        @using (var row = container.Row().AlignItems(AlignItems.End).Begin())
         {
             @row.Column().Content("One of three columns")
             @row.Column().Content("One of three columns")
