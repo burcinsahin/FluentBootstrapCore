@@ -78,6 +78,14 @@ namespace FBootstrapCoreMvc
                     CssClasses.Add(cssClass);
             }
         }
+        protected internal void AddCss(IEnumerable<string> cssClasses)
+        {
+            foreach (var cssClass in cssClasses)
+            {
+                if (!string.IsNullOrWhiteSpace(cssClass))
+                    CssClasses.Add(cssClass);
+            }
+        }
 
         protected internal void ClearCss()
         {

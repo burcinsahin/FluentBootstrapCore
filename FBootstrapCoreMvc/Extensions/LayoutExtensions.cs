@@ -3,6 +3,7 @@ using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -61,6 +62,17 @@ namespace FBootstrapCoreMvc.Extensions
 
         public static BootstrapContent<GridRow> RowColumns(this BootstrapContent<GridRow> bootstrapContent, byte columnCount, Breakpoint breakpoint = Breakpoint.Default)
         {
+            if (columnCount > 6)
+                columnCount = 6;
+            bootstrapContent.RowColumns((RowColumn)columnCount, breakpoint);
+            return bootstrapContent;
+        }
+
+        private static BootstrapContent<GridRow> RowColumns(this BootstrapContent<GridRow> bootstrapContent, RowColumn columnCount, Breakpoint breakpoint = Breakpoint.Default)
+        {
+            if (bootstrapContent.Component.RowColumns == null)
+                bootstrapContent.Component.RowColumns = new EnumList<RowColumn>();
+
             bootstrapContent.Component.RowColumns.TryAdd(breakpoint, columnCount);
             return bootstrapContent;
         }

@@ -1,12 +1,11 @@
-﻿namespace FBootstrapCoreMvc.Options
-{
-    public class UtilityOptions
-    {
-        public BorderOptions? BorderOpts { get; set; }
-        public BackgroundOptions? BackgroundOpts { get; set; }
-        public ColorOptions? ColorOpts { get; set; }
-        public FloatOptions? FloatOpts { get; set; }
-        public DisplayOptions? DisplayOpts { get; set; }
+﻿using System.Collections.Generic;
 
+namespace FBootstrapCoreMvc.Options
+{
+    public abstract class UtilityOptions : IUtilityOptions
+    {
+        public abstract IEnumerable<string> GetCssList();
+
+        public virtual Dictionary<string, object>? GetStyles() => null;
     }
 }

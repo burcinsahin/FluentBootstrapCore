@@ -2,6 +2,8 @@
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
 using FBootstrapCoreMvc.Options;
+using System;
+using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -19,7 +21,8 @@ namespace FBootstrapCoreMvc.Components
 
         protected bool _labelFirst;
         internal abstract TComponent Input { get; }
-        public UtilityOptions? InputOpts { get; set; }
+
+        public Dictionary<Type, IUtilityOptions>? InputOpts { get; set; }
 
         protected readonly Label _label;
 
@@ -39,7 +42,7 @@ namespace FBootstrapCoreMvc.Components
             Input.SetId();
 
             if (InputOpts != null)
-                Input.UtilityOpts = InputOpts;
+                Input.UtilityOptions = InputOpts;
 
             if (Size != FormControlSize.Default)
                 Input.AddCss(Size.GetCssDescription());

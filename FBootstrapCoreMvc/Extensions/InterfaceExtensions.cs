@@ -69,10 +69,13 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> JustifyContent<TComponent>(
-            this BootstrapContent<TComponent> bootstrapContent, JustifyContent justifyContent)
+            this BootstrapContent<TComponent> bootstrapContent, JustifyContent justifyContent, Breakpoint br = Breakpoint.Default)
             where TComponent : SingleComponent, IJustifyContent
         {
-            bootstrapContent.Component.JustifyContent = justifyContent;
+            if (bootstrapContent.Component.JustifyContent == null)
+                bootstrapContent.Component.JustifyContent = new EnumList<JustifyContent>();
+
+            bootstrapContent.Component.JustifyContent.TryAdd(br, justifyContent);
             return bootstrapContent;
         }
 

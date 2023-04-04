@@ -1,6 +1,5 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Options;
-using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -9,12 +8,10 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<TComponent> Background<TComponent>(this BootstrapContent<TComponent> bootstrapContent, BackgroundColor bgColor, bool gradient = false, byte? opacity = null)
             where TComponent : BootstrapComponent
         {
-            bootstrapContent.Component.UtilityOpts.BackgroundOpts = new BackgroundOptions()
-            {
-                BgColor = bgColor,
-                Gradient = gradient,
-                Opacity = opacity
-            };
+            var backgroundOpts = bootstrapContent.Component.GetOptions<BackgroundOptions>();
+            backgroundOpts.BgColor = bgColor;
+            backgroundOpts.Opacity = opacity;
+            backgroundOpts.Gradient = gradient;
 
             return bootstrapContent;
         }
@@ -31,11 +28,9 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<TComponent> Color<TComponent>(this BootstrapContent<TComponent> bootstrapContent, TextColor txtColor, byte? opacity = null)
             where TComponent : BootstrapComponent
         {
-            bootstrapContent.Component.UtilityOpts.ColorOpts = new ColorOptions()
-            {
-                TextColor = txtColor,
-                Opacity = opacity
-            };
+            var colorOpts = bootstrapContent.Component.GetOptions<ColorOptions>();
+            colorOpts.TextColor = txtColor;
+            colorOpts.Opacity = opacity;
 
             return bootstrapContent;
         }
@@ -46,13 +41,11 @@ namespace FBootstrapCoreMvc.Extensions
             if (!borderColor.Equals(BorderColor.None) && border == null)
                 border = Enums.Border.All;
 
-            bootstrapContent.Component.UtilityOpts.BorderOpts = new BorderOptions()
-            {
-                Border = border,
-                BorderColor = borderColor,
-                BorderRadius = borderRadius,
-                Opacity = opacity
-            };
+            var borderOpts = bootstrapContent.Component.GetOptions<BorderOptions>();
+            borderOpts.Border = border;
+            borderOpts.BorderColor = borderColor;
+            borderOpts.BorderRadius = borderRadius;
+            borderOpts.Opacity = opacity;
 
             return bootstrapContent;
         }
@@ -60,30 +53,43 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<TComponent> Display<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Display display, Breakpoint br = Breakpoint.Default)
             where TComponent : BootstrapComponent
         {
-            if (bootstrapContent.Component.UtilityOpts.DisplayOpts == null)
-                bootstrapContent.Component.UtilityOpts.DisplayOpts = new DisplayOptions();
-
-            bootstrapContent.Component.UtilityOpts.DisplayOpts.Display.TryAdd(br, display);
+            var displayOpts = bootstrapContent.Component.GetOptions<DisplayOptions>();
+            displayOpts.Display.TryAdd(br, display);
             return bootstrapContent;
         }
 
         public static BootstrapContent<TComponent> Display<TComponent>(this BootstrapContent<TComponent> bootstrapContent, DisplayPrint displayPrint)
             where TComponent : BootstrapComponent
         {
-            if (bootstrapContent.Component.UtilityOpts.DisplayOpts == null)
-                bootstrapContent.Component.UtilityOpts.DisplayOpts = new DisplayOptions();
-
-            bootstrapContent.Component.UtilityOpts.DisplayOpts.DisplayPrint = displayPrint;
+            var displayOpts = bootstrapContent.Component.GetOptions<DisplayOptions>();
+            displayOpts.DisplayPrint = displayPrint;
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> Flex<TComponent>(this BootstrapContent<TComponent> bootstrapContent, FlexDirection flexDir, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            bootstrapContent.Display(Enums.Display.Flex);
+
+            var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
+            flexOpts.Direction.TryAdd(breakpoint, flexDir);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Flex<TComponent>(this BootstrapContent<TComponent> bootstrapContent, JustifyContent justifyContent, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            bootstrapContent.Display(Enums.Display.Flex);
+
+            var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
+            flexOpts.JustifyContent.TryAdd(breakpoint, justifyContent);
+            return bootstrapContent;
+        }
         public static BootstrapContent<TComponent> Float<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Float @float, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : BootstrapComponent
         {
-            if (bootstrapContent.Component.UtilityOpts.FloatOpts == null)
-                bootstrapContent.Component.UtilityOpts.FloatOpts = new FloatOptions();
-
-            bootstrapContent.Component.UtilityOpts.FloatOpts.Float.TryAdd(breakpoint, @float);
+            var flexOpts = bootstrapContent.Component.GetOptions<FloatOptions>();
+            flexOpts.Float.TryAdd(breakpoint, @float);
             return bootstrapContent;
         }
 

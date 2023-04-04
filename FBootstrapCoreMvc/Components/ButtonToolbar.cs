@@ -13,13 +13,13 @@ namespace FBootstrapCoreMvc.Components
         {
         }
 
-        public JustifyContent? JustifyContent { get; set; }
+        public EnumList<JustifyContent>? JustifyContent { get; set; }
 
         protected override void PreBuild()
         {
             MergeAttribute("role", "toolbar");
-            if (JustifyContent.HasValue)
-                AddCss(JustifyContent.GetCssDescription());
+            if (JustifyContent!=null)
+                AddCss(JustifyContent.GetCssDescriptions());
             base.PreBuild();
         }
     }

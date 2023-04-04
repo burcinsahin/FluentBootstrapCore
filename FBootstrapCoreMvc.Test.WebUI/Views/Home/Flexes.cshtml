@@ -1,0 +1,45 @@
+﻿@Html.Bootstrap().Heading2("Enable flex behaviors")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Div().Padding(2).Display(Display.Flex).Content("I'm a flexbox container!")
+    @Html.Bootstrap().Div().Padding(2).Display(Display.InlineFlex).Content("I'm an inline flexbox container!")
+}
+@Html.Bootstrap().Heading2("Direction")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @using (@Html.Bootstrap().Div().Flex(FlexDirection.Row).Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 1")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 2")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 3")
+    }
+    @using (@Html.Bootstrap().Div().Flex(FlexDirection.RowReverse).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 1")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 2")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 3")
+    }
+    <br />
+    @using (@Html.Bootstrap().Div().Flex(FlexDirection.Column).Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 1")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 2")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 3")
+    }
+    @using (@Html.Bootstrap().Div().Flex(FlexDirection.ColumnReverse).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 1")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 2")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item 3")
+    }
+}
+@Html.Bootstrap().Heading2("Justify content")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Div().Flex(JustifyContent.Start).Content("...")
+    @Html.Bootstrap().Div().Flex(JustifyContent.End).Content("...")
+    @Html.Bootstrap().Div().Flex(JustifyContent.Center).Content("...")
+    @Html.Bootstrap().Div().Flex(JustifyContent.Between).Content("...")
+    @Html.Bootstrap().Div().Flex(JustifyContent.Around).Content("...")
+    @Html.Bootstrap().Div().Flex(JustifyContent.Evenly).Content("...")
+}

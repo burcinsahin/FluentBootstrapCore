@@ -244,15 +244,17 @@ namespace FBootstrapCoreMvc.Extensions
         }
         #endregion
 
-        public static BootstrapContent<TComponent> InputOpts<TComponent, TInput>(this BootstrapContent<TComponent> bootstrapContent, UtilityOptions opts)
+        public static BootstrapContent<TComponent> InputOpts<TComponent, TInput>(this BootstrapContent<TComponent> bootstrapContent, IUtilityOptions opts)
             where TComponent : FormControl<TInput>
             where TInput : BootstrapComponent, IInputComponent
         {
-            bootstrapContent.Component.InputOpts = opts;
+            if (bootstrapContent.Component.InputOpts == null)
+                bootstrapContent.Component.InputOpts = new Dictionary<Type, IUtilityOptions>();
+            bootstrapContent.Component.InputOpts.TryAdd(opts.GetType(), opts);
             return bootstrapContent;
         }
 
-        public static BootstrapContent<FormInput> InputOpts(this BootstrapContent<FormInput> bootstrapContent, UtilityOptions opts) => bootstrapContent.InputOpts<FormInput, Input>(opts);
+        public static BootstrapContent<FormInput> InputOpts(this BootstrapContent<FormInput> bootstrapContent, IUtilityOptions opts) => bootstrapContent.InputOpts<FormInput, Input>(opts);
 
         public static BootstrapContent<TComponent> InputCss<TComponent, TInput>(this BootstrapContent<TComponent> bootstrapContent, params string[] cssClasses)
             where TComponent : FormControl<TInput>

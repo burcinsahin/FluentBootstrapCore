@@ -4,41 +4,17 @@ namespace FBootstrapCoreMvc.Enums
 {
     public enum JustifyContent
     {
-        [Description(Css.JustifyContentAround)]
+        [Description("justify-content{0}-around")]
         Around,
-        [Description(Css.JustifyContentBetween)]
+        [Description("justify-content{0}-between")]
         Between,
-        [Description(Css.JustifyContentCenter)]
+        [Description("justify-content{0}-center")]
         Center,
-        [Description(Css.JustifyContentEnd)]
+        [Description("justify-content{0}-end")]
         End,
-        [Description(Css.JustifyContentEvenly)]
+        [Description("justify-content{0}-evenly")]
         Evenly,
-        [Description(Css.JustifyContentStart)]
-        Start,
-        [Description(Css.JustifyContentSmAround)]
-        SmallAround,
-        [Description(Css.JustifyContentSmBetween)]
-        SmallBetween,
-        [Description(Css.JustifyContentSmCenter)]
-        SmallCenter,
-        [Description(Css.JustifyContentSmEnd)]
-        SmallEnd,
-        [Description(Css.JustifyContentSmEvenly)]
-        SmallEvenly,
-        [Description(Css.JustifyContentSmStart)]
-        SmallStart,
-        [Description(Css.JustifyContentMdAround)]
-        MediumAround,
-        [Description(Css.JustifyContentMdBetween)]
-        MediumBetween,
-        [Description(Css.JustifyContentMdCenter)]
-        MediumCenter,
-        [Description(Css.JustifyContentMdEnd)]
-        MediumEnd,
-        [Description(Css.JustifyContentMdEvenly)]
-        MediumEvenly,
-        [Description(Css.JustifyContentMdStart)]
-        MediumStart,
+        [Description("justify-content{0}-start")]
+        Start
     }
 }
