@@ -11,6 +11,12 @@ namespace FBootstrapCoreMvc.Enums
         [Description("flex{0}-row-reverse")]
         RowReverse,
         [Description("flex{0}-column-reverse")]
-        ColumnReverse
+        ColumnReverse,
+        [Description("flex{0}-nowrap")]
+        NoWrap,
+        [Description("flex{0}-wrap")]
+        Wrap,
+        [Description("flex{0}-wrap-reverse")]
+        WrapReverse
     }
 }

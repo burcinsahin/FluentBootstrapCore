@@ -1,5 +1,6 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using System;
+using System.Globalization;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -151,6 +152,24 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.AddCss(FBootstrapCoreMvc.Css.Clearfix);
             return bootstrapContent;
         }
+
+        #region Styles
+        public static BootstrapContent<TComponent> Height<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            double value, LengthUnit unit = LengthUnit.Pixel) where TComponent : SingleComponent
+        {
+            bootstrapContent.Component.MergeStyle("height", $"{value.ToString("F", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Width<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            double value, LengthUnit unit = LengthUnit.Pixel) where TComponent : SingleComponent
+        {
+            bootstrapContent.Component.MergeStyle("width", $"{value.ToString("F", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
+            return bootstrapContent;
+        }
+        #endregion
         #endregion
     }
 }

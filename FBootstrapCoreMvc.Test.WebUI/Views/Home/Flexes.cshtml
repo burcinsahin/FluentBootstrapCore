@@ -87,3 +87,111 @@
     }
 }
 <hr />
+@Html.Bootstrap().Heading2("Grow and shrink")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @using (Html.Bootstrap().Div().Display(Display.Flex).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Flex(FlexAbility.Grow1).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Third flex item")
+    }
+    <br />
+    @using (Html.Bootstrap().Div().Display(Display.Flex).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Css(Css.W100).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Flex(FlexAbility.Shrink1).Content("Flex item")
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Auto margins")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @using (Html.Bootstrap().Div().Display(Display.Flex).Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+    @using (Html.Bootstrap().Div().Display(Display.Flex).Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Div().Margin(Margin.End).Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+    @using (Html.Bootstrap().Div().Display(Display.Flex).Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Margin(Margin.Start).Padding(2).Content("Flex item")
+    }
+    @Html.Bootstrap().Heading3("With align-items")
+    @using (Html.Bootstrap().Div().Height(200).Flex(AlignItems.Start).Flex(FlexDirection.Column).Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Div().Margin(Margin.Bottom).Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+    @using (Html.Bootstrap().Div().Height(200).Flex(AlignItems.End).Flex(FlexDirection.Column).Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Margin(Margin.Top).Padding(2).Content("Flex item")
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Wrap")
+@using (Html.Bootstrap().Container().Width(750).Begin())
+{
+    @using (Html.Bootstrap().Div().Width(8, LengthUnit.RootElement).Flex(FlexDirection.NoWrap).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+    @using (Html.Bootstrap().Div().Flex(FlexDirection.Wrap).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+    @using (Html.Bootstrap().Div().Flex(FlexDirection.WrapReverse).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+}
+
+<hr />
+@Html.Bootstrap().Heading2("Order")
+<hr />
+@Html.Bootstrap().Heading2("Align content")
+<hr />
+@Html.Bootstrap().Heading2("Media object")
