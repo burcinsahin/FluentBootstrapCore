@@ -137,9 +137,9 @@
     {
         @using (var row = container.Row().Begin())
         {
-            @row.Column().Order(byte.MaxValue).Content("First in DOM, ordered last")
+            @row.Column().Order(sbyte.MaxValue).Content("First in DOM, ordered last")
             @row.Column().Content("Second in DOM, unordered")
-            @row.Column().Order(byte.MinValue).Content("Third in DOM, ordered first")
+            @row.Column().Order(sbyte.MinValue).Content("Third in DOM, ordered first")
         }
     }
     @Html.Bootstrap().Heading3("Offsetting columns")

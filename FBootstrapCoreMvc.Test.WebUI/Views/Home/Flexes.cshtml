@@ -191,7 +191,146 @@
 
 <hr />
 @Html.Bootstrap().Heading2("Order")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @using (Html.Bootstrap().Div().Flex(FlexDirection.NoWrap).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Order(3).Content("First flex item")
+        @Html.Bootstrap().Div().Padding(2).Order(2).Content("Second flex item")
+        @Html.Bootstrap().Div().Padding(2).Order(1).Content("Third flex item")
+    }
+}
 <hr />
 @Html.Bootstrap().Heading2("Align content")
+@using (Html.Bootstrap().Container().Width(750).Begin())
+{
+    @using (Html.Bootstrap().Div().Height(200).Flex(FlexDirection.Wrap).AlignContent(AlignContent.Start).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+    <br />
+    @using (Html.Bootstrap().Div().Height(200).Flex(FlexDirection.Wrap).AlignContent(AlignContent.End).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+    <br />
+    @using (Html.Bootstrap().Div().Height(200).Flex(FlexDirection.Wrap).AlignContent(AlignContent.Center).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+    <br />
+    @using (Html.Bootstrap().Div().Height(200).Flex(FlexDirection.Wrap).AlignContent(AlignContent.Between).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+    <br />
+    @using (Html.Bootstrap().Div().Height(200).Flex(FlexDirection.Wrap).AlignContent(AlignContent.Around).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+    <br />
+    @using (Html.Bootstrap().Div().Height(200).Flex(FlexDirection.Wrap).AlignContent(AlignContent.Stretch).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+        @Html.Bootstrap().Div().Padding(2).Content("Flex item")
+    }
+}
 <hr />
 @Html.Bootstrap().Heading2("Media object")
+@using (Html.Bootstrap().Div().Width(750).Begin())
+{
+    @using (Html.Bootstrap().Div().Display(Display.Flex).Begin())
+    {
+        @Html.Bootstrap().Div().Flex(FlexAbility.Shrink0).Content(Html.Bootstrap().Image("http://picsum.photos/100","photo"))
+        @Html.Bootstrap().Div().Flex(FlexAbility.Grow1).Margin(Margin.Start, 3).Content("This is some content from a media component. You can replace this with any content and adjust it as needed.")
+    }
+    <br />
+    @using (Html.Bootstrap().Div().Flex(AlignItems.Center).Begin())
+    {
+        @Html.Bootstrap().Div().Flex(FlexAbility.Shrink0).Content(Html.Bootstrap().Image("http://picsum.photos/100","photo"))
+        @Html.Bootstrap().Div().Flex(FlexAbility.Grow1).Margin(Margin.Start, 3).Content("This is some content from a media component. You can replace this with any content and adjust it as needed.")
+    }
+}

@@ -1,5 +1,4 @@
 ﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
 using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc.Options
@@ -10,6 +9,7 @@ namespace FBootstrapCoreMvc.Options
         public EnumList<JustifyContent> JustifyContent { get; set; }
         public EnumList<AlignItems> AlignItems { get; set; }
         public EnumList<AlignSelf> AlignSelf { get; set; }
+        public EnumList<AlignContent> AlignContent { get; set; }
         public EnumList<FlexAbility> FlexFill { get; set; }
 
         public FlexOptions()
@@ -19,6 +19,7 @@ namespace FBootstrapCoreMvc.Options
             AlignItems = new EnumList<AlignItems>();
             AlignSelf = new EnumList<AlignSelf>();
             FlexFill = new EnumList<FlexAbility>();
+            AlignContent = new EnumList<AlignContent>();
         }
 
         public override IEnumerable<string> GetCssList()
@@ -29,6 +30,7 @@ namespace FBootstrapCoreMvc.Options
             cssList.AddRange(AlignItems.GetCssDescriptions());
             cssList.AddRange(AlignSelf.GetCssDescriptions());
             cssList.AddRange(FlexFill.GetCssDescriptions());
+            cssList.AddRange(AlignContent.GetCssDescriptions());
             return cssList;
         }
     }

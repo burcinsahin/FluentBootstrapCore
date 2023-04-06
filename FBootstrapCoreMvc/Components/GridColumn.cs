@@ -6,12 +6,10 @@ namespace FBootstrapCoreMvc.Components
 {
     public class GridColumn : BootstrapComponent,
         IAlignSelf,
-        IOrderable,
         IOffsetable,
         IColumnizable
     {
         public EnumList<AlignSelf>? AlignSelf { get; set; }
-        public Order? Order { get; set; }
 
         public GridColumn()
             : base("div", Css.Col)
@@ -22,9 +20,6 @@ namespace FBootstrapCoreMvc.Components
         {
             if (AlignSelf != null)
                 AddCss(AlignSelf.GetCssDescriptions());
-
-            if (Order.HasValue)
-                AddCss(Order.GetCssDescription());
 
             base.PreBuild();
         }

@@ -120,6 +120,29 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> Order<TComponent>(this BootstrapContent<TComponent> bootstrapContent, sbyte order, Breakpoint br = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            return bootstrapContent.Order((Order)order.Trim<sbyte>(-1, 6), br);
+        }
+
+        public static BootstrapContent<TComponent> Order<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Order order, Breakpoint br = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<CommonOptions>();
+            options.Order.TryAdd(br, order);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> AlignContent<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignContent alignContent, Breakpoint br = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<FlexOptions>();
+            options.AlignContent.TryAdd(br, alignContent);
+            return bootstrapContent;
+        }
+
+
         public static BootstrapContent<TComponent> Overflow<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Overflow overflow = Enums.Overflow.Auto)
             where TComponent : SingleComponent
         {

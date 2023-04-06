@@ -11,7 +11,7 @@ namespace FBootstrapCoreMvc.Enums
         [Description("flex{0}-grow-1")]
         Grow1,
         [Description("flex{0}-shrink-0")]
-        Shrink,
+        Shrink0,
         [Description("flex{0}-shrink-1")]
         Shrink1
     }
