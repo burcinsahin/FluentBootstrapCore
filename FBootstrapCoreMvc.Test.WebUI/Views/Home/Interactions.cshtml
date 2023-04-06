@@ -1,0 +1,28 @@
+﻿@Html.Bootstrap().Heading2("Text selection")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Paragraph().UserSelect(UserSelect.All).Content("This paragraph will be entirely selected when clicked by the user.")
+    @Html.Bootstrap().Paragraph().UserSelect(UserSelect.Auto).Content("This paragraph has default select behavior.")
+    @Html.Bootstrap().Paragraph().UserSelect(UserSelect.None).Content("This paragraph will not be selectable when clicked by the user.")
+}
+@Html.Bootstrap().Heading2("Pointer events")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @using (Html.Bootstrap().Paragraph().Begin())
+    {
+        @Html.Bootstrap().Link("This link","#").PointerEvent(PointerEvent.None)
+        @Html.Raw(" can not be clicked.")
+    }
+    @using (Html.Bootstrap().Paragraph().Begin())
+    {
+        @Html.Bootstrap().Link("This link","#").PointerEvent(PointerEvent.Auto)
+        @Html.Raw(" can be clicked (this is default behavior).")
+    }
+    @using (Html.Bootstrap().Paragraph().PointerEvent(PointerEvent.None).Begin())
+    {
+        @Html.Bootstrap().Link("This link","#")
+        @Html.Raw(" can not be clicked because the <code>pointer-events</code> property is inherited from its parent. However, ")
+        @Html.Bootstrap().Link("this link","#").PointerEvent(PointerEvent.Auto)
+        @Html.Raw(" has a <code>pe-auto</code> class and can be clicked.")
+    }
+}

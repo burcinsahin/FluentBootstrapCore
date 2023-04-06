@@ -142,7 +142,6 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-
         public static BootstrapContent<TComponent> Overflow<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Overflow overflow = Enums.Overflow.Auto)
             where TComponent : SingleComponent
         {
@@ -150,5 +149,20 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> UserSelect<TComponent>(this BootstrapContent<TComponent> bootstrapContent, UserSelect userSelect)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<InteractionOptions>();
+            options.UserSelect = userSelect;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> PointerEvent<TComponent>(this BootstrapContent<TComponent> bootstrapContent, PointerEvent pointerEvent)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<InteractionOptions>();
+            options.PointerEvent = pointerEvent;
+            return bootstrapContent;
+        }
     }
 }

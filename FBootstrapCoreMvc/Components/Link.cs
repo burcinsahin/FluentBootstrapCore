@@ -1,9 +1,8 @@
 ﻿using FBootstrapCoreMvc.Interfaces;
-using System.Data;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Link : SingleComponent, ILink
+    public class Link : BootstrapComponent, ILink
     {
         public string? Href { get; set; }
         public string? Role { get; set; }
