@@ -169,6 +169,23 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.MergeStyle("width", $"{value.ToString("F", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
             return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> MaxHeight<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            double value,
+            LengthUnit unit = LengthUnit.Pixel) where TComponent : SingleComponent
+        {
+            bootstrapContent.Component.MergeStyle("max-height", $"{value.ToString("F", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> MaxWidth<TComponent>(this BootstrapContent<TComponent> bootstrapContent,
+            double value,
+            LengthUnit unit = LengthUnit.Pixel) where TComponent : SingleComponent
+        {
+            bootstrapContent.Component.MergeStyle("max-width", $"{value.ToString("F", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
+            return bootstrapContent;
+        }
         #endregion
         #endregion
     }

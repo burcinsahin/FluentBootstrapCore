@@ -134,6 +134,14 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> Opacity<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Opacity opacity)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<CommonOptions>();
+            options.Opacity = opacity;
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<TComponent> AlignContent<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignContent alignContent, Breakpoint br = Breakpoint.Default)
             where TComponent : BootstrapComponent
         {

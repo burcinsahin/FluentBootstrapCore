@@ -1,4 +1,5 @@
 ﻿using FBootstrapCoreMvc.Enums;
+using FBootstrapCoreMvc.Extensions;
 using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc.Options
@@ -6,6 +7,7 @@ namespace FBootstrapCoreMvc.Options
     public class CommonOptions : UtilityOptions
     {
         public EnumList<Order> Order { get; set; }
+        public Opacity? Opacity { get; set; }
 
         public CommonOptions()
         {
@@ -16,6 +18,8 @@ namespace FBootstrapCoreMvc.Options
         {
             var cssList = new List<string>();
             cssList.AddRange(Order.GetCssDescriptions());
+            if (Opacity.HasValue)
+                cssList.Add(Opacity.GetCssDescription());
             return cssList;
         }
     }

@@ -21,4 +21,5 @@ namespace FBootstrapCoreMvc.Enums
         [Description(Css.OrderLast)]
         Last = 6
     }
+
 }

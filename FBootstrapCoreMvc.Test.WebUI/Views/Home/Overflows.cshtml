@@ -1,0 +1,20 @@
+﻿@Html.Bootstrap().Heading2("Opacity")
+@using (Html.Bootstrap().Div().Display(Display.Flex, Breakpoint.Medium).Begin())
+{
+    @using (Html.Bootstrap().Div().Overflow(Overflow.Auto).MaxHeight(100).MaxWidth(260).Padding(3).Margin(Margin.Bottom, 3).Background(BackgroundColor.Light).Begin())
+    {
+        @Html.Raw("This is an example of using <code>.overflow-auto</code> on an element with set width and height dimensions. By design, this content will vertically scroll.")
+    }
+    @using (Html.Bootstrap().Div().Overflow(Overflow.Hidden).MaxHeight(100).MaxWidth(260).Padding(3).Margin(Margin.Bottom, 3).Background(BackgroundColor.Light).Begin())
+    {
+        @Html.Raw("This is an example of using <code>.overflow-hidden</code> on an element with set width and height dimensions.")
+    }
+    @using (Html.Bootstrap().Div().Overflow(Overflow.Visible).MaxHeight(100).MaxWidth(260).Padding(3).Margin(Margin.Bottom, 3).Background(BackgroundColor.Light).Begin())
+    {
+        @Html.Raw("This is an example of using <code>.overflow-visible</code> on an element with set width and height dimensions.")
+    }
+    @using (Html.Bootstrap().Div().Overflow(Overflow.Scroll).MaxHeight(100).MaxWidth(260).Padding(3).Background(BackgroundColor.Light).Begin())
+    {
+        @Html.Raw("This is an example of using <code>.overflow-scroll</code> on an element with set width and height dimensions.")
+    }
+}
