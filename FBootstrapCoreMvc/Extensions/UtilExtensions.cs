@@ -172,5 +172,22 @@ namespace FBootstrapCoreMvc.Extensions
             options.PointerEvent = pointerEvent;
             return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> Position<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Position position)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<PositionOptions>();
+            options.Position = position;
+            return bootstrapContent;
+        }
+        public static BootstrapContent<TComponent> Position<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Absolute absolutePos, Translate? translate = null)
+            where TComponent : BootstrapComponent
+        {
+            bootstrapContent.Position(Enums.Position.Absolute);
+            var options = bootstrapContent.Component.GetOptions<PositionOptions>();
+            options.Absolute = absolutePos;
+            options.Translate = translate;
+            return bootstrapContent;
+        }
     }
 }

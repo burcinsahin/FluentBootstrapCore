@@ -158,7 +158,7 @@ namespace FBootstrapCoreMvc.Extensions
             this BootstrapContent<TComponent> bootstrapContent,
             double value, LengthUnit unit = LengthUnit.Pixel) where TComponent : SingleComponent
         {
-            bootstrapContent.Component.MergeStyle("height", $"{value.ToString("F", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
+            bootstrapContent.Component.MergeStyle("height", $"{value.ToString("0.###", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
             return bootstrapContent;
         }
 
@@ -166,7 +166,7 @@ namespace FBootstrapCoreMvc.Extensions
             this BootstrapContent<TComponent> bootstrapContent,
             double value, LengthUnit unit = LengthUnit.Pixel) where TComponent : SingleComponent
         {
-            bootstrapContent.Component.MergeStyle("width", $"{value.ToString("F", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
+            bootstrapContent.Component.MergeStyle("width", $"{value.ToString("0.###", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
             return bootstrapContent;
         }
 
@@ -175,7 +175,7 @@ namespace FBootstrapCoreMvc.Extensions
             double value,
             LengthUnit unit = LengthUnit.Pixel) where TComponent : SingleComponent
         {
-            bootstrapContent.Component.MergeStyle("max-height", $"{value.ToString("F", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
+            bootstrapContent.Component.MergeStyle("max-height", $"{value.ToString("0.###", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
             return bootstrapContent;
         }
 
@@ -183,7 +183,7 @@ namespace FBootstrapCoreMvc.Extensions
             double value,
             LengthUnit unit = LengthUnit.Pixel) where TComponent : SingleComponent
         {
-            bootstrapContent.Component.MergeStyle("max-width", $"{value.ToString("F", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
+            bootstrapContent.Component.MergeStyle("max-width", $"{value.ToString("0.###", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
             return bootstrapContent;
         }
         #endregion

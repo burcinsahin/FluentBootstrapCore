@@ -1,0 +1,46 @@
+﻿<style>
+    div > div > div.position-absolute {
+        width: 2rem;
+        height: 2rem;
+        background-color: #212529;
+        border-radius: .375rem;
+    }
+</style>
+@Html.Bootstrap().Heading2("Position values")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Div().Position(Position.Static).Content("...")
+    @Html.Bootstrap().Div().Position(Position.Relative).Content("...")
+    @Html.Bootstrap().Div().Position(Position.Absolute).Content("...")
+    @Html.Bootstrap().Div().Position(Position.Fixed).Content("...")
+    @Html.Bootstrap().Div().Position(Position.Sticky).Content("...")
+}
+@Html.Bootstrap().Heading2("Arrange elements")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (Html.Bootstrap().Div().Height(200).Background(BackgroundColor.Info).Position(Position.Relative).Begin())
+    {
+        @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.Start0)
+        @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.End0)
+        @Html.Bootstrap().Div().Position(Absolute.Top50|Absolute.Start50)
+        @Html.Bootstrap().Div().Position(Absolute.Bottom50|Absolute.End50)
+        @Html.Bootstrap().Div().Position(Absolute.Bottom0|Absolute.Start0)
+        @Html.Bootstrap().Div().Position(Absolute.Bottom0|Absolute.End0)
+    }
+}
+@Html.Bootstrap().Heading2("Center elements")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (Html.Bootstrap().Div().Height(200).Background(BackgroundColor.Info).Position(Position.Relative).Begin())
+    {
+        @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.Start0, Translate.Middle)
+        @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.Start50, Translate.Middle)
+        @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.Start100, Translate.Middle)
+        @Html.Bootstrap().Div().Position(Absolute.Top50|Absolute.Start0, Translate.Middle)
+        @Html.Bootstrap().Div().Position(Absolute.Top50|Absolute.Start50, Translate.Middle)
+        @Html.Bootstrap().Div().Position(Absolute.Top50|Absolute.Start100, Translate.Middle)
+        @Html.Bootstrap().Div().Position(Absolute.Top100|Absolute.Start0, Translate.Middle)
+        @Html.Bootstrap().Div().Position(Absolute.Top100|Absolute.Start50, Translate.Middle)
+        @Html.Bootstrap().Div().Position(Absolute.Top100|Absolute.Start100, Translate.Middle)
+    }
+}
