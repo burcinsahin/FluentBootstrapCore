@@ -1,5 +1,6 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Options;
+using System.Globalization;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -197,5 +198,22 @@ namespace FBootstrapCoreMvc.Extensions
             options.Shadow = shadow;
             return bootstrapContent;
         }
+
+        #region Sizings
+        public static BootstrapContent<TComponent> Width<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Width width) 
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<CommonOptions>();
+            options.Width = width;
+            return bootstrapContent;
+        }
+        public static BootstrapContent<TComponent> Height<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Height height)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<CommonOptions>();
+            options.Height = height;
+            return bootstrapContent;
+        }
+        #endregion
     }
 }

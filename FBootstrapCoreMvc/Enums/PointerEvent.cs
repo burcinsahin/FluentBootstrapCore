@@ -9,5 +9,4 @@ namespace FBootstrapCoreMvc.Enums
         [Description(Css.PeAuto)]
         Auto,
     }
-
 }

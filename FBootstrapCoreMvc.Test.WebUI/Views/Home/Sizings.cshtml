@@ -1,0 +1,42 @@
+﻿@Html.Bootstrap().Heading2("Relative to the parent")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Div().Padding(3).Background(BgColor.Secondary).Width(Width._25).Content("Width 25%")
+        @Html.Bootstrap().Div().Padding(3).Background(BgColor.Secondary).Width(Width._50).Content("Width 50%")
+        @Html.Bootstrap().Div().Padding(3).Background(BgColor.Secondary).Width(Width._75).Content("Width 75%")
+        @Html.Bootstrap().Div().Padding(3).Background(BgColor.Secondary).Width(Width._100).Content("Width 100%")
+        @Html.Bootstrap().Div().Padding(3).Background(BgColor.Secondary).Width(Width.Auto).Content("Width auto")
+    }
+    <br />
+    @using (Html.Bootstrap().Div().Height(100).Background(BgColor.Light).Begin())
+    {
+        @Html.Bootstrap().Div().Width(120).Display(Display.InlineBlock).Background(BgColor.Secondary).Height(Height._25).Content("Height 25%")
+        @Html.Bootstrap().Div().Width(120).Display(Display.InlineBlock).Background(BgColor.Secondary).Height(Height._50).Content("Height 50%")
+        @Html.Bootstrap().Div().Width(120).Display(Display.InlineBlock).Background(BgColor.Secondary).Height(Height._75).Content("Height 75%")
+        @Html.Bootstrap().Div().Width(120).Display(Display.InlineBlock).Background(BgColor.Secondary).Height(Height._100).Content("Height 100%")
+        @Html.Bootstrap().Div().Width(120).Display(Display.InlineBlock).Background(BgColor.Secondary).Height(Height.Auto).Content("Height auto")
+    }
+    <br />
+    @using (Html.Bootstrap().Div().Width(200).Begin())
+    {
+        @Html.Bootstrap().Image("https://picsum.photos/300", "photo").Width(Width.Max100)
+    }
+    <br />
+    @using (Html.Bootstrap().Div().Height(100).Background(BgColor.Light).Begin())
+    {
+        @Html.Bootstrap().Div().Width(100).Height(200).Height(Height.Max100).Background(BgColor.Info).Content("Max-height 100%")
+    }
+}
+@Html.Bootstrap().Heading2("Relative to the viewport")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Div().Width(Width.MinViewport100).Background(BgColor.Info).Content("Min-width 100vw")
+    <br />
+    @Html.Bootstrap().Div().Height(Height.MinViewport100).Background(BgColor.Info).Content("Min-height 100vh")
+    <br />
+    @Html.Bootstrap().Div().Width(Width.Viewport100).Background(BgColor.Info).Content("Width 100vw")
+    <br />
+    @Html.Bootstrap().Div().Height(Height.Viewport100).Background(BgColor.Info).Content("Height 100vh")
+}
