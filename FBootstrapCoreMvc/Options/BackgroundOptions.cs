@@ -6,7 +6,7 @@ namespace FBootstrapCoreMvc.Options
 {
     public class BackgroundOptions : UtilityOptions
     {
-        public BackgroundColor? BgColor { get; set; }
+        public BgColor? BgColor { get; set; }
         public bool Gradient { get; set; }
         public byte? Opacity { get; set; }
 

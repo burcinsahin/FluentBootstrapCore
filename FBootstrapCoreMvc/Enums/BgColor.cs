@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Enums
 {
-    public enum BackgroundColor
+    public enum BgColor
     {
         [Description()]
         None,

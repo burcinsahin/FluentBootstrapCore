@@ -18,7 +18,7 @@
 @Html.Bootstrap().Heading2("Arrange elements")
 @using (Html.Bootstrap().Div().Begin())
 {
-    @using (Html.Bootstrap().Div().Height(200).Background(BackgroundColor.Info).Position(Position.Relative).Begin())
+    @using (Html.Bootstrap().Div().Height(200).Background(BgColor.Light).Position(Position.Relative).Begin())
     {
         @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.Start0)
         @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.End0)
@@ -31,7 +31,7 @@
 @Html.Bootstrap().Heading2("Center elements")
 @using (Html.Bootstrap().Div().Begin())
 {
-    @using (Html.Bootstrap().Div().Height(200).Background(BackgroundColor.Info).Position(Position.Relative).Begin())
+    @using (Html.Bootstrap().Div().Height(200).Background(BgColor.Light).Position(Position.Relative).Begin())
     {
         @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.Start0, Translate.Middle)
         @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.Start50, Translate.Middle)
@@ -43,4 +43,23 @@
         @Html.Bootstrap().Div().Position(Absolute.Top100|Absolute.Start50, Translate.Middle)
         @Html.Bootstrap().Div().Position(Absolute.Top100|Absolute.Start100, Translate.Middle)
     }
+    <br />
+    @using (Html.Bootstrap().Div().Height(200).Background(BgColor.Light).Position(Position.Relative).Begin())
+    {
+        @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.Start0)
+        @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.Start50, Translate.MiddleX)
+        @Html.Bootstrap().Div().Position(Absolute.Top0|Absolute.End0)
+        @Html.Bootstrap().Div().Position(Absolute.Top50|Absolute.Start0, Translate.MiddleY)
+        @Html.Bootstrap().Div().Position(Absolute.Top50|Absolute.Start50, Translate.Middle)
+        @Html.Bootstrap().Div().Position(Absolute.Top50|Absolute.End0, Translate.MiddleY)
+        @Html.Bootstrap().Div().Position(Absolute.Bottom0|Absolute.Start0)
+        @Html.Bootstrap().Div().Position(Absolute.Bottom0|Absolute.Start50, Translate.MiddleX)
+        @Html.Bootstrap().Div().Position(Absolute.Bottom0|Absolute.End0)
+    }
+}
+@Html.Bootstrap().Heading2("Examples")
+@using (Html.Bootstrap().Div().Begin())
+{
+    //TODO:
+    @Html.Bootstrap().Button().Badge("+99").PositionBadge().State(ButtonState.Primary).Content("Mails")
 }

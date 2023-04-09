@@ -5,7 +5,7 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class UtilExtensions
     {
-        public static BootstrapContent<TComponent> Background<TComponent>(this BootstrapContent<TComponent> bootstrapContent, BackgroundColor bgColor, bool gradient = false, byte? opacity = null)
+        public static BootstrapContent<TComponent> Background<TComponent>(this BootstrapContent<TComponent> bootstrapContent, BgColor bgColor, bool gradient = false, byte? opacity = null)
             where TComponent : BootstrapComponent
         {
             var backgroundOpts = bootstrapContent.Component.GetOptions<BackgroundOptions>();
