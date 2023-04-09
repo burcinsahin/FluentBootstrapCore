@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
@@ -19,7 +18,7 @@ namespace FBootstrapCoreMvc.Extensions
 
         public static BootstrapContent<TComponent> Value<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
-            string value)
+            object value)
             where TComponent : SingleComponent, ICanHaveValue
         {
             bootstrapContent.Component.Value = value;
@@ -35,7 +34,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> AddBadge<TComponent>(
+        public static BootstrapContent<TComponent> Badge<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string? badge)
             where TComponent : SingleComponent, ICanHaveBadge

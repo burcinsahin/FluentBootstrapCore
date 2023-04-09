@@ -39,7 +39,7 @@ namespace FBootstrapCoreMvc.Components
             Input.Readonly = Readonly;
             Input.Name = Name;
             Input.Required = Required;
-            Input.SetId();
+            Input.GenerateId();
 
             if (InputOpts != null)
                 Input.UtilityOptions = InputOpts;

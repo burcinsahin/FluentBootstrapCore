@@ -19,7 +19,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> AddIcon<TComponent>(this BootstrapContent<TComponent> bootstrapContent, IconType iconType)
+        public static BootstrapContent<TComponent> Icon<TComponent>(this BootstrapContent<TComponent> bootstrapContent, IconType iconType)
             where TComponent : SingleComponent, ICanHaveIcon
         {
             bootstrapContent.Component.IconType = iconType;

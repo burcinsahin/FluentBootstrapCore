@@ -54,8 +54,10 @@ namespace FBootstrapCoreMvc.Components
 
             if (Collapsible)
             {
-                var div = new HtmlElement("div", Css.Collapse);
-                div.SetId(uid.ToString());
+                var div = new HtmlElement("div", Css.Collapse)
+                {
+                    Id = uid.ToString()
+                };
                 AddChild(div, ChildLocation.BodyWrap);
             }
 

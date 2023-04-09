@@ -4,7 +4,7 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class CardExtensions
     {
-        public static BootstrapContent<TComponent> SetHeader<TComponent>(
+        public static BootstrapContent<TComponent> Header<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string header, bool collapsible = false)
             where TComponent : Card
@@ -14,7 +14,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> SetTitle<TComponent>(
+        public static BootstrapContent<TComponent> Title<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string title)
             where TComponent : Card

@@ -46,15 +46,19 @@ namespace FBootstrapCoreMvc
 
         public BootstrapContent<HtmlElement> Lead(object? content = null)
         {
-            var lead = new HtmlElement("p", Css.Lead);
-            lead.SetContent(content);
+            var lead = new HtmlElement("p", Css.Lead)
+            {
+                Content = content
+            };
             return new BootstrapContent<HtmlElement>(HtmlHelper, lead);
         }
 
         public BootstrapContent<HtmlElement> Mark(object? content = null)
         {
-            var mark = new HtmlElement("mark");
-            mark.SetContent(content);
+            var mark = new HtmlElement("mark")
+            {
+                Content = content
+            };
             return new BootstrapContent<HtmlElement>(HtmlHelper, mark);
         }
 
@@ -125,8 +129,10 @@ namespace FBootstrapCoreMvc
         #region DOM
         public BootstrapContent<HtmlElement> Element(string tagName, object? content = null)
         {
-            var element = new HtmlElement(tagName);
-            element.SetContent(content);
+            var element = new HtmlElement(tagName)
+            {
+                Content = content
+            };
             return new BootstrapContent<HtmlElement>(_htmlHelper, element);
         }
 

@@ -6,14 +6,14 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class NavbarExtensions
     {
-        public static BootstrapContent<TComponent> SetHref<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? href)
+        public static BootstrapContent<TComponent> Href<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? href)
             where TComponent : Link
         {
             bootstrapContent.Component.MergeAttribute("href", href);
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> SetDark<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+        public static BootstrapContent<TComponent> Dark<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
             where TComponent : Navbar
         {
             bootstrapContent.Component.AddCss(Css.NavbarDark);
@@ -37,8 +37,10 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<NavbarCollapse> NavbarCollapse<TComponent>(this BootstrapBuilder<TComponent> builder, string? id)
             where TComponent : SingleComponent, ICanCreate<NavbarCollapse>
         {
-            var navbarCollapse = new NavbarCollapse();
-            navbarCollapse.SetId(id);
+            var navbarCollapse = new NavbarCollapse
+            {
+                Id = id
+            };
             return new BootstrapContent<NavbarCollapse>(builder.HtmlHelper, navbarCollapse);
         }
 

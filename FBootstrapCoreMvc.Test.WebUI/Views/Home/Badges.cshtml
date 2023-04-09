@@ -3,29 +3,29 @@
     @Html.Bootstrap().Heading2("Headings")
     using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().Heading1("Example heading ").AddBadge("New")
-        @Html.Bootstrap().Heading2("Example heading ").AddBadge("New")
-        @Html.Bootstrap().Heading3("Example heading ").AddBadge("New")
-        @Html.Bootstrap().Heading4("Example heading ").AddBadge("New")
-        @Html.Bootstrap().Heading5("Example heading ").AddBadge("New")
-        @Html.Bootstrap().Heading6("Example heading ").AddBadge("New")
+        @Html.Bootstrap().Heading1("Example heading ").Badge("New")
+        @Html.Bootstrap().Heading2("Example heading ").Badge("New")
+        @Html.Bootstrap().Heading3("Example heading ").Badge("New")
+        @Html.Bootstrap().Heading4("Example heading ").Badge("New")
+        @Html.Bootstrap().Heading5("Example heading ").Badge("New")
+        @Html.Bootstrap().Heading6("Example heading ").Badge("New")
     }
 
     <hr />
     @Html.Bootstrap().Heading2("Buttons")
     using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().Button("Notifications ").AddBadge("4")
+        @Html.Bootstrap().Button("Notifications ").Badge("4")
     }
 
     <hr />
     @Html.Bootstrap().Heading2("Positioned")
     using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().Button("Inbox").AddBadge("99+").PositionBadge()
+        @Html.Bootstrap().Button("Inbox").Badge("99+").PositionBadge()
         <br />
         <br />
-        @Html.Bootstrap().Button("Profile").AddBadge("").PositionBadge()
+        @Html.Bootstrap().Button("Profile").Badge("").PositionBadge()
     }
 
     <hr />

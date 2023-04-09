@@ -49,7 +49,7 @@ namespace FBootstrapCoreMvc.Components
             _input.Title = Title;
             _input.Readonly = Readonly;
             _input.AddCss(Css.FormControl);
-            _input.SetId();
+            _input.GenerateId();
 
             if (Type == FormInputType.Color)
                 _input.AddCss(Css.FormControlColor);

@@ -24,7 +24,7 @@
     @Html.Bootstrap().Heading2("Disabled forms")
     @using (Html.Bootstrap().Form().Begin())
     {
-        @using (Html.Bootstrap().Element("fieldset").MergeAttribute("disabled").Begin())
+        @using (Html.Bootstrap().Element("fieldset").Attribute("disabled").Begin())
         {
             @Html.Bootstrap().FormInput("Disabled input").Placeholder("Disabled input")
             @Html.Bootstrap().FormSelect("Disabled select menu").Options(list)

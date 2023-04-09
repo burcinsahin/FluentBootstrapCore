@@ -173,9 +173,11 @@ namespace FBootstrapCoreMvc.Extensions
             var htmlHelper = builder.HtmlHelper;
             var modelExpressionProvider = htmlHelper.GetModelExpressionProvider();
             var modelExpression = modelExpressionProvider.CreateModelExpression(htmlHelper.ViewData, expression);
-            var label = new Label();
-            label.MergeAttribute("for", modelExpression.Name);
-            label.SetContent(modelExpression.Name);
+            var label = new Label
+            {
+                Content = modelExpression.Name,
+                For = modelExpression.Name
+            };
             return new BootstrapContent<Label>(htmlHelper, label);
         }
 
@@ -210,10 +212,9 @@ namespace FBootstrapCoreMvc.Extensions
         {
             var button = new Button(text)
             {
-                ButtonType = ButtonType.Button
+                ButtonType = ButtonType.Button,
+                Value = value
             };
-            if (value != null)
-                button.SetValue(value.ToString());
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
         }
 
@@ -223,10 +224,9 @@ namespace FBootstrapCoreMvc.Extensions
             var submit = new Button(text)
             {
                 ButtonState = buttonState,
-                ButtonType = ButtonType.Submit
+                ButtonType = ButtonType.Submit,
+                Value = value
             };
-            if (value != null)
-                submit.SetValue(value.ToString());
             return new BootstrapContent<Button>(builder.HtmlHelper, submit);
         }
 
@@ -236,10 +236,9 @@ namespace FBootstrapCoreMvc.Extensions
             var reset = new Button(text)
             {
                 ButtonState = buttonState,
-                ButtonType = ButtonType.Reset
+                ButtonType = ButtonType.Reset,
+                Value = value
             };
-            if (value != null)
-                reset.SetValue(value.ToString());
             return new BootstrapContent<Button>(builder.HtmlHelper, reset);
         }
         #endregion

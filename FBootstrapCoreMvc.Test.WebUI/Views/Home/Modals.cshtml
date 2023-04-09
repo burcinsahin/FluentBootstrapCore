@@ -1,7 +1,7 @@
 ﻿@using (Html.Bootstrap().Container().Begin())
 {
     @Html.Bootstrap().Heading1("Basic Modal")
-    @Html.Bootstrap().Button("Click me").AddIcon(IconType.Window).MergeAttribute("data-bs-target", "#testModal").MergeAttribute("data-bs-toggle", "modal")
+    @Html.Bootstrap().Button("Click me").Icon(IconType.Window).Attribute("data-bs-target", "#testModal").Attribute("data-bs-toggle", "modal")
     using (var modal = Html.Bootstrap().Modal("Title").Id("testModal").Begin())
     {
         using (modal.ModalBody().Begin())

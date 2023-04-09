@@ -122,19 +122,6 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.AddCss(offsetCss);
             return bootstrapContent;
         }
-
-        /// <summary>
-        /// Sets column width
-        /// </summary>
-        /// <param name="bootstrapContent"></param>
-        /// <param name="width">0 for auto.</param>
-        /// <param name="breakpoint">Optional. Default xs.</param>
-        /// <returns></returns>
-        //public static BootstrapContent<GridColumn> Columnize(this BootstrapContent<GridColumn> bootstrapContent, byte? width = null, Breakpoint breakpoint = Breakpoint.Default)
-        //{
-        //    bootstrapContent.Component.Width.TryAdd(breakpoint, width);
-        //    return bootstrapContent;
-        //}
         #endregion
 
         #region Margin, Padding, Float
@@ -147,7 +134,7 @@ namespace FBootstrapCoreMvc.Extensions
                 return bootstrapContent;
             }
 
-            value = value.Trim((byte)0, (byte)5);
+            value = value.Limit((byte)0, (byte)5);
             bootstrapContent.Component.AddCss($"{margin.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-{value}");
             return bootstrapContent;
         }
@@ -207,7 +194,7 @@ namespace FBootstrapCoreMvc.Extensions
                 return bootstrapContent;
             }
 
-            value = value.Value.Trim((byte)0, (byte)5);
+            value = value.Value.Limit((byte)0, (byte)5);
             bootstrapContent.Component.AddCss($"{padding.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-{value}");
             return bootstrapContent;
         }
@@ -215,7 +202,7 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<TComponent> Gutter<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Gutter gutter, byte value, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : SingleComponent, IGutterable
         {
-            value = value.Trim((byte)0, (byte)5);
+            value = value.Limit((byte)0, (byte)5);
             bootstrapContent.Component.AddCss($"{gutter.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-{value}");
             return bootstrapContent;
         }
@@ -231,7 +218,7 @@ namespace FBootstrapCoreMvc.Extensions
                 return bootstrapContent;
             }
 
-            value = value.Value.Trim((byte)0, (byte)10);
+            value = value.Value.Limit((byte)0, (byte)10);
             if (value == 0)
             {
                 bootstrapContent.Component.AddCss($"col{breakpoint.GetHyphenatedDescription()}-auto");

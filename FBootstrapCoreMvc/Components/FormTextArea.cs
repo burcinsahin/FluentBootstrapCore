@@ -28,7 +28,7 @@ namespace FBootstrapCoreMvc.Components
         protected override void PreBuild()
         {
             _textArea.AddCss(Css.FormControl);
-            _textArea.SetId();
+            _textArea.GenerateId();
             _textArea.Name = Name;
             _textArea.Value = Value;
             _textArea.Placeholder = Placeholder;

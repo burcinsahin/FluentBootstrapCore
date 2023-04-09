@@ -5,7 +5,7 @@ namespace FBootstrapCoreMvc.Extensions
 {
     internal static class NumericExtensions
     {
-        internal static TPrimitive Trim<TPrimitive>(this TPrimitive val, TPrimitive lowest, TPrimitive highest)
+        internal static TPrimitive Limit<TPrimitive>(this TPrimitive val, TPrimitive lowest, TPrimitive highest)
             where TPrimitive : struct, IComparable<TPrimitive>, IEquatable<TPrimitive>
         {
             if (val.CompareTo(lowest) < 0)
@@ -15,7 +15,7 @@ namespace FBootstrapCoreMvc.Extensions
             return val;
         }
 
-        internal static TPrimitive? Trim<TPrimitive>(this TPrimitive? val, TPrimitive lowest, TPrimitive highest)
+        internal static TPrimitive? Limit<TPrimitive>(this TPrimitive? val, TPrimitive lowest, TPrimitive highest)
             where TPrimitive : struct, IComparable<TPrimitive>, IEquatable<TPrimitive>
         {
             if (!val.HasValue)

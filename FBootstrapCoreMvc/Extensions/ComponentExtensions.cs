@@ -27,7 +27,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> MergeAttribute<TComponent>(
+        public static BootstrapContent<TComponent> Attribute<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string key,
             object? value = null,
@@ -38,7 +38,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent, TModel> MergeAttribute<TComponent, TModel>(
+        public static BootstrapContent<TComponent, TModel> Attribute<TComponent, TModel>(
             this BootstrapContent<TComponent, TModel> bootstrapContent,
             string key,
             object? value,

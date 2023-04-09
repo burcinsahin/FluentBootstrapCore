@@ -6,19 +6,19 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class TableExtensions
     {
-        public static BootstrapContent<Table> SetStyle(this BootstrapContent<Table> bootstrapContent, TableStyle tableStyle)
+        public static BootstrapContent<Table> Style(this BootstrapContent<Table> bootstrapContent, TableStyle tableStyle)
         {
             bootstrapContent.Component.SetStyle(tableStyle);
             return bootstrapContent;
         }
 
-        public static BootstrapContent<Table> SetResponsive(this BootstrapContent<Table> bootstrapContent)
+        public static BootstrapContent<Table> Responsive(this BootstrapContent<Table> bootstrapContent)
         {
             bootstrapContent.Component.SetResponsive();
             return bootstrapContent;
         }
 
-        public static BootstrapContent<Table> SetCaption(this BootstrapContent<Table> bootstrapContent, string caption)
+        public static BootstrapContent<Table> Caption(this BootstrapContent<Table> bootstrapContent, string caption)
         {
             bootstrapContent.Component.SetCaption(caption);
             return bootstrapContent;

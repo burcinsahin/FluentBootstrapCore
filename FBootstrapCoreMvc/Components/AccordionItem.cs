@@ -18,7 +18,7 @@ namespace FBootstrapCoreMvc.Components
         {
             var h2 = new Heading(2);
             h2.AddCss(Css.AccordionHeader);
-            h2.SetId();
+            h2.GenerateId();
 
             var button = new HtmlElement("button", Css.AccordionButton)
             {
@@ -31,7 +31,7 @@ namespace FBootstrapCoreMvc.Components
             h2.Content = button;
 
             var accordionCollapse = new HtmlElement("div", Css.AccordionCollapse, Css.Collapse);
-            accordionCollapse.SetId();
+            accordionCollapse.GenerateId();
 
             if (ParentId != null)
                 accordionCollapse.MergeAttribute("data-bs-parent", $"#{ParentId}");

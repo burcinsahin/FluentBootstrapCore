@@ -25,7 +25,7 @@ namespace FBootstrapCoreMvc.Components
         protected override void PreBuild()
         {
             var select = new Select();
-            select.SetId();
+            select.GenerateId();
 
             if (Name != null)
                 select.Name = Name;

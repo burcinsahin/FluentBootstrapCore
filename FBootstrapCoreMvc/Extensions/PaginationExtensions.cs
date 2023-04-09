@@ -22,7 +22,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<Pagination> SetSize(this BootstrapContent<Pagination> bootstrapContent, ComponentSize size)
+        public static BootstrapContent<Pagination> Size(this BootstrapContent<Pagination> bootstrapContent, ComponentSize size)
         {
             if (size == ComponentSize.Normal)
                 return bootstrapContent;
@@ -39,19 +39,19 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<PageItem>(builder.HtmlHelper, pageItem);
         }
 
-        public static BootstrapContent<PageItem> SetLink(this BootstrapContent<PageItem> bootstrapContent, string? href, object? content)
+        public static BootstrapContent<PageItem> Link(this BootstrapContent<PageItem> bootstrapContent, string? href, object? content)
         {
             bootstrapContent.Component.SetLink(href, content);
             return bootstrapContent;
         }
 
-        public static BootstrapContent<PageItem> SetActive(this BootstrapContent<PageItem> bootstrapContent)
+        public static BootstrapContent<PageItem> Active(this BootstrapContent<PageItem> bootstrapContent)
         {
             bootstrapContent.Component.SetActive();
             return bootstrapContent;
         }
 
-        public static BootstrapContent<PageItem> SetDisabled(this BootstrapContent<PageItem> bootstrapContent)
+        public static BootstrapContent<PageItem> Disabled(this BootstrapContent<PageItem> bootstrapContent)
         {
             bootstrapContent.Component.SetDisabled();
             return bootstrapContent;

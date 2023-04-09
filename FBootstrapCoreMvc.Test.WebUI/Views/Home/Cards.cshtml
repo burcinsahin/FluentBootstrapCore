@@ -42,14 +42,14 @@
         @card.Footer("Footer")
     }
     <hr />
-    @using (var card = Html.Bootstrap().Card().SetHeader("Collapsible (Warning)", true).TextBackground(TextBgState.Warning).Begin())
+    @using (var card = Html.Bootstrap().Card().Header("Collapsible (Warning)", true).TextBackground(TextBgState.Warning).Begin())
     {
         <p>
             Hello world!
         </p>
     }
     <hr />
-    @using (var card = Html.Bootstrap().Card().SetHeader("Collapsible with customized body (Info)", true).TextBackground(TextBgState.Info).NoCardBody().Begin())
+    @using (var card = Html.Bootstrap().Card().Header("Collapsible with customized body (Info)", true).TextBackground(TextBgState.Info).NoCardBody().Begin())
     {
         @card.Body("text content", "title")
     }

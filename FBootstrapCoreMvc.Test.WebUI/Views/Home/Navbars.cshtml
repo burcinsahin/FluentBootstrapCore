@@ -1,6 +1,6 @@
-﻿@using (var navbar = Html.Bootstrap().Navbar().SetDark().Background(BackgroundColor.Dark).Begin())
+﻿@using (var navbar = Html.Bootstrap().Navbar().Dark().Background(BackgroundColor.Dark).Begin())
 {
-    @navbar.Brand("BB").SetHref("#")
+    @NavbarExtensions.Href(navbar.Brand("BB"), "#")
     @navbar.NavbarToggler("navbarCollapse0")
     @using (var navbarCollapse = navbar.NavbarCollapse("navbarCollapse0").Begin())
     {

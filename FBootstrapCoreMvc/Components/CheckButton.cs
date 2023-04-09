@@ -35,7 +35,7 @@ namespace FBootstrapCoreMvc.Components
             };
 
             checkbox.AddCss(Css.BtnCheck);
-            checkbox.SetId();
+            checkbox.GenerateId();
 
             if (Radio)
             {

@@ -323,7 +323,7 @@ namespace FBootstrapCoreMvc
             return Clone<SingleComponent>();
         }
 
-        protected void GenerateId()
+        protected internal void GenerateId()
         {
             Id = $"{Tag}_{DateTime.Now.Ticks}";
         }

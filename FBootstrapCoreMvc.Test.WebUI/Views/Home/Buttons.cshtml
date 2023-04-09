@@ -6,7 +6,7 @@
         @Html.Bootstrap().LinkButton("Default")
         @Html.Bootstrap().LinkButton("Small").Size(ButtonSize.Sm)
         @Html.Bootstrap().LinkButton("Large").Size(ButtonSize.Lg)
-        @Html.Bootstrap().LinkButton("Like","action","controller").AddIcon(IconType.HandThumbsUp)
+        @Html.Bootstrap().LinkButton("Like","action","controller").Icon(IconType.HandThumbsUp)
         @Html.Bootstrap().LinkButton("Active","action","controller").Active()
         @Html.Bootstrap().LinkButton("Disabled","action","controller").Disabled()
         @Html.Bootstrap().LinkButton("Warning","action","controller").Background(BackgroundColor.Warning)
@@ -19,7 +19,7 @@
         @Html.Bootstrap().Button("Default")
         @Html.Bootstrap().Button("Default Named").Name("Name")
         @Html.Bootstrap().Button("Submit").Type(ButtonType.Submit)
-        @Html.Bootstrap().Button("Icon").AddIcon(IconType.Plus)
+        @Html.Bootstrap().Button("Icon").Icon(IconType.Plus)
     }
     <hr />
     @Html.Bootstrap().Heading2("Button States")
