@@ -189,5 +189,13 @@ namespace FBootstrapCoreMvc.Extensions
             options.Translate = translate;
             return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> Shadow<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Shadow shadow = Enums.Shadow.Medium)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<CommonOptions>();
+            options.Shadow = shadow;
+            return bootstrapContent;
+        }
     }
 }

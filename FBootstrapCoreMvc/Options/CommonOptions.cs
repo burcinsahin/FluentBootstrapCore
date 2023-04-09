@@ -8,7 +8,7 @@ namespace FBootstrapCoreMvc.Options
     {
         public EnumList<Order> Order { get; set; }
         public Opacity? Opacity { get; set; }
-
+        public Shadow? Shadow { get; set; }
         public CommonOptions()
         {
             Order = new EnumList<Order>();
@@ -17,9 +17,13 @@ namespace FBootstrapCoreMvc.Options
         public override IEnumerable<string> GetCssList()
         {
             var cssList = new List<string>();
+            
             cssList.AddRange(Order.GetCssDescriptions());
             if (Opacity.HasValue)
                 cssList.Add(Opacity.GetCssDescription());
+            if(Shadow.HasValue)
+                cssList.Add(Shadow.GetCssDescription());
+
             return cssList;
         }
     }
