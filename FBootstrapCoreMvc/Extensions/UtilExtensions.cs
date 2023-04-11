@@ -1,5 +1,6 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Options;
+using Newtonsoft.Json.Linq;
 using System.Globalization;
 
 namespace FBootstrapCoreMvc.Extensions
@@ -200,7 +201,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         #region Sizings
-        public static BootstrapContent<TComponent> Width<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Width width) 
+        public static BootstrapContent<TComponent> Width<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Width width)
             where TComponent : BootstrapComponent
         {
             var options = bootstrapContent.Component.GetOptions<CommonOptions>();
@@ -212,6 +213,122 @@ namespace FBootstrapCoreMvc.Extensions
         {
             var options = bootstrapContent.Component.GetOptions<CommonOptions>();
             options.Height = height;
+            return bootstrapContent;
+        }
+        #endregion
+
+        #region Spacing
+        public static BootstrapContent<TComponent> Margin<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Margin margin, sbyte value = -1, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<SpacingOptions>();
+            options.Margin.TryAdd((breakpoint, margin), value);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Margin<TComponent>(this BootstrapContent<TComponent> bootstrapContent, sbyte value, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            bootstrapContent.Margin(Enums.Margin.All, value, breakpoint);
+            return bootstrapContent;
+        }
+
+        /// <summary>
+        /// Margin with matrix values
+        /// </summary>
+        /// <typeparam name="TComponent"></typeparam>
+        /// <param name="bootstrapContent"></param>
+        /// <param name="matrix">[top,right,bottom,left] matrix. null for skipping.</param>
+        /// <param name="br">breakpoint sm, md, lg etc.</param>
+        /// <returns></returns>
+        public static BootstrapContent<TComponent> Margin<TComponent>(this BootstrapContent<TComponent> bootstrapContent, sbyte?[] matrix, Breakpoint br = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            if (matrix == null || matrix.Length < 4)
+                return bootstrapContent;
+
+            var top = matrix[0];
+            var right = matrix[1];
+            var bottom = matrix[2];
+            var left = matrix[3];
+
+            if (top.HasValue)
+            {
+                bootstrapContent.Margin(Enums.Margin.Top, top.Value, br);
+            }
+            if (right.HasValue)
+            {
+                bootstrapContent.Margin(Enums.Margin.End, right.Value, br);
+            }
+            if (bottom.HasValue)
+            {
+                bootstrapContent.Margin(Enums.Margin.Bottom, bottom.Value, br);
+            }
+            if (left.HasValue)
+            {
+                bootstrapContent.Margin(Enums.Margin.Start, left.Value, br);
+            }
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Padding<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Padding padding, sbyte value = -1, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<SpacingOptions>();
+            options.Padding.TryAdd((breakpoint, padding), value);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Padding<TComponent>(this BootstrapContent<TComponent> bootstrapContent, sbyte value, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            bootstrapContent.Padding(Enums.Padding.All, value, breakpoint);
+            return bootstrapContent;
+        }
+
+        /// <summary>
+        /// Padding with matrix values
+        /// </summary>
+        /// <typeparam name="TComponent"></typeparam>
+        /// <param name="bootstrapContent"></param>
+        /// <param name="matrix">[top,right,bottom,left] matrix. null for skipping.</param>
+        /// <param name="br">breakpoint sm, md, lg etc.</param>
+        /// <returns></returns>
+        public static BootstrapContent<TComponent> Padding<TComponent>(this BootstrapContent<TComponent> bootstrapContent, sbyte?[] matrix, Breakpoint br = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            if (matrix == null || matrix.Length < 4)
+                return bootstrapContent;
+
+            var top = matrix[0];
+            var right = matrix[1];
+            var bottom = matrix[2];
+            var left = matrix[3];
+
+            if (top.HasValue)
+            {
+                bootstrapContent.Padding(Enums.Padding.Top, top.Value, br);
+            }
+            if (right.HasValue)
+            {
+                bootstrapContent.Padding(Enums.Padding.End, right.Value, br);
+            }
+            if (bottom.HasValue)
+            {
+                bootstrapContent.Padding(Enums.Padding.Bottom, bottom.Value, br);
+            }
+            if (left.HasValue)
+            {
+                bootstrapContent.Padding(Enums.Padding.Start, left.Value, br);
+            }
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Gap<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Gap gap, Breakpoint breakpoint = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<SpacingOptions>();
+            options.Gap.TryAdd(breakpoint, gap);
             return bootstrapContent;
         }
         #endregion

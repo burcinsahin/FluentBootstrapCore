@@ -12,7 +12,7 @@
     @Html.Bootstrap().Heading2("Example")
     @using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Email address").Placeholder("name@example.com").Margin(0,0,3,0)
+        @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Email address").Placeholder("name@example.com").Margin(Margin.Bottom,3)
         @Html.Bootstrap().FormInput().Type(FormInputType.Password).FloatingLabel("Password")
         <br />
         @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Input with value").Placeholder("name@example.com").Value("test@example.com")
@@ -54,7 +54,7 @@
         {
             @using (var col = row.Column().Columnize(breakpoint: Breakpoint.Medium).Begin())
             {
-                @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Email address").Placeholder("name@example.com").Value("mdo@example.com").Margin(0,0,3,0)
+                @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Email address").Placeholder("name@example.com").Value("mdo@example.com").Margin(new sbyte?[]{null,null,3,null})
             }
             @using (var col = row.Column().Columnize(breakpoint: Breakpoint.Medium).Begin())
             {

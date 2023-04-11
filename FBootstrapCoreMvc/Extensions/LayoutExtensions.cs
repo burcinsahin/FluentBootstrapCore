@@ -124,81 +124,6 @@ namespace FBootstrapCoreMvc.Extensions
         }
         #endregion
 
-        #region Margin, Padding, Float
-        public static BootstrapContent<TComponent> Margin<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Margin margin, byte? value = null, Breakpoint breakpoint = Breakpoint.Default)
-            where TComponent : SingleComponent
-        {
-            if (!value.HasValue)
-            {
-                bootstrapContent.Component.AddCss($"{margin.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-auto");
-                return bootstrapContent;
-            }
-
-            value = value.Limit((byte)0, (byte)5);
-            bootstrapContent.Component.AddCss($"{margin.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-{value}");
-            return bootstrapContent;
-        }
-
-        public static BootstrapContent<TComponent> Margin<TComponent>(this BootstrapContent<TComponent> bootstrapContent, int top = 0, int right = 0, int bottom = 0, int left = 0)
-            where TComponent : SingleComponent
-        {
-            var component = bootstrapContent.Component;
-            if (top > 0)
-            {
-                if (top > 5) top = 5;
-                component.AddCss($"mt-{top}");
-            }
-            if (right > 0)
-            {
-                if (right > 5) right = 5;
-                component.AddCss($"me-{right}");
-            }
-            if (bottom > 0)
-            {
-                if (bottom > 5) bottom = 5;
-                component.AddCss($"mb-{bottom}");
-            }
-            if (left > 0)
-            {
-                if (left > 5) left = 5;
-                component.AddCss($"ms-{left}");
-            }
-            return bootstrapContent;
-        }
-
-        public static BootstrapContent<TComponent> Margin<TComponent>(this BootstrapContent<TComponent> bootstrapContent, int all = 0)
-            where TComponent : SingleComponent
-        {
-            var component = bootstrapContent.Component;
-            if (all > 0)
-            {
-                if (all > 5) all = 5;
-                component.AddCss($"m-{all}");
-            }
-            return bootstrapContent;
-        }
-
-        public static BootstrapContent<TComponent> Padding<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte value, Breakpoint breakpoint = Breakpoint.Default)
-            where TComponent : SingleComponent
-        {
-            bootstrapContent.Padding(Enums.Padding.All, value, breakpoint);
-            return bootstrapContent;
-        }
-
-        public static BootstrapContent<TComponent> Padding<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Padding padding, byte? value = null, Breakpoint breakpoint = Breakpoint.Default)
-            where TComponent : SingleComponent
-        {
-            if (!value.HasValue)
-            {
-                bootstrapContent.Component.AddCss($"{padding.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-auto");
-                return bootstrapContent;
-            }
-
-            value = value.Value.Limit((byte)0, (byte)5);
-            bootstrapContent.Component.AddCss($"{padding.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-{value}");
-            return bootstrapContent;
-        }
-
         public static BootstrapContent<TComponent> Gutter<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Gutter gutter, byte value, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : SingleComponent, IGutterable
         {
@@ -206,7 +131,6 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.AddCss($"{gutter.GetCssDescription()}{breakpoint.GetHyphenatedDescription()}-{value}");
             return bootstrapContent;
         }
-        #endregion
 
         public static BootstrapContent<TComponent> Columnize<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte? value = null, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : SingleComponent, IColumnizable

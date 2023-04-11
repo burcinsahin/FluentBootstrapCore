@@ -17,6 +17,6 @@ namespace FBootstrapCoreMvc.Enums
         [Description("mx")]
         Horizontal,
         [Description("my")]
-        Vertical,
+        Vertical
     }
 }

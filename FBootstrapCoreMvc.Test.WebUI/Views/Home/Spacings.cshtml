@@ -1,0 +1,15 @@
+﻿@Html.Bootstrap().Heading2("Horizontal centering")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Div().Margin(Margin.Horizontal).Width(200).Content("Centered element")
+}
+@Html.Bootstrap().Heading2("Gap")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (Html.Bootstrap().Div().Display(Display.Grid).Gap(Gap._3).Begin())
+    {
+        @Html.Bootstrap().Div().Padding(2).Background(BgColor.Light).Border(Border.All).Content("Grid item 1")
+        @Html.Bootstrap().Div().Padding(2).Background(BgColor.Light).Border(Border.All).Content("Grid item 2")
+        @Html.Bootstrap().Div().Padding(2).Background(BgColor.Light).Border(Border.All).Content("Grid item 3")
+    }
+}
