@@ -1,0 +1,92 @@
+﻿@Html.Bootstrap().Heading2("Text alignment")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Paragraph("Start aligned text on all viewport sizes.").AlignText(TextAlign.Start)
+    @Html.Bootstrap().Paragraph("Center aligned text on all viewport sizes.").AlignText(TextAlign.Center)
+    @Html.Bootstrap().Paragraph("End aligned text on all viewport sizes.").AlignText(TextAlign.End)
+
+    @Html.Bootstrap().Paragraph("Start aligned text on viewports sized SM (small) or wider.").AlignText(TextAlign.Start, Breakpoint.Small)
+    @Html.Bootstrap().Paragraph("Start aligned text on viewports sized MD (medium) or wider.").AlignText(TextAlign.Start, Breakpoint.Medium)
+    @Html.Bootstrap().Paragraph("Start aligned text on viewports sized LG (large) or wider.").AlignText(TextAlign.Start, Breakpoint.Large)
+    @Html.Bootstrap().Paragraph("Start aligned text on viewports sized XL (extra-large) or wider.").AlignText(TextAlign.Start, Breakpoint.XXLarge)
+}
+<hr />
+@Html.Bootstrap().Heading2("Text wrapping and overflow")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Div().Width(6, LengthUnit.RootElement).Css(Css.Badge).Background(BgColor.Primary).WrapText().Content("This text should wrap.")
+    <br />
+    @Html.Bootstrap().Div().Width(8, LengthUnit.RootElement).Border(Border.All).Background(BgColor.Light).WrapText(TextWrap.NoWrap).Content("This text should overflow the parent.")
+}
+<hr />
+@Html.Bootstrap().Heading2("Word break")
+@using (Html.Bootstrap().Div().Width(800).Begin())
+{
+    @Html.Bootstrap().Paragraph("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm").BreakWord()
+}
+<hr />
+@Html.Bootstrap().Heading2("Text transform")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Paragraph("Lowercased text.").TransformText(TextTransform.Lowercase)
+    @Html.Bootstrap().Paragraph("Uppercased text.").TransformText(TextTransform.Uppercase)
+    @Html.Bootstrap().Paragraph("CapiTaliZed text.").TransformText(TextTransform.Capitalize)
+}
+<hr />
+@Html.Bootstrap().Heading2("Font size")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Paragraph(".fs-1 text").FontSize(FontSize._1)
+    @Html.Bootstrap().Paragraph(".fs-2 text").FontSize(FontSize._2)
+    @Html.Bootstrap().Paragraph(".fs-3 text").FontSize(FontSize._3)
+    @Html.Bootstrap().Paragraph(".fs-4 text").FontSize(FontSize._4)
+    @Html.Bootstrap().Paragraph(".fs-5 text").FontSize(FontSize._5)
+    @Html.Bootstrap().Paragraph(".fs-6 text").FontSize(FontSize._6)
+}
+<hr />
+@Html.Bootstrap().Heading2("Font weight and italics")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Paragraph("Bold text.").FontWeight(FontWeight.Bold)
+    @Html.Bootstrap().Paragraph("Bolder weight text (relative to the parent element).").FontWeight(FontWeight.Bolder)
+    @Html.Bootstrap().Paragraph("Semibold weight text.").FontWeight(FontWeight.SemiBold)
+    @Html.Bootstrap().Paragraph("Normal weight text.").FontWeight(FontWeight.Normal)
+    @Html.Bootstrap().Paragraph("Light weight text.").FontWeight(FontWeight.Light)
+    @Html.Bootstrap().Paragraph("Lighter weight text (relative to the parent element).").FontWeight(FontWeight.Lighter)
+    @Html.Bootstrap().Paragraph("Italic text.").FontStyle(FontStyle.Italic)
+    @Html.Bootstrap().Paragraph("Text with normal font style").FontStyle(FontStyle.Normal)
+}
+<hr />
+@Html.Bootstrap().Heading2("Line height")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Paragraph("This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.").LineHeight(LineHeight._1)
+    @Html.Bootstrap().Paragraph("This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.").LineHeight(LineHeight.Small)
+    @Html.Bootstrap().Paragraph("This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.").LineHeight(LineHeight.Base)
+    @Html.Bootstrap().Paragraph("This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.").LineHeight(LineHeight.Large)
+}
+<hr />
+@Html.Bootstrap().Heading2("Monospace")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Paragraph("This is in monospace").FontMonospace()
+}
+<hr />
+@Html.Bootstrap().Heading2("Reset color")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (Html.Bootstrap().Paragraph().Color(TextColor.Muted).Begin())
+    {
+        @Html.Raw("Muted text with a ")
+        @Html.Bootstrap().Link("reset link","#").ResetText()
+        @Html.Raw(".")
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Text decoration")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Paragraph("This text has a line underneath it.").DecorateText(TextDecoration.Underline)
+    @Html.Bootstrap().Paragraph("This text has a line going through it.").DecorateText(TextDecoration.LineThrough)
+    @Html.Bootstrap().Link("This link has its text decoration removed").DecorateText(TextDecoration.None)
+}

@@ -56,7 +56,7 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<ListItem>(builder.HtmlHelper, listItem);
         }
 
-        public static BootstrapContent<Container> AlignText(this BootstrapContent<Container> content, TextAlignment alignment)
+        public static BootstrapContent<Container> AlignText(this BootstrapContent<Container> content, TextAlign alignment)
         {
             content.Component.AddCss(alignment.GetCssDescription());
             return content;

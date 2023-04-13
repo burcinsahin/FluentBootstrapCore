@@ -332,5 +332,118 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
         #endregion
+
+        #region Text
+        public static BootstrapContent<TComponent> AlignText<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            TextAlign textAlign,
+            Breakpoint br = Breakpoint.Default)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.TextAlign.TryAdd(br, textAlign);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> WrapText<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            TextWrap textWrap = TextWrap.Wrap)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.TextWrap = textWrap;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> TransformText<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            TextTransform textTransform)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.TextTransform = textTransform;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> DecorateText<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            TextDecoration textDecoration)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.TextDecoration = textDecoration;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> FontSize<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            FontSize fontSize)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.FontSize = fontSize;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> FontWeight<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            FontWeight fontWeight)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.FontWeight = fontWeight;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> FontStyle<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            FontStyle fontStyle)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.FontStyle = fontStyle;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> FontMonospace<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            bool monospace = true)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.FontMonospace = monospace;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> ResetText<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            bool reset = true)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.TextReset = reset;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> BreakWord<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.WordBreak = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> LineHeight<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            LineHeight lineHeight)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<TextOptions>();
+            options.LineHeight = lineHeight;
+            return bootstrapContent;
+        }
+
+        #endregion
     }
 }
