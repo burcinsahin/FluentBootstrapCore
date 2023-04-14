@@ -1,8 +1,8 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class TableCell : SingleComponent
+    public class TableCell : BootstrapComponent
     {
-        public TableCell() 
+        public TableCell()
             : base("td")
         {
         }

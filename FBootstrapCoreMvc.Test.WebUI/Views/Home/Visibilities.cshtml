@@ -1,0 +1,6 @@
+﻿@Html.Bootstrap().Heading2("Visibility")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Div().Visible(true).Content(".visible")
+    @Html.Bootstrap().Div().Visible(false).Content(".invisible")
+}

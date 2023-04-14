@@ -1,5 +1,4 @@
 ﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
 using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc.Options
@@ -11,6 +10,8 @@ namespace FBootstrapCoreMvc.Options
         public Shadow? Shadow { get; set; }
         public Width? Width { get; set; }
         public Height? Height { get; set; }
+        public VerticalAlign? VerticalAlign { get; set; }
+        public Visibility? Visibility { get; internal set; }
 
         public CommonOptions()
         {
@@ -19,18 +20,14 @@ namespace FBootstrapCoreMvc.Options
 
         public override IEnumerable<string> GetCssList()
         {
-            var cssList = new List<string>();
-
-            cssList.AddRange(Order.GetCssDescriptions());
-            if (Opacity.HasValue)
-                cssList.Add(Opacity.GetCssDescription());
-            if (Shadow.HasValue)
-                cssList.Add(Shadow.GetCssDescription());
-            if (Width.HasValue)
-                cssList.Add(Width.GetCssDescription());
-            if (Height.HasValue)
-                cssList.Add(Height.GetCssDescription());
-            return cssList;
+            AddCssFor(Order);
+            AddCssFor(Opacity);
+            AddCssFor(Shadow);
+            AddCssFor(Width);
+            AddCssFor(Height);
+            AddCssFor(VerticalAlign);
+            AddCssFor(Visibility);
+            return base.GetCssList();
         }
     }
 }

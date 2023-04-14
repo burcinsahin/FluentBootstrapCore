@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class TableHeader : SingleComponent
+    public class TableHeader : BootstrapComponent
     {
         public TableHeader(params string[] headers) : base("thead")
         {

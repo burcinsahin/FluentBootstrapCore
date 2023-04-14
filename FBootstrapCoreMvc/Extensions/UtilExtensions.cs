@@ -445,5 +445,27 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         #endregion
+
+        public static BootstrapContent<TComponent> VerticalAlign<TComponent>(this BootstrapContent<TComponent> bootstrapContent, VerticalAlign verticalAlign)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<CommonOptions>();
+            options.VerticalAlign = verticalAlign;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Visible<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Visibility visibility)
+            where TComponent : BootstrapComponent
+        {
+            var options = bootstrapContent.Component.GetOptions<CommonOptions>();
+            options.Visibility = visibility;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Visible<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool visible = true)
+            where TComponent : BootstrapComponent => bootstrapContent.Visible(visible ? Visibility.Visible : Visibility.Invisible);
+
+        public static BootstrapContent<TComponent> Invisible<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : BootstrapComponent => bootstrapContent.Visible(false);
     }
 }

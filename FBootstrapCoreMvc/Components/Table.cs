@@ -4,7 +4,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Table : SingleComponent,
+    public class Table : BootstrapComponent,
         ICanCreate<TableHeader>,
         ICanCreate<TableRow>,
         ICanCreate<TableCell>

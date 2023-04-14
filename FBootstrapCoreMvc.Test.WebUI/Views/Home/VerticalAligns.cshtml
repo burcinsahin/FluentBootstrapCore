@@ -1,0 +1,23 @@
+﻿@Html.Bootstrap().Heading2("Vertical alignment")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Span().VerticalAlign(VerticalAlign.Baseline).Content("baseline")
+    @Html.Bootstrap().Span().VerticalAlign(VerticalAlign.Top).Content("top")
+    @Html.Bootstrap().Span().VerticalAlign(VerticalAlign.Middle).Content("middle")
+    @Html.Bootstrap().Span().VerticalAlign(VerticalAlign.Bottom).Content("bottom")
+    @Html.Bootstrap().Span().VerticalAlign(VerticalAlign.TextTop).Content("text-top")
+    @Html.Bootstrap().Span().VerticalAlign(VerticalAlign.TextBottom).Content("text-bottom")
+}
+<br />
+@using (var table = Html.Bootstrap().Table().Height(100).Begin())
+{
+    @using (var row = @table.TableRow().Begin())
+    {
+        @row.TableData("baseline").VerticalAlign(VerticalAlign.Baseline)
+        @row.TableData("top").VerticalAlign(VerticalAlign.Top)
+        @row.TableData("middle").VerticalAlign(VerticalAlign.Middle)
+        @row.TableData("bottom").VerticalAlign(VerticalAlign.Bottom)
+        @row.TableData("text-top").VerticalAlign(VerticalAlign.TextTop)
+        @row.TableData("text-bottom").VerticalAlign(VerticalAlign.TextBottom)
+    }
+}
