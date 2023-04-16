@@ -1,6 +1,6 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class Label : SingleComponent
+    public class Label : BootstrapComponent
     {
         public string? For { get; set; }
 

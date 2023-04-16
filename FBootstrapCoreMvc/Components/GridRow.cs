@@ -3,7 +3,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class GridRow : SingleComponent,
+    public class GridRow : BootstrapComponent,
         ICanCreate<GridColumn>,
         IJustifyContent,
         IAlignItem,

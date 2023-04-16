@@ -1,6 +1,6 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class ListItem : SingleComponent
+    public class ListItem : BootstrapComponent
     {
         public bool Inline { get; set; }
 

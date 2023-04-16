@@ -1,6 +1,6 @@
 ﻿namespace FBootstrapCoreMvc.Components
 {
-    public class ModalHeader : SingleComponent
+    public class ModalHeader : BootstrapComponent
     {
         public ModalHeader(object? content = null)
             : base("div", Css.ModalHeader)

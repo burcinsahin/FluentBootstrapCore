@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class CardBody : SingleComponent
+    public class CardBody : BootstrapComponent
     {
         internal object? Title { get; set; }
         internal object? Subtitle { get; set; }

@@ -4,7 +4,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class ButtonGroup : SingleComponent, 
+    public class ButtonGroup : BootstrapComponent, 
         ICanCreate<IButton>,
         ICanCreate<ButtonGroup>,
         ICanCreate<DropdownMenu>

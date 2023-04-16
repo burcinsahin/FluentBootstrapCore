@@ -3,7 +3,7 @@ using FBootstrapCoreMvc.Extensions;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Alert : SingleComponent
+    public class Alert : BootstrapComponent
     {
         public bool Dismissible { get; set; }
         public string? Heading { get; set; }

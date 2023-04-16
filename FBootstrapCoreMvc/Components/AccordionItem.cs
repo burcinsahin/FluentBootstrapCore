@@ -3,7 +3,7 @@ using FBootstrapCoreMvc.Extensions;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class AccordionItem : SingleComponent
+    public class AccordionItem : BootstrapComponent
     {
         public bool Show { get; set; }
         public string? Header { get; internal set; }

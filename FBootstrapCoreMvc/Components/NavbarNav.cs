@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class NavbarNav : SingleComponent,
+    public class NavbarNav : BootstrapComponent,
         ICanCreate<NavbarLink>,
         ICanCreate<NavbarDropdown>
     {

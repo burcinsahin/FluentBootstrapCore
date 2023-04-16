@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Accordion : SingleComponent,
+    public class Accordion : BootstrapComponent,
         ICanCreate<AccordionItem>
     {
         public bool Flush { get; set; }

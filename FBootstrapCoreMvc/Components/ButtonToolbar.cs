@@ -4,7 +4,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class ButtonToolbar : SingleComponent,
+    public class ButtonToolbar : BootstrapComponent,
         ICanCreate<ButtonGroup>,
         ICanCreate<InputGroup>,
         IJustifyContent

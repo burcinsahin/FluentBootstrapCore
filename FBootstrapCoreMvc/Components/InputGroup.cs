@@ -2,7 +2,7 @@
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class InputGroup : SingleComponent,
+    public class InputGroup : BootstrapComponent,
         ICanCreate<Input>
     {
         public InputGroup() : base("div", Css.InputGroup)

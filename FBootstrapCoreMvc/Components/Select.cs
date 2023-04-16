@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Select : SingleComponent,
+    public class Select : BootstrapComponent,
         ICanCreate<SelectOption>,
         ICanBeMultiple,
         ICanBeDisabled,

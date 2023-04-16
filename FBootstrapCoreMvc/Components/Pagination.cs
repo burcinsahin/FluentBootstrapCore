@@ -4,7 +4,7 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class Pagination : SingleComponent,
+    public class Pagination : BootstrapComponent,
         ICanCreate<PageItem>
     {
         public Pagination()

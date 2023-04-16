@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public class FormSelect : SingleComponent,
+    public class FormSelect : BootstrapComponent,
         ICanHaveLabel,
         ICanHaveFloatingLabel,
         ICanHaveOptions

@@ -22,7 +22,7 @@ namespace FBootstrapCoreMvc.Components
         protected bool _labelFirst;
         internal abstract TComponent Input { get; }
 
-        public Dictionary<Type, IUtilityOptions>? InputOpts { get; set; }
+        public OptionList? InputOpts { get; set; }
 
         protected readonly Label _label;
 
