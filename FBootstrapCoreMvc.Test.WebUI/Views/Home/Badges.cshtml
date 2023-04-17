@@ -1,31 +1,32 @@
-﻿@using (Html.Bootstrap().Container().Begin())
+﻿@using FBootstrapCoreMvc.Options;
+@using (Html.Bootstrap().Container().Begin())
 {
     @Html.Bootstrap().Heading2("Headings")
     using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().Heading1("Example heading ").Badge("New")
-        @Html.Bootstrap().Heading2("Example heading ").Badge("New")
-        @Html.Bootstrap().Heading3("Example heading ").Badge("New")
-        @Html.Bootstrap().Heading4("Example heading ").Badge("New")
-        @Html.Bootstrap().Heading5("Example heading ").Badge("New")
-        @Html.Bootstrap().Heading6("Example heading ").Badge("New")
+        @Html.Bootstrap().Heading1("Example heading ").WithBadge("New")
+        @Html.Bootstrap().Heading2("Example heading ").WithBadge("New")
+        @Html.Bootstrap().Heading3("Example heading ").WithBadge("New")
+        @Html.Bootstrap().Heading4("Example heading ").WithBadge("New")
+        @Html.Bootstrap().Heading5("Example heading ").WithBadge("New")
+        @Html.Bootstrap().Heading6("Example heading ").WithBadge("New")
     }
 
     <hr />
     @Html.Bootstrap().Heading2("Buttons")
     using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().Button("Notifications ").Badge("4")
+        @Html.Bootstrap().Button("Notifications ").WithBadge("4")
     }
 
     <hr />
     @Html.Bootstrap().Heading2("Positioned")
     using (Html.Bootstrap().Div().Begin())
     {
-        @Html.Bootstrap().Button("Inbox").Badge("99+").PositionBadge()
+        @Html.Bootstrap().Button("Inbox").WithBadge("99+").PositionBadge()
         <br />
         <br />
-        @Html.Bootstrap().Button("Profile").Badge("").PositionBadge()
+        @Html.Bootstrap().Button("Profile").WithBadge("").PositionBadge()
     }
 
     <hr />

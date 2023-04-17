@@ -10,8 +10,7 @@ namespace FBootstrapCoreMvc.Components
         public ButtonType ButtonType { get; set; }
         public ButtonOutlineState? OutlineState { get; set; }
         public IconType? IconType { get; set; }
-        public string? Badge { get; set; }
-        public bool PositionBadge { get; set; }
+        public Badge? Badge { get; set; }
         public string? Name { get; set; }
 
         protected ButtonComponent(string tagName)

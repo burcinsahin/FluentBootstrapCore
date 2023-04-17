@@ -1,7 +1,9 @@
-﻿namespace FBootstrapCoreMvc.Interfaces
+﻿using FBootstrapCoreMvc.Components;
+
+namespace FBootstrapCoreMvc.Interfaces
 {
     public interface ICanHaveBadge
     {
-        string? Badge { get; set; }
+        Badge? Badge { get; set; }
     }
 }

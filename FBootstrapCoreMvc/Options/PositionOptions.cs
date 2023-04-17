@@ -11,6 +11,9 @@ namespace FBootstrapCoreMvc.Options
         public Translate? Translate { get; set; }
         public override IEnumerable<string> GetCssList()
         {
+            if (Absolute.HasValue)
+                Position = Enums.Position.Absolute;
+
             var cssList = new List<string>();
 
             if (Position.HasValue)

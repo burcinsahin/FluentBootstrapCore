@@ -1,6 +1,7 @@
 ﻿using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Extensions;
 using FBootstrapCoreMvc.Interfaces;
+using FBootstrapCoreMvc.Options;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -9,7 +10,6 @@ namespace FBootstrapCoreMvc.Components
         ICanHaveName
     {
         public object? Value { get; set; }
-
         public Button(object? content = null)
             : base("button")
         {
@@ -19,27 +19,26 @@ namespace FBootstrapCoreMvc.Components
         protected override void PreBuild()
         {
             MergeAttribute("type", ButtonType.GetCssDescription());
+
             if (Value != null)
                 MergeAttribute("value", Value);
 
             if (Badge != null)
             {
-                var badge = new Badge() { Content = Badge };
-                badge.AddCss(Css.TextBgSecondary);
-                if (PositionBadge)
+                if (!Badge.UtilityOptions.Contains<BackgroundOptions>())
+                    Badge.UtilityOptions.Add(new BackgroundOptions() { BgColor = BgColor.Secondary });
+
+                if (Badge.UtilityOptions.Contains<PositionOptions>() && Badge.UtilityOptions.Get<PositionOptions>().Absolute.HasValue)
                 {
-                    AddCss(Css.PositionRelative);
-                    badge.AddCss(Css.PositionAbsolute, Css.Top0, Css.Start100, Css.TranslateMiddle, Css.BgDanger);
-                    if (Badge == string.Empty)
+                    UtilityOptions.Add(new PositionOptions
                     {
-                        badge.AddCss(Css.P2, Css.Border, Css.BorderLight, Css.RoundedCircle);
-                        badge.RemoveCss(Css.Badge);
-                    }
-                    else
-                        badge.AddCss(Css.RoundedPill);
+                        Position = Position.Relative,
+                    });
                 }
-                AddChild(badge);
+
+                AddChild(Badge);
             }
+
             base.PreBuild();
         }
     }

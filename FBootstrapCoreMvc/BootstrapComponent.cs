@@ -9,17 +9,17 @@ namespace FBootstrapCoreMvc
     /// </summary>
     public abstract class BootstrapComponent : SingleComponent
     {
-        internal Dictionary<Type, IUtilityOptions> UtilityOptions { get; set; }
+        internal OptionList UtilityOptions { get; set; }
 
         protected BootstrapComponent(string tagName, params string[] cssClasses)
             : base(tagName, cssClasses)
         {
-            UtilityOptions = new Dictionary<Type, IUtilityOptions>();
+            UtilityOptions = new OptionList();
         }
 
         protected override void PreBuild()
         {
-            foreach (var opts in UtilityOptions.Values)
+            foreach (var opts in UtilityOptions)
             {
                 AddCss(opts.GetCssList());
             }
@@ -29,10 +29,10 @@ namespace FBootstrapCoreMvc
         protected internal TOptions GetOptions<TOptions>() 
             where TOptions : IUtilityOptions, new()
         {
-            if (!UtilityOptions.ContainsKey(typeof(TOptions)))
-                UtilityOptions.Add(typeof(TOptions), new TOptions());
+            if (!UtilityOptions.Contains<TOptions>())
+                UtilityOptions.Add(new TOptions());
 
-            return (TOptions)UtilityOptions[typeof(TOptions)];
+            return UtilityOptions.Get<TOptions>();
         }
     }
 }

@@ -5,7 +5,6 @@ namespace FBootstrapCoreMvc.Interfaces
     public interface IButton :
         ICanHaveIcon,
         ICanHaveBadge,
-        ICanPositionBadge,
         IButtonState,
         IButtonOutlineState
     {

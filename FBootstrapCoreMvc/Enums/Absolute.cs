@@ -29,6 +29,10 @@ namespace FBootstrapCoreMvc.Enums
         [Description(Css.End50)]
         End50 = 1 << 10,
         [Description(Css.End100)]
-        End100 = 1 << 11
+        End100 = 1 << 11,
+        TopEnd = Top0 | End0,
+        BottomEnd = Bottom0 | End0,
+        TopStart = Top0 | Start0,
+        BottomStart = Bottom0 | Start0
     }
 }

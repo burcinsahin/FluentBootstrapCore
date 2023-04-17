@@ -1,4 +1,5 @@
-﻿<style>
+﻿@using FBootstrapCoreMvc.Options;
+<style>
     div > div > div.position-absolute {
         width: 2rem;
         height: 2rem;
@@ -7,14 +8,15 @@
     }
 </style>
 @Html.Bootstrap().Heading2("Position values")
-@using (Html.Bootstrap().Div().Begin())
+@using (Html.Bootstrap().Div().Height(400).Begin())
 {
-    @Html.Bootstrap().Div().Position(Position.Static).Content("...")
-    @Html.Bootstrap().Div().Position(Position.Relative).Content("...")
-    @Html.Bootstrap().Div().Position(Position.Absolute).Content("...")
-    @Html.Bootstrap().Div().Position(Position.Fixed).Content("...")
-    @Html.Bootstrap().Div().Position(Position.Sticky).Content("...")
+    @Html.Bootstrap().Div().Position(Position.Static).Content("static")
+    @Html.Bootstrap().Div().Position(Position.Relative).Content("relative")
+    @Html.Bootstrap().Div().Position(Position.Absolute).Content("absolute")
+    @Html.Bootstrap().Div().Position(Position.Fixed).Content("fixed")
+    @Html.Bootstrap().Div().Position(Position.Sticky).Content("sticky")
 }
+<hr />
 @Html.Bootstrap().Heading2("Arrange elements")
 @using (Html.Bootstrap().Div().Begin())
 {
@@ -28,6 +30,7 @@
         @Html.Bootstrap().Div().Position(Absolute.Bottom0|Absolute.End0)
     }
 }
+<hr />
 @Html.Bootstrap().Heading2("Center elements")
 @using (Html.Bootstrap().Div().Begin())
 {
@@ -57,9 +60,12 @@
         @Html.Bootstrap().Div().Position(Absolute.Bottom0|Absolute.End0)
     }
 }
+<hr />
 @Html.Bootstrap().Heading2("Examples")
 @using (Html.Bootstrap().Div().Begin())
 {
-    //TODO:
-    @Html.Bootstrap().Button().Badge("+99").PositionBadge().State(ButtonState.Primary).Content("Mails")
+                //TODO: Need to implement svg?
+    @Html.Bootstrap().Button().Margin(3).State(ButtonState.Primary).WithBadge("+99", "unread messages", new BackgroundOptions{ BgColor = BgColor.Secondary }).PositionBadge().Content("Mails")
+    @Html.Bootstrap().Button().Margin(3).State(ButtonState.Dark).Position(Position.Relative).Content("Marker")
+    @Html.Bootstrap().Button().Margin(3).State(ButtonState.Primary).WithBadge("", "unread messages").PositionBadge().Content("Alerts")
 }

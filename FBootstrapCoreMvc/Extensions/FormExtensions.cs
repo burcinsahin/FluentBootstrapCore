@@ -248,8 +248,8 @@ namespace FBootstrapCoreMvc.Extensions
             where TInput : BootstrapComponent, IInputComponent
         {
             if (bootstrapContent.Component.InputOpts == null)
-                bootstrapContent.Component.InputOpts = new Dictionary<Type, IUtilityOptions>();
-            bootstrapContent.Component.InputOpts.TryAdd(opts.GetType(), opts);
+                bootstrapContent.Component.InputOpts = new OptionList();
+            bootstrapContent.Component.InputOpts.Add(opts);
             return bootstrapContent;
         }
 

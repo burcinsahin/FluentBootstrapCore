@@ -5,7 +5,7 @@ namespace FBootstrapCoreMvc.Components
     public class Heading : BootstrapComponent,
         ICanHaveBadge
     {
-        public string? Badge { get; set; }
+        public Badge? Badge { get; set; }
 
         public Heading(byte size)
             : base($"h{size}")
@@ -16,9 +16,8 @@ namespace FBootstrapCoreMvc.Components
         {
             if (Badge != null)
             {
-                var badge = new Badge() { Content = Badge };
-                badge.AddCss(Css.TextBgSecondary);
-                AddChild(badge);
+                Badge.AddCss(Css.TextBgSecondary);
+                AddChild(Badge);
             }
             base.PreBuild();
         }
