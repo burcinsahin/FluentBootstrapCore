@@ -148,7 +148,7 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<HtmlElement>(HtmlHelper, div);
         }
 
-        public BootstrapContent<HtmlElement> IFrame(string src, string? width = null, string? height = null, byte frameborder = 0)
+        public BootstrapContent<HtmlElement> IFrame(string src, string? width = null, string? height = null, byte frameborder = 0, string? title = null, bool allowFullscreen = false)
         {
             var iframe = new HtmlElement("iframe");
             iframe.MergeAttribute("src", src);
@@ -158,10 +158,14 @@ namespace FBootstrapCoreMvc
                 iframe.MergeAttribute("height", height);
             if (frameborder > 0)
                 iframe.MergeAttribute("frameborder", frameborder);
+            if (title != null)
+                iframe.MergeAttribute("title", title);
+            if (allowFullscreen)
+                iframe.MergeAttribute("allowfullscreen");
             return new BootstrapContent<HtmlElement>(HtmlHelper, iframe);
         }
-        
-        public BootstrapContent<HtmlElement> Span(object? content=null)
+
+        public BootstrapContent<HtmlElement> Span(object? content = null)
         {
             var span = new HtmlElement("span")
             {
@@ -303,7 +307,7 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<LinkButton>(HtmlHelper, linkButton);
         }
 
-        public BootstrapContent<Link> Link(object? content, string href = "#")
+        public BootstrapContent<Link> Link(object? content = null, string href = "#")
         {
             var link = new Link(content)
             {

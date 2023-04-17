@@ -5,6 +5,8 @@ namespace FBootstrapCoreMvc.Components
     public class Image : BootstrapComponent,
         IColumnizable
     {
+        public string? Source { get; set; }
+        public string? Alt { get; set; }
         public bool Fluid { get; set; }
         public bool Thumbnail { get; set; }
         public Image()

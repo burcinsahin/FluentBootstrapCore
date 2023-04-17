@@ -1,4 +1,6 @@
 ﻿using FBootstrapCoreMvc.Components;
+using Microsoft.AspNetCore.Routing.Constraints;
+using System.Net.Mail;
 
 namespace FBootstrapCoreMvc.Extensions
 {
@@ -35,6 +37,38 @@ namespace FBootstrapCoreMvc.Extensions
             bootstrapContent.Component.HasCardBody = false;
             return bootstrapContent;
         }
+
+        public static BootstrapContent<Heading> Title(this BootstrapBuilder<Card> builder, object? content = null)
+        {
+            var heading = new Heading(5)
+            {
+                Content = content
+            };
+            heading.AddCss(Css.CardTitle);
+            return new BootstrapContent<Heading>(builder.HtmlHelper, heading);
+        }
+
+        public static BootstrapContent<HtmlElement> Text(this BootstrapBuilder<Card> builder, object? content = null)
+        {
+            var p = new HtmlElement("p")
+            {
+                Content = content
+            };
+            p.AddCss(Css.CardText);
+            return new BootstrapContent<HtmlElement>(builder.HtmlHelper, p);
+        }
+
+        public static BootstrapContent<Image> Image(this BootstrapBuilder<Card> builder, string src, string? alt = null)
+        {
+            var img = new Image()
+            {
+                Source = src,
+                Alt = alt,
+            };
+            img.AddCss(Css.CardImg);
+            return new BootstrapContent<Image>(builder.HtmlHelper, img);
+        }
+
 
         public static BootstrapContent<CardHeader> Header(this BootstrapBuilder<Card> builder, object? content = null)
         {

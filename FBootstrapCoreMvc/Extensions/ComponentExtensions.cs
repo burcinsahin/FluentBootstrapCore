@@ -105,24 +105,6 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> TextBackground<TComponent>(
-            this BootstrapContent<TComponent> bootstrapContent,
-            TextBgState state = TextBgState.Primary)
-            where TComponent : SingleComponent
-        {
-            bootstrapContent.Component.AddCss(state.GetCssDescription());
-            return bootstrapContent;
-        }
-
-        //public static BootstrapContent<TComponent> Background<TComponent>(
-        //    this BootstrapContent<TComponent> bootstrapContent,
-        //    BackgroundColor state = BackgroundColor.Primary)
-        //    where TComponent : SingleComponent
-        //{
-        //    bootstrapContent.Component.AddCss(state.GetCssDescription());
-        //    return bootstrapContent;
-        //}
-
         public static BootstrapContent<TComponent> Id<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string? id = null)

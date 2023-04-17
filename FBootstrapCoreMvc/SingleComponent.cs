@@ -98,7 +98,7 @@ namespace FBootstrapCoreMvc
                 CssClasses.Remove(cssClass);
         }
 
-        protected internal void MergeStyle(string key, string value)
+        protected internal void MergeStyle(string key, object value)
         {
             Styles.Add(key, value);
         }

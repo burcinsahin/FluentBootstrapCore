@@ -70,6 +70,16 @@
     {
         using (var list = Html.Bootstrap().List().Begin())
         {
+            @list.ListItem(Html.Bootstrap().Link("Clearfix", "/Tests/Helpers#clearfix"))
+            @list.ListItem(Html.Bootstrap().Link("Color & background", "/Tests/Helpers#colorbg"))
+            @list.ListItem(Html.Bootstrap().Link("Colored links", "/Tests/Helpers#coloredlinks"))
+            @list.ListItem(Html.Bootstrap().Link("Position", "/Tests/Helpers#position"))
+            @list.ListItem(Html.Bootstrap().Link("Ratio", "/Tests/Helpers#ratio"))
+            @list.ListItem(Html.Bootstrap().Link("Stacks", "/Tests/Helpers#stacks"))
+            @list.ListItem(Html.Bootstrap().Link("Stretched link", "/Tests/Helpers#stretchedlink"))
+            @list.ListItem(Html.Bootstrap().Link("Text truncation", "/Tests/Helpers#texttruncation"))
+            @list.ListItem(Html.Bootstrap().Link("Vertical rule", "/Tests/Helpers#verticalrule"))
+            @list.ListItem(Html.Bootstrap().Link("Visually hidden", "/Tests/Helpers#visuallyhidden"))
         }
     }
     @using (acc.AccordionItem("Utilities").Begin())

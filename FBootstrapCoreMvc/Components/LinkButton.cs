@@ -1,8 +1,11 @@
-﻿namespace FBootstrapCoreMvc.Components
+﻿using FBootstrapCoreMvc.Interfaces;
+
+namespace FBootstrapCoreMvc.Components
 {
-    public class LinkButton : ButtonComponent
-        
+    public class LinkButton : ButtonComponent, ILink
     {
+        public string? Href { get; set; }
+
         public LinkButton(object? content = null)
             : base("a")
         {

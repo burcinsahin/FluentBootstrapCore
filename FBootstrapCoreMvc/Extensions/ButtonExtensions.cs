@@ -45,16 +45,18 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> State<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonState buttonState)
-            where TComponent : SingleComponent, IButton
+            where TComponent : BootstrapComponent, IButton
         {
             bootstrapContent.Component.ButtonState = buttonState;
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> Outline<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonOutlineState state)
-            where TComponent : SingleComponent, IButtonOutlineState
+        public static BootstrapContent<TComponent> Outline<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonOutlineState outline, ButtonState state = ButtonState.None)
+            where TComponent : BootstrapComponent, IButton
         {
-            bootstrapContent.Component.OutlineState = state;
+            bootstrapContent.Component.OutlineState = outline;
+            bootstrapContent.Component.ButtonState = state;
+
             return bootstrapContent;
         }
 
