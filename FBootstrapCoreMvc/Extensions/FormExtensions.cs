@@ -210,8 +210,9 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<Button> Button<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Button", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : SingleComponent, ICanCreate<Button>
         {
-            var button = new Button(text)
+            var button = new Button()
             {
+                Content = text,
                 ButtonType = ButtonType.Button,
                 Value = value
             };
@@ -221,8 +222,9 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<Button> Submit<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Submit", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : SingleComponent, ICanCreate<Button>
         {
-            var submit = new Button(text)
+            var submit = new Button()
             {
+                Content = text,
                 ButtonState = buttonState,
                 ButtonType = ButtonType.Submit,
                 Value = value
@@ -233,8 +235,9 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<Button> Reset<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Reset", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : SingleComponent, ICanCreate<Button>
         {
-            var reset = new Button(text)
+            var reset = new Button()
             {
+                Content = text,
                 ButtonState = buttonState,
                 ButtonType = ButtonType.Reset,
                 Value = value

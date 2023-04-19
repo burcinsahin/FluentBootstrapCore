@@ -1,43 +1,31 @@
-﻿namespace FBootstrapCoreMvc.Components
+﻿using FBootstrapCoreMvc.Interfaces;
+
+namespace FBootstrapCoreMvc.Components
 {
-    public class PageItem : BootstrapComponent
+    public class PageItem : BootstrapComponent, ICanBeActive, ICanBeDisabled
     {
-        private Link _link;
+        protected internal Link Link { get; set; }
+        public bool Active { get; set; }
+        public bool Disabled { get; set; }
 
         public PageItem()
             : base("li", Css.PageItem)
         {
-            _link = new Link();
-            _link.AddCss(Css.PageLink);
+            Link = new Link();
         }
 
         protected override void PreBuild()
         {
-            AddChild(_link);
-            base.PreBuild();
-        }
-
-        protected internal PageItem SetLink(string? href, object? content)
-        {
-            _link.Href = href;
-            _link.Content = content;
-            return this;
-        }
-
-        public PageItem SetActive(bool active = true)
-        {
-            if (active)
+            if (Active)
                 AddCss(Css.Active);
-
-            return this;
-        }
-
-        public PageItem SetDisabled(bool disabled = true)
-        {
-            if (disabled)
+            if (Disabled)
                 AddCss(Css.Disabled);
 
-            return this;
+            Link.AddCss(Css.PageLink);
+
+            AddChild(Link);
+
+            base.PreBuild();
         }
     }
 }

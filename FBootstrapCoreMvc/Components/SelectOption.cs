@@ -24,18 +24,5 @@ namespace FBootstrapCoreMvc.Components
 
             base.PreBuild();
         }
-
-        //protected internal SelectOption SetSelected(bool selected = true)
-        //{
-        //    if (!selected) return this;
-        //    MergeAttribute("selected");
-        //    return this;
-        //}
-
-        //protected internal SelectOption SetValue(string value)
-        //{
-        //    MergeAttribute("value", value);
-        //    return this;
-        //}
     }
 }

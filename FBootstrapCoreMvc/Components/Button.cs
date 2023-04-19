@@ -10,10 +10,9 @@ namespace FBootstrapCoreMvc.Components
         ICanHaveName
     {
         public object? Value { get; set; }
-        public Button(object? content = null)
+        public Button()
             : base("button")
         {
-            Content = content;
         }
 
         protected override void PreBuild()

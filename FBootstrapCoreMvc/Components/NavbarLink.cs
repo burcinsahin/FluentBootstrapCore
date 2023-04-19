@@ -1,28 +1,30 @@
-﻿namespace FBootstrapCoreMvc.Components
+﻿using FBootstrapCoreMvc.Interfaces;
+
+namespace FBootstrapCoreMvc.Components
 {
-    public class NavbarLink : BootstrapComponent
+    public class NavbarLink : BootstrapComponent, ILink, ICanBeActive
     {
-        private Link _link;
+        public string? Href { get; set; }
+        public bool Active { get; set; }
 
         public NavbarLink(string? text)
             : base("li", Css.NavItem)
         {
-            _link = new Link() { Content = text };
-            _link.AddCss(Css.NavLink);
-            AddChild(_link);
         }
 
-        public NavbarLink SetActive()
+        protected override void PreBuild()
         {
-            _link.AddCss(Css.Active);
-            _link.MergeAttribute("aria-current", "page");
-            return this;
-        }
-
-        public NavbarLink SetHref(string href)
-        {
-            _link.MergeAttribute("href", href);
-            return this;
+            var link = new Link
+            {
+                Content = Content,
+                Href = Href
+            };
+            link.AddCss(Css.NavLink);
+            if (Active)
+                link.AddCss(Css.Active);
+            AddChild(link);
+            Content = null;
+            base.PreBuild();
         }
     }
 }

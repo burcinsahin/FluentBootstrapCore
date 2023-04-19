@@ -44,9 +44,9 @@
     {
         @using (var row = container.Row().Begin())
         {
-            @row.Column().AlignSelf(AlignSelf.Start).Content("One of three columns")
-            @row.Column().AlignSelf(AlignSelf.Center).Content("One of three columns")
-            @row.Column().AlignSelf(AlignSelf.End).Content("One of three columns")
+            @row.Column().Flex(AlignSelf.Start).Content("One of three columns")
+            @row.Column().Flex(AlignSelf.Center).Content("One of three columns")
+            @row.Column().Flex(AlignSelf.End).Content("One of three columns")
         }
     }
     @Html.Bootstrap().Heading3("Horizontal alignment")

@@ -54,10 +54,11 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<NavbarLink> NavbarLink<TComponent>(this BootstrapBuilder<TComponent> builder, string text, string action, string controller, object? routeValues = null)
             where TComponent : SingleComponent, ICanCreate<NavbarLink>
         {
-            var navbarLink = new NavbarLink(text);
-            navbarLink.SetHref(builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues));
+            var navbarLink = new NavbarLink(text)
+            {
+                Href = builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues)
+            };
             return new BootstrapContent<NavbarLink>(builder.HtmlHelper, navbarLink);
-
         }
 
         public static BootstrapContent<NavbarDropdown> Dropdown<TComponent>(this BootstrapBuilder<TComponent> builder, string text)

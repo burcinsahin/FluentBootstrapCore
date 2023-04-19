@@ -1,6 +1,4 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
@@ -14,14 +12,12 @@ namespace FBootstrapCoreMvc.Components
 
         public Pagination AddPageItem(string? href, object? content, bool active = false, bool disabled = false)
         {
-            var pageItem = new PageItem().SetLink(href, content).SetActive(active).SetDisabled(disabled);
+            var pageItem = new PageItem();
+            pageItem.Link.Href = href;
+            pageItem.Link.Content = content;
+            pageItem.Active = active;
+            pageItem.Disabled = disabled;
             AddChild(pageItem);
-            return this;
-        }
-
-        public Pagination JustifyContent(JustifyContent justifyContent)
-        {
-            AddCss(justifyContent.GetCssDescription());
             return this;
         }
     }

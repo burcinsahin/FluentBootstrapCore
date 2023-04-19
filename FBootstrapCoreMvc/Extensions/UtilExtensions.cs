@@ -7,6 +7,7 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class UtilExtensions
     {
+        #region Background
         public static BootstrapContent<TComponent> Background<TComponent>(this BootstrapContent<TComponent> bootstrapContent, BgColor bgColor, bool gradient = false, byte? opacity = null)
             where TComponent : BootstrapComponent
         {
@@ -16,8 +17,10 @@ namespace FBootstrapCoreMvc.Extensions
             backgroundOpts.Gradient = gradient;
 
             return bootstrapContent;
-        }
+        } 
+        #endregion
 
+        #region Color
         /// <summary>
         /// Color utilities.
         /// </summary>
@@ -36,7 +39,9 @@ namespace FBootstrapCoreMvc.Extensions
 
             return bootstrapContent;
         }
+        #endregion
 
+        #region Display
         public static BootstrapContent<TComponent> Border<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Border? border = null, BorderColor borderColor = BorderColor.None, BorderRadius? borderRadius = null, byte? opacity = null)
             where TComponent : BootstrapComponent
         {
@@ -67,9 +72,11 @@ namespace FBootstrapCoreMvc.Extensions
             displayOpts.DisplayPrint = displayPrint;
             return bootstrapContent;
         }
+        #endregion
 
+        #region Flex
         public static BootstrapContent<TComponent> Flex<TComponent>(this BootstrapContent<TComponent> bootstrapContent, FlexDirection flexDir, Breakpoint breakpoint = Breakpoint.Default)
-            where TComponent : BootstrapComponent
+    where TComponent : BootstrapComponent
         {
             bootstrapContent.Display(Enums.Display.Flex);
 
@@ -112,7 +119,8 @@ namespace FBootstrapCoreMvc.Extensions
             var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
             flexOpts.FlexFill.TryAdd(breakpoint, flexFill);
             return bootstrapContent;
-        }
+        } 
+        #endregion
 
         public static BootstrapContent<TComponent> Float<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Float @float, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : BootstrapComponent

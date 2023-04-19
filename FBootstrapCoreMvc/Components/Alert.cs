@@ -9,6 +9,7 @@ namespace FBootstrapCoreMvc.Components
         public string? Heading { get; set; }
         public AlertState State { get; set; }
         public IconType? IconType { get; set; }
+        
         public Alert()
             : base("div", Css.Alert)
         {
