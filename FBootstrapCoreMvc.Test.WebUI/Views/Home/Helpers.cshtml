@@ -185,7 +185,7 @@
         {
             @card.Title("Card with stretched links")
             @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
-            @card.Text(Html.Bootstrap().Link().Stretched().Color(TextColor.Danger).Position(Position.Relative).Content("Stretched link will not work here, because <code>position: relative</code> is added to the link",true))
+            @card.Text(Html.Bootstrap().Link().Stretched().Color(TextColor.Danger).Style("position","relative").Content("Stretched link will not work here, because <code>position: relative</code> is added to the link",true))
             @using (card.Text().Begin())
             {
                 @Html.Raw("This ")
