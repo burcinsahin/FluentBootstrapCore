@@ -7,7 +7,7 @@
         public NavbarLink(string? text)
             : base("li", Css.NavItem)
         {
-            _link = new Link(text);
+            _link = new Link() { Content = text };
             _link.AddCss(Css.NavLink);
             AddChild(_link);
         }

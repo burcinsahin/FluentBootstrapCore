@@ -7,18 +7,18 @@ namespace FBootstrapCoreMvc.Components
         public string? Href { get; set; }
         public string? Role { get; set; }
 
-        public Link(object? content = null)
+        public Link()
             : base("a")
         {
-            Content = content;
-            Role = "button";
-            Href= "#";
+            Href = "#";
         }
 
         protected override void PreBuild()
         {
             MergeAttribute("href", Href);
-            MergeAttribute("role", Role);
+
+            if (Role != null)
+                MergeAttribute("role", Role);
 
             base.PreBuild();
         }

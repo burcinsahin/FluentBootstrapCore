@@ -13,10 +13,11 @@ namespace FBootstrapCoreMvc.Components
 
         protected override void PreBuild()
         {
-            var link = new Link(Content)
+            var link = new Link()
             {
                 Href = "#",
-                Role = "button"
+                Role = "button",
+                Content = Content
             };
             link.AddCss(Css.NavLink, Css.DropdownToggle);
             link.MergeAttribute("data-bs-toggle", "dropdown");

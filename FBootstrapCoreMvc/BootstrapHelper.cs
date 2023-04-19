@@ -309,16 +309,17 @@ namespace FBootstrapCoreMvc
 
         public BootstrapContent<Link> Link(object? content = null, string href = "#")
         {
-            var link = new Link(content)
+            var link = new Link()
             {
-                Href = href
+                Href = href,
+                Content = content
             };
             return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
         public BootstrapContent<Link> Link(string text, string action, string controller, object? routeValues = null)
         {
-            var link = new Link(text);
+            var link = new Link() { Content = text };
             var urlHelper = HtmlHelper.GetUrlHelper();
             var urlActionContext = new UrlActionContext() { Action = action, Controller = controller, Values = routeValues };
             var url = urlHelper?.Action(urlActionContext);
