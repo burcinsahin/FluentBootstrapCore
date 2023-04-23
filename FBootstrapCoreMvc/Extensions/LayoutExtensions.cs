@@ -87,32 +87,6 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        //public static BootstrapContent<TComponent> AlignSelf<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignSelf alignSelf, Breakpoint br = Breakpoint.Default)
-        //    where TComponent : SingleComponent, IAlignSelf
-        //{
-        //    if (bootstrapContent.Component.AlignSelf == null)
-        //        bootstrapContent.Component.AlignSelf = new EnumList<AlignSelf>();
-
-        //    bootstrapContent.Component.AlignSelf.TryAdd(br, alignSelf);
-        //    return bootstrapContent;
-        //}
-
-        //public static BootstrapContent<TComponent> Order<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte order)
-        //    where TComponent : SingleComponent, IOrderable
-        //{
-        //    if (order == byte.MinValue)
-        //        bootstrapContent.Component.AddCss(Css.OrderFirst);
-        //    else if (order == byte.MaxValue)
-        //        bootstrapContent.Component.AddCss(Css.OrderLast);
-        //    else
-        //    {
-        //        if (order < 0) order = 0;
-        //        if (order > 5) order = 5;
-        //        bootstrapContent.Component.AddCss($"order-{order}");
-        //    }
-        //    return bootstrapContent;
-        //}
-
         public static BootstrapContent<TComponent> Offset<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte offset, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : SingleComponent, IOffsetable
         {

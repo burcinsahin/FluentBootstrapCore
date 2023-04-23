@@ -4,7 +4,7 @@
     public class NumericExtensionsTests
     {
         [TestMethod()]
-        public void Trim_Should()
+        public void Limit_Should()
         {
             ((byte)6).Limit((byte)0, (byte)5).Should().Be(5);
             ((byte)3).Limit((byte)0, (byte)5).Should().Be(3);

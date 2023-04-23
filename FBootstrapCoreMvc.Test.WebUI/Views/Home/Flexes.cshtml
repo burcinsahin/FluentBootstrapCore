@@ -44,22 +44,22 @@
 @Html.Bootstrap().Heading2("Justify content")
 @using (Html.Bootstrap().Container().Begin())
 {
-    @Html.Bootstrap().Div().Flex(JustifyContent.Start).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
-    @Html.Bootstrap().Div().Flex(JustifyContent.End).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>",  true)
-    @Html.Bootstrap().Div().Flex(JustifyContent.Center).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
-    @Html.Bootstrap().Div().Flex(JustifyContent.Between).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
-    @Html.Bootstrap().Div().Flex(JustifyContent.Around).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
-    @Html.Bootstrap().Div().Flex(JustifyContent.Evenly).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().JustifyContent(JustifyContent.Start).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().JustifyContent(JustifyContent.End).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>",  true)
+    @Html.Bootstrap().Div().JustifyContent(JustifyContent.Center).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().JustifyContent(JustifyContent.Between).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().JustifyContent(JustifyContent.Around).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().JustifyContent(JustifyContent.Evenly).Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
 }
 <hr />
 @Html.Bootstrap().Heading2("Align items")
 @using (Html.Bootstrap().Container().Begin())
 {
-    @Html.Bootstrap().Div().Flex(AlignItems.Start).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
-    @Html.Bootstrap().Div().Flex(AlignItems.End).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
-    @Html.Bootstrap().Div().Flex(AlignItems.Center).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
-    @Html.Bootstrap().Div().Flex(AlignItems.Baseline).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
-    @Html.Bootstrap().Div().Flex(AlignItems.Stretch).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().AlignItems(AlignItems.Start).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().AlignItems(AlignItems.End).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().AlignItems(AlignItems.Center).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().AlignItems(AlignItems.Baseline).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
+    @Html.Bootstrap().Div().AlignItems(AlignItems.Stretch).Style("height","100px").Content("<div>Flex item</div><div>Flex item</div><div>Flex item</div>", true)
 }
 <hr />
 @Html.Bootstrap().Heading2("Align self")
@@ -68,11 +68,11 @@
 
     @using (Html.Bootstrap().Div().Display(Display.Flex).Style(new { height = "100px" }).Begin())
     {
-        @Html.Bootstrap().Div().Padding(2).Flex(AlignSelf.Start).Content("Aligned flex item")
-        @Html.Bootstrap().Div().Padding(2).Flex(AlignSelf.End).Content("Aligned flex item")
-        @Html.Bootstrap().Div().Padding(2).Flex(AlignSelf.Center).Content("Aligned flex item")
-        @Html.Bootstrap().Div().Padding(2).Flex(AlignSelf.Baseline).Content("Aligned flex item")
-        @Html.Bootstrap().Div().Padding(2).Flex(AlignSelf.Stretch).Content("Aligned flex item")
+        @Html.Bootstrap().Div().Padding(2).AlignSelf(AlignSelf.Start).Content("Aligned flex item")
+        @Html.Bootstrap().Div().Padding(2).AlignSelf(AlignSelf.End).Content("Aligned flex item")
+        @Html.Bootstrap().Div().Padding(2).AlignSelf(AlignSelf.Center).Content("Aligned flex item")
+        @Html.Bootstrap().Div().Padding(2).AlignSelf(AlignSelf.Baseline).Content("Aligned flex item")
+        @Html.Bootstrap().Div().Padding(2).AlignSelf(AlignSelf.Stretch).Content("Aligned flex item")
     }
 }
 <hr />
@@ -126,13 +126,13 @@
         @Html.Bootstrap().Div().Margin(Margin.Start).Padding(2).Content("Flex item")
     }
     @Html.Bootstrap().Heading3("With align-items")
-    @using (Html.Bootstrap().Div().Height(200).Flex(AlignItems.Start).Flex(FlexDirection.Column).Margin(Margin.Bottom, 3).Begin())
+    @using (Html.Bootstrap().Div().Height(200).AlignItems(AlignItems.Start).Flex(FlexDirection.Column).Margin(Margin.Bottom, 3).Begin())
     {
         @Html.Bootstrap().Div().Margin(Margin.Bottom).Padding(2).Content("Flex item")
         @Html.Bootstrap().Div().Padding(2).Content("Flex item")
         @Html.Bootstrap().Div().Padding(2).Content("Flex item")
     }
-    @using (Html.Bootstrap().Div().Height(200).Flex(AlignItems.End).Flex(FlexDirection.Column).Margin(Margin.Bottom, 3).Begin())
+    @using (Html.Bootstrap().Div().Height(200).AlignItems(AlignItems.End).Flex(FlexDirection.Column).Margin(Margin.Bottom, 3).Begin())
     {
         @Html.Bootstrap().Div().Padding(2).Content("Flex item")
         @Html.Bootstrap().Div().Padding(2).Content("Flex item")
@@ -328,7 +328,7 @@
         @Html.Bootstrap().Div().Flex(FlexAbility.Grow1).Margin(Margin.Start, 3).Content("This is some content from a media component. You can replace this with any content and adjust it as needed.")
     }
     <br />
-    @using (Html.Bootstrap().Div().Flex(AlignItems.Center).Begin())
+    @using (Html.Bootstrap().Div().AlignItems(AlignItems.Center).Begin())
     {
         @Html.Bootstrap().Div().Flex(FlexAbility.Shrink0).Content(Html.Bootstrap().Image("http://picsum.photos/100","photo"))
         @Html.Bootstrap().Div().Flex(FlexAbility.Grow1).Margin(Margin.Start, 3).Content("This is some content from a media component. You can replace this with any content and adjust it as needed.")

@@ -1,6 +1,4 @@
 ﻿using FBootstrapCoreMvc.Options;
-using System;
-using System.Collections.Generic;
 
 namespace FBootstrapCoreMvc
 {
@@ -9,7 +7,7 @@ namespace FBootstrapCoreMvc
     /// </summary>
     public abstract class BootstrapComponent : SingleComponent
     {
-        internal OptionList UtilityOptions { get; set; }
+        public OptionList UtilityOptions { get; set; }
 
         protected BootstrapComponent(string tagName, params string[] cssClasses)
             : base(tagName, cssClasses)

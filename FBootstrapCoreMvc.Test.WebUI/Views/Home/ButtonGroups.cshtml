@@ -100,7 +100,7 @@
             }
         }
         <br />
-        @using (var buttonToolbar = Html.Bootstrap().ButtonToolbar().JustifyContent(JustifyContent.Between).Css(Css.Mb3).Begin())
+        @using (var buttonToolbar = InterfaceExtensions.JustifyContent(Html.Bootstrap().ButtonToolbar(), JustifyContent.Between).Css(Css.Mb3).Begin())
         {
             @using (var buttonGroup = buttonToolbar.ButtonGroup().Css(Css.Me2).Begin())
             {
@@ -109,7 +109,7 @@
                 @buttonGroup.Button("3").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
                 @buttonGroup.Button("4").State(ButtonState.None).Outline(ButtonOutlineState.Secondary)
             }
-            @using (var inputGroup = @buttonToolbar.InputGroup().Begin())
+            @using (var inputGroup = buttonToolbar.InputGroup().Begin())
             {
                 @inputGroup.InputGroupText("@")
                 @inputGroup.Input().Css(Css.FormControl).Placeholder("Input group example")

@@ -7,7 +7,7 @@ namespace FBootstrapCoreMvc.Components
         public string? Href { get; set; }
         public bool Active { get; set; }
 
-        public NavbarLink(string? text)
+        public NavbarLink()
             : base("li", Css.NavItem)
         {
         }

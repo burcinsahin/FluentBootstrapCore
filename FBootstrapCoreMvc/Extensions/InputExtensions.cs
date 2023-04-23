@@ -138,14 +138,6 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        //public static BootstrapContent<Select> Select(this IBootstrapHelper bootstrapHelper, string name, IEnumerable<SelectListItem> selectList)
-        //{
-        //    var select = new Select();
-        //    select.MergeAttribute("name", name);
-        //    select.SelectList = selectList;
-        //    return new BootstrapContent<Select>(bootstrapHelper.HtmlHelper, select);
-        //}
-
         public static BootstrapContent<InputGroup> InputGroup<TComponent>(this BootstrapBuilder<TComponent> builder)
             where TComponent : SingleComponent, ICanCreate<InputGroup>
         {

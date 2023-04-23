@@ -70,7 +70,7 @@ namespace FBootstrapCoreMvc
         }
 
         #region DOM Methods
-        protected internal void AddCss(params string[] cssClasses)
+        public void AddCss(params string[] cssClasses)
         {
             foreach (var cssClass in cssClasses)
             {
@@ -78,7 +78,7 @@ namespace FBootstrapCoreMvc
                     CssClasses.Add(cssClass);
             }
         }
-        protected internal void AddCss(IEnumerable<string> cssClasses)
+        public void AddCss(IEnumerable<string> cssClasses)
         {
             foreach (var cssClass in cssClasses)
             {
@@ -87,18 +87,18 @@ namespace FBootstrapCoreMvc
             }
         }
 
-        protected internal void ClearCss()
+        public void ClearCss()
         {
             CssClasses.Clear();
         }
 
-        protected internal void RemoveCss(params string[] cssClasses)
+        public void RemoveCss(params string[] cssClasses)
         {
             foreach (var cssClass in cssClasses)
                 CssClasses.Remove(cssClass);
         }
 
-        protected internal void MergeStyle(string key, object value)
+        public void MergeStyle(string key, object value)
         {
             Styles.Add(key, value);
         }
@@ -107,7 +107,7 @@ namespace FBootstrapCoreMvc
         /// Replaces '_' char with '-'
         /// </summary>
         /// <param name="styles"></param>
-        protected internal void MergeStyle(object styles)
+        public void MergeStyle(object styles)
         {
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
             {
@@ -300,17 +300,17 @@ namespace FBootstrapCoreMvc
             throw new NotImplementedException();
         }
 
-        [Obsolete("Use AddChild instead.")]
-        protected void AddWrappingChild<TComponent>(TComponent component, WrapperType wrapperType = WrapperType.All)
-            where TComponent : SingleComponent
-        {
-            var loc = wrapperType switch
-            {
-                WrapperType.Body => ChildLocation.BodyWrap,
-                _ => ChildLocation.FullWrap,
-            };
-            AddChild(component, loc);
-        }
+        //[Obsolete("Use AddChild instead.")]
+        //protected void AddWrappingChild<TComponent>(TComponent component, WrapperType wrapperType = WrapperType.All)
+        //    where TComponent : SingleComponent
+        //{
+        //    var loc = wrapperType switch
+        //    {
+        //        WrapperType.Body => ChildLocation.BodyWrap,
+        //        _ => ChildLocation.FullWrap,
+        //    };
+        //    AddChild(component, loc);
+        //}
 
         public TComponent Clone<TComponent>()
             where TComponent : SingleComponent

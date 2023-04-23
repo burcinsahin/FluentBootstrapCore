@@ -17,10 +17,6 @@ namespace FBootstrapCoreMvc.Options
         {
             var cssList = new List<string>();
             cssList.AddRange(Float.GetCssDescriptions());
-            //foreach (var item in Float)
-            //{
-            //    cssList.Add(string.Format(item.Value.GetCssDescription(), item.Key.GetHyphenatedDescription()));
-            //}
             return cssList;
         }
     }

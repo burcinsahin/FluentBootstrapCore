@@ -6,12 +6,12 @@ namespace FBootstrapCoreMvc.Extensions
 {
     public static class NavbarExtensions
     {
-        public static BootstrapContent<TComponent> Href<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? href)
-            where TComponent : Link
-        {
-            bootstrapContent.Component.MergeAttribute("href", href);
-            return bootstrapContent;
-        }
+        //public static BootstrapContent<TComponent> Href<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? href)
+        //    where TComponent : Link
+        //{
+        //    bootstrapContent.Component.MergeAttribute("href", href);
+        //    return bootstrapContent;
+        //}
 
         public static BootstrapContent<TComponent> Dark<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
             where TComponent : Navbar
@@ -54,8 +54,9 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<NavbarLink> NavbarLink<TComponent>(this BootstrapBuilder<TComponent> builder, string text, string action, string controller, object? routeValues = null)
             where TComponent : SingleComponent, ICanCreate<NavbarLink>
         {
-            var navbarLink = new NavbarLink(text)
+            var navbarLink = new NavbarLink()
             {
+                Content = text,
                 Href = builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues)
             };
             return new BootstrapContent<NavbarLink>(builder.HtmlHelper, navbarLink);

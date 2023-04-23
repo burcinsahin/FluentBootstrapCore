@@ -98,7 +98,7 @@ namespace FBootstrapCoreMvc.Extensions
                 var badgeSpacingOpts = new SpacingOptions();
                 badgeSpacingOpts.Padding.Add((Breakpoint.Default, Padding.All), 2);
                 badge.UtilityOptions.Add(badgeSpacingOpts);
-                badge.Content = " ";
+                //badge.Content = " ";
             }
             else
                 badge.UtilityOptions.Add(new BorderOptions { BorderRadius = BorderRadius.RoundedPill });

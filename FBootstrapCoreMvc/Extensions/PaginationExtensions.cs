@@ -17,11 +17,11 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<Pagination> JustifyContent(this BootstrapContent<Pagination> bootstrapContent, JustifyContent justifyContent)
-        {
-            bootstrapContent.Component.AddCss(justifyContent.GetCssDescription());
-            return bootstrapContent;
-        }
+        //public static BootstrapContent<Pagination> JustifyContent(this BootstrapContent<Pagination> bootstrapContent, JustifyContent justifyContent)
+        //{
+        //    bootstrapContent.Component.AddCss(justifyContent.GetCssDescription());
+        //    return bootstrapContent;
+        //}
 
         public static BootstrapContent<Pagination> Size(this BootstrapContent<Pagination> bootstrapContent, ComponentSize size)
         {

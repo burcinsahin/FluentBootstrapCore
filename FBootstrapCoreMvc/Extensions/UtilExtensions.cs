@@ -85,7 +85,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> Flex<TComponent>(this BootstrapContent<TComponent> bootstrapContent, JustifyContent justifyContent, Breakpoint breakpoint = Breakpoint.Default)
+        public static BootstrapContent<TComponent> JustifyContent<TComponent>(this BootstrapContent<TComponent> bootstrapContent, JustifyContent justifyContent, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : BootstrapComponent
         {
             bootstrapContent.Display(Enums.Display.Flex);
@@ -95,7 +95,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> Flex<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignItems alignItems, Breakpoint breakpoint = Breakpoint.Default)
+        public static BootstrapContent<TComponent> AlignItems<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignItems alignItems, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : BootstrapComponent
         {
             bootstrapContent.Display(Enums.Display.Flex);
@@ -105,7 +105,7 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> Flex<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignSelf alignSelf, Breakpoint breakpoint = Breakpoint.Default)
+        public static BootstrapContent<TComponent> AlignSelf<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignSelf alignSelf, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : BootstrapComponent
         {
             var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
