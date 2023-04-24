@@ -107,7 +107,7 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> Columnize<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte? value = null, Breakpoint breakpoint = Breakpoint.Default)
-            where TComponent : SingleComponent, IColumnizable
+            where TComponent : BootstrapComponent
         {
             bootstrapContent.Component.RemoveCss(Css.Col);
             if (!value.HasValue)

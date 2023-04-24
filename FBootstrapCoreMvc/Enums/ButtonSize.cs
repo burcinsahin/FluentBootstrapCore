@@ -7,8 +7,8 @@ namespace FBootstrapCoreMvc.Enums
         [Description()]
         Default,
         [Description(Css.BtnLg)]
-        Lg,
+        Large,
         [Description(Css.BtnSm)]
-        Sm
+        Small
     }
 }

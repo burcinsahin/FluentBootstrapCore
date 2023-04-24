@@ -1,9 +1,6 @@
-﻿using FBootstrapCoreMvc.Interfaces;
-
-namespace FBootstrapCoreMvc.Components
+﻿namespace FBootstrapCoreMvc.Components
 {
-    public class Image : BootstrapComponent,
-        IColumnizable
+    public class Image : BootstrapComponent
     {
         public string? Source { get; set; }
         public string? Alt { get; set; }

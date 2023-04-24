@@ -1,4 +1,5 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FBootstrapCoreMvc.Components;
+using FBootstrapCoreMvc.Enums;
 using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Extensions
@@ -13,9 +14,9 @@ namespace FBootstrapCoreMvc.Extensions
         }
 
         public static BootstrapContent<TComponent> Type<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonType type = ButtonType.Button)
-            where TComponent : SingleComponent, IButton
+            where TComponent : BootstrapComponent, IButton
         {
-            bootstrapContent.Component.MergeAttribute("type", type.GetDescription());
+            bootstrapContent.Component.ButtonType = type;
             return bootstrapContent;
         }
 
@@ -26,12 +27,11 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> Active<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool active = true)
-            where TComponent : SingleComponent, IButton
+        public static BootstrapContent<TComponent> Toggle<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool toggle = true)
+            where TComponent : ButtonComponent, IButton
         {
-            if (active)
-                bootstrapContent.Component.AddCss(Css.Active);
-
+            if (toggle)
+                bootstrapContent.Component.MergeAttribute("data-bs-toggle", "button", true);
             return bootstrapContent;
         }
 

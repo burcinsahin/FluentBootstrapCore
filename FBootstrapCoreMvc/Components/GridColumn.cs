@@ -1,11 +1,9 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
     public class GridColumn : BootstrapComponent,
-        IOffsetable,
-        IColumnizable
+        IOffsetable
     {
         public GridColumn()
             : base("div", Css.Col)

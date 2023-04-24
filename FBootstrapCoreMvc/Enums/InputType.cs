@@ -41,6 +41,8 @@ namespace FBootstrapCoreMvc.Enums
         [Description("range")]
         Range,
         [Description("file")]
-        File
+        File,
+        [Description("button")]
+        Button
     }
 }

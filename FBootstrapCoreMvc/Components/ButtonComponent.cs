@@ -4,7 +4,10 @@ using FBootstrapCoreMvc.Interfaces;
 
 namespace FBootstrapCoreMvc.Components
 {
-    public abstract class ButtonComponent : BootstrapComponent, ICanHaveName, IButton
+    public abstract class ButtonComponent : BootstrapComponent,
+        ICanHaveName,
+        IButton,
+        ICanBeActive
     {
         public ButtonState ButtonState { get; set; }
         public ButtonType ButtonType { get; set; }
@@ -12,6 +15,7 @@ namespace FBootstrapCoreMvc.Components
         public IconType? IconType { get; set; }
         public Badge? Badge { get; set; }
         public string? Name { get; set; }
+        public bool Active { get; set; }
 
         protected ButtonComponent(string tagName)
             : base(tagName, Css.Btn)
@@ -19,7 +23,7 @@ namespace FBootstrapCoreMvc.Components
             ButtonState = ButtonState.Primary;
         }
 
-        protected override void PreBuild()
+        protected override void PreBuild()//TODO: ButtonType at base?
         {
             AddCss(ButtonState.GetCssDescription());
             if (Name != null)
@@ -31,6 +35,12 @@ namespace FBootstrapCoreMvc.Components
             {
                 var icon = new Icon(IconType.Value);
                 AddChild(icon, ChildLocation.Header);
+            }
+
+            if (Active)
+            {
+                AddCss(Css.Active);
+                MergeAttribute("aria-pressed", true);
             }
             base.PreBuild();
         }

@@ -169,6 +169,14 @@ namespace FBootstrapCoreMvc.Extensions
             return bootstrapContent;
         }
         #endregion
+
+        public static BootstrapContent<TComponent> TabIndex<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            int index) where TComponent : SingleComponent
+        {
+            bootstrapContent.Component.MergeAttribute("tabindex", index, true);
+            return bootstrapContent;
+        }
         #endregion
     }
 }

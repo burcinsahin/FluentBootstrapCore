@@ -280,6 +280,18 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Icon>(HtmlHelper, icon);
         }
 
+        public BootstrapContent<Input> Input()
+        {
+            var input = new Input();
+            return new BootstrapContent<Input>(HtmlHelper, input);
+        }
+
+        public BootstrapContent<InputButton> InputButton()
+        {
+            var inputButton = new InputButton();
+            return new BootstrapContent<InputButton>(HtmlHelper, inputButton);
+        }
+
         public BootstrapContent<InputGroup> InputGroup()
         {
             var inputGroup = new InputGroup();
