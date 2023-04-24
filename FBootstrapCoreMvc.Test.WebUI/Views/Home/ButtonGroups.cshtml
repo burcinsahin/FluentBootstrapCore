@@ -12,9 +12,9 @@
         <br />
         @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
         {
-            @buttonGroup.LinkButton("Left").Active()
-            @buttonGroup.LinkButton("Middle")
-            @buttonGroup.LinkButton("Right")
+            @buttonGroup.LinkButton("Active link").Active()
+            @buttonGroup.LinkButton("Link")
+            @buttonGroup.LinkButton("Link")
         }
     }
     <hr />
@@ -34,9 +34,9 @@
     {
         @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
         {
-            @buttonGroup.Button("Left").State(ButtonState.None).Outline(ButtonOutlineState.Primary)
-            @buttonGroup.Button("Middle").State(ButtonState.None).Outline(ButtonOutlineState.Primary)
-            @buttonGroup.Button("Right").State(ButtonState.None).Outline(ButtonOutlineState.Primary)
+            @buttonGroup.Button("Left").Outline(ButtonOutlineState.Primary)
+            @buttonGroup.Button("Middle").Outline(ButtonOutlineState.Primary)
+            @buttonGroup.Button("Right").Outline(ButtonOutlineState.Primary)
         }
     }
     <hr />
@@ -173,9 +173,7 @@
             @buttonGroup.Button("Button").State(ButtonState.Dark)
             @buttonGroup.Button("Button").State(ButtonState.Dark)
         }
-
         <br />
-
         @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Vertical().Begin())
         {
             @buttonGroup.Button("Button")
@@ -219,14 +217,12 @@
                 }
             }
         }
-
         <br />
-
         @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Vertical().Begin())
         {
-            @buttonGroup.RadioButton("Radio 1").Outline(ButtonOutlineState.Danger).Name("btnradio").Checked()
-            @buttonGroup.RadioButton("Radio 2").Outline(ButtonOutlineState.Danger).Name("btnradio")
-            @buttonGroup.RadioButton("Radio 3").Outline(ButtonOutlineState.Danger).Name("btnradio")
+            @buttonGroup.RadioButton("Radio 1").Outline(ButtonOutlineState.Danger).Name("btnradio2").Checked()
+            @buttonGroup.RadioButton("Radio 2").Outline(ButtonOutlineState.Danger).Name("btnradio2")
+            @buttonGroup.RadioButton("Radio 3").Outline(ButtonOutlineState.Danger).Name("btnradio2")
         }
     }
 }
