@@ -1,4 +1,4 @@
-namespace FBootstrapCoreMvc.Test.WebUI.Models
+namespace FluentBootstrapCore.Test.WebUI.Models
 {
     public class ErrorViewModel
     {

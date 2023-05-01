@@ -1,6 +1,5 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
 
 namespace FBootstrapCoreMvc.Test.Extensions
 {

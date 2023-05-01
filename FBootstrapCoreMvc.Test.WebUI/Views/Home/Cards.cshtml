@@ -1,80 +1,449 @@
-﻿@using (Html.Bootstrap().Div().Style(new { width = "500px" }).Begin())
+﻿@Html.Bootstrap().Heading2("Example")
+@using (Html.Bootstrap().Div().Width(500).Begin())
 {
-    @using (Html.Bootstrap().Card("Simple Card (Primary)").TextBackground(TextBgState.Primary).Begin())
+    @using (var card = Html.Bootstrap().Card().CustomBody().Width(18, LengthUnit.RootElement).Begin())
     {
-        <p>
-            Hello world!
-        </p>
-    }
-    <hr />
-    @using (Html.Bootstrap().Card("List Including Card (Secondary)").TextBackground(TextBgState.Secondary).Begin())
-    {
-        using (var list = Html.Bootstrap().List(ListType.Unordered).Begin())
+        @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+        @using (card.Body().Begin())
         {
-            @list.ListItem($"item1")
-            @list.ListItem($"item2")
-            @list.ListItem($"item3")
-            @list.ListItem($"item4")
+            @card.Title("Card title")
+            @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+            @Html.Bootstrap().LinkButton("Go somewhere")
         }
     }
-    <hr />
-    @using (var card = Html.Bootstrap().Card().NoCardBody().TextBackground(TextBgState.Success).Begin())
+}
+<hr />
+@Html.Bootstrap().Heading2("Content types")
+@using (Html.Bootstrap().Div().Width(500).Begin())
+{
+    @Html.Bootstrap().Heading3("Body")
+    @using (var card = Html.Bootstrap().Card().Begin())
     {
-        @card.Header("Customized Card Body (Success)")
-        @using (@card.Body().Begin())
+        @Html.Raw("This is some text within a card body.")
+    }
+    <br />
+    @Html.Bootstrap().Heading3("Titles, text, and links")
+    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Card title")
+        @card.Subtitle("Card subtitle").Margin(Margin.Bottom, 2)
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+        @card.Link("Card link")
+        @card.Link("Another link")
+    }
+    <br />
+    @Html.Bootstrap().Heading3("Images")
+    @using (var card = Html.Bootstrap().Card().CustomBody().Width(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+        @using (card.Body().Begin())
         {
-            <p>
-                Hello world!
-            </p>
+            @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
         }
-        @card.Footer("Footer")
     }
-    <hr />
-    @using (var card = Html.Bootstrap().Card().NoCardBody().TextBackground(TextBgState.Danger).Begin())
+    <br />
+    @Html.Bootstrap().Heading3("List groups")
+    @using (var card = Html.Bootstrap().Card().CustomBody().Width(18, LengthUnit.RootElement).Begin())
     {
-        @card.Header("Customized body with title, subtitle (Danger)")
-        @using (@card.Body(null, "title", "subtitle").Begin())
+        @using (var lg = Html.Bootstrap().ListGroup().Begin())
         {
-            <p>
-                Hello world!
-            </p>
+            @lg.ListGroupItem().Content("An item")
+            @lg.ListGroupItem().Content("An second item")
+            @lg.ListGroupItem().Content("An third item")
         }
-        @card.Footer("Footer")
+        @card.Footer().Content("Card footer")
     }
-    <hr />
-    @using (var card = Html.Bootstrap().Card().Header("Collapsible (Warning)", true).TextBackground(TextBgState.Warning).Begin())
+    <br />
+    @Html.Bootstrap().Heading3("Kitchen sink")
+    @using (var card = Html.Bootstrap().Card().CustomBody().Width(18, LengthUnit.RootElement).Begin())
     {
-        <p>
-            Hello world!
-        </p>
-    }
-    <hr />
-    @using (var card = Html.Bootstrap().Card().Header("Collapsible with customized body (Info)", true).TextBackground(TextBgState.Info).NoCardBody().Begin())
-    {
-        @card.Body("text content", "title")
-    }
-    <hr />
-    @using (var card = Html.Bootstrap().Card().NoCardBody().TextBackground(TextBgState.Light).Begin())
-    {
-        @card.Header("Header")
-        @using (@card.Body(null, "title", "subtitle").Begin())
+        @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+        @using (card.Body().Begin())
         {
-            <p>
-                Hello world!
-            </p>
+            @card.Title("Card title")
+            @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
         }
-        @card.Footer("Footer")
-    }
-    <hr />
-    @using (var card = Html.Bootstrap().Card().NoCardBody().TextBackground(TextBgState.Dark).Begin())
-    {
-        @card.Header("Header")
-        @using (@card.Body(null, "title", "subtitle").Begin())
+        @using (var lg = Html.Bootstrap().ListGroup().Begin())
         {
-            <p>
-                Hello world!
-            </p>
+            @lg.ListGroupItem().Content("An item")
+            @lg.ListGroupItem().Content("An second item")
+            @lg.ListGroupItem().Content("An third item")
         }
-        @card.Footer("Footer")
+        @using (card.Body().Begin())
+        {
+            @card.Link("Card link")
+            @card.Link("Another link")
+        }
     }
+    <br />
+    @Html.Bootstrap().Heading3("Header and footer")
+    @using (var card = Html.Bootstrap().Card().CustomBody().Begin())
+    {
+        @card.Header("Featured")
+        @using (card.Body().Begin())
+        {
+            @card.Title("Special title treatment")
+            @card.Text("With supporting text below as a natural lead-in to additional content.")
+            @Html.Bootstrap().LinkButton("Go somewhere")
+        }
+    }
+    @using (var card = Html.Bootstrap().Card().CustomBody().Begin())
+    {
+        @Html.Bootstrap().Heading5("Featured").Css(Css.CardHeader)
+        @using (card.Body().Begin())
+        {
+            @card.Title("Special title treatment")
+            @card.Text("With supporting text below as a natural lead-in to additional content.")
+            @Html.Bootstrap().LinkButton("Go somewhere")
+        }
+    }
+    @using (var card = Html.Bootstrap().Card().CustomBody().Begin())
+    {
+        @card.Header("Quote")
+        @using (card.Body().Begin())
+        {
+            @Html.Bootstrap().Blockquote("A well-known quote, contained in a blockquote element.","Someone famous in Source Title").Margin(Margin.Bottom, 0)
+        }
+    }
+    @using (var card = Html.Bootstrap().Card().CustomBody().AlignText(TextAlign.Center).Begin())
+    {
+        @card.Header("Featured")
+        @using (card.Body().Begin())
+        {
+            @card.Title("Special title treatment")
+            @card.Text("With supporting text below as a natural lead-in to additional content.")
+            @Html.Bootstrap().LinkButton("Go somewhere")
+        }
+        @card.Footer("2 days ago").Color(TextColor.Muted)
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Sizing")
+@using (Html.Bootstrap().Div().Width(500).Begin())
+{
+    @Html.Bootstrap().Heading2("Using grid markup")
+    @using (var row = Html.Bootstrap().Row().Begin())
+    {
+        @using (row.Column().Columnize(6, Breakpoint.Small).Begin())
+        {
+            @using (var card = Html.Bootstrap().Card().Begin())
+            {
+                @card.Title("Special title treatment")
+                @card.Text("With supporting text below as a natural lead-in to additional content.")
+                @Html.Bootstrap().LinkButton("Go somewhere")
+            }
+        }
+        @using (row.Column().Columnize(6, Breakpoint.Small).Begin())
+        {
+            @using (var card = Html.Bootstrap().Card().Begin())
+            {
+                @card.Title("Special title treatment")
+                @card.Text("With supporting text below as a natural lead-in to additional content.")
+                @Html.Bootstrap().LinkButton("Go somewhere")
+            }
+        }
+    }
+    @Html.Bootstrap().Heading2("Using utilities")
+    @using (var card = Html.Bootstrap().Card().Width(Width._75).Begin())
+    {
+        @card.Title("Card title")
+        @card.Text("With supporting text below as a natural lead-in to additional content.")
+        @Html.Bootstrap().LinkButton("Button")
+    }
+    @using (var card = Html.Bootstrap().Card().Width(Width._50).Begin())
+    {
+        @card.Title("Card title")
+        @card.Text("With supporting text below as a natural lead-in to additional content.")
+        @Html.Bootstrap().LinkButton("Button")
+    }
+    @Html.Bootstrap().Heading2("Using custom CSS")
+    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Special title treatment")
+        @card.Text("With supporting text below as a natural lead-in to additional content.")
+        @Html.Bootstrap().LinkButton("Go somewhere")
+    }
+}
+@Html.Bootstrap().Heading2("Text alignment")
+@using (Html.Bootstrap().Div().Width(500).Begin())
+{
+    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Special title treatment")
+        @card.Text("With supporting text below as a natural lead-in to additional content.")
+        @Html.Bootstrap().LinkButton("Go somewhere")
+    }
+    @using (var card = Html.Bootstrap().Card().AlignText(TextAlign.Center).Width(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Special title treatment")
+        @card.Text("With supporting text below as a natural lead-in to additional content.")
+        @Html.Bootstrap().LinkButton("Go somewhere")
+    }
+    @using (var card = Html.Bootstrap().Card().AlignText(TextAlign.End).Width(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Special title treatment")
+        @card.Text("With supporting text below as a natural lead-in to additional content.")
+        @Html.Bootstrap().LinkButton("Go somewhere")
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Navigation")
+@using (Html.Bootstrap().Div().Width(500).Begin())
+{
+    @using (var card = Html.Bootstrap().Card().CustomBody().Begin())
+    {
+        @using (card.Header().Begin())
+        {
+            @using (var nav = Html.Bootstrap().Nav().Tabs().Begin())
+            {
+                @nav.NavItem().Href("#").Active().Content("Active")
+                @nav.NavItem().Href("#").Content("Link")
+                @nav.NavItem().Href("#").Content("Disabled")
+            }
+        }
+        @using (card.Body().Begin())
+        {
+            @card.Title("Special title treatment")
+            @card.Text("With supporting text below as a natural lead-in to additional content.")
+            @Html.Bootstrap().LinkButton("Go somewhere")
+        }
+    }
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="true" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <br />
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+}
+<hr />
+@Html.Bootstrap().Heading2("Images")
+@using (Html.Bootstrap().Div().Width(500).Begin())
+{
+    @Html.Bootstrap().Heading3("Image caps")
+    @Html.Bootstrap().Heading3("Image overlays")
+}
+<hr />
+@Html.Bootstrap().Heading2("Horizontal")
+@using (Html.Bootstrap().Div().Width(500).Begin())
+{
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<hr />
+@Html.Bootstrap().Heading2("Card styles")
+@using (Html.Bootstrap().Div().Width(500).Begin())
+{
+    @Html.Bootstrap().Heading3("Background and color")
+    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Primary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Primary card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Secondary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Secondary card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Success).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Success card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Danger).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Danger card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Warning).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Warning card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Info).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Info card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Light).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Light card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Dark).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Dark card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @Html.Bootstrap().Heading3("Border")
+    @using (var card = Html.Bootstrap().Card("Header").BodyColor(TextColor.Primary).Border(borderColor: BorderColor.Primary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Primary card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").BodyColor(TextColor.Secondary).Border(borderColor: BorderColor.Secondary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Secondary card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").BodyColor(TextColor.Success).Border(borderColor: BorderColor.Success).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Success card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").BodyColor(TextColor.Danger).Border(borderColor: BorderColor.Danger).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Danger card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").Border(borderColor: BorderColor.Warning).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Warning card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").Border(borderColor: BorderColor.Info).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Info card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").Border(borderColor: BorderColor.Light).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Light card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @using (var card = Html.Bootstrap().Card("Header").BodyColor(TextColor.Dark).Border(borderColor: BorderColor.Dark).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Title("Dark card title")
+        @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+    }
+    @Html.Bootstrap().Heading3("Mixins utilities")
+    @using (var card = Html.Bootstrap().Card().CustomBody().Border(Border.None, BorderColor.Success).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Header("Header").Background(BgColor.Transparent).Border(Border.None,BorderColor.Success)
+        @using (card.Body().Color(TextColor.Success).Begin())
+        {
+            @card.Title("Success card title")
+            @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
+        }
+        @card.Footer("Footer").Background(BgColor.Transparent).Border(Border.None,BorderColor.Success)
+    }
+}
+@Html.Bootstrap().Heading2("Card layout")
+@using (Html.Bootstrap().Div().Width(500).Begin())
+{
+    @Html.Bootstrap().Heading3("Card groups")
+    @using (var cg = Html.Bootstrap().CardGroup().Begin())
+    {
+        @using (var card = cg.Card().CustomBody().Begin())
+        {
+            @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+            @using (card.Body().Begin())
+            {
+                @card.Title("Card title")
+                @card.Text("This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.")
+                @card.Text().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
+            }
+        }
+        @using (var card = cg.Card().CustomBody().Begin())
+        {
+            @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+            @using (card.Body().Begin())
+            {
+                @card.Title("Card title")
+                @card.Text("This card has supporting text below as a natural lead-in to additional content.")
+                @card.Text().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
+            }
+        }
+        @using (var card = cg.Card().CustomBody().Begin())
+        {
+            @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+            @using (card.Body().Begin())
+            {
+                @card.Title("Card title")
+                @card.Text("This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.")
+                @card.Text().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
+            }
+        }
+    }
+    <br />
+    @using (var cg = Html.Bootstrap().CardGroup().Begin())
+    {
+        @using (var card = cg.Card().CustomBody().Begin())
+        {
+            @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+            @using (card.Body().Begin())
+            {
+                @card.Title("Card title")
+                @card.Text("This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.")
+            }
+            @card.Footer().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
+        }
+        @using (var card = cg.Card().CustomBody().Begin())
+        {
+            @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+            @using (card.Body().Begin())
+            {
+                @card.Title("Card title")
+                @card.Text("This card has supporting text below as a natural lead-in to additional content.")
+            }
+            @card.Footer().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
+        }
+        @using (var card = cg.Card().CustomBody().Begin())
+        {
+            @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+            @using (card.Body().Begin())
+            {
+                @card.Title("Card title")
+                @card.Text("This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.")
+            }
+            @card.Footer().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
+        }
+    }
+    @Html.Bootstrap().Heading3("Grid cards")
 }

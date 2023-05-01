@@ -1,7 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class FormInput : FormControl<Input>,
         ICanHaveMaxLength,
@@ -68,7 +68,7 @@ namespace FBootstrapCoreMvc.Components
             }
 
             base.PreBuild();
-            
+
             if (FloatingLabel != null)
                 _label.ClearCss();
 

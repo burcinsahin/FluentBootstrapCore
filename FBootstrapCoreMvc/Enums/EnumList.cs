@@ -1,8 +1,8 @@
-﻿using FBootstrapCoreMvc.Extensions;
+﻿using FluentBootstrapCore.Extensions;
 using System;
 using System.Collections.Generic;
 
-namespace FBootstrapCoreMvc.Enums
+namespace FluentBootstrapCore.Enums
 {
     public class EnumList<TEnum> : Dictionary<Breakpoint, TEnum>
         where TEnum : Enum

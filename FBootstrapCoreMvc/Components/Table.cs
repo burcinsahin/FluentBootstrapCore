@@ -1,8 +1,8 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class Table : BootstrapComponent,
         ICanCreate<TableHeader>,

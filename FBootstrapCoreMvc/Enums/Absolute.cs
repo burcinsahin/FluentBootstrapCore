@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace FBootstrapCoreMvc.Enums
+namespace FluentBootstrapCore.Enums
 {
     [Flags]
     public enum Absolute

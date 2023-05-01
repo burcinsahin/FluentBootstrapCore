@@ -1,10 +1,9 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class FormSelect : BootstrapComponent,
         ICanHaveLabel,

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FBootstrapCoreMvc.Options
+namespace FluentBootstrapCore.Options
 {
     public interface IUtilityOptions
     {

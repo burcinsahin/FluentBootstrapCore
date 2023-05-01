@@ -1,8 +1,8 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class CheckButton : HtmlComponent,
         ICanBeChecked,
@@ -38,9 +38,7 @@ namespace FBootstrapCoreMvc.Components
             checkbox.GenerateId();
 
             if (Radio)
-            {
                 checkbox.MergeAttribute("type", "radio");
-            }
             else
             {
                 checkbox.MergeAttribute("type", "checkbox");

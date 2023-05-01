@@ -1,7 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FluentBootstrapCore.Enums;
 using System.Collections.Generic;
 
-namespace FBootstrapCoreMvc.Options
+namespace FluentBootstrapCore.Options
 {
     public class TextOptions : UtilityOptions
     {
@@ -9,7 +9,7 @@ namespace FBootstrapCoreMvc.Options
         public TextWrap? TextWrap { get; set; }
         public TextTransform? TextTransform { get; set; }
         public FontSize? FontSize { get; set; }
-        public FontWeight? FontWeight{ get; set; }
+        public FontWeight? FontWeight { get; set; }
         public FontStyle? FontStyle { get; set; }
         public LineHeight? LineHeight { get; set; }
         public bool WordBreak { get; internal set; }
@@ -35,7 +35,7 @@ namespace FBootstrapCoreMvc.Options
                 _cssList.Add(Css.TextBreak);
             if (FontMonospace)
                 _cssList.Add(Css.FontMonospace);
-            if (TextReset) 
+            if (TextReset)
                 _cssList.Add(Css.TextReset);
             return base.GetCssList();
         }

@@ -1,8 +1,8 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FluentBootstrapCore.Enums;
 using System;
 using System.Globalization;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class ComponentExtensions
     {
@@ -131,7 +131,7 @@ namespace FBootstrapCoreMvc.Extensions
             this BootstrapContent<TComponent> bootstrapContent)
             where TComponent : SingleComponent
         {
-            bootstrapContent.Component.AddCss(FBootstrapCoreMvc.Css.Clearfix);
+            bootstrapContent.Component.AddCss(FluentBootstrapCore.Css.Clearfix);
             return bootstrapContent;
         }
 

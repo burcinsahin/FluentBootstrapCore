@@ -1,6 +1,6 @@
-﻿using FBootstrapCoreMvc.Options;
+﻿using FluentBootstrapCore.Options;
 
-namespace FBootstrapCoreMvc
+namespace FluentBootstrapCore
 {
     /// <summary>
     /// Bootstrap component with bootstrap utilities
@@ -24,7 +24,7 @@ namespace FBootstrapCoreMvc
             base.PreBuild();
         }
 
-        protected internal TOptions GetOptions<TOptions>() 
+        protected internal TOptions GetOptions<TOptions>()
             where TOptions : IUtilityOptions, new()
         {
             if (!UtilityOptions.Contains<TOptions>())

@@ -1,13 +1,10 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
-using Microsoft.AspNetCore.Html;
+﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Enums;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using System.Collections.Generic;
 
-namespace FBootstrapCoreMvc
+namespace FluentBootstrapCore
 {
     public class BootstrapHelper<TModel> : IBootstrapHelper
     {
@@ -204,9 +201,7 @@ namespace FBootstrapCoreMvc
         {
             var breadcrumb = new Breadcrumb();
             if (divider != null)
-            {
                 breadcrumb.MergeStyle("--bs-breadcrumb-divider", $"'{divider}'");
-            }
             return new BootstrapContent<Breadcrumb>(HtmlHelper, breadcrumb);
         }
 
@@ -242,6 +237,12 @@ namespace FBootstrapCoreMvc
             if (footer != null)
                 card.Footer = footer;
             return new BootstrapContent<Card>(HtmlHelper, card);
+        }
+
+        public BootstrapContent<CardGroup> CardGroup()
+        {
+            var cardGroup = new CardGroup();
+            return new BootstrapContent<CardGroup>(HtmlHelper, cardGroup);
         }
 
         public BootstrapContent<CheckBox> CheckBox()
@@ -339,6 +340,12 @@ namespace FBootstrapCoreMvc
             return new BootstrapContent<Link>(HtmlHelper, link);
         }
 
+        public BootstrapContent<ListGroup> ListGroup()
+        {
+            var listGroup = new ListGroup();
+            return new BootstrapContent<ListGroup>(HtmlHelper, listGroup);
+        }
+
         public BootstrapContent<Modal> Modal(
             string? title = null,
             object? content = null)
@@ -349,6 +356,12 @@ namespace FBootstrapCoreMvc
                 Content = content
             };
             return new BootstrapContent<Modal>(HtmlHelper, modal);
+        }
+
+        public BootstrapContent<Nav> Nav()
+        {
+            var nav = new Nav();
+            return new BootstrapContent<Nav>(HtmlHelper, nav);
         }
         public BootstrapContent<Navbar> Navbar()
         {

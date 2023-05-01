@@ -1,7 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class Alert : BootstrapComponent
     {
@@ -9,7 +9,7 @@ namespace FBootstrapCoreMvc.Components
         public string? Heading { get; set; }
         public AlertState State { get; set; }
         public IconType? IconType { get; set; }
-        
+
         public Alert()
             : base("div", Css.Alert)
         {

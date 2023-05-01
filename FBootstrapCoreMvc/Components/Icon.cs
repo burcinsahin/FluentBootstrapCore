@@ -1,7 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class Icon : BootstrapComponent
     {

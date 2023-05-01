@@ -1,8 +1,8 @@
-﻿namespace FBootstrapCoreMvc.Components
+﻿namespace FluentBootstrapCore.Components
 {
     public class HtmlElement : BootstrapComponent
     {
-        public HtmlElement(string tagName, params string[] cssClasses) 
+        public HtmlElement(string tagName, params string[] cssClasses)
             : base(tagName, cssClasses)
         {
         }

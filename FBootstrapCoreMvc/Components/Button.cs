@@ -1,9 +1,9 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
-using FBootstrapCoreMvc.Options;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
+using FluentBootstrapCore.Interfaces;
+using FluentBootstrapCore.Options;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class Button : ButtonComponent,
         ICanHaveValue,

@@ -1,7 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class RadioButton : InputComponent,
         ICanBeChecked
@@ -14,7 +14,7 @@ namespace FBootstrapCoreMvc.Components
 
         protected override void PreBuild()
         {
-            if (Checked) 
+            if (Checked)
                 MergeAttribute("checked");
 
             base.PreBuild();

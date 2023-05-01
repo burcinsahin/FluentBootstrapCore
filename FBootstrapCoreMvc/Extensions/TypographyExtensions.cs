@@ -1,9 +1,9 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class TypographyExtensions
     {
@@ -73,7 +73,7 @@ namespace FBootstrapCoreMvc.Extensions
         {
             content.Component.Thumbnail = true;
             return content;
-        } 
+        }
         #endregion
     }
 }

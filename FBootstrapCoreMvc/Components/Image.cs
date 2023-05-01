@@ -1,4 +1,4 @@
-﻿namespace FBootstrapCoreMvc.Components
+﻿namespace FluentBootstrapCore.Components
 {
     public class Image : BootstrapComponent
     {
@@ -13,7 +13,13 @@
 
         protected override void PreBuild()
         {
-            if(Fluid)
+            if (Source != null)
+                MergeAttribute("src", Source);
+
+            if (Alt != null)
+                MergeAttribute("alt", Alt);
+
+            if (Fluid)
                 AddCss(Css.ImgFluid);
 
             if (Thumbnail)

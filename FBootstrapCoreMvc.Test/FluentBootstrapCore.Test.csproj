@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FBootstrapCoreMvc\FBootstrapCoreMvc.csproj" />
+    <ProjectReference Include="..\FBootstrapCoreMvc\FluentBootstrapCore.csproj" />
   </ItemGroup>
 
 </Project>

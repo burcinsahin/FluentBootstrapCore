@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace FBootstrapCoreMvc.Options
+namespace FluentBootstrapCore.Options
 {
     public class OptionList : HashSet<IUtilityOptions>
     {
@@ -10,20 +10,20 @@ namespace FBootstrapCoreMvc.Options
         {
         }
 
-        public T Get<T>() 
+        public T Get<T>()
             where T : IUtilityOptions
         {
             return (T)this.FirstOrDefault(o => o.GetType().Equals(typeof(T)));
         }
 
-        public bool Contains<T>() 
+        public bool Contains<T>()
             where T : IUtilityOptions
         {
             return this.Any(o => o.GetType().Equals(typeof(T)));
         }
 
 
-        public void AddOrUpdate<T>(T options) 
+        public void AddOrUpdate<T>(T options)
             where T : IUtilityOptions
         {
             if (Contains<T>())

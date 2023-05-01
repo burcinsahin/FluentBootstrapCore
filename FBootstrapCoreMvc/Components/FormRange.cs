@@ -1,6 +1,6 @@
-﻿using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class FormRange : FormControl<Range>, IRange
     {

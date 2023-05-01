@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FBootstrapCoreMvc.Test.WebUI.Models.MvcTests
+namespace FluentBootstrapCore.Test.WebUI.Models.MvcTests
 {
     public class Address
     {

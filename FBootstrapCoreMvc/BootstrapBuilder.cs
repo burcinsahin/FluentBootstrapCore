@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 
-namespace FBootstrapCoreMvc
+namespace FluentBootstrapCore
 {
     public class BootstrapBuilder<TComponent, TModel> : BootstrapBuilder<TComponent>
         where TComponent : SingleComponent

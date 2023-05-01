@@ -1,7 +1,7 @@
-﻿namespace FBootstrapCoreMvc.Interfaces
+﻿namespace FluentBootstrapCore.Interfaces
 {
     public interface IAuto
     {
-        bool Auto{ get; set; }
+        bool Auto { get; set; }
     }
 }

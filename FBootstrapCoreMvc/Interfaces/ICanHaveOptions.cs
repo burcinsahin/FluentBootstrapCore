@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
-namespace FBootstrapCoreMvc.Interfaces
+namespace FluentBootstrapCore.Interfaces
 {
     public interface ICanHaveOptions
     {

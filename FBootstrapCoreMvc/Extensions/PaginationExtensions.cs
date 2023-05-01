@@ -1,7 +1,7 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
+﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Enums;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class PaginationExtensions
     {
@@ -44,7 +44,7 @@ namespace FBootstrapCoreMvc.Extensions
         public static BootstrapContent<PageItem> Link(this BootstrapContent<PageItem> bootstrapContent, string? href, object? content)
         {
             bootstrapContent.Component.Link.Href = href;
-            bootstrapContent.Component.Link.Content= content;
+            bootstrapContent.Component.Link.Content = content;
             return bootstrapContent;
         }
 

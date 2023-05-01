@@ -1,6 +1,6 @@
-﻿using FBootstrapCoreMvc.Components;
+﻿using FluentBootstrapCore.Components;
 
-namespace FBootstrapCoreMvc.Interfaces
+namespace FluentBootstrapCore.Interfaces
 {
     public interface ICanHaveBadge
     {

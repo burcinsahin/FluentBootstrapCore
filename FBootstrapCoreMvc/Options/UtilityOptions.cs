@@ -1,11 +1,10 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
-namespace FBootstrapCoreMvc.Options
+namespace FluentBootstrapCore.Options
 {
     public abstract class UtilityOptions : IUtilityOptions
     {

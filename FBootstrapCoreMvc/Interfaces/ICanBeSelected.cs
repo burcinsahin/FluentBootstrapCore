@@ -1,4 +1,4 @@
-﻿namespace FBootstrapCoreMvc.Interfaces
+﻿namespace FluentBootstrapCore.Interfaces
 {
     internal interface ICanBeSelected
     {

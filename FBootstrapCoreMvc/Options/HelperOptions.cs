@@ -1,4 +1,4 @@
-﻿namespace FBootstrapCoreMvc.Options
+﻿namespace FluentBootstrapCore.Options
 {
     public class HelperOptions : UtilityOptions
     {

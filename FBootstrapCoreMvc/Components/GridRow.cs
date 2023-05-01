@@ -1,7 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class GridRow : BootstrapComponent,
         ICanCreate<GridColumn>,
@@ -27,9 +27,7 @@ namespace FBootstrapCoreMvc.Components
                 AddCss(AlignItem.GetCssDescriptions());
 
             if (RowColumns != null)
-            {
                 AddCss(RowColumns.GetCssDescriptions());
-            }
             base.PreBuild();
         }
     }

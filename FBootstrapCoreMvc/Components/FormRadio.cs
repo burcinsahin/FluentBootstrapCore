@@ -1,6 +1,6 @@
-﻿using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class FormRadio : FormControl<RadioButton>,
         ICheckedComponent,
@@ -24,7 +24,7 @@ namespace FBootstrapCoreMvc.Components
         protected override void PreBuild()
         {
             AddCss(Css.FormCheck);
-            
+
             if (Inline)
                 AddCss(Css.FormCheckInline);
 

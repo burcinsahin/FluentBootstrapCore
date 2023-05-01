@@ -1,9 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Options;
-using Newtonsoft.Json.Linq;
-using System.Globalization;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Options;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class UtilExtensions
     {
@@ -17,7 +15,7 @@ namespace FBootstrapCoreMvc.Extensions
             backgroundOpts.Gradient = gradient;
 
             return bootstrapContent;
-        } 
+        }
         #endregion
 
         #region Color
@@ -119,7 +117,7 @@ namespace FBootstrapCoreMvc.Extensions
             var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
             flexOpts.FlexFill.TryAdd(breakpoint, flexFill);
             return bootstrapContent;
-        } 
+        }
         #endregion
 
         public static BootstrapContent<TComponent> Float<TComponent>(this BootstrapContent<TComponent> bootstrapContent, Float @float, Breakpoint breakpoint = Breakpoint.Default)
@@ -261,21 +259,13 @@ namespace FBootstrapCoreMvc.Extensions
             var left = matrix[3];
 
             if (top.HasValue)
-            {
                 bootstrapContent.Margin(Enums.Margin.Top, top.Value, br);
-            }
             if (right.HasValue)
-            {
                 bootstrapContent.Margin(Enums.Margin.End, right.Value, br);
-            }
             if (bottom.HasValue)
-            {
                 bootstrapContent.Margin(Enums.Margin.Bottom, bottom.Value, br);
-            }
             if (left.HasValue)
-            {
                 bootstrapContent.Margin(Enums.Margin.Start, left.Value, br);
-            }
             return bootstrapContent;
         }
 
@@ -314,21 +304,13 @@ namespace FBootstrapCoreMvc.Extensions
             var left = matrix[3];
 
             if (top.HasValue)
-            {
                 bootstrapContent.Padding(Enums.Padding.Top, top.Value, br);
-            }
             if (right.HasValue)
-            {
                 bootstrapContent.Padding(Enums.Padding.End, right.Value, br);
-            }
             if (bottom.HasValue)
-            {
                 bootstrapContent.Padding(Enums.Padding.Bottom, bottom.Value, br);
-            }
             if (left.HasValue)
-            {
                 bootstrapContent.Padding(Enums.Padding.Start, left.Value, br);
-            }
             return bootstrapContent;
         }
 

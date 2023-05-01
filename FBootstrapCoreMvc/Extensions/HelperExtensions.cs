@@ -1,7 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class HelperExtensions
     {

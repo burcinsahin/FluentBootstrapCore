@@ -18,7 +18,7 @@
 
 	public void Process()
 	{
-		WriteLine("namespace Cinderella.Mvc.FluentBootstrapCore");
+		WriteLine("namespace FluentBootstrapCore");
 		WriteLine("{");
 		WriteLine("\tpublic static class Css");
 		WriteLine("\t{");

@@ -1,5 +1,4 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
+﻿using FluentBootstrapCore.Enums;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -8,7 +7,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 
-namespace FBootstrapCoreMvc
+namespace FluentBootstrapCore
 {
     public abstract class SingleComponent : HtmlComponent
     {

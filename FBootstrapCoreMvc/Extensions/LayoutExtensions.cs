@@ -1,11 +1,8 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Interfaces;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class LayoutExtensions
     {

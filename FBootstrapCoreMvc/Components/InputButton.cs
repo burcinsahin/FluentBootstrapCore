@@ -1,10 +1,10 @@
-﻿using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Extensions;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
-    public class InputButton : ButtonComponent, 
-        ICanHaveValue, 
+    public class InputButton : ButtonComponent,
+        ICanHaveValue,
         ICanBeDisabled
     {
         public InputButton() : base("input")
@@ -17,7 +17,7 @@ namespace FBootstrapCoreMvc.Components
         protected override void PreBuild()
         {
             MergeAttribute("type", ButtonType.GetDescription());
-            
+
             if (Value != null)
                 MergeAttribute("value", Value);
             if (Disabled)

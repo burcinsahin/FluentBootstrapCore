@@ -141,7 +141,7 @@
 @Html.Bootstrap().Heading1("Stretched link").Id("stretchedlink")
 @using (Html.Bootstrap().Container().Begin())
 {
-    @using (var card = Html.Bootstrap().Card().NoCardBody().Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().CustomBody().Width(18, LengthUnit.RootElement).Begin())
     {
         @Html.Bootstrap().Image("http://picsum.photos/200","photo").Css(Css.CardImgTop)
         @using (card.Body().Begin())
@@ -178,7 +178,7 @@
     }
     <hr />
     @Html.Bootstrap().Heading2("Identifying the containing block")
-    @using (var card = Html.Bootstrap().Card().NoCardBody().Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().CustomBody().Width(18, LengthUnit.RootElement).Begin())
     {
         @Html.Bootstrap().Image("http://picsum.photos/200","photo").Css(Css.CardImgTop)
         @using (card.Body().Begin())

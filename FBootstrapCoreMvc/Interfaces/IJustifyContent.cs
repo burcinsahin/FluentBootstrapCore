@@ -1,6 +1,6 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FluentBootstrapCore.Enums;
 
-namespace FBootstrapCoreMvc.Interfaces
+namespace FluentBootstrapCore.Interfaces
 {
     public interface IJustifyContent
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FBootstrapCoreMvc.Enums
+namespace FluentBootstrapCore.Enums
 {
     public enum FlexAbility
     {

@@ -1,8 +1,7 @@
-﻿using FBootstrapCoreMvc.Components;
-using Microsoft.AspNetCore.Routing.Constraints;
-using System.Net.Mail;
+﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Enums;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class CardExtensions
     {
@@ -31,14 +30,25 @@ namespace FBootstrapCoreMvc.Extensions
         /// <typeparam name="TComponent"></typeparam>
         /// <param name="bootstrapContent"></param>
         /// <returns></returns>
-        public static BootstrapContent<TComponent> NoCardBody<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+        public static BootstrapContent<TComponent> CustomBody<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
             where TComponent : Card
         {
-            bootstrapContent.Component.HasCardBody = false;
+            bootstrapContent.Component.CustomBody = true;
             return bootstrapContent;
         }
 
-        public static BootstrapContent<Heading> Title(this BootstrapBuilder<Card> builder, object? content = null)
+        public static BootstrapContent<TComponent> BodyColor<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            TextColor bodyColor)
+            where TComponent : Card
+        {
+            bootstrapContent.Component.BodyColor = bodyColor;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<Heading> Title(
+            this BootstrapBuilder<Card> builder,
+            object? content = null)
         {
             var heading = new Heading(5)
             {
@@ -48,7 +58,21 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<Heading>(builder.HtmlHelper, heading);
         }
 
-        public static BootstrapContent<HtmlElement> Text(this BootstrapBuilder<Card> builder, object? content = null)
+        public static BootstrapContent<Heading> Subtitle(
+            this BootstrapBuilder<Card> builder,
+            object? content = null)
+        {
+            var heading = new Heading(6)
+            {
+                Content = content
+            };
+            heading.AddCss(Css.CardSubtitle, Css.TextMuted);
+            return new BootstrapContent<Heading>(builder.HtmlHelper, heading);
+        }
+
+        public static BootstrapContent<HtmlElement> Text(
+            this BootstrapBuilder<Card> builder,
+            object? content = null)
         {
             var p = new HtmlElement("p")
             {
@@ -58,19 +82,42 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<HtmlElement>(builder.HtmlHelper, p);
         }
 
-        public static BootstrapContent<Image> Image(this BootstrapBuilder<Card> builder, string src, string? alt = null)
+        public static BootstrapContent<Link> Link(
+            this BootstrapBuilder<Card> builder,
+            object? content = null,
+            string href = "#")
+        {
+            var p = new Link()
+            {
+                Content = content,
+                Href = href
+            };
+            p.AddCss(Css.CardLink);
+            return new BootstrapContent<Link>(builder.HtmlHelper, p);
+        }
+
+        public static BootstrapContent<Image> Image(
+            this BootstrapBuilder<Card> builder,
+            string src,
+            string? alt = null,
+            CardImage? cardImage = null)
         {
             var img = new Image()
             {
                 Source = src,
                 Alt = alt,
             };
-            img.AddCss(Css.CardImg);
+            if (cardImage.HasValue)
+                img.AddCss(cardImage.GetCssDescription());
+            else
+                img.AddCss(Css.CardImg);
+
             return new BootstrapContent<Image>(builder.HtmlHelper, img);
         }
 
-
-        public static BootstrapContent<CardHeader> Header(this BootstrapBuilder<Card> builder, object? content = null)
+        public static BootstrapContent<CardHeader> Header(
+            this BootstrapBuilder<Card> builder,
+            object? content = null)
         {
             var component = new CardHeader
             {
@@ -79,7 +126,9 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<CardHeader>(builder.HtmlHelper, component);
         }
 
-        public static BootstrapContent<CardFooter> Footer(this BootstrapBuilder<Card> builder, object? content = null)
+        public static BootstrapContent<CardFooter> Footer(
+            this BootstrapBuilder<Card> builder,
+            object? content = null)
         {
             var component = new CardFooter
             {
@@ -88,7 +137,11 @@ namespace FBootstrapCoreMvc.Extensions
             return new BootstrapContent<CardFooter>(builder.HtmlHelper, component);
         }
 
-        public static BootstrapContent<CardBody> Body(this BootstrapBuilder<Card> builder, object? content = null, string? title = null, string? subtitle = null)
+        public static BootstrapContent<CardBody> Body(
+            this BootstrapBuilder<Card> builder,
+            object? content = null,
+            string? title = null,
+            string? subtitle = null)
         {
             var cardBody = new CardBody
             {
@@ -96,7 +149,14 @@ namespace FBootstrapCoreMvc.Extensions
                 Title = title,
                 Subtitle = subtitle
             };
+            //builder.Component.CardBodyList.Add(cardBody);
             return new BootstrapContent<CardBody>(builder.HtmlHelper, cardBody);
+        }
+
+        public static BootstrapContent<Card> Card(this BootstrapBuilder<CardGroup> builder)
+        {
+            var card = new Card();
+            return new BootstrapContent<Card>(builder.HtmlHelper, card);
         }
     }
 }

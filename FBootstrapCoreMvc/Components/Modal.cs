@@ -1,6 +1,6 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FluentBootstrapCore.Enums;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class Modal : BootstrapComponent
     {

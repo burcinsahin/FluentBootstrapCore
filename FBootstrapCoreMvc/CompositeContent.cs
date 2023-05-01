@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.IO;
 using System.Text.Encodings.Web;
 
-namespace FBootstrapCoreMvc
+namespace FluentBootstrapCore
 {
     public class CompositeContent<TComponent> : IHtmlContent
     where TComponent : IHtmlComponent

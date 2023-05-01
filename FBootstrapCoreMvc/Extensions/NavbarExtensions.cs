@@ -1,8 +1,8 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class NavbarExtensions
     {

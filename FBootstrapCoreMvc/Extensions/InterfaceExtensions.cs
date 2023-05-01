@@ -1,11 +1,11 @@
-﻿using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Interfaces;
-using FBootstrapCoreMvc.Options;
+﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
+using FluentBootstrapCore.Options;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class InterfaceExtensions
     {

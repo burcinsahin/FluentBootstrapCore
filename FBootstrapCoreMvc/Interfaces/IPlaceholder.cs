@@ -1,4 +1,4 @@
-﻿namespace FBootstrapCoreMvc.Interfaces
+﻿namespace FluentBootstrapCore.Interfaces
 {
     public interface IPlaceholder
     {

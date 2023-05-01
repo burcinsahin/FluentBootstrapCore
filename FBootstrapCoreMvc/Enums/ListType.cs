@@ -1,4 +1,4 @@
-﻿namespace FBootstrapCoreMvc.Enums
+﻿namespace FluentBootstrapCore.Enums
 {
     public enum ListType
     {

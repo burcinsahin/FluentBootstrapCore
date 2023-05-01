@@ -1,6 +1,6 @@
-﻿using FBootstrapCoreMvc.Components;
+﻿using FluentBootstrapCore.Components;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class AccordionExtensions
     {
@@ -11,10 +11,8 @@ namespace FBootstrapCoreMvc.Extensions
             {
                 Header = header,
             };
-            if (!accordion.AlwaysOpen) 
-            {
+            if (!accordion.AlwaysOpen)
                 accordionItem.ParentId = accordion.Id;
-            }
             return new BootstrapContent<AccordionItem>(builder.HtmlHelper, accordionItem);
         }
 

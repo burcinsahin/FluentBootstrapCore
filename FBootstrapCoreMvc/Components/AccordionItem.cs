@@ -1,6 +1,6 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FluentBootstrapCore.Enums;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class AccordionItem : BootstrapComponent
     {
@@ -25,7 +25,7 @@ namespace FBootstrapCoreMvc.Components
             };
             button.MergeAttribute("type", "button");
             button.MergeAttribute("data-bs-toggle", "collapse");
-            if (!Show) 
+            if (!Show)
                 button.AddCss(Css.Collapsed);
             h2.Content = button;
 

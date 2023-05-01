@@ -1,8 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class ButtonToolbar : BootstrapComponent,
         ICanCreate<ButtonGroup>,
@@ -18,7 +17,7 @@ namespace FBootstrapCoreMvc.Components
         protected override void PreBuild()
         {
             MergeAttribute("role", "toolbar");
-            if (JustifyContent!=null)
+            if (JustifyContent != null)
                 AddCss(JustifyContent.GetCssDescriptions());
             base.PreBuild();
         }

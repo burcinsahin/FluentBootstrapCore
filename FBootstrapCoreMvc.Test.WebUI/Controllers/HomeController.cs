@@ -1,9 +1,9 @@
-﻿using FBootstrapCoreMvc.Test.WebUI.Models.MvcTests;
+﻿using FluentBootstrapCore.Test.WebUI.Models.MvcTests;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace FBootstrapCoreMvc.Test.WebUI.Controllers
+namespace FluentBootstrapCore.Test.WebUI.Controllers
 {
     public class HomeController : Controller
     {

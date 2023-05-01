@@ -1,6 +1,6 @@
-﻿using FBootstrapCoreMvc.Components;
+﻿using FluentBootstrapCore.Components;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class BadgeExtensions
     {

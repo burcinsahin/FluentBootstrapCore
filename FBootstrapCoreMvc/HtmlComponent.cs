@@ -1,4 +1,4 @@
-﻿namespace FBootstrapCoreMvc
+﻿namespace FluentBootstrapCore
 {
     public abstract class HtmlComponent : IHtmlComponent
     {

@@ -7,7 +7,7 @@ using System;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FBootstrapCoreMvc
+namespace FluentBootstrapCore
 {
     public static class HtmlHelperExtensions
     {

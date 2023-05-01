@@ -1,4 +1,4 @@
-﻿namespace FBootstrapCoreMvc.Components
+﻿namespace FluentBootstrapCore.Components
 {
     public class Label : BootstrapComponent
     {
@@ -13,9 +13,7 @@
         protected override void PreBuild()
         {
             if (For != null)
-            {
                 MergeAttribute("for", For);
-            }
 
             base.PreBuild();
         }

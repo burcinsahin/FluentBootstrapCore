@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace FBootstrapCoreMvc.Interfaces
+namespace FluentBootstrapCore.Interfaces
 {
-    public interface ISizable<TEnum> 
+    public interface ISizable<TEnum>
         where TEnum : struct, Enum
     {
         TEnum? Size { get; set; }

@@ -1,7 +1,6 @@
-﻿using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class FormTextArea : FormControl<TextArea>,
         ICanHaveMaxLength,
@@ -35,7 +34,7 @@ namespace FBootstrapCoreMvc.Components
             _textArea.MaxLength = MaxLength;
             _textArea.Content = Content;
             _textArea.Rows = Rows;
-            _textArea.Height=Height;
+            _textArea.Height = Height;
             Content = null;
 
             if (FloatingLabel != null)

@@ -1,10 +1,10 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
-    public class ButtonGroup : BootstrapComponent, 
+    public class ButtonGroup : BootstrapComponent,
         ICanCreate<IButton>,
         ICanCreate<ButtonGroup>,
         ICanCreate<DropdownMenu>

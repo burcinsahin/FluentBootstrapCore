@@ -1,8 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
+﻿using FluentBootstrapCore.Enums;
 using System.Collections.Generic;
 
-namespace FBootstrapCoreMvc.Options
+namespace FluentBootstrapCore.Options
 {
     public class FloatOptions : UtilityOptions
     {

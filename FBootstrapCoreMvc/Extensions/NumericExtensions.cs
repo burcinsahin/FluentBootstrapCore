@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     internal static class NumericExtensions
     {

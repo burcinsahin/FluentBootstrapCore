@@ -1,10 +1,10 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FluentBootstrapCore.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     internal static class EnumExtensions
     {
@@ -38,7 +38,7 @@ namespace FBootstrapCoreMvc.Extensions
             return value.ToString();
         }
 
-        internal static string GetSuffix(this ComponentSize size) 
+        internal static string GetSuffix(this ComponentSize size)
         {
             switch (size)
             {
@@ -55,7 +55,7 @@ namespace FBootstrapCoreMvc.Extensions
             }
         }
 
-        internal static string GetHyphenatedDescription(this Breakpoint breakpoint) 
+        internal static string GetHyphenatedDescription(this Breakpoint breakpoint)
         {
             var desc = breakpoint.GetCssDescription();
             if (string.IsNullOrWhiteSpace(desc))

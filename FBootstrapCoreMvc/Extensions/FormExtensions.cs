@@ -1,9 +1,8 @@
-﻿
-using FBootstrapCoreMvc.Components;
-using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
-using FBootstrapCoreMvc.Options;
+﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
+using FluentBootstrapCore.Interfaces;
+using FluentBootstrapCore.Options;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace FBootstrapCoreMvc.Extensions
+namespace FluentBootstrapCore.Extensions
 {
     public static class FormExtensions
     {
@@ -132,9 +131,7 @@ namespace FBootstrapCoreMvc.Extensions
                 Label = modelExpression.Name,
             };
             if (modelExpression.Model is bool checkedVal)
-            {
                 formCheck.Checked = checkedVal;
-            }
             return new BootstrapContent<FormCheck>(builder.HtmlHelper, formCheck);
         }
 

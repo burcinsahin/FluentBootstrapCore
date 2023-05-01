@@ -1,4 +1,4 @@
-﻿namespace FBootstrapCoreMvc.Components
+﻿namespace FluentBootstrapCore.Components
 {
     public class TableCell : BootstrapComponent
     {

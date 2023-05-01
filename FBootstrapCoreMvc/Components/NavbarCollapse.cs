@@ -1,11 +1,11 @@
-﻿using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class NavbarCollapse : BootstrapComponent,
         ICanCreate<NavbarNav>
     {
-        public NavbarCollapse() 
+        public NavbarCollapse()
             : base("div", Css.Collapse, Css.NavbarCollapse)
         {
         }

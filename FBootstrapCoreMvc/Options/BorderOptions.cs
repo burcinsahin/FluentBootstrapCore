@@ -1,8 +1,8 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
 using System.Collections.Generic;
 
-namespace FBootstrapCoreMvc.Options
+namespace FluentBootstrapCore.Options
 {
     public class BorderOptions : UtilityOptions
     {

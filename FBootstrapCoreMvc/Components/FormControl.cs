@@ -1,11 +1,9 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
-using FBootstrapCoreMvc.Options;
-using System;
-using System.Collections.Generic;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
+using FluentBootstrapCore.Interfaces;
+using FluentBootstrapCore.Options;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public abstract class FormControl<TComponent> : BootstrapComponent, IFormControl
         where TComponent : BootstrapComponent, IInputComponent

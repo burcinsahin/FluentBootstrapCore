@@ -1,4 +1,6 @@
-﻿namespace FBootstrapCoreMvc.Extensions.Tests
+﻿using FluentBootstrapCore.Extensions;
+
+namespace FBootstrapCoreMvc.Extensions.Tests
 {
     [TestClass()]
     public class NumericExtensionsTests

@@ -1,9 +1,9 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
-    public class CheckBox : InputComponent, 
+    public class CheckBox : InputComponent,
         ICheckedComponent
     {
         public bool Checked { get; set; }

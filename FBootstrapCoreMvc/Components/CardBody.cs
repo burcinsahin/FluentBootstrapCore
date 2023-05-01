@@ -1,8 +1,8 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FluentBootstrapCore.Enums;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class CardBody : BootstrapComponent
     {

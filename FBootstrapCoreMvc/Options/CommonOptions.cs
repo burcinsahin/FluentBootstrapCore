@@ -1,7 +1,7 @@
-﻿using FBootstrapCoreMvc.Enums;
+﻿using FluentBootstrapCore.Enums;
 using System.Collections.Generic;
 
-namespace FBootstrapCoreMvc.Options
+namespace FluentBootstrapCore.Options
 {
     public class CommonOptions : UtilityOptions
     {

@@ -1,9 +1,9 @@
-﻿using FBootstrapCoreMvc.Enums;
-using FBootstrapCoreMvc.Extensions;
-using FBootstrapCoreMvc.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
+using FluentBootstrapCore.Options;
 using System;
 
-namespace FBootstrapCoreMvc.Components
+namespace FluentBootstrapCore.Components
 {
     public class Card : BootstrapComponent,
         ICanCreate<CardBody>,
@@ -12,14 +12,16 @@ namespace FBootstrapCoreMvc.Components
     {
         internal object? Header { get; set; }
         internal object? Footer { get; set; }
-        internal bool HasCardBody { get; set; }
+        internal bool CustomBody { get; set; }
         internal object? BodyTitle { get; set; }
         internal bool Collapsible { get; set; }
-
+        public TextColor? BodyColor { get; set; }
+        //public List<CardBody> CardBodyList { get; set; }
         public Card()
             : base("div", Css.Card)
         {
-            HasCardBody = true;
+            //CardBodyList = new List<CardBody>();
+            CustomBody = false;
         }
 
         protected override void PreBuild()
@@ -61,16 +63,19 @@ namespace FBootstrapCoreMvc.Components
                 AddChild(div, ChildLocation.BodyWrap);
             }
 
-            if (HasCardBody)
+            if (!CustomBody)
             {
                 var cardBody = new CardBody
                 {
                     Title = BodyTitle
                 };
-                //if (Content is string)
-                //{
-                //    cardBody.Content = Content;
-                //}
+                if (BodyColor.HasValue)
+                {
+                    cardBody.UtilityOptions.AddOrUpdate(new ColorOptions
+                    {
+                        TextColor = BodyColor
+                    });
+                }
                 AddChild(cardBody, ChildLocation.BodyWrap);
             }
 
