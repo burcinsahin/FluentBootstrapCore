@@ -107,18 +107,27 @@ namespace FluentBootstrapCore.Extensions
         }
 
         public static BootstrapContent<TComponent> Active<TComponent>(
-            this BootstrapContent<TComponent> bootstrapContent)
+            this BootstrapContent<TComponent> bootstrapContent, bool value = true)
             where TComponent : SingleComponent, ICanBeActive
         {
-            bootstrapContent.Component.Active = true;
+            bootstrapContent.Component.Active = value;
             return bootstrapContent;
         }
 
         public static BootstrapContent<TComponent> Href<TComponent>(
-            this BootstrapContent<TComponent> bootstrapContent, string href = "#")
+            this BootstrapContent<TComponent> bootstrapContent,
+            string href = "#")
             where TComponent : SingleComponent, ILink
         {
             bootstrapContent.Component.Href = href;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Target<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            LinkTarget target) where TComponent : SingleComponent, ILink
+        {
+            bootstrapContent.Component.Target = target;
             return bootstrapContent;
         }
 

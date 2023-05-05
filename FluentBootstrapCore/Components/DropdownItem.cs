@@ -1,4 +1,5 @@
-﻿using FluentBootstrapCore.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
@@ -6,6 +7,8 @@ namespace FluentBootstrapCore.Components
         ILink
     {
         public string? Href { get; set; }
+        public LinkTarget? Target { get; set; }
+
         public DropdownItem()
             : base("li")
         {

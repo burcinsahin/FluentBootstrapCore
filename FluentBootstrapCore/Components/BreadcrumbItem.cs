@@ -1,4 +1,5 @@
-﻿using FluentBootstrapCore.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
@@ -7,6 +8,7 @@ namespace FluentBootstrapCore.Components
     {
         public bool Active { get; set; }
         public string? Href { get; set; }
+        public LinkTarget? Target { get; set; }
 
         public BreadcrumbItem()
             : base("li", Css.BreadcrumbItem)

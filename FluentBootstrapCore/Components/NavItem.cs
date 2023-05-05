@@ -1,4 +1,5 @@
-﻿using FluentBootstrapCore.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
@@ -10,6 +11,7 @@ namespace FluentBootstrapCore.Components
         public bool Active { get; set; }
         public string? Href { get; set; }
         public bool Disabled { get; set; }
+        public LinkTarget? Target { get; set; }
 
         public NavItem() : base("li", Css.NavItem)
         {
