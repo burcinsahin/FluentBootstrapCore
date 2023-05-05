@@ -33,7 +33,7 @@ namespace FluentBootstrapCore.Extensions
         #endregion
 
         #region PageItem
-        public static BootstrapContent<PageItem> PageItem(this BootstrapBuilder<Pagination> builder, object? content)
+        public static BootstrapContent<PageItem> PageItem(this ComponentBuilder<Pagination> builder, object? content)
         {
             var pageItem = new PageItem();
             pageItem.Link.Href = "#";

@@ -13,6 +13,7 @@ namespace FluentBootstrapCore
     {
         public static BootstrapHelper<TModel> Bootstrap<TModel>(this IHtmlHelper<TModel> htmlHelper)
         {
+            ComponentStackManager.ComponentStack = new MvcComponentStack(htmlHelper);
             return new BootstrapHelper<TModel>(htmlHelper);
         }
 

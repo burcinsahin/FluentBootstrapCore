@@ -6,14 +6,14 @@ namespace FluentBootstrapCore.Extensions
 {
     public static class ButtonGroupExtensions
     {
-        public static BootstrapContent<ButtonGroup> ButtonGroup<TComponent>(this BootstrapBuilder<TComponent> builder)
+        public static BootstrapContent<ButtonGroup> ButtonGroup<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : SingleComponent, ICanCreate<ButtonGroup>
         {
             var buttonGroup = new ButtonGroup();
             return new BootstrapContent<ButtonGroup>(builder.HtmlHelper, buttonGroup);
         }
 
-        public static BootstrapContent<Button> Button(this BootstrapBuilder<ButtonGroup> builder, object? content = null)
+        public static BootstrapContent<Button> Button(this ComponentBuilder<ButtonGroup> builder, object? content = null)
         {
             var button = new Button
             {
@@ -22,7 +22,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
         }
 
-        public static BootstrapContent<LinkButton> LinkButton(this BootstrapBuilder<ButtonGroup> builder, object? content = null)
+        public static BootstrapContent<LinkButton> LinkButton(this ComponentBuilder<ButtonGroup> builder, object? content = null)
         {
             var button = new LinkButton
             {
@@ -31,7 +31,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<LinkButton>(builder.HtmlHelper, button);
         }
 
-        public static BootstrapContent<Button> DropdownToggle(this BootstrapBuilder<ButtonGroup> builder, object? content = null)
+        public static BootstrapContent<Button> DropdownToggle(this ComponentBuilder<ButtonGroup> builder, object? content = null)
         {
             var button = new Button
             {
@@ -42,7 +42,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
         }
 
-        public static CompositeContent<CheckButton> CheckButton(this BootstrapBuilder<ButtonGroup> builder, object? content = null)
+        public static CompositeContent<CheckButton> CheckButton(this ComponentBuilder<ButtonGroup> builder, object? content = null)
         {
             var button = new CheckButton
             {
@@ -51,7 +51,7 @@ namespace FluentBootstrapCore.Extensions
             return new CompositeContent<CheckButton>(builder.HtmlHelper, button);
         }
 
-        public static CompositeContent<CheckButton> RadioButton(this BootstrapBuilder<ButtonGroup> builder, object? content = null)
+        public static CompositeContent<CheckButton> RadioButton(this ComponentBuilder<ButtonGroup> builder, object? content = null)
         {
             var button = new CheckButton
             {

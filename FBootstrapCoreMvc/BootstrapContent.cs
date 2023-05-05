@@ -20,9 +20,9 @@ namespace FluentBootstrapCore
             _component = component;
         }
 
-        public new BootstrapBuilder<TComponent, TModel> Begin()
+        public new ComponentBuilder<TComponent, TModel> Begin()
         {
-            return new BootstrapBuilder<TComponent, TModel>(_htmlHelper, _component);
+            return new ComponentBuilder<TComponent, TModel>(_htmlHelper, _component);
         }
     }
 
@@ -47,9 +47,9 @@ namespace FluentBootstrapCore
             writer.Write(html);
         }
 
-        public BootstrapBuilder<TComponent> Begin()
+        public ComponentBuilder<TComponent> Begin()
         {
-            return new BootstrapBuilder<TComponent>(_htmlHelper, _component);
+            return new ComponentBuilder<TComponent>(_htmlHelper, _component);
         }
     }
 }

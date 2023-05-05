@@ -29,7 +29,7 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<SingleComponent> AlertLink(this BootstrapBuilder<Alert> builder, object? content, string? href = "#")
+        public static BootstrapContent<SingleComponent> AlertLink(this ComponentBuilder<Alert> builder, object? content, string? href = "#")
         {
             var link = new HtmlElement("a", Css.AlertLink);
             link.AppendContent(content);

@@ -57,19 +57,19 @@ namespace FluentBootstrapCore.Extensions
         //}
 
         // Cells
-        public static BootstrapContent<TableHeader> TableHeader<TComponent>(this BootstrapBuilder<TComponent> builder, params string[] headers)
+        public static BootstrapContent<TableHeader> TableHeader<TComponent>(this ComponentBuilder<TComponent> builder, params string[] headers)
             where TComponent : SingleComponent, ICanCreate<TableHeader>
         {
             return new BootstrapContent<TableHeader>(builder.HtmlHelper, new TableHeader(headers));
         }
 
-        public static BootstrapContent<TableRow> TableRow<TComponent>(this BootstrapBuilder<TComponent> builder)
+        public static BootstrapContent<TableRow> TableRow<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : SingleComponent, ICanCreate<TableRow>
         {
             return new BootstrapContent<TableRow>(builder.HtmlHelper, new TableRow());
         }
 
-        public static BootstrapContent<TableData> TableData<TComponent>(this BootstrapBuilder<TComponent> builder, object? content = null)
+        public static BootstrapContent<TableData> TableData<TComponent>(this ComponentBuilder<TComponent> builder, object? content = null)
             where TComponent : SingleComponent, ICanCreate<TableData>
         {
             return new BootstrapContent<TableData>(builder.HtmlHelper, new TableData(content));

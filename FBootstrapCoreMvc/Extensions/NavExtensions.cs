@@ -11,7 +11,14 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<NavItem> NavItem<TComponent>(this BootstrapBuilder<TComponent> builder)
+        public static BootstrapContent<TComponent> Pills<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : Nav
+        {
+            bootstrapContent.Component.AddCss(Css.NavPills);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<NavItem> NavItem<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : Nav
         {
             var navItem = new NavItem();

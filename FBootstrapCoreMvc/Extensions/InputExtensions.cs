@@ -138,14 +138,14 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<InputGroup> InputGroup<TComponent>(this BootstrapBuilder<TComponent> builder)
+        public static BootstrapContent<InputGroup> InputGroup<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : SingleComponent, ICanCreate<InputGroup>
         {
             var inputGroup = new InputGroup();
             return new BootstrapContent<InputGroup>(builder.HtmlHelper, inputGroup);
         }
 
-        public static BootstrapContent<HtmlElement> InputGroupText(this BootstrapBuilder<InputGroup> builder, object? content = null)
+        public static BootstrapContent<HtmlElement> InputGroupText(this ComponentBuilder<InputGroup> builder, object? content = null)
         {
             var inputGroupText = new HtmlElement("span", Css.InputGroupText)
             {
@@ -154,7 +154,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<HtmlElement>(builder.HtmlHelper, inputGroupText);
         }
 
-        public static BootstrapContent<Input> Input<TComponent>(this BootstrapBuilder<TComponent> builder)
+        public static BootstrapContent<Input> Input<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : SingleComponent, ICanCreate<Input>
         {
             var input = new Input();

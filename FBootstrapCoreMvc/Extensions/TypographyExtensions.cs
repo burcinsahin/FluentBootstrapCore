@@ -8,14 +8,14 @@ namespace FluentBootstrapCore.Extensions
     public static class TypographyExtensions
     {
         #region Dropdown
-        public static BootstrapContent<DropdownMenu> DropdownMenu<TComponent>(this BootstrapBuilder<TComponent> builder)
+        public static BootstrapContent<DropdownMenu> DropdownMenu<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : SingleComponent, ICanCreate<DropdownMenu>
         {
             var dropdownMenu = new DropdownMenu();
             return new BootstrapContent<DropdownMenu>(builder.HtmlHelper, dropdownMenu);
         }
 
-        public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this BootstrapBuilder<TComponent> builder, string? text, string? href)
+        public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this ComponentBuilder<TComponent> builder, string? text, string? href)
             where TComponent : SingleComponent, ICanCreate<DropdownItem>
         {
             var dropdownItem = new DropdownItem
@@ -26,7 +26,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<DropdownItem>(builder.HtmlHelper, dropdownItem);
         }
 
-        public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this BootstrapBuilder<TComponent> builder, string? text, string action, string controller, object? routeValues = null)
+        public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this ComponentBuilder<TComponent> builder, string? text, string action, string controller, object? routeValues = null)
             where TComponent : SingleComponent, ICanCreate<DropdownItem>
         {
             var url = builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
@@ -45,7 +45,7 @@ namespace FluentBootstrapCore.Extensions
         }
         #endregion
 
-        public static BootstrapContent<ListItem> ListItem<TComponent>(this BootstrapBuilder<TComponent> builder, object? content = null)
+        public static BootstrapContent<ListItem> ListItem<TComponent>(this ComponentBuilder<TComponent> builder, object? content = null)
             where TComponent : List
         {
             var listItem = new ListItem() { Content = content };

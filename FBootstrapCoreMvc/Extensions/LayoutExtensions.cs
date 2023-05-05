@@ -29,21 +29,21 @@ namespace FluentBootstrapCore.Extensions
         #endregion
 
         #region Grid
-        public static BootstrapContent<GridRow> Row<TComponent>(this BootstrapBuilder<TComponent> builder)
+        public static BootstrapContent<GridRow> Row<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : SingleComponent, ICanCreate<GridRow>
         {
             var gridRow = new GridRow();
             return new BootstrapContent<GridRow>(builder.HtmlHelper, gridRow);
         }
 
-        public static BootstrapContent<GridColumn> Column<TComponent>(this BootstrapBuilder<TComponent> builder)
+        public static BootstrapContent<GridColumn> Column<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : SingleComponent, ICanCreate<GridColumn>
         {
             var gridColumn = new GridColumn();
             return new BootstrapContent<GridColumn>(builder.HtmlHelper, gridColumn);
         }
 
-        public static BootstrapContent<HtmlElement> Break<TComponent>(this BootstrapBuilder<TComponent> builder)
+        public static BootstrapContent<HtmlElement> Break<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : SingleComponent
         {
             var div = new HtmlElement("div", Css.W100);

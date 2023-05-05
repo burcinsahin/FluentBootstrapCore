@@ -30,10 +30,10 @@ namespace FluentBootstrapCore.Extensions
         /// <typeparam name="TComponent"></typeparam>
         /// <param name="bootstrapContent"></param>
         /// <returns></returns>
-        public static BootstrapContent<TComponent> CustomBody<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+        public static BootstrapContent<TComponent> CustomBody<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool value = true)
             where TComponent : Card
         {
-            bootstrapContent.Component.CustomBody = true;
+            bootstrapContent.Component.CustomBody = value;
             return bootstrapContent;
         }
 
@@ -47,7 +47,7 @@ namespace FluentBootstrapCore.Extensions
         }
 
         public static BootstrapContent<Heading> Title(
-            this BootstrapBuilder<Card> builder,
+            this ComponentBuilder<Card> builder,
             object? content = null)
         {
             var heading = new Heading(5)
@@ -59,7 +59,7 @@ namespace FluentBootstrapCore.Extensions
         }
 
         public static BootstrapContent<Heading> Subtitle(
-            this BootstrapBuilder<Card> builder,
+            this ComponentBuilder<Card> builder,
             object? content = null)
         {
             var heading = new Heading(6)
@@ -71,7 +71,7 @@ namespace FluentBootstrapCore.Extensions
         }
 
         public static BootstrapContent<HtmlElement> Text(
-            this BootstrapBuilder<Card> builder,
+            this ComponentBuilder<Card> builder,
             object? content = null)
         {
             var p = new HtmlElement("p")
@@ -83,7 +83,7 @@ namespace FluentBootstrapCore.Extensions
         }
 
         public static BootstrapContent<Link> Link(
-            this BootstrapBuilder<Card> builder,
+            this ComponentBuilder<Card> builder,
             object? content = null,
             string href = "#")
         {
@@ -97,7 +97,7 @@ namespace FluentBootstrapCore.Extensions
         }
 
         public static BootstrapContent<Image> Image(
-            this BootstrapBuilder<Card> builder,
+            this ComponentBuilder<Card> builder,
             string src,
             string? alt = null,
             CardImage? cardImage = null)
@@ -115,8 +115,14 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<Image>(builder.HtmlHelper, img);
         }
 
+        public static BootstrapContent<HtmlElement> ImageOverlay(this ComponentBuilder<Card> builder)
+        {
+            var div = new HtmlElement("div", Css.CardImgOverlay);
+            return new BootstrapContent<HtmlElement>(builder.HtmlHelper, div);
+        }
+
         public static BootstrapContent<CardHeader> Header(
-            this BootstrapBuilder<Card> builder,
+            this ComponentBuilder<Card> builder,
             object? content = null)
         {
             var component = new CardHeader
@@ -127,7 +133,7 @@ namespace FluentBootstrapCore.Extensions
         }
 
         public static BootstrapContent<CardFooter> Footer(
-            this BootstrapBuilder<Card> builder,
+            this ComponentBuilder<Card> builder,
             object? content = null)
         {
             var component = new CardFooter
@@ -138,7 +144,7 @@ namespace FluentBootstrapCore.Extensions
         }
 
         public static BootstrapContent<CardBody> Body(
-            this BootstrapBuilder<Card> builder,
+            this ComponentBuilder<Card> builder,
             object? content = null,
             string? title = null,
             string? subtitle = null)
@@ -153,7 +159,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<CardBody>(builder.HtmlHelper, cardBody);
         }
 
-        public static BootstrapContent<Card> Card(this BootstrapBuilder<CardGroup> builder)
+        public static BootstrapContent<Card> Card(this ComponentBuilder<CardGroup> builder)
         {
             var card = new Card();
             return new BootstrapContent<Card>(builder.HtmlHelper, card);

@@ -175,6 +175,7 @@ namespace FluentBootstrapCore
             {
                 _tagBuilder.InnerHtml.AppendHtml(child.ToHtml());
             }
+            ComponentStackManager.ComponentStack?.Push(this);
             return _tagBuilder.RenderStartTag();
         }
 
@@ -233,6 +234,7 @@ namespace FluentBootstrapCore
                 htmlContentBuilder.AppendHtml(clone.ToHtml());
             }
             htmlContentBuilder.AppendHtml(_tagBuilder.RenderEndTag());
+            ComponentStackManager.ComponentStack?.Pop();
             return htmlContentBuilder;
         }
 

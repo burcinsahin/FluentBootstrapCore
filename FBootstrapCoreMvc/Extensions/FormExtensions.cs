@@ -34,7 +34,7 @@ namespace FluentBootstrapCore.Extensions
         }
 
         #region Form Components
-        public static BootstrapContent<FormInput> Input<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, object? value = null, FormInputType inputType = FormInputType.Text)
+        public static BootstrapContent<FormInput> Input<TComponent, TModel>(this ComponentBuilder<TComponent, TModel> builder, string? name = null, string? label = null, object? value = null, FormInputType inputType = FormInputType.Text)
             where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             var input = new FormInput
@@ -47,7 +47,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<FormInput>(builder.HtmlHelper, input);
         }
 
-        public static BootstrapContent<FormInput> InputFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+        public static BootstrapContent<FormInput> InputFor<TComponent, TModel, TValue>(this ComponentBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
             where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             var htmlHelper = builder.HtmlHelper;
@@ -63,7 +63,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<FormInput>(builder.HtmlHelper, input);
         }
 
-        public static BootstrapContent<FormTextArea> TextArea<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, object? value = null)
+        public static BootstrapContent<FormTextArea> TextArea<TComponent, TModel>(this ComponentBuilder<TComponent, TModel> builder, string? name = null, string? label = null, object? value = null)
             where TComponent : Form
         {
             var textarea = new FormTextArea
@@ -76,7 +76,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<FormTextArea>(builder.HtmlHelper, textarea);
         }
 
-        public static BootstrapContent<FormTextArea> TextAreaFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+        public static BootstrapContent<FormTextArea> TextAreaFor<TComponent, TModel, TValue>(this ComponentBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
             where TComponent : Form
         {
             var htmlHelper = builder.HtmlHelper;
@@ -95,19 +95,19 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<FormTextArea>(builder.HtmlHelper, textarea);
         }
 
-        public static BootstrapContent<HtmlElement> DisplayFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+        public static BootstrapContent<HtmlElement> DisplayFor<TComponent, TModel, TValue>(this ComponentBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
             where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             throw new NotImplementedException();
         }
 
-        public static BootstrapContent<HtmlElement> EditorFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+        public static BootstrapContent<HtmlElement> EditorFor<TComponent, TModel, TValue>(this ComponentBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
             where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             throw new NotImplementedException();
         }
 
-        public static BootstrapContent<FormCheck> CheckBox<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null, bool isChecked = false)
+        public static BootstrapContent<FormCheck> CheckBox<TComponent, TModel>(this ComponentBuilder<TComponent, TModel> builder, string? name = null, string? label = null, bool isChecked = false)
             where TComponent : SingleComponent, ICanCreate<FormCheck>
         {
             var formCheck = new FormCheck
@@ -119,7 +119,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<FormCheck>(builder.HtmlHelper, formCheck);
         }
 
-        public static BootstrapContent<FormCheck> CheckFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+        public static BootstrapContent<FormCheck> CheckFor<TComponent, TModel, TValue>(this ComponentBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
             where TComponent : SingleComponent, ICanCreate<FormCheck>
         {
             var modelExpressionProvider = builder.HtmlHelper.GetModelExpressionProvider();
@@ -135,14 +135,14 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<FormCheck>(builder.HtmlHelper, formCheck);
         }
 
-        public static BootstrapContent<FormInput> Password<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string? name = null, string? label = null)
+        public static BootstrapContent<FormInput> Password<TComponent, TModel>(this ComponentBuilder<TComponent, TModel> builder, string? name = null, string? label = null)
             where TComponent : SingleComponent, ICanCreate<FormInput>
         {
 
             return builder.Input(name, label, null, FormInputType.Password);
         }
 
-        public static BootstrapContent<FormInput> PasswordFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+        public static BootstrapContent<FormInput> PasswordFor<TComponent, TModel, TValue>(this ComponentBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
             where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             var htmlHelper = builder.HtmlHelper;
@@ -157,13 +157,13 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<FormInput>(builder.HtmlHelper, input);
         }
 
-        public static IHtmlContent HiddenFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+        public static IHtmlContent HiddenFor<TComponent, TModel, TValue>(this ComponentBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
             where TComponent : SingleComponent, ICanCreate<FormInput>
         {
             return builder.HtmlHelper.HiddenFor(expression);
         }
 
-        public static BootstrapContent<Label> LabelFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
+        public static BootstrapContent<Label> LabelFor<TComponent, TModel, TValue>(this ComponentBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression)
             where TComponent : SingleComponent, ICanCreate<Label>
         {
             var htmlHelper = builder.HtmlHelper;
@@ -177,7 +177,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<Label>(htmlHelper, label);
         }
 
-        public static BootstrapContent<FormSelect> Select<TComponent>(this BootstrapBuilder<TComponent> builder, string name, IEnumerable<SelectListItem> selectList)
+        public static BootstrapContent<FormSelect> Select<TComponent>(this ComponentBuilder<TComponent> builder, string name, IEnumerable<SelectListItem> selectList)
             where TComponent : SingleComponent, ICanCreate<FormSelect>
         {
             var formSelect = new FormSelect()
@@ -188,7 +188,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<FormSelect>(builder.HtmlHelper, formSelect);
         }
 
-        public static BootstrapContent<FormSelect> SelectFor<TComponent, TModel, TValue>(this BootstrapBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListItem> selectList)
+        public static BootstrapContent<FormSelect> SelectFor<TComponent, TModel, TValue>(this ComponentBuilder<TComponent, TModel> builder, Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListItem> selectList)
             where TComponent : SingleComponent, ICanCreate<FormSelect>
         {
             var htmlHelper = builder.HtmlHelper;
@@ -203,7 +203,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<FormSelect>(htmlHelper, formSelect);
         }
 
-        public static BootstrapContent<Button> Button<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Button", ButtonState buttonState = ButtonState.Primary, object? value = null)
+        public static BootstrapContent<Button> Button<TComponent, TModel>(this ComponentBuilder<TComponent, TModel> builder, string text = "Button", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : SingleComponent, ICanCreate<Button>
         {
             var button = new Button()
@@ -215,7 +215,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
         }
 
-        public static BootstrapContent<Button> Submit<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Submit", ButtonState buttonState = ButtonState.Primary, object? value = null)
+        public static BootstrapContent<Button> Submit<TComponent, TModel>(this ComponentBuilder<TComponent, TModel> builder, string text = "Submit", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : SingleComponent, ICanCreate<Button>
         {
             var submit = new Button()
@@ -228,7 +228,7 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<Button>(builder.HtmlHelper, submit);
         }
 
-        public static BootstrapContent<Button> Reset<TComponent, TModel>(this BootstrapBuilder<TComponent, TModel> builder, string text = "Reset", ButtonState buttonState = ButtonState.Primary, object? value = null)
+        public static BootstrapContent<Button> Reset<TComponent, TModel>(this ComponentBuilder<TComponent, TModel> builder, string text = "Reset", ButtonState buttonState = ButtonState.Primary, object? value = null)
             where TComponent : SingleComponent, ICanCreate<Button>
         {
             var reset = new Button()

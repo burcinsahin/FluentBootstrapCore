@@ -5,7 +5,7 @@ namespace FluentBootstrapCore.Extensions
 {
     public static class ListGroupExtensions
     {
-        public static BootstrapContent<ListGroupItem> ListGroupItem<TComponent>(this BootstrapBuilder<TComponent> builder)
+        public static BootstrapContent<ListGroupItem> ListGroupItem<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : BootstrapComponent, ICanCreate<ListGroupItem>
         {
             var listGroupItem = new ListGroupItem();

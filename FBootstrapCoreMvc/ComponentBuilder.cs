@@ -3,21 +3,21 @@ using System;
 
 namespace FluentBootstrapCore
 {
-    public class BootstrapBuilder<TComponent, TModel> : BootstrapBuilder<TComponent>
+    public class ComponentBuilder<TComponent, TModel> : ComponentBuilder<TComponent>
         where TComponent : SingleComponent
     {
         protected new readonly IHtmlHelper<TModel> _htmlHelper;
 
         internal new IHtmlHelper<TModel> HtmlHelper => _htmlHelper;
 
-        public BootstrapBuilder(IHtmlHelper<TModel> htmlHelper, TComponent component)
+        public ComponentBuilder(IHtmlHelper<TModel> htmlHelper, TComponent component)
             : base(htmlHelper, component)
         {
             _htmlHelper = htmlHelper;
         }
     }
 
-    public class BootstrapBuilder<TComponent> : IDisposable
+    public class ComponentBuilder<TComponent> : IDisposable
         where TComponent : SingleComponent
     {
         protected readonly IHtmlHelper _htmlHelper;
@@ -26,7 +26,7 @@ namespace FluentBootstrapCore
         internal IHtmlHelper HtmlHelper => _htmlHelper;
         internal TComponent Component => _component;
 
-        public BootstrapBuilder(IHtmlHelper htmlHelper, TComponent component)
+        public ComponentBuilder(IHtmlHelper htmlHelper, TComponent component)
         {
             _htmlHelper = htmlHelper;
             _component = component;

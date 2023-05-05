@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Extensions
 {
     public static class BreadcrumbExtensions
     {
-        public static BootstrapContent<BreadcrumbItem> BreadcrumbItem(this BootstrapBuilder<Breadcrumb> builder, object? content = null)
+        public static BootstrapContent<BreadcrumbItem> BreadcrumbItem(this ComponentBuilder<Breadcrumb> builder, object? content = null)
         {
             var breadcrumbItem = new BreadcrumbItem
             {

@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Extensions
 {
     public static class AccordionExtensions
     {
-        public static BootstrapContent<AccordionItem> AccordionItem(this BootstrapBuilder<Accordion> builder, string? header = null)
+        public static BootstrapContent<AccordionItem> AccordionItem(this ComponentBuilder<Accordion> builder, string? header = null)
         {
             var accordion = builder.Component;
             var accordionItem = new AccordionItem()
