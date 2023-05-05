@@ -1,0 +1,34 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading1("Pagination-Example-1")
+    @Html.Bootstrap().Pagination().JustifyContent(JustifyContent.Center).AddPageItem("#","1").AddPageItem("#","2").AddPageItem("#","3")
+    <hr />
+
+    @Html.Bootstrap().Heading1("Pagination-Example-2")
+    @using (var pagination = Html.Bootstrap().Pagination().JustifyContent(JustifyContent.Start).Begin())
+    {
+        @pagination.PageItem("1")
+        @pagination.PageItem("2").Active()
+        @pagination.PageItem("3").Disabled()
+        @pagination.PageItem("4")
+    }
+    <hr />
+    @Html.Bootstrap().Heading1("Pagination-Example-3")
+    @using (var pagination = Html.Bootstrap().Pagination().Size(ComponentSize.Large).JustifyContent(JustifyContent.End).Begin())
+    {
+        @pagination.PageItem("1")
+        @pagination.PageItem("2").Active()
+        @pagination.PageItem("3").Disabled()
+        @pagination.PageItem("4")
+    }
+    <hr />
+    @Html.Bootstrap().Heading1("Pagination-Example-4")
+    @using (var pagination = Html.Bootstrap().Pagination().Size(ComponentSize.Small).JustifyContent(JustifyContent.End).Begin())
+    {
+        @pagination.PageItem("1")
+        @pagination.PageItem("2").Active()
+        @pagination.PageItem("3").Disabled()
+        @pagination.PageItem("4")
+    }
+    <hr />
+}

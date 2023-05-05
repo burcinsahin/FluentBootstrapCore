@@ -1,0 +1,14 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading1("Basic Modal")
+    @Html.Bootstrap().Button("Click me").Icon(IconType.Window).Attribute("data-bs-target", "#testModal").Attribute("data-bs-toggle", "modal")
+    using (var modal = Html.Bootstrap().Modal("Title").Id("testModal").Begin())
+    {
+        using (modal.ModalBody().Begin())
+        {
+            <p>Content...</p>
+        }
+    }
+    <hr />
+}
+

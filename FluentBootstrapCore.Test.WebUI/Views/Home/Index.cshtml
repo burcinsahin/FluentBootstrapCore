@@ -1,0 +1,121 @@
+﻿@Html.Bootstrap().Heading1("FluentBootstrap Visual Tests for Bootstrap v5.2.x")
+@using (var acc = Html.Bootstrap().Accordion().Begin())
+{
+    @using (acc.AccordionItem("Layout").Show().Begin())
+    {
+        using (var list = Html.Bootstrap().List().Begin())
+        {
+            @list.ListItem(Html.Bootstrap().Link("Containers", "/Tests/Containers"))
+            @list.ListItem(Html.Bootstrap().Link("Grid", "/Tests/Grids"))
+            @list.ListItem(Html.Bootstrap().Link("Columns", "/Tests/Columns"))
+            @list.ListItem(Html.Bootstrap().Link("Gutters", "/Tests/Gutters"))
+        }
+    }
+    @using (acc.AccordionItem("Content").Begin())
+    {
+        using (var list = Html.Bootstrap().List().Begin())
+        {
+            @list.ListItem(Html.Bootstrap().Link("Typography", "/Tests/Typography"))
+            @list.ListItem(Html.Bootstrap().Link("Images", "/Tests/Images"))
+            @list.ListItem(Html.Bootstrap().Link("Tables", "/Tests/Tables"))
+            @list.ListItem(Html.Bootstrap().Link("Figures", "/Tests/Figures"))
+        }
+    }
+    @using (acc.AccordionItem("Forms").Begin())
+    {
+        using (var list = Html.Bootstrap().List().Begin())
+        {
+            @list.ListItem(Html.Bootstrap().Link("Overview", "/Tests/Forms"))
+            @list.ListItem(Html.Bootstrap().Link("Form control", "/Tests/FormControls"))
+            @list.ListItem(Html.Bootstrap().Link("Select", "/Tests/Selects"))
+            @list.ListItem(Html.Bootstrap().Link("Checks & radios", "/Tests/ChecksRadios"))
+            @list.ListItem(Html.Bootstrap().Link("Range", "/Tests/Ranges"))
+            @list.ListItem(Html.Bootstrap().Link("Input group", "/Tests/InputGroups"))
+            @list.ListItem(Html.Bootstrap().Link("Floating labels", "/Tests/FloatingLabels"))
+            @list.ListItem(Html.Bootstrap().Link("Layout", "/Tests/FormLayouts"))
+            @list.ListItem(Html.Bootstrap().Link("Validation", "/Tests/FormValidations"))
+        }
+    }
+    @using (acc.AccordionItem("Components").Begin())
+    {
+        using (var list = Html.Bootstrap().List().Begin())
+        {
+            @list.ListItem(Html.Bootstrap().Link("Accordion", "/Tests/Accordions"))
+            @list.ListItem(Html.Bootstrap().Link("Alert", "/Tests/Alerts"))
+            @list.ListItem(Html.Bootstrap().Link("Badge", "/Tests/Badges"))
+            @list.ListItem(Html.Bootstrap().Link("Breadcrumb", "/Tests/Breadcrumbs"))
+            @list.ListItem(Html.Bootstrap().Link("Buttons", "/Tests/Buttons"))
+            @list.ListItem(Html.Bootstrap().Link("Button group", "/Tests/ButtonGroups"))
+            @list.ListItem(Html.Bootstrap().Link("Card", "/Tests/Cards"))
+            @list.ListItem(Html.Bootstrap().Link("Carousel", "/Tests/Carousels"))
+            @list.ListItem(Html.Bootstrap().Link("Close button", "/Tests/CloseButtons"))
+            @list.ListItem(Html.Bootstrap().Link("Collapse", "/Tests/Collapses"))
+            @list.ListItem(Html.Bootstrap().Link("Dropdowns", "/Tests/Dropdowns"))
+            @list.ListItem(Html.Bootstrap().Link("List group", "/Tests/ListGroups"))
+            @list.ListItem(Html.Bootstrap().Link("Modal", "/Tests/Modals"))
+            @list.ListItem(Html.Bootstrap().Link("Navbar", "/Tests/Navbars"))
+            @list.ListItem(Html.Bootstrap().Link("Navs & tabs", "/Tests/Navs"))
+            @list.ListItem(Html.Bootstrap().Link("Offcanvas", "/Tests/Offcanvas"))
+            @list.ListItem(Html.Bootstrap().Link("Pagination", "/Tests/Paginations"))
+            @list.ListItem(Html.Bootstrap().Link("Placeholders", "/Tests/Placeholders"))
+            @list.ListItem(Html.Bootstrap().Link("Popovers", "/Tests/Popovers"))
+            @list.ListItem(Html.Bootstrap().Link("Progress", "/Tests/ProgressBars"))
+            @list.ListItem(Html.Bootstrap().Link("Scrollspy", "/Tests/Scrollspy"))
+            @list.ListItem(Html.Bootstrap().Link("Spinners", "/Tests/Spinners"))
+            @list.ListItem(Html.Bootstrap().Link("Toasts", "/Tests/Toasts"))
+            @list.ListItem(Html.Bootstrap().Link("Tooltips", "/Tests/Tooltips"))
+        }
+    }
+    @using (acc.AccordionItem("Helpers").Begin())
+    {
+        using (var list = Html.Bootstrap().List().Begin())
+        {
+            @list.ListItem(Html.Bootstrap().Link("Clearfix", "/Tests/Helpers#clearfix"))
+            @list.ListItem(Html.Bootstrap().Link("Color & background", "/Tests/Helpers#colorbg"))
+            @list.ListItem(Html.Bootstrap().Link("Colored links", "/Tests/Helpers#coloredlinks"))
+            @list.ListItem(Html.Bootstrap().Link("Position", "/Tests/Helpers#position"))
+            @list.ListItem(Html.Bootstrap().Link("Ratio", "/Tests/Helpers#ratio"))
+            @list.ListItem(Html.Bootstrap().Link("Stacks", "/Tests/Helpers#stacks"))
+            @list.ListItem(Html.Bootstrap().Link("Stretched link", "/Tests/Helpers#stretchedlink"))
+            @list.ListItem(Html.Bootstrap().Link("Text truncation", "/Tests/Helpers#texttruncation"))
+            @list.ListItem(Html.Bootstrap().Link("Vertical rule", "/Tests/Helpers#verticalrule"))
+            @list.ListItem(Html.Bootstrap().Link("Visually hidden", "/Tests/Helpers#visuallyhidden"))
+        }
+    }
+    @using (acc.AccordionItem("Utilities").Begin())
+    {
+        using (var list = Html.Bootstrap().List().Begin())
+        {
+            @list.ListItem(Html.Bootstrap().Link("Background", "/Tests/Backgrounds"))
+            @list.ListItem(Html.Bootstrap().Link("Borders", "/Tests/Borders"))
+            @list.ListItem(Html.Bootstrap().Link("Color", "/Tests/Colors"))
+            @list.ListItem(Html.Bootstrap().Link("Display", "/Tests/Displays"))
+            @list.ListItem(Html.Bootstrap().Link("Float", "/Tests/Floats"))
+            @list.ListItem(Html.Bootstrap().Link("Flex", "/Tests/Flexes"))
+            @list.ListItem(Html.Bootstrap().Link("Interactions", "/Tests/Interactions"))
+            @list.ListItem(Html.Bootstrap().Link("Opacity", "/Tests/Opacities"))
+            @list.ListItem(Html.Bootstrap().Link("Overflow", "/Tests/Overflows"))
+            @list.ListItem(Html.Bootstrap().Link("Position", "/Tests/Positions"))
+            @list.ListItem(Html.Bootstrap().Link("Shadows", "/Tests/Shadows"))
+            @list.ListItem(Html.Bootstrap().Link("Sizing", "/Tests/Sizings"))
+            @list.ListItem(Html.Bootstrap().Link("Spacing", "/Tests/Spacings"))
+            @list.ListItem(Html.Bootstrap().Link("Text", "/Tests/Texts"))
+            @list.ListItem(Html.Bootstrap().Link("Vertical align", "/Tests/VerticalAligns"))
+            @list.ListItem(Html.Bootstrap().Link("Visibility", "/Tests/Visibilities"))
+        }
+    }
+    @using (acc.AccordionItem("Extend").Begin())
+    {
+        using (var list = Html.Bootstrap().List().Begin())
+        {
+            @list.ListItem(Html.Bootstrap().Link("Icons", "/Tests/Icons"))
+        }
+    }
+    @using (acc.AccordionItem("Asp.Net MVC").Begin())
+    {
+        using (var list = Html.Bootstrap().List().Begin())
+        {
+            @list.ListItem(Html.Bootstrap().Link("MvcForms", "/MvcTests/MvcForms"))
+        }
+    }
+}

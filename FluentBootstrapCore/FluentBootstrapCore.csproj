@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+
+    <Title>FluentBootstrapCore</Title>
+    <Description>Fluent bootstrap (v5.2) library for netcore MVC applications.</Description>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0-alpha.$([System.DateTime]::Now.ToString("yyyyMMddHHmm"))</Version>
+    <PackageOutputPath>C:\Temp\MyNugetPackages</PackageOutputPath>
+    <Copyright>burcinsahin</Copyright>
+    <PackageProjectUrl>https://github.com/burcinsahin/FluentBootstrapCore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/burcinsahin/FluentBootstrapCore</RepositoryUrl>
+    <PackageTags>fluent;bootstrap;fluentapi;</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="Css.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Css.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="Css.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Css.cs</LastGenOutput>
+    </None>
+    <None Update="Icons.cs.tmp">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Icons.tt</DependentUpon>
+    </None>
+    <None Update="Icons.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Icons.cs.tmp</LastGenOutput>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Css.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Css.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

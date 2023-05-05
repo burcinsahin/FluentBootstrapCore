@@ -1,0 +1,35 @@
+﻿@{
+    var list = new SelectList(new Dictionary<int, string>()
+            {
+                { 0, "Disabled select"},
+            }, "Key", "Value");
+}
+
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Overview")
+    @using (Html.Bootstrap().Form().Begin())
+    {
+        @Html.Bootstrap().FormInput("Email address").Type(FormInputType.Email).FormText("We'll never share your email with anyone else.")
+        @Html.Bootstrap().FormInput("Password").Type(FormInputType.Password)
+        @Html.Bootstrap().FormCheck("Check me out")
+        @Html.Bootstrap().Button("Submit").Type(ButtonType.Submit)
+
+    }
+    @Html.Bootstrap().Heading2("Form text")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormInput("Password").Type(FormInputType.Password).FormText("Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.")
+    }
+    @Html.Bootstrap().Heading2("Disabled forms")
+    @using (Html.Bootstrap().Form().Begin())
+    {
+        @using (Html.Bootstrap().Element("fieldset").Attribute("disabled").Begin())
+        {
+            @Html.Bootstrap().FormInput("Disabled input").Placeholder("Disabled input")
+            @Html.Bootstrap().FormSelect("Disabled select menu").Options(list)
+            @Html.Bootstrap().FormCheck("Can't check this")
+            @Html.Bootstrap().Button("Submit").Type(ButtonType.Submit)
+        }
+    }
+}

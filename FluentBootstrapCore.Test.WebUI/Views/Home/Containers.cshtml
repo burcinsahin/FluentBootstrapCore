@@ -1,0 +1,25 @@
+﻿@Html.Bootstrap().Heading2("Default container")
+@using (Html.Bootstrap().Container().Begin())
+{
+    <p>
+        Default container is a responsive, fixed-width container, meaning its max-width changes at each breakpoint.
+    </p>
+}
+<hr />
+@Html.Bootstrap().Heading2("Responsive containers")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Container().Content("100% wide until small breakpoint").Responsive(ContainerSize.Small)
+    @Html.Bootstrap().Container().Content("100% wide until medium breakpoint").Responsive(ContainerSize.Medium)
+    @Html.Bootstrap().Container().Content("100% wide until large breakpoint").Responsive(ContainerSize.Large)
+    @Html.Bootstrap().Container().Content("100% wide until extra large breakpoint").Responsive(ContainerSize.XLarge)
+    @Html.Bootstrap().Container().Content("100% wide until extra extra large breakpoint").Responsive(ContainerSize.XXLarge)
+}
+<hr />
+@Html.Bootstrap().Heading2("Fluid containers")
+@using (Html.Bootstrap().Container().Fluid().Begin())
+{
+    <p>
+        Use fluid container for a full width container, spanning the entire width of the viewport.
+    </p>
+}

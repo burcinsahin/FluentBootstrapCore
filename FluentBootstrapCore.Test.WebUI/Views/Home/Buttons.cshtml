@@ -1,0 +1,111 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Examples")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Button("Primary").State(ButtonState.Primary)
+        @Html.Bootstrap().Button("Secondary").State(ButtonState.Secondary)
+        @Html.Bootstrap().Button("Success").State(ButtonState.Success)
+        @Html.Bootstrap().Button("Danger").State(ButtonState.Danger)
+        @Html.Bootstrap().Button("Warning").State(ButtonState.Warning)
+        @Html.Bootstrap().Button("Info").State(ButtonState.Info)
+        @Html.Bootstrap().Button("Light").State(ButtonState.Light)
+        @Html.Bootstrap().Button("Dark").State(ButtonState.Dark)
+        @Html.Bootstrap().Button("Link").State(ButtonState.Link)
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Button tags")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().LinkButton("Link").State(ButtonState.Primary)
+        @Html.Bootstrap().Button("Button").State(ButtonState.Primary).Type(ButtonType.Submit)
+        @Html.Bootstrap().InputButton().Value("Input")
+        @Html.Bootstrap().InputButton().Type(ButtonType.Submit).Value("Submit")
+        @Html.Bootstrap().InputButton().Type(ButtonType.Reset).Value("Reset")
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Outline buttons")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Button("Primary").Outline(ButtonOutlineState.Primary)
+        @Html.Bootstrap().Button("Secondary").Outline(ButtonOutlineState.Secondary)
+        @Html.Bootstrap().Button("Success").Outline(ButtonOutlineState.Success)
+        @Html.Bootstrap().Button("Danger").Outline(ButtonOutlineState.Danger)
+        @Html.Bootstrap().Button("Warning").Outline(ButtonOutlineState.Warning)
+        @Html.Bootstrap().Button("Info").Outline(ButtonOutlineState.Info)
+        @Html.Bootstrap().Button("Light").Outline(ButtonOutlineState.Light)
+        @Html.Bootstrap().Button("Dark").Outline(ButtonOutlineState.Dark)
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Sizes")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Button("Large button").Size(ButtonSize.Large)
+        @Html.Bootstrap().Button("Large button").State(ButtonState.Secondary).Size(ButtonSize.Large)
+        <br />
+        <br />
+        @Html.Bootstrap().Button("Small button").Size(ButtonSize.Small)
+        @Html.Bootstrap().Button("Small button").State(ButtonState.Secondary).Size(ButtonSize.Small)
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Disabled state")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Button("Primary button").Disabled()
+        @Html.Bootstrap().Button("Button").State(ButtonState.Secondary).Disabled()
+        @Html.Bootstrap().Button("Primary button").Outline(ButtonOutlineState.Primary).Disabled()
+        @Html.Bootstrap().Button("Button").Outline(ButtonOutlineState.Secondary).Disabled()
+        <br />
+        <br />
+        @Html.Bootstrap().LinkButton("Primary link").Disabled()
+        @Html.Bootstrap().LinkButton("Link").State(ButtonState.Secondary).Disabled()
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Link functionality caveat")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().LinkButton("Primary link").Disabled().TabIndex(-1)
+        @Html.Bootstrap().LinkButton("Link").Disabled().TabIndex(-1)
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Block buttons")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        using (Html.Bootstrap().Div().Display(Display.Grid).Gap(Gap._2).Begin())
+        {
+            @Html.Bootstrap().Button("Button")
+            @Html.Bootstrap().Button("Button")
+        }
+        <br />
+        @using (Html.Bootstrap().Div().Display(Display.Grid).Gap(Gap._2).Display(Display.Block, Breakpoint.Medium).Begin())
+        {
+            @Html.Bootstrap().Button("Button")
+            @Html.Bootstrap().Button("Button")
+        }
+        <br />
+        @using (Html.Bootstrap().Div().Display(Display.Grid).Gap(Gap._2).Margin(Margin.Horizontal).Columnize(6).Begin())
+        {
+            @Html.Bootstrap().Button("Button")
+            @Html.Bootstrap().Button("Button")
+        }
+        <br />
+        @using (Html.Bootstrap().Div().Display(Display.Grid).Gap(Gap._2).Display(Display.Flex, Breakpoint.Medium).JustifyContent(JustifyContent.End, Breakpoint.Medium).Begin())
+        {
+            @Html.Bootstrap().Button("Button").Margin(Margin.End, 2, Breakpoint.Medium)
+            @Html.Bootstrap().Button("Button")
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Button plugin")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().Heading3("Toggle states")
+        @Html.Bootstrap().Button("Toggle button").Toggle()
+        @Html.Bootstrap().Button("Active toggle button").Active().Toggle()
+        @Html.Bootstrap().Button("Disabled toggle button").Disabled().Toggle()
+        <br />
+        @Html.Bootstrap().LinkButton("Toggle link").Toggle()
+        @Html.Bootstrap().LinkButton("Active toggle link").Active().Toggle()
+        @Html.Bootstrap().LinkButton("Disabled toggle link").Disabled().Toggle()
+    }
+}

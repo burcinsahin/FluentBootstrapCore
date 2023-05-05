@@ -1,0 +1,8 @@
+﻿@Html.Bootstrap().Heading2("Examples")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Div().Padding(3).Margin(Margin.Bottom, 5).Background(BgColor.Light).Border(borderRadius:BorderRadius.Rounded).Shadow(Shadow.None).Content("No shadow")
+    @Html.Bootstrap().Div().Padding(3).Margin(Margin.Bottom, 5).Background(BgColor.Body).Border(borderRadius:BorderRadius.Rounded).Shadow(Shadow.Small).Content("Small shadow")
+    @Html.Bootstrap().Div().Padding(3).Margin(Margin.Bottom, 5).Background(BgColor.Body).Border(borderRadius:BorderRadius.Rounded).Shadow(Shadow.Medium).Content("Regular shadow")
+    @Html.Bootstrap().Div().Padding(3).Margin(Margin.Bottom, 5).Background(BgColor.Body).Border(borderRadius:BorderRadius.Rounded).Shadow(Shadow.Large).Content("Larger shadow")
+}

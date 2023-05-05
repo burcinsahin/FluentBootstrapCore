@@ -1,0 +1,20 @@
+﻿@Html.Bootstrap().Heading2("Overview")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Div().Float(Float.Start).Content("Float start on all viewport sizes")
+    <br />
+    @Html.Bootstrap().Div().Float(Float.End).Content("Float end on all viewport sizes")
+    <br />
+    @Html.Bootstrap().Div().Float(Float.None).Content("Don't float on all viewport sizes")
+}
+@Html.Bootstrap().Heading2("Responsive")
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Div().Float(Float.Start, Breakpoint.Small).Content("Float start on viewports sized SM (small) or wider")
+    <br />
+    @Html.Bootstrap().Div().Float(Float.Start, Breakpoint.Medium).Content("Float start on viewports sized MD (medium) or wider")
+    <br />
+    @Html.Bootstrap().Div().Float(Float.Start, Breakpoint.Large).Content("Float start on viewports sized LG (large) or wider")
+    <br />
+    @Html.Bootstrap().Div().Float(Float.Start, Breakpoint.XLarge).Content("Float start on viewports sized XL (extra-large) or wider")
+}

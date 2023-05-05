@@ -1,0 +1,65 @@
+﻿@Html.Bootstrap().Heading2("Headings")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Heading1("Heading1")
+    @Html.Bootstrap().Heading2("Heading2")
+    @Html.Bootstrap().Heading3("Heading3")
+    @Html.Bootstrap().Heading4("Heading4")
+    @Html.Bootstrap().Heading5("Heading5")
+    @Html.Bootstrap().Heading6("Heading6")
+}
+<hr />
+@Html.Bootstrap().Heading2("Lead")
+@using (Html.Bootstrap().Div().Begin())
+{
+    <p>This is a normal paragraph.</p>
+    @Html.Bootstrap().Lead("This is a lead paragraph. It stands out from regular paragraphs.")
+}
+<hr />
+@Html.Bootstrap().Heading2("Abbreviations")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Abbr("HTML")
+    <br />
+    @Html.Bootstrap().Abbr("HTML",true)
+}
+<hr />
+@Html.Bootstrap().Heading2("Blockquotes")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Blockquote("A well-known quote, contained in a blockquote element.","Someone famous in Source Title")
+}
+<hr />
+@Html.Bootstrap().Heading2("Lists")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Heading3("Unstyled")
+
+    @using (var list = Html.Bootstrap().List().Begin())
+    {
+        @list.ListItem("This is a list item.")
+        @list.ListItem("This is a list item.")
+        @list.ListItem("This is a list item.")
+        @list.ListItem("This is a list item.")
+        @list.ListItem("This is a list item.")
+    }
+    <br />
+    @Html.Bootstrap().Heading3("Inline")
+    @using (var list = Html.Bootstrap().List(ListType.Inline).Begin())
+    {
+        @list.ListItem("This is a list item.")
+        @list.ListItem("This is a list item.")
+        @list.ListItem("This is a list item.")
+        @list.ListItem("This is a list item.")
+    }
+    <br />
+    @Html.Bootstrap().Heading3("Ordered")
+    @using (var list = Html.Bootstrap().List(ListType.Ordered).Begin())
+    {
+        @list.ListItem("This is a list item.")
+        @list.ListItem("This is a list item.")
+        @list.ListItem("This is a list item.")
+        @list.ListItem("This is a list item.")
+    }
+}
+<hr />

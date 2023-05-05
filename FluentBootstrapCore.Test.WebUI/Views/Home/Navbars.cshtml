@@ -1,0 +1,28 @@
+﻿@using (var navbar = Html.Bootstrap().Navbar().Dark().Background(BgColor.Dark).Begin())
+{
+    @navbar.Brand("BB").Href()
+    @navbar.NavbarToggler("navbarCollapse0")
+    @using (var navbarCollapse = navbar.NavbarCollapse("navbarCollapse0").Begin())
+    {
+        using (var nav = navbarCollapse.NavbarNav().Begin())
+        {
+            @nav.NavbarLink("Item1", "Index", "Home")
+            @nav.NavbarLink("Item2", "Index", "Home")
+            @nav.NavbarLink("Item3", "Index", "Home")
+            @nav.NavbarLink("Item4", "Index", "Home")
+            using (var dropdown = nav.Dropdown("DropHeader").Begin())
+            {
+                using (var dropdownMenu = dropdown.DropdownMenu().Dark().Begin())
+                {
+                    @dropdownMenu.DropdownItem("Drop1","#")
+                    @dropdownMenu.DropdownItem("Drop2","#")
+                }
+            }
+            @Html.Bootstrap().Hidden("logintime", DateTime.Now.ToString())
+        }
+        using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Css(Css.DFlex).Id("formLanguage").Begin())
+        {
+            @form.Select("CurrentLanguage", (IEnumerable<SelectListItem>)ViewBag.GenderOptions)
+        }
+    }
+}

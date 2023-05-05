@@ -1,0 +1,9 @@
+﻿@Html.Bootstrap().Heading2("Opacity")
+@using (Html.Bootstrap().Div().Display(Display.Flex, Breakpoint.Small).Begin())
+{
+    @Html.Bootstrap().Div().Padding(3).Margin(2).Background(BgColor.Primary).Color(TextColor.Light).Border(borderRadius: BorderRadius.Rounded).Opacity(Opacity._100).Content("100%")
+    @Html.Bootstrap().Div().Padding(3).Margin(2).Background(BgColor.Primary).Color(TextColor.Light).Border(borderRadius: BorderRadius.Rounded).Opacity(Opacity._75).Content("75%")
+    @Html.Bootstrap().Div().Padding(3).Margin(2).Background(BgColor.Primary).Color(TextColor.Light).Border(borderRadius: BorderRadius.Rounded).Opacity(Opacity._50).Content("50%")
+    @Html.Bootstrap().Div().Padding(3).Margin(2).Background(BgColor.Primary).Color(TextColor.Light).Border(borderRadius: BorderRadius.Rounded).Opacity(Opacity._25).Content("25%")
+    @Html.Bootstrap().Div().Padding(3).Margin(2).Background(BgColor.Primary).Color(TextColor.Light).Border(borderRadius: BorderRadius.Rounded).Opacity(Opacity._0).Content("0%")
+}

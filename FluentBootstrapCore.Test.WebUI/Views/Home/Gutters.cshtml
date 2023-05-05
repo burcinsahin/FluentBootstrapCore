@@ -1,0 +1,78 @@
+﻿@Html.Bootstrap().Heading2("Horizontal gutters")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (Html.Bootstrap().Container().Padding(Padding.Horizontal, 4).TextCenter().Begin())
+    {
+        @using (var row = Html.Bootstrap().Row().Gutter(Gutter.Horizontal, 5).Begin())
+        {
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+        }
+    }
+    <br />
+    @using (Html.Bootstrap().Container().Overflow(Overflow.Hidden).TextCenter().Begin())
+    {
+        @using (var row = Html.Bootstrap().Row().Gutter(Gutter.Horizontal, 5).Begin())
+        {
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+        }
+    }
+}
+@Html.Bootstrap().Heading2("Vertical gutters")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (Html.Bootstrap().Container().Overflow(Overflow.Hidden).TextCenter().Begin())
+    {
+        @using (var row = Html.Bootstrap().Row().Gutter(Gutter.Vertical, 5).Begin())
+        {
+            @row.Column().Columnize(6).Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+            @row.Column().Columnize(6).Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+            @row.Column().Columnize(6).Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+            @row.Column().Columnize(6).Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+        }
+    }
+}
+@Html.Bootstrap().Heading2("Horizontal & vertical gutters")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = Html.Bootstrap().Row().Gutter(Gutter.All, 2).Begin())
+        {
+            @row.Column().Columnize(6).Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+            @row.Column().Columnize(6).Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+            @row.Column().Columnize(6).Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+            @row.Column().Columnize(6).Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Custom column padding"))
+        }
+    }
+}
+@Html.Bootstrap().Heading2("Row columns gutters")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = Html.Bootstrap().Row().RowColumns(2).RowColumns(5, Breakpoint.Large).Gutter(Gutter.All, 2).Gutter(Gutter.All, 3, Breakpoint.Large).Begin())
+        {
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Row column"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Row column"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Row column"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Row column"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Row column"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Row column"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Row column"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Row column"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Row column"))
+            @row.Column().Content(Html.Bootstrap().Div().Padding(Padding.All, 3).Border().Background(BgColor.Light).Content("Row column"))
+        }
+    }
+}
+@Html.Bootstrap().Heading2("No gutters")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (var row = Html.Bootstrap().Row().Gutter(Gutter.All, 0).Css(Css.TextCenter).Begin())
+    {
+        @row.Column().Columnize(6,Breakpoint.Small).Columnize(8,Breakpoint.Medium).Content(".col-sm-6 .col-md-8")
+        @row.Column().Columnize(6).Columnize(4,Breakpoint.Medium).Content(".col-6 .col-md-4")
+    }
+}

@@ -1,4 +1,4 @@
-# FBootstrapCoreMvc
+# FluentBootstrapCore
 
 ## Overview
 

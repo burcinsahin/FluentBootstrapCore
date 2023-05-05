@@ -1,0 +1,51 @@
+﻿@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Example")
+    @using (Html.Bootstrap().Form().Begin())
+    {
+        @Html.Bootstrap().FormInput("Email address").Type(FormInputType.Email).Placeholder("name@example.com")
+        @Html.Bootstrap().FormTextArea("Example textarea").Rows(3)
+    }
+    @Html.Bootstrap().Heading2("Sizing")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormInput().Placeholder(".form-control-lg").Size(FormControlSize.Lg)
+        @Html.Bootstrap().FormInput().Placeholder("Default input")
+        @Html.Bootstrap().FormInput().Placeholder(".form-control-sm").Size(FormControlSize.Sm)
+    }
+    @Html.Bootstrap().Heading2("Disabled")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormInput().Placeholder("Disabled input").Disabled()
+        @Html.Bootstrap().FormInput().Value("Disabled readonly input").Disabled().Readonly()
+    }
+    @Html.Bootstrap().Heading2("Readonly")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormInput().Value("Readonly input here...").Readonly()
+    }
+    @Html.Bootstrap().Heading2("Readonly plain text")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormInput("Email").Value("email@example.com").PlainText().Readonly()
+        @Html.Bootstrap().FormInput("Password").Type(FormInputType.Password)
+    }
+    @Html.Bootstrap().Heading2("File input")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormInput("Default file input example").Type(FormInputType.File)
+        @Html.Bootstrap().FormInput("Multiple files input example").Type(FormInputType.File).Multiple()
+        @Html.Bootstrap().FormInput("Disabled file input example").Type(FormInputType.File).Disabled()
+        @Html.Bootstrap().FormInput("Small file input example").Type(FormInputType.File).Size(FormControlSize.Sm)
+        @Html.Bootstrap().FormInput("Large file input example").Type(FormInputType.File).Size(FormControlSize.Lg)
+    }
+    @Html.Bootstrap().Heading2("Color")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormInput("Color picker").Type(FormInputType.Color).Value("#563d7c").Title("Choose your color")
+    }
+    @Html.Bootstrap().Heading2("Datalists")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+    }
+}

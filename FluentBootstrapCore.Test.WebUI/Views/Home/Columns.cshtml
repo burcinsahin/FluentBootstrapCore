@@ -1,0 +1,212 @@
+﻿<style>
+    /*Styles below used for visualization.*/
+    .vertical-example .row {
+        min-height: 10rem;
+        background-color: rgba(255,0,0,0.1);
+        border: 1px solid rgba(0,0,0, 0.25);
+        margin-bottom: 1px;
+    }
+
+    .row [class^="col"] {
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+        background-color: rgba(112.520718,44.062154,249.437846, 0.1);
+        border: 1px solid rgba(112.520718,44.062154,249.437846, 0.25);
+    }
+</style>
+@Html.Bootstrap().Heading2("Alignment")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Heading3("Vertical alignment")
+    @using (var container = Html.Bootstrap().Container().Css("vertical-example").TextCenter().Begin())
+    {
+        @using (var row = LayoutExtensions.AlignItems(container.Row(), AlignItems.Start).Begin())
+        {
+            @row.Column().Content("One of three columns")
+            @row.Column().Content("One of three columns")
+            @row.Column().Content("One of three columns")
+        }
+        @using (var row = LayoutExtensions.AlignItems(container.Row(), AlignItems.Center).Begin())
+        {
+            @row.Column().Content("One of three columns")
+            @row.Column().Content("One of three columns")
+            @row.Column().Content("One of three columns")
+        }
+        @using (var row = LayoutExtensions.AlignItems(container.Row(), AlignItems.End).Begin())
+        {
+            @row.Column().Content("One of three columns")
+            @row.Column().Content("One of three columns")
+            @row.Column().Content("One of three columns")
+        }
+    }
+    <br />
+    @using (var container = Html.Bootstrap().Container().Css("vertical-example").TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().AlignSelf(AlignSelf.Start).Content("One of three columns")
+            @row.Column().AlignSelf(AlignSelf.Center).Content("One of three columns")
+            @row.Column().AlignSelf(AlignSelf.End).Content("One of three columns")
+        }
+    }
+    @Html.Bootstrap().Heading3("Horizontal alignment")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Start).Begin())
+        {
+            @row.Column().Columnize(4).Content("One of two columns")
+            @row.Column().Columnize(4).Content("One of two columns")
+        }
+        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Center).Begin())
+        {
+            @row.Column().Columnize(4).Content("One of two columns")
+            @row.Column().Columnize(4).Content("One of two columns")
+        }
+        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.End).Begin())
+        {
+            @row.Column().Columnize(4).Content("One of two columns")
+            @row.Column().Columnize(4).Content("One of two columns")
+        }
+        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Around).Begin())
+        {
+            @row.Column().Columnize(4).Content("One of two columns")
+            @row.Column().Columnize(4).Content("One of two columns")
+        }
+        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Between).Begin())
+        {
+            @row.Column().Columnize(4).Content("One of two columns")
+            @row.Column().Columnize(4).Content("One of two columns")
+        }
+        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Evenly).Begin())
+        {
+            @row.Column().Columnize(4).Content("One of two columns")
+            @row.Column().Columnize(4).Content("One of two columns")
+        }
+    }
+    @Html.Bootstrap().Heading3("Column wrapping")
+    @using (var container = Html.Bootstrap().Container().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(9).Content(".col-9")
+            @row.Column().Columnize(4).Content(".col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.", true)
+            @row.Column().Columnize(6).Content(".col-6<br>Subsequent columns continue along the new line.", true)
+        }
+    }
+    @Html.Bootstrap().Heading3("Column breaks")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(6).Columnize(3, Breakpoint.Small).Content(".col-6 .col-sm-3")
+            @row.Column().Columnize(6).Columnize(3, Breakpoint.Small).Content(".col-6 .col-sm-3")
+            @row.Break()
+            @row.Column().Columnize(6).Columnize(3, Breakpoint.Small).Content(".col-6 .col-sm-3")
+            @row.Column().Columnize(6).Columnize(3, Breakpoint.Small).Content(".col-6 .col-sm-3")
+        }
+    }
+    <br />
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(6).Columnize(4, Breakpoint.Small).Content(".col-6 .col-sm-4")
+            @row.Column().Columnize(6).Columnize(4, Breakpoint.Small).Content(".col-6 .col-sm-4")
+            @row.Break().Display(Display.None).Display(Display.Block, Breakpoint.Medium)
+            @row.Column().Columnize(6).Columnize(4, Breakpoint.Small).Content(".col-6 .col-sm-4")
+            @row.Column().Columnize(6).Columnize(4, Breakpoint.Small).Content(".col-6 .col-sm-4")
+        }
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Reordering")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Heading3("Order classes")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Content("First in DOM, no order applied")
+            @row.Column().Order(5).Content("Second in DOM, with a larger order")
+            @row.Column().Order(1).Content("Third in DOM, with an order of 1")
+        }
+    }
+    <br />
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Order(sbyte.MaxValue).Content("First in DOM, ordered last")
+            @row.Column().Content("Second in DOM, unordered")
+            @row.Column().Order(sbyte.MinValue).Content("Third in DOM, ordered first")
+        }
+    }
+    @Html.Bootstrap().Heading3("Offsetting columns")
+    @Html.Bootstrap().Heading4("Offset classes")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(4, Breakpoint.Medium).Content(".col-md-4")
+            @row.Column().Columnize(4, Breakpoint.Medium).Offset(4, Breakpoint.Medium).Content(".col-md-4 .offset-md-4")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(3, Breakpoint.Medium).Offset(3, Breakpoint.Medium).Content(".col-md-3 .offset-md-3")
+            @row.Column().Columnize(3, Breakpoint.Medium).Offset(3, Breakpoint.Medium).Content(".col-md-3 .offset-md-3")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(6, Breakpoint.Medium).Offset(3, Breakpoint.Medium).Content(".col-md-6 .offset-md-3")
+        }
+    }
+    <br />
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(5, Breakpoint.Small).Columnize(6, Breakpoint.Medium).Content(".col-sm-5 .col-md-6")
+            @row.Column().Columnize(5, Breakpoint.Small).Offset(2, Breakpoint.Small).Columnize(6, Breakpoint.Medium).Offset(0, Breakpoint.Medium).Content(".col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(6, Breakpoint.Small).Columnize(5, Breakpoint.Medium).Columnize(6, Breakpoint.Large).Content(".col-sm-6 .col-md-5 .col-lg-6")
+            @row.Column().Columnize(6, Breakpoint.Small).Columnize(5, Breakpoint.Medium).Columnize(6, Breakpoint.Large).Offset(2, Breakpoint.Medium).Offset(0, Breakpoint.Large).Content(".col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0")
+        }
+    }
+    @Html.Bootstrap().Heading4("Margin utilities")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(4, Breakpoint.Medium).Content(".col-md-4")
+            @row.Column().Columnize(4, Breakpoint.Medium).Margin(Margin.Start).Content(".col-md-4 .ms-auto")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(3, Breakpoint.Medium).Margin(Margin.Start, breakpoint:Breakpoint.Medium).Content(".col-md-3 .ms-md-auto")
+            @row.Column().Columnize(3, Breakpoint.Medium).Margin(Margin.Start, breakpoint:Breakpoint.Medium).Content(".col-md-3 .ms-md-auto")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(0).Margin(Margin.End).Content(".col-auto .me-auto")
+            @row.Column().Columnize(0).Content(".col-auto")
+        }
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Standalone column classes")
+@using (Html.Bootstrap().Div().Style("width", "800px").Begin())
+{
+    @Html.Bootstrap().Column().Columnize(3).Background(BgColor.Light).Padding(Padding.All, 3).Border(Border.All).Content(".col-3: width of 25%")
+    @Html.Bootstrap().Column().Columnize(9, Breakpoint.Small).Background(BgColor.Light).Padding(Padding.All, 3).Border(Border.All).Content(".col-sm-9: width of 75% above sm breakpoint")
+    <br />
+    @using (Html.Bootstrap().Div().Clearfix().Begin())
+    {
+        @Html.Bootstrap().Image("http://picsum.photos/100","photo").Columnize(6, Breakpoint.Medium).Float(Float.End, Breakpoint.Medium).Margin(Margin.Bottom, 3).Margin(Margin.Start, 3, Breakpoint.Medium)
+        @Html.Bootstrap().Paragraph("A paragraph of placeholder text. We're using it here to show the use of the clearfix class. We're adding quite a few meaningless phrases here to demonstrate how the columns interact here with the floated image.")
+        @Html.Bootstrap().Paragraph("As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.")
+        @Html.Bootstrap().Paragraph("And yet, here you are, still persevering in reading this placeholder text, hoping for some more insights, or some hidden easter egg of content. A joke, perhaps. Unfortunately, there's none of that here.")
+    }
+}

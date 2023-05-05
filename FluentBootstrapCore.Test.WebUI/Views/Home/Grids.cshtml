@@ -1,0 +1,232 @@
+﻿<style>
+    [class^="col"] {
+        background-color: rgba(112.520718,44.062154,249.437846, 0.1);
+        border: 1px solid rgba(112.520718,44.062154,249.437846, 0.25);
+    }
+</style>
+@Html.Bootstrap().Heading2("Example")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+        }
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Auto-layout columns")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Heading3("Equal-width")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Content("1 of 2")
+            @row.Column().Content("2 of 2")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Content("1 of 3")
+            @row.Column().Content("2 of 3")
+            @row.Column().Content("3 of 3")
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Setting one column width")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Content("1 of 3")
+            @row.Column().Columnize(6).Content("2 of 3 (wider)")
+            @row.Column().Content("3 of 3")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Content("1 of 3")
+            @row.Column().Columnize(5).Content("2 of 3 (wider)")
+            @row.Column().Content("3 of 3")
+        }
+    }
+    @Html.Bootstrap().Heading3("Variable width content")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Center, Breakpoint.Medium).Begin())
+        {
+            @row.Column().Columnize(2, Breakpoint.Large).Content("1 of 3")
+            @row.Column().Columnize(0).Content("Variable width content")
+            @row.Column().Columnize(2, Breakpoint.Large).Content("3 of 3")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Content("1 of 3")
+            @row.Column().Columnize(0).Content("Variable width content")
+            @row.Column().Columnize(2, Breakpoint.Large).Content("3 of 3")
+        }
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Responsive classes")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @Html.Bootstrap().Heading3("All breakpoints")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Center, Breakpoint.Medium).Begin())
+        {
+            @row.Column().Content("col")
+            @row.Column().Content("col")
+            @row.Column().Content("col")
+            @row.Column().Content("col")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(8).Content("col-8")
+            @row.Column().Columnize(4).Content("col-4")
+        }
+    }
+    @Html.Bootstrap().Heading3("Stacked to horizontal")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(8, Breakpoint.Small).Content("col-sm-8")
+            @row.Column().Columnize(4, Breakpoint.Small).Content("col-sm-4")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(null, Breakpoint.Small).Content("col-sm")
+            @row.Column().Columnize(null, Breakpoint.Small).Content("col-sm")
+            @row.Column().Columnize(null, Breakpoint.Small).Content("col-sm")
+        }
+    }
+    @Html.Bootstrap().Heading3("Mix and match")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(8, Breakpoint.Medium).Content(".col-md-8")
+            @row.Column().Columnize(6).Columnize(4, Breakpoint.Medium).Content(".col-6 .col-md-4")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(6).Columnize(4, Breakpoint.Medium).Content(".col-6 .col-md-4")
+            @row.Column().Columnize(6).Columnize(4, Breakpoint.Medium).Content(".col-6 .col-md-4")
+            @row.Column().Columnize(6).Columnize(4, Breakpoint.Medium).Content(".col-6 .col-md-4")
+        }
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(6).Content(".col-6")
+            @row.Column().Columnize(6).Content(".col-6")
+        }
+    }
+    @Html.Bootstrap().Heading3("Row columns")
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().RowColumns(2).Begin())
+        {
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+        }
+    }
+    <br />
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().RowColumns(3).Begin())
+        {
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+        }
+    }
+    <br />
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().RowColumns(0).Begin())
+        {
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+        }
+    }
+    <br />
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().RowColumns(4).Begin())
+        {
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+        }
+    }
+    <br />
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().RowColumns(4).Begin())
+        {
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Columnize(6).Content("Column")
+            @row.Column().Content("Column")
+        }
+    }
+    <br />
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().RowColumns(1).RowColumns(2, Breakpoint.Small).RowColumns(4, Breakpoint.Medium).Begin())
+        {
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+            @row.Column().Content("Column")
+        }
+    }
+}
+@Html.Bootstrap().Heading2("Nesting")
+@using (Html.Bootstrap().Div().Begin())
+{
+    @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
+    {
+        @using (var row = container.Row().Begin())
+        {
+            @row.Column().Columnize(3, Breakpoint.Small).Content("Level 1: .col-sm-3")
+            @using (@row.Column().Columnize(9, Breakpoint.Small).Begin())
+            {
+                @using (var row1 = container.Row().Begin())
+                {
+                    @row1.Column().Columnize(8).Columnize(6, Breakpoint.Small).Content("Level 2: .col-8 .col-sm-6")
+                    @row1.Column().Columnize(4).Columnize(6, Breakpoint.Small).Content("Level 2: .col-4 .col-sm-6")
+                }
+            }
+        }
+    }
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-sm-3">
+                Level 1: .col-sm-3
+            </div>
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+                        Level 2: .col-8 .col-sm-6
+                    </div>
+                    <div class="col-4 col-sm-6">
+                        Level 2: .col-4 .col-sm-6
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<hr />

@@ -1,0 +1,65 @@
+﻿@{
+    var selectList = new SelectList(new Dictionary<int, string>()
+            {
+                { 0, "Open this select menu"},
+                { 1, "One"},
+                { 2, "Two"},
+                { 3, "Three"}
+            }, "Key", "Value");
+}
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Example")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Email address").Placeholder("name@example.com").Margin(Margin.Bottom,3)
+        @Html.Bootstrap().FormInput().Type(FormInputType.Password).FloatingLabel("Password")
+        <br />
+        @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Input with value").Placeholder("name@example.com").Value("test@example.com")
+        <br />
+        @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Invalid input").Placeholder("name@example.com").Value("test@example.com").Invalid()
+    }
+
+    @Html.Bootstrap().Heading2("Textareas")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormTextArea().Placeholder("Leave a comment here").FloatingLabel("Comments")
+        <br />
+        @Html.Bootstrap().FormTextArea().Height(100).Placeholder("Leave a comment here").FloatingLabel("Comments")
+    }
+    @Html.Bootstrap().Heading2("Selects")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormSelect().FloatingLabel("Works with selects").Options(selectList)
+    }
+    @Html.Bootstrap().Heading2("Readonly plaintext")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Empty input").Placeholder("name@example.com").Readonly().PlainText()
+        @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Input with value").Placeholder("name@example.com").Readonly().PlainText().Value("name@example.com")
+    }
+    @Html.Bootstrap().Heading2("Input groups")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var ig = Html.Bootstrap().InputGroup().Begin())
+        {
+            @ig.InputGroupText("@")
+            @Html.Bootstrap().FormInput().FloatingLabel("Username")
+        }
+    }
+    @Html.Bootstrap().Heading2("Layout")
+    @using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var row = Html.Bootstrap().Row().Gutter(Gutter.All, 2).Begin())
+        {
+            @using (var col = row.Column().Columnize(breakpoint: Breakpoint.Medium).Begin())
+            {
+                @Html.Bootstrap().FormInput().Type(FormInputType.Email).FloatingLabel("Email address").Placeholder("name@example.com").Value("mdo@example.com").Margin(new sbyte?[]{null,null,3,null})
+            }
+            @using (var col = row.Column().Columnize(breakpoint: Breakpoint.Medium).Begin())
+            {
+                @Html.Bootstrap().FormSelect().Options(selectList).FloatingLabel("Works with selects")
+            }
+        }
+    }
+}

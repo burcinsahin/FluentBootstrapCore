@@ -1,0 +1,96 @@
+﻿@model Person
+@{
+    var genderOpts = (SelectList)ViewBag.GenderOptions;
+}
+@using (Html.Bootstrap().Container().Responsive(ContainerSize.Small).Begin())
+{
+    @Html.Bootstrap().Heading1("Form Default (For model)")
+    using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Begin())
+    {
+        @form.InputFor(model => model.Name).MaxLength(50).Required()
+        @form.InputFor(model => model.Surname).MaxLength(50).Required()
+        @form.InputFor(model => model.Age).Type(FormInputType.Number).Required()
+        @form.InputFor(model => model.Email).Type(FormInputType.Email).Required()
+        @form.TextAreaFor(model => model.Bio).MaxLength(200).Required()
+        @form.SelectFor(model => model.Gender, genderOpts)
+        @form.CheckFor(model => model.Married)
+        @form.PasswordFor(model => model.Password).MaxLength(16).Required()
+        @form.Submit()
+    }
+    <hr />
+    @Html.Bootstrap().Heading1("Form Default")
+    using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Begin())
+    {
+        @form.Input("Name","Name",Model.Name).MaxLength(50)
+        @form.Input("Surname","Surname",Model.Surname).MaxLength(50)
+        @form.Input("Age","Age",Model.Age).Type(FormInputType.Number)
+        @form.Input("Email","Email",Model.Email).Type(FormInputType.Email)
+        @form.TextArea("Bio","Bio",Model.Bio).MaxLength(200)
+        @form.Select("Gender", genderOpts)
+        @form.CheckBox("Married","Married",Model.Married)
+        @form.Password("Password","Password").MaxLength(16).Required()
+        @form.Submit()
+    }
+    <hr />
+    @Html.Bootstrap().Heading1("Form Controls With Labels")
+    using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Confirm("confirm submit?").Begin())
+    {
+        @form.InputFor(model => model.Name).MaxLength(50).Label("Name")
+        @form.InputFor(model => model.Surname).MaxLength(50).Label("Surname")
+        @form.TextAreaFor(model => model.Bio).MaxLength(200).Label("Bio")
+        @form.SelectFor(model => model.Gender, genderOpts).Label("Gender")
+        @form.CheckFor(model => model.Married).Label("Married")
+        @form.PasswordFor(model => model.Password).Label("Password").MaxLength(16).Required()
+        @form.Submit()
+    }
+    <hr />
+    @Html.Bootstrap().Heading1("Form Controls With Floating Labels")
+    using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post).Confirm("confirm submit?").Begin())
+    {
+        @form.InputFor(model => model.Name).MaxLength(50).FloatingLabel("Name")
+        @form.InputFor(model => model.Surname).MaxLength(50).FloatingLabel("Surname")
+        @form.TextAreaFor(model => model.Bio).MaxLength(200).FloatingLabel("Bio")
+        @form.SelectFor(model => model.Gender, genderOpts).FloatingLabel("Gender")
+        @form.CheckFor(model => model.Married).Label("Married")
+        @form.PasswordFor(model => model.Password).FloatingLabel("Password").MaxLength(16).Required()
+        @form.Submit()
+    }
+    <hr />
+    @*@Html.Bootstrap().Heading1("Form With Grid")
+    @using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Get).Begin())
+    {
+        using (var grid = Html.Bootstrap().Container().AddCss(Css.Mb3, Css.Mt3).Begin())
+        {
+            using (var row = grid.Row().Begin())
+            {
+                using (row.Column().Begin())
+                {
+                    @form.Select("isActive", genderOpts).SetLabel("Gender")
+                }
+                using (row.Column().Begin())
+                {
+                    @Html.Bootstrap().Button("Filter").SetType(ButtonType.Submit).SetIcon(IconType.Filter)
+                }
+            }
+        }
+    }
+    <hr />*@
+    @*    @Html.Bootstrap().Heading1("Form Example Complex")
+    @using (var form = Html.Bootstrap().Form("Submit", "Home", FormMethod.Post, new { area = "Admin" }).AddCss("form-signin").Begin())
+    {
+        @form.InputFor(model => model.Email).SetFloatingLabel("Email").SetMaxLength().IsRequired().AutoFocus()
+        @form.PasswordFor(model => model.Password).SetFloatingLabel("Password").SetMaxLength(16).IsRequired()
+        @form.CheckBox("RememberMe", "Remember Me").SetReadonly()
+        @using (Html.Bootstrap().Container().TextCenter().Begin())
+        {
+            <div class="row mb-3 mt-3">
+                <div class="col">
+                    @form.Submit("Signin", ButtonState.Primary, "Login")
+                </div>
+                <div class="col">
+                    @Html.Bootstrap().LinkButton("Signup", "Signup", "Home")
+                </div>
+            </div>
+        }
+    }*@
+}
