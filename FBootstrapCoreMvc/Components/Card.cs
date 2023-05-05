@@ -12,7 +12,7 @@ namespace FluentBootstrapCore.Components
     {
         internal object? Header { get; set; }
         internal object? Footer { get; set; }
-        internal bool CustomBody { get; set; }
+        internal bool WrapBody { get; set; }
         internal object? BodyTitle { get; set; }
         internal bool Collapsible { get; set; }
         public TextColor? BodyColor { get; set; }
@@ -21,7 +21,7 @@ namespace FluentBootstrapCore.Components
             : base("div", Css.Card)
         {
             //CardBodyList = new List<CardBody>();
-            CustomBody = false;
+            WrapBody = false;
         }
 
         protected override void PreBuild()
@@ -63,7 +63,7 @@ namespace FluentBootstrapCore.Components
                 AddChild(div, ChildLocation.BodyWrap);
             }
 
-            if (!CustomBody)
+            if (WrapBody)
             {
                 var cardBody = new CardBody
                 {

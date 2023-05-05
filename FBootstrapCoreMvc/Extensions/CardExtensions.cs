@@ -25,15 +25,15 @@ namespace FluentBootstrapCore.Extensions
         }
 
         /// <summary>
-        /// Skips rendering card body. Use if you will manually add cardbody component.
+        /// Wraps content with card body component. Do not use if you will manually add cardbody component.
         /// </summary>
         /// <typeparam name="TComponent"></typeparam>
         /// <param name="bootstrapContent"></param>
         /// <returns></returns>
-        public static BootstrapContent<TComponent> CustomBody<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool value = true)
+        public static BootstrapContent<TComponent> WrapBody<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool value = true)
             where TComponent : Card
         {
-            bootstrapContent.Component.CustomBody = value;
+            bootstrapContent.Component.WrapBody = value;
             return bootstrapContent;
         }
 

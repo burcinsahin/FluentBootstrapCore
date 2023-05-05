@@ -1,7 +1,7 @@
 ﻿@Html.Bootstrap().Heading2("Example")
 @using (Html.Bootstrap().Div().Width(500).Begin())
 {
-    @using (var card = Html.Bootstrap().Card().CustomBody().Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
     {
         @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
         @using (card.Body().Begin())
@@ -17,13 +17,13 @@
 @using (Html.Bootstrap().Div().Width(500).Begin())
 {
     @Html.Bootstrap().Heading3("Body")
-    @using (var card = Html.Bootstrap().Card().Begin())
+    @using (var card = Html.Bootstrap().Card().WrapBody().Begin())
     {
         @Html.Raw("This is some text within a card body.")
     }
     <br />
     @Html.Bootstrap().Heading3("Titles, text, and links")
-    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().WrapBody().Width(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Card title")
         @card.Subtitle("Card subtitle").Margin(Margin.Bottom, 2)
@@ -33,7 +33,7 @@
     }
     <br />
     @Html.Bootstrap().Heading3("Images")
-    @using (var card = Html.Bootstrap().Card().CustomBody().Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
     {
         @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
         @using (card.Body().Begin())
@@ -43,7 +43,7 @@
     }
     <br />
     @Html.Bootstrap().Heading3("List groups")
-    @using (var card = Html.Bootstrap().Card().CustomBody().Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
     {
         @using (var lg = Html.Bootstrap().ListGroup().Begin())
         {
@@ -55,7 +55,7 @@
     }
     <br />
     @Html.Bootstrap().Heading3("Kitchen sink")
-    @using (var card = Html.Bootstrap().Card().CustomBody().Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
     {
         @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
         @using (card.Body().Begin())
@@ -77,7 +77,7 @@
     }
     <br />
     @Html.Bootstrap().Heading3("Header and footer")
-    @using (var card = Html.Bootstrap().Card().CustomBody().Begin())
+    @using (var card = Html.Bootstrap().Card().Begin())
     {
         @card.Header("Featured")
         @using (card.Body().Begin())
@@ -87,7 +87,7 @@
             @Html.Bootstrap().LinkButton("Go somewhere")
         }
     }
-    @using (var card = Html.Bootstrap().Card().CustomBody().Begin())
+    @using (var card = Html.Bootstrap().Card().Begin())
     {
         @Html.Bootstrap().Heading5("Featured").Css(Css.CardHeader)
         @using (card.Body().Begin())
@@ -97,7 +97,7 @@
             @Html.Bootstrap().LinkButton("Go somewhere")
         }
     }
-    @using (var card = Html.Bootstrap().Card().CustomBody().Begin())
+    @using (var card = Html.Bootstrap().Card().Begin())
     {
         @card.Header("Quote")
         @using (card.Body().Begin())
@@ -105,7 +105,7 @@
             @Html.Bootstrap().Blockquote("A well-known quote, contained in a blockquote element.","Someone famous in Source Title").Margin(Margin.Bottom, 0)
         }
     }
-    @using (var card = Html.Bootstrap().Card().CustomBody().AlignText(TextAlign.Center).Begin())
+    @using (var card = Html.Bootstrap().Card().AlignText(TextAlign.Center).Begin())
     {
         @card.Header("Featured")
         @using (card.Body().Begin())
@@ -126,7 +126,7 @@
     {
         @using (row.Column().Columnize(6, Breakpoint.Small).Begin())
         {
-            @using (var card = Html.Bootstrap().Card().Begin())
+            @using (var card = Html.Bootstrap().Card().WrapBody().Begin())
             {
                 @card.Title("Special title treatment")
                 @card.Text("With supporting text below as a natural lead-in to additional content.")
@@ -135,7 +135,7 @@
         }
         @using (row.Column().Columnize(6, Breakpoint.Small).Begin())
         {
-            @using (var card = Html.Bootstrap().Card().Begin())
+            @using (var card = Html.Bootstrap().Card().WrapBody().Begin())
             {
                 @card.Title("Special title treatment")
                 @card.Text("With supporting text below as a natural lead-in to additional content.")
@@ -144,20 +144,20 @@
         }
     }
     @Html.Bootstrap().Heading2("Using utilities")
-    @using (var card = Html.Bootstrap().Card().Width(Width._75).Begin())
+    @using (var card = Html.Bootstrap().Card().WrapBody().Width(Width._75).Begin())
     {
         @card.Title("Card title")
         @card.Text("With supporting text below as a natural lead-in to additional content.")
         @Html.Bootstrap().LinkButton("Button")
     }
-    @using (var card = Html.Bootstrap().Card().Width(Width._50).Begin())
+    @using (var card = Html.Bootstrap().Card().WrapBody().Width(Width._50).Begin())
     {
         @card.Title("Card title")
         @card.Text("With supporting text below as a natural lead-in to additional content.")
         @Html.Bootstrap().LinkButton("Button")
     }
     @Html.Bootstrap().Heading2("Using custom CSS")
-    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().WrapBody().Width(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Special title treatment")
         @card.Text("With supporting text below as a natural lead-in to additional content.")
@@ -167,19 +167,19 @@
 @Html.Bootstrap().Heading2("Text alignment")
 @using (Html.Bootstrap().Div().Width(500).Begin())
 {
-    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().WrapBody().Width(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Special title treatment")
         @card.Text("With supporting text below as a natural lead-in to additional content.")
         @Html.Bootstrap().LinkButton("Go somewhere")
     }
-    @using (var card = Html.Bootstrap().Card().AlignText(TextAlign.Center).Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().WrapBody().AlignText(TextAlign.Center).Width(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Special title treatment")
         @card.Text("With supporting text below as a natural lead-in to additional content.")
         @Html.Bootstrap().LinkButton("Go somewhere")
     }
-    @using (var card = Html.Bootstrap().Card().AlignText(TextAlign.End).Width(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().WrapBody().AlignText(TextAlign.End).Width(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Special title treatment")
         @card.Text("With supporting text below as a natural lead-in to additional content.")
@@ -190,7 +190,7 @@
 @Html.Bootstrap().Heading2("Navigation")
 @using (Html.Bootstrap().Div().Width(500).Begin())
 {
-    @using (var card = Html.Bootstrap().Card().AlignText(TextAlign.Center).CustomBody().Begin())
+    @using (var card = Html.Bootstrap().Card().AlignText(TextAlign.Center).Begin())
     {
         @using (card.Header().Begin())
         {
@@ -209,7 +209,7 @@
         }
     }
     <br />
-    @using (var card = Html.Bootstrap().Card().AlignText(TextAlign.Center).CustomBody().Begin())
+    @using (var card = Html.Bootstrap().Card().AlignText(TextAlign.Center).Begin())
     {
         @using (card.Header().Begin())
         {
@@ -233,7 +233,7 @@
 @using (Html.Bootstrap().Div().Width(500).Begin())
 {
     @Html.Bootstrap().Heading3("Image caps")
-    @using (var card = Html.Bootstrap().Card().Margin(Margin.Bottom, 3).CustomBody().Begin())
+    @using (var card = Html.Bootstrap().Card().Margin(Margin.Bottom, 3).Begin())
     {
         @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
 
@@ -244,7 +244,7 @@
             @card.Text().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
         }
     }
-    @using (var card = Html.Bootstrap().Card().CustomBody().Begin())
+    @using (var card = Html.Bootstrap().Card().Begin())
     {
         @using (card.Body().Begin())
         {
@@ -256,7 +256,7 @@
     }
     <br />
     @Html.Bootstrap().Heading3("Image overlays")
-    @using (var card = Html.Bootstrap().Card().TextBackground(TextBgState.Dark).CustomBody().Begin())
+    @using (var card = Html.Bootstrap().Card().TextBackground(TextBgState.Dark).Begin())
     {
         @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
 
@@ -272,7 +272,7 @@
 @Html.Bootstrap().Heading2("Horizontal")
 @using (Html.Bootstrap().Div().Begin())
 {
-    @using (var card = Html.Bootstrap().Card().MaxWidth(540).Margin(Margin.Bottom, 3).CustomBody().Begin())
+    @using (var card = Html.Bootstrap().Card().MaxWidth(540).Margin(Margin.Bottom, 3).Begin())
     {
         @using (var row=Html.Bootstrap().Row().Gutter(Gutter.All, 0).Begin())
         {
@@ -294,89 +294,89 @@
 @using (Html.Bootstrap().Div().Width(500).Begin())
 {
     @Html.Bootstrap().Heading3("Background and color")
-    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Primary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().TextBackground(TextBgState.Primary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Primary card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Secondary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().TextBackground(TextBgState.Secondary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Secondary card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Success).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().TextBackground(TextBgState.Success).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Success card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Danger).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().TextBackground(TextBgState.Danger).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Danger card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Warning).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().TextBackground(TextBgState.Warning).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Warning card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Info).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().TextBackground(TextBgState.Info).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Info card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Light).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().TextBackground(TextBgState.Light).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Light card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").TextBackground(TextBgState.Dark).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().TextBackground(TextBgState.Dark).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Dark card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
     @Html.Bootstrap().Heading3("Border")
-    @using (var card = Html.Bootstrap().Card("Header").BodyColor(TextColor.Primary).Border(borderColor: BorderColor.Primary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().BodyColor(TextColor.Primary).Border(borderColor: BorderColor.Primary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Primary card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").BodyColor(TextColor.Secondary).Border(borderColor: BorderColor.Secondary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().BodyColor(TextColor.Secondary).Border(borderColor: BorderColor.Secondary).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Secondary card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").BodyColor(TextColor.Success).Border(borderColor: BorderColor.Success).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().BodyColor(TextColor.Success).Border(borderColor: BorderColor.Success).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Success card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").BodyColor(TextColor.Danger).Border(borderColor: BorderColor.Danger).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().BodyColor(TextColor.Danger).Border(borderColor: BorderColor.Danger).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Danger card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").Border(borderColor: BorderColor.Warning).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().Border(borderColor: BorderColor.Warning).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Warning card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").Border(borderColor: BorderColor.Info).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().Border(borderColor: BorderColor.Info).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Info card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").Border(borderColor: BorderColor.Light).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().Border(borderColor: BorderColor.Light).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Light card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
-    @using (var card = Html.Bootstrap().Card("Header").BodyColor(TextColor.Dark).Border(borderColor: BorderColor.Dark).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card("Header").WrapBody().BodyColor(TextColor.Dark).Border(borderColor: BorderColor.Dark).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Title("Dark card title")
         @card.Text("Some quick example text to build on the card title and make up the bulk of the card's content.")
     }
     @Html.Bootstrap().Heading3("Mixins utilities")
-    @using (var card = Html.Bootstrap().Card().CustomBody().Border(Border.None, BorderColor.Success).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
+    @using (var card = Html.Bootstrap().Card().Border(Border.None, BorderColor.Success).Margin(Margin.Bottom, 3).MaxWidth(18, LengthUnit.RootElement).Begin())
     {
         @card.Header("Header").Background(BgColor.Transparent).Border(Border.None,BorderColor.Success)
         @using (card.Body().Color(TextColor.Success).Begin())
@@ -393,7 +393,7 @@
     @Html.Bootstrap().Heading3("Card groups")
     @using (var cg = Html.Bootstrap().CardGroup().Begin())
     {
-        @using (var card = cg.Card().CustomBody().Begin())
+        @using (var card = cg.Card().Begin())
         {
             @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
             @using (card.Body().Begin())
@@ -403,7 +403,7 @@
                 @card.Text().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
             }
         }
-        @using (var card = cg.Card().CustomBody().Begin())
+        @using (var card = cg.Card().Begin())
         {
             @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
             @using (card.Body().Begin())
@@ -413,7 +413,7 @@
                 @card.Text().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
             }
         }
-        @using (var card = cg.Card().CustomBody().Begin())
+        @using (var card = cg.Card().Begin())
         {
             @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
             @using (card.Body().Begin())
@@ -427,7 +427,7 @@
     <br />
     @using (var cg = Html.Bootstrap().CardGroup().Begin())
     {
-        @using (var card = cg.Card().CustomBody().Begin())
+        @using (var card = cg.Card().Begin())
         {
             @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
             @using (card.Body().Begin())
@@ -437,7 +437,7 @@
             }
             @card.Footer().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
         }
-        @using (var card = cg.Card().CustomBody().Begin())
+        @using (var card = cg.Card().Begin())
         {
             @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
             @using (card.Body().Begin())
@@ -447,7 +447,7 @@
             }
             @card.Footer().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
         }
-        @using (var card = cg.Card().CustomBody().Begin())
+        @using (var card = cg.Card().Begin())
         {
             @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
             @using (card.Body().Begin())
