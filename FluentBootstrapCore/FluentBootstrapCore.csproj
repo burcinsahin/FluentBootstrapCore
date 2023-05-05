@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
 
-    <Title>FBootstrapCoreMvc</Title>
+    <Title>FluentBootstrapCore</Title>
     <Description>Fluent bootstrap (v5.2) library for netcore MVC applications.</Description>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -12,8 +12,8 @@
     <Version>1.0.0-alpha.$([System.DateTime]::Now.ToString("yyyyMMddHHmm"))</Version>
     <PackageOutputPath>C:\Temp\MyNugetPackages</PackageOutputPath>
     <Copyright>burcinsahin</Copyright>
-    <PackageProjectUrl>https://github.com/burcinsahin/FBootstrapCoreMvc</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/burcinsahin/FBootstrapCoreMvc</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/burcinsahin/FluentBootstrapCore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/burcinsahin/FluentBootstrapCore</RepositoryUrl>
     <PackageTags>fluent;bootstrap;fluentapi;</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

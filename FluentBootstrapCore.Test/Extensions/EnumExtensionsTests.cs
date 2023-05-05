@@ -1,7 +1,7 @@
 ﻿using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Extensions;
 
-namespace FBootstrapCoreMvc.Test.Extensions
+namespace FluentBootstrapCore.Test.Extensions
 {
     [TestClass]
     public class EnumExtensionsTests
