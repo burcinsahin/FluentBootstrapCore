@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FluentBootstrapCore
 {
@@ -21,7 +22,7 @@ namespace FluentBootstrapCore
         public IHtmlComponent? Peek()
         {
             var item = _htmlHelper.ViewContext.HttpContext.Items[_componentStackKey];
-            if (item is Stack<IHtmlComponent> stack)
+            if (item is Stack<IHtmlComponent> stack && stack.Any())
                 return stack.Peek();
             return default;
         }
@@ -29,7 +30,7 @@ namespace FluentBootstrapCore
         public IHtmlComponent? Pop()
         {
             var item = _htmlHelper.ViewContext.HttpContext.Items[_componentStackKey];
-            if (item is Stack<IHtmlComponent> stack)
+            if (item is Stack<IHtmlComponent> stack && stack.Any())
                 return stack.Pop();
             return default;
         }
