@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Components
 {
     public class NavbarNav : BootstrapComponent,
         ICanCreate<NavbarLink>,
-        ICanCreate<NavbarDropdown>
+        ICanCreate<NavDropdown>
     {
         public NavbarNav()
             : base("ul", Css.NavbarNav, Css.MeAuto)

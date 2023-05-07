@@ -358,6 +358,12 @@ namespace FluentBootstrapCore
             return new BootstrapContent<Modal>(HtmlHelper, modal);
         }
 
+        public BootstrapContent<NavList> NavList()
+        {
+            var nav = new NavList();
+            return new BootstrapContent<NavList>(HtmlHelper, nav);
+        }
+
         public BootstrapContent<Nav> Nav()
         {
             var nav = new Nav();

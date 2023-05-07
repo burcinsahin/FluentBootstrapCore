@@ -2,10 +2,10 @@
 
 namespace FluentBootstrapCore.Components
 {
-    public class NavbarDropdown : BootstrapComponent,
+    public class NavDropdown : BootstrapComponent,
         ICanCreate<DropdownMenu>
     {
-        public NavbarDropdown(string text)
+        public NavDropdown(string text)
             : base("li", Css.NavItem, Css.Dropdown)
         {
             Content = text;

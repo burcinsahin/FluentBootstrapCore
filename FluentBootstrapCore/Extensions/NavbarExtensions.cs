@@ -6,13 +6,6 @@ namespace FluentBootstrapCore.Extensions
 {
     public static class NavbarExtensions
     {
-        //public static BootstrapContent<TComponent> Href<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? href)
-        //    where TComponent : Link
-        //{
-        //    bootstrapContent.Component.MergeAttribute("href", href);
-        //    return bootstrapContent;
-        //}
-
         public static BootstrapContent<TComponent> Dark<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
             where TComponent : Navbar
         {
@@ -60,13 +53,6 @@ namespace FluentBootstrapCore.Extensions
                 Href = builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues)
             };
             return new BootstrapContent<NavbarLink>(builder.HtmlHelper, navbarLink);
-        }
-
-        public static BootstrapContent<NavbarDropdown> Dropdown<TComponent>(this ComponentBuilder<TComponent> builder, string text)
-            where TComponent : SingleComponent, ICanCreate<NavbarDropdown>
-        {
-            var dropdown = new NavbarDropdown(text);
-            return new BootstrapContent<NavbarDropdown>(builder.HtmlHelper, dropdown);
         }
     }
 }
