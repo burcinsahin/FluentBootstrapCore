@@ -352,7 +352,7 @@ namespace FluentBootstrapCore
         {
             var modal = new Modal
             {
-                Title = title,
+                Header = title,
                 Content = content
             };
             return new BootstrapContent<Modal>(HtmlHelper, modal);

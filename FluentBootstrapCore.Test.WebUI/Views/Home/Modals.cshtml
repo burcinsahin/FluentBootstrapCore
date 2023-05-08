@@ -1,14 +1,304 @@
-﻿@using (Html.Bootstrap().Container().Begin())
+﻿<style>
+    div.row [class^="col"] {
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+        background-color: rgba(113, 44, 249, 0.1);
+        border: 1px solid rgba(113, 44, 249, 0.25);
+    }
+
+    a.btn, button.btn {
+        margin: 3px;
+    }
+</style>
+@using (Html.Bootstrap().Container().Begin())
 {
-    @Html.Bootstrap().Heading1("Basic Modal")
-    @Html.Bootstrap().Button("Click me").Icon(IconType.Window).Attribute("data-bs-target", "#testModal").Attribute("data-bs-toggle", "modal")
-    using (var modal = Html.Bootstrap().Modal("Title").Id("testModal").Begin())
+    @Html.Bootstrap().Heading2("Examples")
+    @Html.Bootstrap().Heading3("Modal components")
+    @using (var modal = Html.Bootstrap().Modal("Modal title").Fade(false).Display(Display.Block).Position(Position.Static).Begin())
     {
-        using (modal.ModalBody().Begin())
+        @using (modal.Body().Begin())
         {
-            <p>Content...</p>
+            @Html.Bootstrap().Paragraph("Modal body text goes here.")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+            @footer.Button("Save changes")
+        }
+    }
+    @Html.Bootstrap().Heading3("Live demo")
+    @Html.Bootstrap().Button("Launch demo modal").Modal("testModal")
+    @using (var modal = Html.Bootstrap().Modal("Modal title").Id("testModal").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("Woo-hoo, you're reading this text in a modal!")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+            @footer.Button("Save changes")
+        }
+    }
+    @Html.Bootstrap().Heading3("Live demo")
+    @Html.Bootstrap().Button("Launch static backdrop modal").Modal("staticBackdrop")
+    @using (var modal = Html.Bootstrap().Modal("Modal title").Id("staticBackdrop").StaticBackdrop().Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("I will not close if you click outside of me. Don't even try to press escape key.")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+            @footer.Button("Understood")
+        }
+    }
+    @Html.Bootstrap().Heading3("Scrolling long content")
+    @Html.Bootstrap().Button("Launch demo modal").Modal("exampleModalLong")
+    @using (var modal = Html.Bootstrap().Modal().WithHeader("Modal title").Id("exampleModalLong").Begin())
+    {
+        @using (modal.Body().MinHeight(1500).Begin())
+        {
+            @Html.Bootstrap().Paragraph("This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text the modal, we use an inline style set a minimum height, thereby extending the length of the overall modal and demonstrating the overflow scrolling. When content becomes longer than the height of the viewport, scrolling will move the modal as needed.")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+            @footer.Button("Save changes")
+        }
+    }
+    <br />
+    @Html.Bootstrap().Button("Launch demo modal").Modal("exampleModalScrollable")
+    @using (var modal = Html.Bootstrap().Modal().Scrollable().WithHeader("Modal title").Id("exampleModalScrollable").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.")
+            @for (int i = 0; i < 40; i++)
+            {
+                <br />
+            }
+            @Html.Bootstrap().Paragraph("This content should appear at the bottom after you scroll.")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+            @footer.Button("Save changes")
+        }
+    }
+    @Html.Bootstrap().Heading3("Vertically centered")
+    @Html.Bootstrap().Button("Vertically centered modal").Modal("exampleModalCenter")
+    @using (var modal = Html.Bootstrap().Modal().Centered().WithHeader("Modal title").Id("exampleModalCenter").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("This is a vertically centered modal.")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+            @footer.Button("Save changes")
+        }
+    }
+    @Html.Bootstrap().Button("Vertically centered scrollable modal").Modal("exampleModalCenteredScrollable")
+    @using (var modal = Html.Bootstrap().Modal().Centered().Scrollable().WithHeader("Modal title").Id("exampleModalCenteredScrollable").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("This is some placeholder content to show a vertically centered modal. We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.")
+            @for (int i = 0; i < 40; i++)
+            {
+                <br />
+            }
+            @Html.Bootstrap().Paragraph("Just like that.")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+            @footer.Button("Save changes")
+        }
+    }
+    @Html.Bootstrap().Heading3("Tooltips and popovers")
+    @Html.Bootstrap().Button("Launch demo modal").Modal("exampleModalPopovers")
+    @using (var modal = Html.Bootstrap().Modal().WithHeader("Modal title").Id("exampleModalPopovers").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            <h2 class="fs-5">Popover in a modal</h2>
+            <p>This <a href="#" role="button" class="btn btn-secondary" data-bs-toggle="popover" title="Popover title" data-bs-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+            <hr>
+            <h2 class="fs-5">Tooltips in a modal</h2>
+            <p><a href="#" data-bs-toggle="tooltip" title="Tooltip">This link</a> and <a href="#" data-bs-toggle="tooltip" title="Tooltip">that link</a> have tooltips on hover.</p>
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+            @footer.Button("Save changes")
+        }
+    }
+    @Html.Bootstrap().Heading3("Using the grid")
+    @Html.Bootstrap().Button("Launch demo modal").Modal("#gridSystemModal")
+    @using (var modal = Html.Bootstrap().Modal().WithHeader("Grids in modals").Id("gridSystemModal").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @using (Html.Bootstrap().Container().Fluid().Begin())
+            {
+                @using (var row = Html.Bootstrap().Row().Begin())
+                {
+                    @row.Column().Columnize(4, Breakpoint.Medium).Content(".col-md-4")
+                    @row.Column().Columnize(4, Breakpoint.Medium).Margin(Margin.Start).Content(".col-md-4 .ms-auto")
+                }
+                @using (var row = Html.Bootstrap().Row().Begin())
+                {
+                    @row.Column().Columnize(3, Breakpoint.Medium).Margin(Margin.Start).Content(".col-md-3 .ms-auto")
+                    @row.Column().Columnize(2, Breakpoint.Medium).Margin(Margin.Start).Content(".col-md-2 .ms-auto")
+                }
+                @using (var row = Html.Bootstrap().Row().Begin())
+                {
+                    @row.Column().Columnize(6, Breakpoint.Medium).Margin(Margin.Start).Content(".col-md-6 .ms-auto")
+                }
+                @using (var row = Html.Bootstrap().Row().Begin())
+                {
+                    @using (row.Column().Columnize(9, Breakpoint.Small).Begin())
+                    {
+                        @Html.Raw("Level 1: .col-sm-9")
+                        @using (var row2 = Html.Bootstrap().Row().Begin())
+                        {
+                            @row2.Column().Columnize(8).Columnize(6, Breakpoint.Small).Content("Level 2: .col-8 .col-sm-6")
+                            @row2.Column().Columnize(4).Columnize(6, Breakpoint.Small).Content("Level 2: .col-4 .col-sm-6")
+                        }
+                    }
+                }
+            }
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+            @footer.Button("Save changes")
+        }
+    }
+    @Html.Bootstrap().Heading3("Varying modal content")
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@@mdo">Open modal for @@mdo</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@@fat">Open modal for @@fat</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@@getbootstrap">Open modal for @@getbootstrap</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Bootstrap().Heading3("Toggle between modals")
+    @using (var modal = Html.Bootstrap().Modal("Modal 1").Centered().Id("exampleModalToggle").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("Show a second modal and hide this one with the button below.")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.Button("Open second modal").Modal("exampleModalToggle2")
+        }
+    }
+    @using (var modal = Html.Bootstrap().Modal("Modal 2").Centered().Id("exampleModalToggle2").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("Hide this modal and show the first with the button below.")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.Button("Back to first").Modal("exampleModalToggle")
+        }
+    }
+    @Html.Bootstrap().Button("Launch demo modal").Modal("exampleModalToggle")
+
+    @*<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>*@
+    @Html.Bootstrap().Heading3("Remove animation")
+    @Html.Bootstrap().Button("No animation").Modal("modalWithNoFade")
+    @using (var modal = Html.Bootstrap().Modal("Modal title").Fade(false).Id("modalWithNoFade").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("Fade animation removed for this modal!")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
         }
     }
     <hr />
+    @Html.Bootstrap().Heading2("Optional sizes")
+    @Html.Bootstrap().Button("Extra large modal").Modal("modalXl")
+    @using (var modal = Html.Bootstrap().Modal("Extra large modal").Sized(ModalSize.XLarge).Id("modalXl").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("Hello world!")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+        }
+    }
+    @Html.Bootstrap().Button("Large modal").Modal("modalLg")
+    @using (var modal = Html.Bootstrap().Modal("Large modal").Sized(ModalSize.Large).Id("modalLg").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("Hello world!")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+        }
+    }
+    @Html.Bootstrap().Button("Small modal").Modal("modalSm")
+    @using (var modal = Html.Bootstrap().Modal("Small modal").Sized(ModalSize.Small).Id("modalSm").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @Html.Bootstrap().Paragraph("Hello world!")
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading2("Fullscreen Modal")
+    @Html.Bootstrap().Button("Full screen").Modal("exampleModalFullscreen")
+    @Html.Bootstrap().Modal("Full screen modal","...").Full().Id("exampleModalFullscreen")
+    @Html.Bootstrap().Button("Full screen below sm").Modal("exampleModalFullscreenSm")
+    @Html.Bootstrap().Modal("Full screen below sm","...").Full(Breakpoint.Small).Id("exampleModalFullscreenSm")
+    @Html.Bootstrap().Button("Full screen below md").Modal("exampleModalFullscreenMd")
+    @Html.Bootstrap().Modal("Full screen below md","...").Full(Breakpoint.Medium).Id("exampleModalFullscreenMd")
+    @Html.Bootstrap().Button("Full screen below lg").Modal("exampleModalFullscreenLg")
+    @Html.Bootstrap().Modal("Full screen below lg","...").Full(Breakpoint.Large).Id("exampleModalFullscreenLg")
+    @Html.Bootstrap().Button("Full screen below xl").Modal("exampleModalFullscreenXl")
+    @Html.Bootstrap().Modal("Full screen below xl","...").Full(Breakpoint.XLarge).Id("exampleModalFullscreenXl")
+    @Html.Bootstrap().Button("Full screen below xxl").Modal("exampleModalFullscreenXxl")
+    @Html.Bootstrap().Modal("Full screen below xxl","...").Full(Breakpoint.XXLarge).Id("exampleModalFullscreenXxl")
 }
 

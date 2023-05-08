@@ -6,6 +6,16 @@ namespace FluentBootstrapCore.Extensions
 {
     public static class ButtonExtensions
     {
+        public static BootstrapContent<Button> Button<TComponent>(this ComponentBuilder<TComponent> builder, object? content = null)
+            where TComponent : BootstrapComponent, ICanCreate<Button>
+        {
+            var button = new Button
+            {
+                Content = content
+            };
+            return new BootstrapContent<Button>(builder.HtmlHelper, button);
+        }
+
         public static BootstrapContent<TComponent> Size<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonSize size = ButtonSize.Default)
             where TComponent : SingleComponent, IButton
         {
@@ -57,6 +67,16 @@ namespace FluentBootstrapCore.Extensions
             bootstrapContent.Component.OutlineState = outline;
             bootstrapContent.Component.ButtonState = state;
 
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Modal<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string modalId)
+            where TComponent : SingleComponent, IButton
+        {
+            if(!modalId.StartsWith("#"))
+                modalId = $"#{modalId}";
+            bootstrapContent.Component.MergeAttribute("data-bs-target", $"{modalId}");
+            bootstrapContent.Component.MergeAttribute("data-bs-toggle", $"modal");
             return bootstrapContent;
         }
 

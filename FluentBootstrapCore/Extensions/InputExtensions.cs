@@ -65,7 +65,7 @@ namespace FluentBootstrapCore.Extensions
         }
 
         public static BootstrapContent<TComponent> Sized<TComponent, TEnum>(this BootstrapContent<TComponent> bootstrapContent, TEnum size)
-            where TComponent : SingleComponent, ISizable<TEnum>
+            where TComponent : BootstrapComponent, ISizable<TEnum>
             where TEnum : struct, Enum
         {
             bootstrapContent.Component.Size = size;
