@@ -103,15 +103,25 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
+
         public static BootstrapContent<TComponent> Tooltip<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
-            string tooltip)
-            where TComponent : BootstrapComponent, ILink
+            string tooltip,
+            PopperDirection? direction = null,
+            string? customClass = null,
+            bool isHtml = false)
+            where TComponent : Button
         {
             bootstrapContent.Component.MergeAttribute("data-bs-toggle", "tooltip");
             bootstrapContent.Component.MergeAttribute("title", tooltip);
+            if (direction.HasValue)
+                bootstrapContent.Component.MergeAttribute("data-bs-placement", direction.GetDescription());
+            if (customClass != null)
+                bootstrapContent.Component.MergeAttribute("data-bs-custom-class", customClass);
+            if (isHtml)
+                bootstrapContent.Component.MergeAttribute("data-bs-html", "true");
+
             return bootstrapContent;
         }
-
     }
 }

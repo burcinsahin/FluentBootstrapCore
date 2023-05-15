@@ -7,7 +7,7 @@ namespace FluentBootstrapCore.Interfaces
     {
         string? CustomClass { get; set; }
         string? Container { get; set; }
-        PopoverDirection? Direction { get; set; }
+        PopperDirection? Direction { get; set; }
         string? PopoverContent { get; set; }
         string? PopoverTitle { get; set; }
         bool Dismissable { get; set; }

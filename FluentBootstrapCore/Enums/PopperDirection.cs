@@ -2,7 +2,7 @@
 
 namespace FluentBootstrapCore.Enums
 {
-    public enum PopoverDirection
+    public enum PopperDirection
     {
         [Description("left")]
         Left,

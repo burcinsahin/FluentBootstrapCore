@@ -29,7 +29,7 @@ namespace FluentBootstrapCore.Extensions
 
         public static CompositeContent<TComponent> Direction<TComponent>(
             this CompositeContent<TComponent> content,
-            PopoverDirection direction) where TComponent : HtmlComponent, IPopover
+            PopperDirection direction) where TComponent : HtmlComponent, IPopover
         {
             content.Component.Direction = direction;
             return content;

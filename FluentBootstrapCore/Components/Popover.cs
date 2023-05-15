@@ -12,7 +12,7 @@ namespace FluentBootstrapCore.Components
         public bool Disabled { get; set; }
         public string? PopoverContent { get; set; }
         public string? PopoverTitle { get; set; }
-        public PopoverDirection? Direction { get; set; }
+        public PopperDirection? Direction { get; set; }
         public string? Container { get; set; }
         public ButtonState? State { get; set; }
         public bool Dismissable { get; set; }
