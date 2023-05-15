@@ -303,9 +303,9 @@ namespace FluentBootstrapCore
         {
             var linkButton = new LinkButton
             {
-                Content = content
+                Content = content,
+                Href = href
             };
-            linkButton.MergeAttribute("href", href);
             return new BootstrapContent<LinkButton>(HtmlHelper, linkButton);
         }
 
@@ -379,6 +379,26 @@ namespace FluentBootstrapCore
         {
             var component = new Pagination();
             return new BootstrapContent<Pagination>(HtmlHelper, component);
+        }
+
+        public CompositeContent<Popover> PopoverButton(string? title, string popoverContent)
+        {
+            var component = new Popover
+            {
+                PopoverTitle = title,
+                PopoverContent = popoverContent
+            };
+            return new CompositeContent<Popover>(HtmlHelper, component);
+        }
+
+        public CompositeContent<Popover> PopoverLink(string? title, string popoverContent)
+        {
+            var component = new Popover(true)
+            {
+                PopoverTitle = title,
+                PopoverContent = popoverContent
+            };
+            return new CompositeContent<Popover>(HtmlHelper, component);
         }
 
         public BootstrapContent<RadioButton> Radio()

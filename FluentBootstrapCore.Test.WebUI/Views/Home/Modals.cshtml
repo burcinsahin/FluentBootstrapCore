@@ -10,6 +10,36 @@
         margin: 3px;
     }
 </style>
+<script>
+    $(document).ready(function () {
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+        // -------------------------------
+        // Modal
+        // -------------------------------
+        // Modal 'Varying modal content' example
+        const exampleModal = document.getElementById('exampleModal')
+        if (exampleModal) {
+            exampleModal.addEventListener('show.bs.modal', event => {
+                // Button that triggered the modal
+                const button = event.relatedTarget
+                // Extract info from data-bs-* attributes
+                const recipient = button.getAttribute('data-bs-whatever')
+
+                // Update the modal's content.
+                const modalTitle = exampleModal.querySelector('.modal-title')
+                const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+                modalTitle.textContent = `New message to ${recipient}`
+                modalBodyInput.value = recipient
+            })
+        }
+    });
+</script>
 @using (Html.Bootstrap().Container().Begin())
 {
     @Html.Bootstrap().Heading2("Examples")
@@ -40,7 +70,7 @@
             @footer.Button("Save changes")
         }
     }
-    @Html.Bootstrap().Heading3("Live demo")
+    @Html.Bootstrap().Heading3("Static backdrop")
     @Html.Bootstrap().Button("Launch static backdrop modal").Modal("staticBackdrop")
     @using (var modal = Html.Bootstrap().Modal("Modal title").Id("staticBackdrop").StaticBackdrop().Begin())
     {
@@ -125,11 +155,23 @@
     {
         @using (modal.Body().Begin())
         {
-            <h2 class="fs-5">Popover in a modal</h2>
-            <p>This <a href="#" role="button" class="btn btn-secondary" data-bs-toggle="popover" title="Popover title" data-bs-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+            @Html.Bootstrap().Heading2("Popover in a modal").FontSize(FontSize._5)
+            @using (Html.Bootstrap().Paragraph().Begin())
+            {
+                @Html.Raw("This ")
+                @Html.Bootstrap().LinkButton("button").State(ButtonState.Secondary).Popover("Popover title","Popover body content is set in this attribute.")
+                @Html.Raw(" triggers a popover on click.")
+
+            }
             <hr>
-            <h2 class="fs-5">Tooltips in a modal</h2>
-            <p><a href="#" data-bs-toggle="tooltip" title="Tooltip">This link</a> and <a href="#" data-bs-toggle="tooltip" title="Tooltip">that link</a> have tooltips on hover.</p>
+            @Html.Bootstrap().Heading2("Tooltips in a modal").FontSize(FontSize._5)
+            @using (Html.Bootstrap().Paragraph().Begin())
+            {
+                @Html.Bootstrap().Link("This link").Tooltip("Tooltip")
+                @Html.Raw(" and ")
+                @Html.Bootstrap().Link("that link").Tooltip("Tooltip")
+                @Html.Raw(" have tooltips on hover.")
+            }
         }
         @using (var footer = modal.Footer().Begin())
         {
@@ -180,35 +222,25 @@
         }
     }
     @Html.Bootstrap().Heading3("Varying modal content")
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@@mdo">Open modal for @@mdo</button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@@fat">Open modal for @@fat</button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@@getbootstrap">Open modal for @@getbootstrap</button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Recipient:</label>
-                            <input type="text" class="form-control" id="recipient-name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Message:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @Html.Bootstrap().Button("Open modal for @mdo").Modal("#exampleModal").Attribute("data-bs-whatever", "@mdo")
+    @Html.Bootstrap().Button("Open modal for @fat").Modal("#exampleModal").Attribute("data-bs-whatever", "@fat")
+    @Html.Bootstrap().Button("Open modal for @getbootstrap").Modal("#exampleModal").Attribute("data-bs-whatever", "@getbootstrap")
+    @using (var modal = Html.Bootstrap().Modal("New message").Id("exampleModal").Begin())
+    {
+        @using (modal.Body().Begin())
+        {
+            @using (var form = Html.Bootstrap().Form().Begin())
+            {
+                @Html.Bootstrap().FormInput("Recipient:").Id("recipient-name").Margin(Margin.Bottom, 3)
+                @Html.Bootstrap().FormInput("Message:").Id("message-text").Margin(Margin.Bottom, 3)
+            }
+        }
+        @using (var footer = modal.Footer().Begin())
+        {
+            @footer.CloseButton("Close")
+            @footer.Button("Send message")
+        }
+    }
     @Html.Bootstrap().Heading3("Toggle between modals")
     @using (var modal = Html.Bootstrap().Modal("Modal 1").Centered().Id("exampleModalToggle").Begin())
     {
@@ -232,9 +264,7 @@
             @footer.Button("Back to first").Modal("exampleModalToggle")
         }
     }
-    @Html.Bootstrap().Button("Launch demo modal").Modal("exampleModalToggle")
-
-    @*<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>*@
+    @Html.Bootstrap().LinkButton("Launch demo modal").Modal("exampleModalToggle")
     @Html.Bootstrap().Heading3("Remove animation")
     @Html.Bootstrap().Button("No animation").Modal("modalWithNoFade")
     @using (var modal = Html.Bootstrap().Modal("Modal title").Fade(false).Id("modalWithNoFade").Begin())

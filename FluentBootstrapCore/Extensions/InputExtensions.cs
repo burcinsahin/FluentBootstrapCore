@@ -64,14 +64,6 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> Sized<TComponent, TEnum>(this BootstrapContent<TComponent> bootstrapContent, TEnum size)
-            where TComponent : BootstrapComponent, ISizable<TEnum>
-            where TEnum : struct, Enum
-        {
-            bootstrapContent.Component.Size = size;
-            return bootstrapContent;
-        }
-
         public static BootstrapContent<FormCheck> Switch(this BootstrapContent<FormCheck> bootstrapContent)
         {
             bootstrapContent.Component.Switch = true;

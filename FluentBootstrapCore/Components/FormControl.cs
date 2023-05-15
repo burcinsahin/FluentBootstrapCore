@@ -37,7 +37,13 @@ namespace FluentBootstrapCore.Components
             Input.Readonly = Readonly;
             Input.Name = Name;
             Input.Required = Required;
-            Input.GenerateId();
+            if (Id != null)
+            {
+                Input.Id = Id;
+                Id = null;
+            }
+            else
+                Input.GenerateId();
 
             if (InputOpts != null)
                 Input.UtilityOptions = InputOpts;

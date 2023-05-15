@@ -1,0 +1,52 @@
+﻿<style>
+    .custom-popover {
+        --bs-popover-max-width: 200px;
+        --bs-popover-border-color: var(--bs-primary);
+        --bs-popover-header-bg: var(--bs-primary);
+        --bs-popover-header-color: var(--bs-white);
+        --bs-popover-body-padding-x: 1rem;
+        --bs-popover-body-padding-y: .5rem;
+    }
+
+    .btn {
+        margin: 1px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+    });
+</script>
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Examples")
+    @Html.Bootstrap().Heading3("Enable popovers")
+    @Html.Bootstrap().Paragraph("You must initialize popovers before they can be used. One way to initialize all popovers on a page would be to select them by their data-bs-toggle attribute, like so:")
+    @using (Html.Bootstrap().Element("code").FontSize(FontSize._6).Begin())
+    {
+        <pre>
+                            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+                            const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+                        </pre>
+    }
+    @Html.Bootstrap().Heading3("Live demo")
+    @Html.Bootstrap().Button("Click to toggle popover").Size(ButtonSize.Large).State(ButtonState.Danger).Popover("Popover title","And here's some amazing content. It's very engaging. Right?")
+    @Html.Bootstrap().Heading3("Four directions")
+    @Html.Bootstrap().PopoverButton(null, "Top popover").Content("Popover on top").Container("body").Direction(PopoverDirection.Top).State(ButtonState.Secondary)
+    @Html.Bootstrap().PopoverButton(null, "Right popover").Content("Popover on right").Container("body").Direction(PopoverDirection.Right).State(ButtonState.Secondary)
+    @Html.Bootstrap().PopoverButton(null, "Bottom popover").Content("Popover on bottom").Container("body").Direction(PopoverDirection.Bottom).State(ButtonState.Secondary)
+    @Html.Bootstrap().PopoverButton(null, "Left popover").Content("Popover on left").Container("body").Direction(PopoverDirection.Left).State(ButtonState.Secondary)
+    @Html.Bootstrap().Heading3("Custom container")
+    @Html.Bootstrap().Paragraph("When you have some styles on a parent element that interfere with a popover, you’ll want to specify a custom container so that the popover’s HTML appears within that element instead. This is common in responsive tables, input groups, and the like.")
+    @Html.Bootstrap().Element("code").Content("const popover = new bootstrap.Popover('.example-popover', {  container: 'body'})")
+    @Html.Bootstrap().Paragraph("Another situation where you’ll want to set an explicit custom container are popovers inside a modal dialog, to make sure that the popover itself is appended to the modal. This is particularly important for popovers that contain interactive elements – modal dialogs will trap focus, so unless the popover is a child element of the modal, users won’t be able to focus or activate these interactive elements.")
+    @Html.Bootstrap().Element("code").Content("const popover = new bootstrap.Popover('.example-popover', {  container: '.modal-body'})")
+    @Html.Bootstrap().Heading3("Custom popovers")
+    @Html.Bootstrap().PopoverButton("Custom popover", "This popover is themed via CSS variables.").Content("Custom popover").Direction(PopoverDirection.Right).State(ButtonState.Secondary).CustomClass("custom-popover")
+    @Html.Bootstrap().Heading3("Dismiss on next click")
+    @Html.Bootstrap().PopoverLink("Dismissible popover", "And here's some amazing content. It's very engaging. Right?").Content("Dismissible popover").State(ButtonState.Danger).Dismissable().Sized(ButtonSize.Large)
+    @Html.Bootstrap().Heading3("Disabled elements")
+    @Html.Bootstrap().PopoverButton(null,"Disabled popover").Disabled().Content("Disabled button")
+}
+

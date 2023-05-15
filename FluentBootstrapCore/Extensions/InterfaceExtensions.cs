@@ -3,6 +3,7 @@ using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
 using FluentBootstrapCore.Options;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 
 namespace FluentBootstrapCore.Extensions
@@ -147,6 +148,16 @@ namespace FluentBootstrapCore.Extensions
             where TComponent : SingleComponent, ICanHaveOptions
         {
             bootstrapContent.Component.SelectList = list;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Sized<TComponent, TEnum>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            TEnum size) 
+            where TComponent : BootstrapComponent, ISizable<TEnum> 
+            where TEnum : struct, Enum
+        {
+            bootstrapContent.Component.Size = size;
             return bootstrapContent;
         }
     }

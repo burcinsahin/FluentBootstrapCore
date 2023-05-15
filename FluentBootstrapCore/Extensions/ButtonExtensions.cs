@@ -45,14 +45,14 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> Disabled<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool disabled = true)
-            where TComponent : SingleComponent, IButton
-        {
-            if (disabled)
-                bootstrapContent.Component.AddCss(Css.Disabled);
+        //public static BootstrapContent<TComponent> Disabled<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool disabled = true)
+        //    where TComponent : SingleComponent, IButton
+        //{
+        //    if (disabled)
+        //        bootstrapContent.Component.AddCss(Css.Disabled);
 
-            return bootstrapContent;
-        }
+        //    return bootstrapContent;
+        //}
 
         public static BootstrapContent<TComponent> State<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonState buttonState)
             where TComponent : BootstrapComponent, IButton
@@ -71,12 +71,43 @@ namespace FluentBootstrapCore.Extensions
         }
 
         public static BootstrapContent<TComponent> Modal<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string modalId)
-            where TComponent : SingleComponent, IButton
+            where TComponent : BootstrapComponent, IButton
         {
-            if(!modalId.StartsWith("#"))
+            if (!modalId.StartsWith("#"))
                 modalId = $"#{modalId}";
-            bootstrapContent.Component.MergeAttribute("data-bs-target", $"{modalId}");
+            if (typeof(ILink).IsAssignableFrom(typeof(TComponent)))
+            {
+                ((ILink)bootstrapContent.Component).Href = modalId;
+            }
+            else
+                bootstrapContent.Component.MergeAttribute("data-bs-target", modalId);
             bootstrapContent.Component.MergeAttribute("data-bs-toggle", $"modal");
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Popover<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string title,
+            string content,
+            bool dismissable = false)
+            where TComponent : BootstrapComponent, IButton
+        {
+            bootstrapContent.Component.MergeAttribute("data-bs-toggle", "popover");
+            bootstrapContent.Component.MergeAttribute("data-bs-title", title);
+            bootstrapContent.Component.MergeAttribute("data-bs-content", content);
+            bootstrapContent.Component.MergeAttribute("tabindex", 0);
+            if (dismissable)
+                bootstrapContent.Component.MergeAttribute("data-bs-trigger","focus");
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Tooltip<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string tooltip)
+            where TComponent : BootstrapComponent, ILink
+        {
+            bootstrapContent.Component.MergeAttribute("data-bs-toggle", "tooltip");
+            bootstrapContent.Component.MergeAttribute("title", tooltip);
             return bootstrapContent;
         }
 
