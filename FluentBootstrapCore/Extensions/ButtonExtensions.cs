@@ -1,6 +1,7 @@
 ﻿using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
+using System;
 
 namespace FluentBootstrapCore.Extensions
 {
@@ -85,6 +86,7 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
+        [Obsolete]
         public static BootstrapContent<TComponent> Popover<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string title,
@@ -97,7 +99,7 @@ namespace FluentBootstrapCore.Extensions
             bootstrapContent.Component.MergeAttribute("data-bs-content", content);
             bootstrapContent.Component.MergeAttribute("tabindex", 0);
             if (dismissable)
-                bootstrapContent.Component.MergeAttribute("data-bs-trigger","focus");
+                bootstrapContent.Component.MergeAttribute("data-bs-trigger", "focus");
             return bootstrapContent;
         }
 

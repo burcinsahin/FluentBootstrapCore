@@ -159,9 +159,8 @@
             @using (Html.Bootstrap().Paragraph().Begin())
             {
                 @Html.Raw("This ")
-                @Html.Bootstrap().LinkButton("button").State(ButtonState.Secondary).Popover("Popover title","Popover body content is set in this attribute.")
+                @Html.Bootstrap().PopoverLink("Popover title", "Popover body content is set in this attribute.").Content("button").State(ButtonState.Secondary)
                 @Html.Raw(" triggers a popover on click.")
-
             }
             <hr>
             @Html.Bootstrap().Heading2("Tooltips in a modal").FontSize(FontSize._5)

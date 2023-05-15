@@ -31,7 +31,7 @@
                         </pre>
     }
     @Html.Bootstrap().Heading3("Live demo")
-    @Html.Bootstrap().Button("Click to toggle popover").Size(ButtonSize.Large).State(ButtonState.Danger).Popover("Popover title","And here's some amazing content. It's very engaging. Right?")
+    @Html.Bootstrap().PopoverButton("Popover title", "And here's some amazing content. It's very engaging. Right?").Content("Click to toggle popover").Sized(ButtonSize.Large).State(ButtonState.Danger)
     @Html.Bootstrap().Heading3("Four directions")
     @Html.Bootstrap().PopoverButton(null, "Top popover").Content("Popover on top").Container("body").Direction(PopoverDirection.Top).State(ButtonState.Secondary)
     @Html.Bootstrap().PopoverButton(null, "Right popover").Content("Popover on right").Container("body").Direction(PopoverDirection.Right).State(ButtonState.Secondary)
