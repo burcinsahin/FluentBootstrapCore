@@ -3,11 +3,15 @@ using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
-    public class NavbarLink : BootstrapComponent, ILink, ICanBeActive
+    public class NavbarLink : BootstrapComponent,
+        ILink,
+        ICanBeActive,
+        ICanBeDisabled
     {
         public string? Href { get; set; }
         public bool Active { get; set; }
         public LinkTarget? Target { get; set; }
+        public bool Disabled { get; set; }
 
         public NavbarLink()
             : base("li", Css.NavItem)
@@ -21,11 +25,16 @@ namespace FluentBootstrapCore.Components
                 Content = Content,
                 Href = Href
             };
+
             link.AddCss(Css.NavLink);
+
             if (Active)
                 link.AddCss(Css.Active);
-            AddChild(link);
-            Content = null;
+
+            if (Disabled)
+                link.AddCss(Css.Disabled);
+
+            Content = link;
             base.PreBuild();
         }
     }

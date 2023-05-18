@@ -1,23 +1,37 @@
 ﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
+using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
-    public class Modal : BootstrapComponent
+    public class Modal : BootstrapComponent,
+        ISizable<ModalSize>
     {
-        internal string? Title { get; set; }
+        internal object? Header { get; set; }
         internal bool VCentered { get; set; }
         internal bool Scrollable { get; set; }
         internal bool StaticBackdrop { get; set; }
-
+        public bool Fade { get; set; }
+        public bool Show { get; set; }
+        public ModalSize? Size { get; set; }
+        public Breakpoint? Fullscreen { get; set; }
         public Modal()
-            : base("div", Css.Modal, Css.Fade)
+            : base("div", Css.Modal)
         {
+            Fade = true;
             MergeAttribute("tabindex", "-1");
         }
 
         protected override void PreBuild()
         {
             var modalDialog = new HtmlElement("div", Css.ModalDialog);
+
+            if (Fade)
+                AddCss(Css.Fade);
+
+            if (Show)
+                AddCss(Css.Show);
+
             if (VCentered)
                 modalDialog.AddCss(Css.ModalDialogCentered);
 
@@ -30,14 +44,25 @@ namespace FluentBootstrapCore.Components
                 MergeAttribute("data-bs-keyboard", "false");
             }
 
+            if (Size.HasValue)
+                modalDialog.AddCss(Size.GetCssDescription());
+
+            if (Fullscreen.HasValue)
+            {
+                if (Fullscreen.Equals(Breakpoint.Default))
+                    modalDialog.AddCss(Css.ModalFullscreen);
+                else
+                    modalDialog.AddCss($"modal-fullscreen-{Fullscreen.GetCssDescription()}-down");
+            }
+
             AddChild(modalDialog, ChildLocation.FullWrap);
 
             var modalContent = new HtmlElement("div", Css.ModalContent);
             AddChild(modalContent, ChildLocation.FullWrap);
 
-            if (Title != null)
+            if (Header != null)
             {
-                var modalHeader = new ModalHeader(Title);
+                var modalHeader = new ModalHeader(Header);
                 AddChild(modalHeader, ChildLocation.Header);
             }
 

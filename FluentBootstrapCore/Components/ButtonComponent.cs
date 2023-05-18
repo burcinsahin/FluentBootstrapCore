@@ -7,7 +7,8 @@ namespace FluentBootstrapCore.Components
     public abstract class ButtonComponent : BootstrapComponent,
         ICanHaveName,
         IButton,
-        ICanBeActive
+        ICanBeActive,
+        ICanBeDisabled
     {
         public ButtonState ButtonState { get; set; }
         public ButtonType ButtonType { get; set; }
@@ -16,6 +17,7 @@ namespace FluentBootstrapCore.Components
         public Badge? Badge { get; set; }
         public string? Name { get; set; }
         public bool Active { get; set; }
+        public bool Disabled { get; set; }
 
         protected ButtonComponent(string tagName)
             : base(tagName, Css.Btn)
@@ -41,6 +43,11 @@ namespace FluentBootstrapCore.Components
             {
                 AddCss(Css.Active);
                 MergeAttribute("aria-pressed", true);
+            }
+            if (Disabled)
+            {
+                AddCss(Css.Disabled);
+                MergeAttribute("disabled");
             }
             base.PreBuild();
         }

@@ -1,4 +1,5 @@
 ﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
 using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
@@ -17,6 +18,12 @@ namespace FluentBootstrapCore.Components
         protected override void PreBuild()
         {
             MergeAttribute("role", "button");
+
+            if (Href != null)
+                MergeAttribute("href", Href, true);
+
+            if (Target.HasValue)
+                MergeAttribute("target", Target.GetCssDescription());
 
             base.PreBuild();
         }

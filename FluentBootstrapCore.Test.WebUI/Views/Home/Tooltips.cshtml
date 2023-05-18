@@ -1,0 +1,52 @@
+﻿<style>
+    .custom-tooltip {
+        --bs-tooltip-bg: var(--bs-primary);
+    }
+
+    .btn {
+        margin: 1px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    });
+</script>
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Examples")
+    @Html.Bootstrap().Heading3("Enable tooltips")
+    @Html.Bootstrap().Paragraph("You must initialize tooltips before they can be used. One way to initialize all tooltips on a page would be to select them by their data-bs-toggle attribute, like so:")
+    @using (Html.Bootstrap().Element("code").FontSize(FontSize._6).Begin())
+    {
+        <pre>
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        </pre>
+    }
+    @Html.Bootstrap().Heading3("Tooltips on links")
+    @using (Html.Bootstrap().Paragraph().Color(TextColor.Muted).Begin())
+    {
+        @Html.Raw("Placeholder text to demonstrate some ")
+        @Html.Bootstrap().Link("inline links").Tooltip("Default tooltip")
+        @Html.Raw(" with tooltips. This is now just filler, no killer. Content placed here just to mimic the presence of ")
+        @Html.Bootstrap().Link("real text").Tooltip("Another tooltip")
+        @Html.Raw(". And all that just to give you an idea of how tooltips would look when used in real-world situations. So hopefully you've now seen how ")
+        @Html.Bootstrap().Link("these tooltips on links").Tooltip("Another one here too")
+        @Html.Raw(" can work in practice, once you use them on ")
+        @Html.Bootstrap().Link("your own").Tooltip("The last tip!")
+        @Html.Raw(" site or project.")
+
+    }
+    @Html.Bootstrap().Heading3("Custom tooltips")
+    @Html.Bootstrap().Button("Custom tooltip").State(ButtonState.Secondary).Tooltip("This top tooltip is themed via CSS variables.", PopperDirection.Top, "custom-tooltip")
+    @Html.Bootstrap().Heading3("Directions")
+    @Html.Bootstrap().Button("Tooltip on top").State(ButtonState.Secondary).Tooltip("Tooltip on top", PopperDirection.Top)
+    @Html.Bootstrap().Button("Tooltip on right").State(ButtonState.Secondary).Tooltip("Tooltip on right", PopperDirection.Right)
+    @Html.Bootstrap().Button("Tooltip on bottom").State(ButtonState.Secondary).Tooltip("Tooltip on bottom", PopperDirection.Bottom)
+    @Html.Bootstrap().Button("Tooltip on left").State(ButtonState.Secondary).Tooltip("Tooltip on left", PopperDirection.Left)
+    <br />
+    @Html.Bootstrap().Button("Tooltip with HTML").State(ButtonState.Secondary).Tooltip("<em>Tooltip</em> <u>with</u> <b>HTML</b>", isHtml: true)
+}
+

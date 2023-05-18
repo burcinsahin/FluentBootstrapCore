@@ -1,17 +1,20 @@
-﻿using FluentBootstrapCore.Interfaces;
+﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
-    public class Nav : BootstrapComponent,
-        INav, 
-        ICanCreate<NavLink>
+    public class NavList : List,
+        ICanCreate<NavItem>, 
+        INav,
+        ICanCreate<NavDropdown>
     {
-        public Nav() : base("nav", Css.Nav)
+        public NavList() : base(ListType.Unstyled)
         {
         }
 
         protected override void PreBuild()
         {
+            AddCss(Css.Nav);
             if (HasParent<CardHeader>())
             {
                 if (CssClasses.Contains(Css.NavTabs))

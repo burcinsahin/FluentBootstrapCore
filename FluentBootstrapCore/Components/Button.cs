@@ -10,6 +10,7 @@ namespace FluentBootstrapCore.Components
         ICanHaveName
     {
         public object? Value { get; set; }
+
         public Button()
             : base("button")
         {

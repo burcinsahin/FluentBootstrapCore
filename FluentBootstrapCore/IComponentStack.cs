@@ -5,5 +5,6 @@
         void Push(IHtmlComponent component);
         IHtmlComponent? Pop();
         IHtmlComponent? Peek();
+        IHtmlComponent? Find<T>();
     }
 }

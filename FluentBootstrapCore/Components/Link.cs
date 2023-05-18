@@ -9,6 +9,7 @@ namespace FluentBootstrapCore.Components
         public string? Href { get; set; }
         public string? Role { get; set; }
         public LinkTarget? Target { get; set; }
+
         public Link()
             : base("a")
         {
@@ -21,6 +22,7 @@ namespace FluentBootstrapCore.Components
 
             if (Role != null)
                 MergeAttribute("role", Role);
+
             if (Target.HasValue)
                 MergeAttribute("target", Target.GetDescription());
 

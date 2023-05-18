@@ -2,8 +2,11 @@
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
 using FluentBootstrapCore.Options;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace FluentBootstrapCore.Extensions
 {
@@ -123,6 +126,17 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
+        public static BootstrapContent<TComponent> Href<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string action,
+            string controller,
+            object? routeValues = null)
+            where TComponent : SingleComponent, ILink
+        {
+            bootstrapContent.Component.Href = bootstrapContent.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<TComponent> Target<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             LinkTarget target) where TComponent : SingleComponent, ILink
@@ -147,6 +161,16 @@ namespace FluentBootstrapCore.Extensions
             where TComponent : SingleComponent, ICanHaveOptions
         {
             bootstrapContent.Component.SelectList = list;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Sized<TComponent, TEnum>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            TEnum size) 
+            where TComponent : BootstrapComponent, ISizable<TEnum> 
+            where TEnum : struct, Enum
+        {
+            bootstrapContent.Component.Size = size;
             return bootstrapContent;
         }
     }

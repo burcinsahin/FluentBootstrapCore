@@ -168,11 +168,29 @@ namespace FluentBootstrapCore.Extensions
             bootstrapContent.Component.MergeStyle("max-width", $"{value.ToString("0.###", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
             return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> MinHeight<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            double value,
+            LengthUnit unit = LengthUnit.Pixel) where TComponent : SingleComponent
+        {
+            bootstrapContent.Component.MergeStyle("min-height", $"{value.ToString("0.###", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> MinWidth<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            double value,
+            LengthUnit unit = LengthUnit.Pixel) where TComponent : SingleComponent
+        {
+            bootstrapContent.Component.MergeStyle("min-width", $"{value.ToString("0.###", CultureInfo.InvariantCulture)}{unit.GetDescription()}");
+            return bootstrapContent;
+        }
         #endregion
 
         public static BootstrapContent<TComponent> TabIndex<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
-            int index) where TComponent : SingleComponent
+            int index = -1) where TComponent : SingleComponent
         {
             bootstrapContent.Component.MergeAttribute("tabindex", index, true);
             return bootstrapContent;

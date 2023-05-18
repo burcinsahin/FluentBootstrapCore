@@ -175,7 +175,7 @@ namespace FluentBootstrapCore
             {
                 _tagBuilder.InnerHtml.AppendHtml(child.ToHtml());
             }
-            ComponentStackManager.ComponentStack?.Push(this);
+            Push();
             return _tagBuilder.RenderStartTag();
         }
 
@@ -234,8 +234,21 @@ namespace FluentBootstrapCore
                 htmlContentBuilder.AppendHtml(clone.ToHtml());
             }
             htmlContentBuilder.AppendHtml(_tagBuilder.RenderEndTag());
-            ComponentStackManager.ComponentStack?.Pop();
+            Pop();
             return htmlContentBuilder;
+        }
+
+        protected void Push()
+        {
+            if (RenderMode.Equals(RenderMode.Normal) || RenderMode.Equals(RenderMode.Start))
+                ComponentStackManager.ComponentStack?.Push(this);
+        }
+
+        protected void Pop()
+        {
+            if (!RenderMode.Equals(RenderMode.Normal) && !RenderMode.Equals(RenderMode.End))
+                return;
+            ComponentStackManager.ComponentStack?.Pop();
         }
 
         protected internal void AddChild(SingleComponent? component, ChildLocation childType = ChildLocation.Body)
@@ -327,6 +340,17 @@ namespace FluentBootstrapCore
         protected internal void GenerateId()
         {
             Id = $"{Tag}_{DateTime.Now.Ticks}";
+        }
+
+        protected bool HasParent<T>(bool firstLevelOnly = true)
+        {
+            if (firstLevelOnly)
+            {
+                var parent = ComponentStackManager.ComponentStack?.Peek();
+                return parent is T;
+            }
+
+            return ComponentStackManager.Any<T>();
         }
         #endregion
     }

@@ -194,11 +194,11 @@
     {
         @using (card.Header().Begin())
         {
-            @using (var nav = Html.Bootstrap().Nav().Tabs().Begin())
+            @using (var nav = Html.Bootstrap().NavList().Tabs().Begin())
             {
-                @nav.NavItem().Href("#").Active().Content("Active")
-                @nav.NavItem().Href("#").Content("Link")
-                @nav.NavItem().Href("#").Content("Disabled")
+                @nav.ListItem().Href("#").Active().Content("Active")
+                @nav.ListItem().Href("#").Content("Link")
+                @nav.ListItem().Href("#").Content("Disabled").Disabled()
             }
         }
         @using (card.Body().Begin())
@@ -213,11 +213,11 @@
     {
         @using (card.Header().Begin())
         {
-            @using (var nav = Html.Bootstrap().Nav().Pills().Begin())
+            @using (var nav = Html.Bootstrap().NavList().Pills().Begin())
             {
-                @nav.NavItem().Href("#").Active().Content("Active")
-                @nav.NavItem().Href("#").Content("Link")
-                @nav.NavItem().Href("#").Content("Disabled")
+                @nav.ListItem().Href("#").Active().Content("Active")
+                @nav.ListItem().Href("#").Content("Link")
+                @nav.ListItem().Href("#").Content("Disabled").Disabled()
             }
         }
         @using (card.Body().Begin())

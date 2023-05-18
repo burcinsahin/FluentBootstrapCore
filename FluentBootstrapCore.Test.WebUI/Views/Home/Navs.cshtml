@@ -1,0 +1,148 @@
+﻿<style>
+    nav, ul.nav{
+        margin-bottom:5px!important;
+    }
+</style>
+@Html.Bootstrap().Heading2("Base nav")
+@using (var nav = Html.Bootstrap().NavList().Begin())
+{
+    @nav.ListItem().Content("Active").Href().Active()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Disabled").Href().Disabled()
+}
+<br />
+@using (var nav = Html.Bootstrap().Nav().Begin())
+{
+    @nav.Link().Content("Active").Href().Active()
+    @nav.Link().Content("Link").Href()
+    @nav.Link().Content("Link").Href()
+    @nav.Link().Content("Disabled").Href().Disabled()
+}
+<hr />
+@Html.Bootstrap().Heading2("Available styles")
+@Html.Bootstrap().Heading3("Horizontal alignment")
+@using (var nav = Html.Bootstrap().NavList().JustifyContent(JustifyContent.Center).Begin())
+{
+    @nav.ListItem().Content("Active").Href().Active()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Disabled").Href().Disabled()
+}
+<br />
+@using (var nav = Html.Bootstrap().NavList().JustifyContent(JustifyContent.End).Begin())
+{
+    @nav.ListItem().Content("Active").Href().Active()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Disabled").Href().Disabled()
+}
+@Html.Bootstrap().Heading3("Vertical")
+@using (var nav = Html.Bootstrap().NavList().Flex(FlexDirection.Column).Begin())
+{
+    @nav.ListItem().Content("Active").Href().Active()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Disabled").Href().Disabled()
+}
+<br />
+@using (var nav = Html.Bootstrap().Nav().Flex(FlexDirection.Column).Begin())
+{
+    @nav.Link().Content("Active").Href().Active()
+    @nav.Link().Content("Link").Href()
+    @nav.Link().Content("Link").Href()
+    @nav.Link().Content("Disabled").Href().Disabled()
+}
+@Html.Bootstrap().Heading3("Tabs")
+@using (var nav = Html.Bootstrap().NavList().Tabs().Begin())
+{
+    @nav.ListItem().Content("Active").Href().Active()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Disabled").Href().Disabled()
+}
+@Html.Bootstrap().Heading3("Pills")
+@using (var nav = Html.Bootstrap().NavList().Pills().Begin())
+{
+    @nav.ListItem().Content("Active").Href().Active()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Disabled").Href().Disabled()
+}
+@Html.Bootstrap().Heading3("Fill and justify")
+@using (var nav = Html.Bootstrap().NavList().Pills().Fill().Begin())
+{
+    @nav.ListItem().Content("Active").Href().Active()
+    @nav.ListItem().Content("Much longer nav link").Href()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Disabled").Href().Disabled()
+}
+@using (var nav = Html.Bootstrap().Nav().Pills().Fill().Begin())
+{
+    @nav.Link().Content("Active").Href().Active()
+    @nav.Link().Content("Much longer nav link").Href()
+    @nav.Link().Content("Link").Href()
+    @nav.Link().Content("Disabled").Href().Disabled()
+}
+<br />
+@using (var nav = Html.Bootstrap().NavList().Pills().Justified().Begin())
+{
+    @nav.ListItem().Content("Active").Href().Active()
+    @nav.ListItem().Content("Much longer nav link").Href()
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Disabled").Href().Disabled()
+}
+@using (var nav = Html.Bootstrap().Nav().Pills().Justified().Begin())
+{
+    @nav.Link().Content("Active").Href().Active()
+    @nav.Link().Content("Much longer nav link").Href()
+    @nav.Link().Content("Link").Href()
+    @nav.Link().Content("Disabled").Href().Disabled()
+}
+<hr />
+@Html.Bootstrap().Heading2("Working with flex utilities")
+@using (var nav = Html.Bootstrap().Nav().Pills().Flex(FlexDirection.Column).Flex(FlexDirection.Row, Breakpoint.Small).Begin())
+{
+    @nav.Link().Content("Active").Href().Active().Flex(FlexAbility.Fill, Breakpoint.Small).AlignText(TextAlign.Center, Breakpoint.Small)
+    @nav.Link().Content("Much longer nav link").Href().Flex(FlexAbility.Fill, Breakpoint.Small).AlignText(TextAlign.Center, Breakpoint.Small)
+    @nav.Link().Content("Link").Href().Flex(FlexAbility.Fill, Breakpoint.Small).AlignText(TextAlign.Center, Breakpoint.Small)
+    @nav.Link().Content("Disabled").Href().Disabled().Flex(FlexAbility.Fill, Breakpoint.Small).AlignText(TextAlign.Center, Breakpoint.Small)
+}
+<hr />
+@Html.Bootstrap().Heading2("Using dropdowns")
+@Html.Bootstrap().Heading3("Tabs with dropdowns")
+@using (var nav = Html.Bootstrap().NavList().Tabs().Begin())
+{
+    @nav.ListItem().Content("Active").Href().Active()
+    using (var dropdown = nav.Dropdown("Dropdown").Begin())
+    {
+        using (var dropdownMenu = dropdown.DropdownMenu().Begin())
+        {
+            @dropdownMenu.DropdownItem("Action","#")
+            @dropdownMenu.DropdownItem("Another action","#")
+            @dropdownMenu.DropdownItem("Something else here","#")
+            @dropdownMenu.Divider()
+            @dropdownMenu.DropdownItem("Separated link","#")
+        }
+    }
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Disabled").Href().Disabled()
+}
+@Html.Bootstrap().Heading3("Pills with dropdowns")
+@using (var nav = Html.Bootstrap().NavList().Pills().Begin())
+{
+    @nav.ListItem().Content("Active").Href().Active()
+    using (var dropdown = nav.Dropdown("Dropdown").Begin())
+    {
+        using (var dropdownMenu = dropdown.DropdownMenu().Begin())
+        {
+            @dropdownMenu.DropdownItem("Action","#")
+            @dropdownMenu.DropdownItem("Another action","#")
+            @dropdownMenu.DropdownItem("Something else here","#")
+            @dropdownMenu.Divider()
+            @dropdownMenu.DropdownItem("Separated link","#")
+        }
+    }
+    @nav.ListItem().Content("Link").Href()
+    @nav.ListItem().Content("Disabled").Href().Disabled()
+}
