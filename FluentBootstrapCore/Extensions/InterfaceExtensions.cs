@@ -2,9 +2,11 @@
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
 using FluentBootstrapCore.Options;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace FluentBootstrapCore.Extensions
 {
@@ -121,6 +123,17 @@ namespace FluentBootstrapCore.Extensions
             where TComponent : SingleComponent, ILink
         {
             bootstrapContent.Component.Href = href;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Href<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string action,
+            string controller,
+            object? routeValues = null)
+            where TComponent : SingleComponent, ILink
+        {
+            bootstrapContent.Component.Href = bootstrapContent.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
             return bootstrapContent;
         }
 

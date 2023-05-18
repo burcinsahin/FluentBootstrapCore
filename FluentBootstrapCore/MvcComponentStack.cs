@@ -19,6 +19,14 @@ namespace FluentBootstrapCore
             _htmlHelper = htmlHelper;
         }
 
+        public IHtmlComponent? Find<T>()
+        {
+            var item = _htmlHelper.ViewContext.HttpContext.Items[_componentStackKey];
+            if (item is Stack<IHtmlComponent> stack && stack.Any())
+                return stack.FirstOrDefault(item => item.GetType().Equals(typeof(T)));
+            return default;
+        }
+
         public IHtmlComponent? Peek()
         {
             var item = _htmlHelper.ViewContext.HttpContext.Items[_componentStackKey];

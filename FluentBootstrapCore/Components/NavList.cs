@@ -15,7 +15,7 @@ namespace FluentBootstrapCore.Components
         protected override void PreBuild()
         {
             AddCss(Css.Nav);
-            if (IsParent<CardHeader>())
+            if (HasParent<CardHeader>())
             {
                 if (CssClasses.Contains(Css.NavTabs))
                     AddCss(Css.CardHeaderTabs);

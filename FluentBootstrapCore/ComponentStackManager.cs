@@ -1,4 +1,5 @@
-﻿namespace FluentBootstrapCore
+﻿using System.Linq;
+namespace FluentBootstrapCore
 {
     internal class ComponentStackManager
     {
@@ -7,6 +8,11 @@
         {
             get { return _component; }
             set { _component = value; }
+        }
+
+        internal static bool Any<T>()
+        {
+            return (ComponentStack?.Find<T>()) != null;
         }
     }
 }

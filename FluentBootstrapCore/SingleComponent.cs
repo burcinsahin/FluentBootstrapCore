@@ -342,10 +342,15 @@ namespace FluentBootstrapCore
             Id = $"{Tag}_{DateTime.Now.Ticks}";
         }
 
-        protected bool IsParent<T>()
+        protected bool HasParent<T>(bool firstLevelOnly = true)
         {
-            var parent = ComponentStackManager.ComponentStack?.Peek();
-            return parent is T;
+            if (firstLevelOnly)
+            {
+                var parent = ComponentStackManager.ComponentStack?.Peek();
+                return parent is T;
+            }
+
+            return ComponentStackManager.Any<T>();
         }
         #endregion
     }
