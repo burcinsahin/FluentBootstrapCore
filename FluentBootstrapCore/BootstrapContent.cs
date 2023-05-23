@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Diagnostics;
 using System.IO;
 using System.Text.Encodings.Web;
 
@@ -43,12 +44,14 @@ namespace FluentBootstrapCore
 
         public void WriteTo(TextWriter writer, HtmlEncoder encoder)
         {
+            Debug.WriteLine($"BootstrapContent.WriteTo invoked.");
             var html = _component.ToHtml();
             writer.Write(html);
         }
 
         public ComponentBuilder<TComponent> Begin()
         {
+            Debug.WriteLine($"BootstrapContent.Begin invoked.");
             return new ComponentBuilder<TComponent>(_htmlHelper, _component);
         }
     }

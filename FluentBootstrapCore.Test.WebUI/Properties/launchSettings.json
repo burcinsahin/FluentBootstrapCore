@@ -13,6 +13,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7194;http://localhost:5207",
+      "launchUrl": "Tests/UnitTest",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

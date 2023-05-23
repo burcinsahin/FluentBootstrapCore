@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Diagnostics;
 
 namespace FluentBootstrapCore
 {
@@ -36,6 +37,7 @@ namespace FluentBootstrapCore
 
         public void Dispose()
         {
+            Debug.WriteLine($"ComponentBuilder.Dispose invoked.");
             _htmlHelper.ViewContext.Writer.Write(_component.End());
         }
     }
