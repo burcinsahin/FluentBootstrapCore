@@ -37,7 +37,7 @@ namespace FluentBootstrapCore
 
         public void Dispose()
         {
-            Debug.WriteLine($"ComponentBuilder.Dispose invoked.");
+            Debug.WriteLine($"ComponentBuilder.Dispose for {typeof(TComponent).Name} invoked.");
             _htmlHelper.ViewContext.Writer.Write(_component.End());
         }
     }

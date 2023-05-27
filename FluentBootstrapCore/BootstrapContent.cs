@@ -44,14 +44,14 @@ namespace FluentBootstrapCore
 
         public void WriteTo(TextWriter writer, HtmlEncoder encoder)
         {
-            Debug.WriteLine($"BootstrapContent.WriteTo invoked.");
+            Debug.WriteLine($"BootstrapContent.WriteTo for {typeof(TComponent).Name} invoked.");
             var html = _component.ToHtml();
             writer.Write(html);
         }
 
         public ComponentBuilder<TComponent> Begin()
         {
-            Debug.WriteLine($"BootstrapContent.Begin invoked.");
+            Debug.WriteLine($"BootstrapContent.Begin for {typeof(TComponent).Name} invoked.");
             return new ComponentBuilder<TComponent>(_htmlHelper, _component);
         }
     }
