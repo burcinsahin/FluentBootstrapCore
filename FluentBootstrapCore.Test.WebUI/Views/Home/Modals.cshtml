@@ -280,7 +280,7 @@
     <hr />
     @Html.Bootstrap().Heading2("Optional sizes")
     @Html.Bootstrap().Button("Extra large modal").Modal("modalXl")
-    @using (var modal = Html.Bootstrap().Modal("Extra large modal").Sized(ModalSize.XLarge).Id("modalXl").Begin())
+    @using (var modal = Html.Bootstrap().Modal("Extra large modal").Size(ModalSize.XLarge).Id("modalXl").Begin())
     {
         @using (modal.Body().Begin())
         {
@@ -292,7 +292,7 @@
         }
     }
     @Html.Bootstrap().Button("Large modal").Modal("modalLg")
-    @using (var modal = Html.Bootstrap().Modal("Large modal").Sized(ModalSize.Large).Id("modalLg").Begin())
+    @using (var modal = Html.Bootstrap().Modal("Large modal").Size(ModalSize.Large).Id("modalLg").Begin())
     {
         @using (modal.Body().Begin())
         {
@@ -304,7 +304,7 @@
         }
     }
     @Html.Bootstrap().Button("Small modal").Modal("modalSm")
-    @using (var modal = Html.Bootstrap().Modal("Small modal").Sized(ModalSize.Small).Id("modalSm").Begin())
+    @using (var modal = Html.Bootstrap().Modal("Small modal").Size(ModalSize.Small).Id("modalSm").Begin())
     {
         @using (modal.Body().Begin())
         {

@@ -9,8 +9,8 @@ namespace FluentBootstrapCore.Interfaces
         ICanHaveValue,
         ICanBeRequired,
         ICanBeDisabled,
-        ICanBeInvalid
+        ICanBeInvalid,
+        ISizable<FormControlSize>
     {
-        FormControlSize Size { get; set; }
     }
 }

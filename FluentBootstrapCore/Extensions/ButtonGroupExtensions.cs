@@ -61,12 +61,6 @@ namespace FluentBootstrapCore.Extensions
             return new CompositeContent<CheckButton>(builder.HtmlHelper, button);
         }
 
-        public static BootstrapContent<ButtonGroup> Size(this BootstrapContent<ButtonGroup> content, ButtonGroupSize size)
-        {
-            content.Component.Size = size;
-            return content;
-        }
-
         public static BootstrapContent<ButtonGroup> Vertical(this BootstrapContent<ButtonGroup> content)
         {
             content.Component.Vertical = true;

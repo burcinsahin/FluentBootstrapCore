@@ -14,7 +14,7 @@ namespace FluentBootstrapCore.Components
         public string? Name { get; set; }
         public object? Value { get; set; }
         public bool Required { get; set; }
-        public FormControlSize Size { get; set; }
+        public FormControlSize? Size { get; set; }
         public bool Invalid { get; set; }
 
         protected bool _labelFirst;
@@ -27,7 +27,6 @@ namespace FluentBootstrapCore.Components
         public FormControl() : base("div")
         {
             _label = new Label();
-            Size = FormControlSize.Default;
         }
 
         protected override void PreBuild()
@@ -48,10 +47,12 @@ namespace FluentBootstrapCore.Components
             if (InputOpts != null)
                 Input.UtilityOptions = InputOpts;
 
-            if (Size != FormControlSize.Default)
+            if (Size.HasValue)
                 Input.AddCss(Size.GetCssDescription());
+
             if (Invalid)
                 Input.AddCss(Css.IsInvalid);
+
             if (Label != null)
             {
                 _label.AddCss(Css.FormLabel);

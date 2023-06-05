@@ -32,7 +32,7 @@ namespace FluentBootstrapCore
         private readonly TComponent _component;
         private readonly IHtmlHelper _htmlHelper;
 
-        internal TComponent Component => _component;
+        public TComponent Component => _component;
         internal IHtmlHelper HtmlHelper => _htmlHelper;
 
         public BootstrapContent(IHtmlHelper htmlHelper, TComponent component)

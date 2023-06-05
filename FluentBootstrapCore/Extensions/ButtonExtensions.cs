@@ -17,13 +17,6 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
         }
 
-        public static BootstrapContent<TComponent> Size<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonSize size = ButtonSize.Default)
-            where TComponent : SingleComponent, IButton
-        {
-            bootstrapContent.Component.AddCss(size.GetCssDescription());
-            return bootstrapContent;
-        }
-
         public static BootstrapContent<TComponent> Type<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonType type = ButtonType.Button)
             where TComponent : BootstrapComponent, IButton
         {
@@ -45,15 +38,6 @@ namespace FluentBootstrapCore.Extensions
                 bootstrapContent.Component.MergeAttribute("data-bs-toggle", "button", true);
             return bootstrapContent;
         }
-
-        //public static BootstrapContent<TComponent> Disabled<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool disabled = true)
-        //    where TComponent : SingleComponent, IButton
-        //{
-        //    if (disabled)
-        //        bootstrapContent.Component.AddCss(Css.Disabled);
-
-        //    return bootstrapContent;
-        //}
 
         public static BootstrapContent<TComponent> State<TComponent>(this BootstrapContent<TComponent> bootstrapContent, ButtonState buttonState)
             where TComponent : BootstrapComponent, IButton

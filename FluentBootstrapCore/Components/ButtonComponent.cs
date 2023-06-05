@@ -8,7 +8,8 @@ namespace FluentBootstrapCore.Components
         ICanHaveName,
         IButton,
         ICanBeActive,
-        ICanBeDisabled
+        ICanBeDisabled,
+        ISizable<ButtonSize>
     {
         public ButtonState ButtonState { get; set; }
         public ButtonType ButtonType { get; set; }
@@ -18,6 +19,7 @@ namespace FluentBootstrapCore.Components
         public string? Name { get; set; }
         public bool Active { get; set; }
         public bool Disabled { get; set; }
+        public ButtonSize? Size { get; set; }
 
         protected ButtonComponent(string tagName)
             : base(tagName, Css.Btn)
@@ -28,10 +30,15 @@ namespace FluentBootstrapCore.Components
         protected override void PreBuild()//TODO: ButtonType at base?
         {
             AddCss(ButtonState.GetCssDescription());
+            
             if (Name != null)
                 MergeAttribute("name", Name);
+
             if (OutlineState.HasValue)
                 AddCss(OutlineState.GetCssDescription());
+
+            if (Size.HasValue)
+                AddCss(Size.GetCssDescription());
 
             if (IconType.HasValue)
             {

@@ -16,20 +16,6 @@ namespace FluentBootstrapCore.Extensions
             bootstrapContent.Component.AddChild(pageItem);
             return bootstrapContent;
         }
-
-        //public static BootstrapContent<Pagination> JustifyContent(this BootstrapContent<Pagination> bootstrapContent, JustifyContent justifyContent)
-        //{
-        //    bootstrapContent.Component.AddCss(justifyContent.GetCssDescription());
-        //    return bootstrapContent;
-        //}
-
-        public static BootstrapContent<Pagination> Size(this BootstrapContent<Pagination> bootstrapContent, ComponentSize size)
-        {
-            if (size == ComponentSize.Normal)
-                return bootstrapContent;
-            bootstrapContent.Component.AddCss($"{Css.Pagination}-{size.GetSuffix()}");
-            return bootstrapContent;
-        }
         #endregion
 
         #region PageItem

@@ -1,8 +1,6 @@
 ﻿using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
-using Newtonsoft.Json.Linq;
-using System;
 
 namespace FluentBootstrapCore.Extensions
 {
@@ -56,17 +54,6 @@ namespace FluentBootstrapCore.Extensions
             bool value = true) where TComponent : HtmlComponent, IPopover
         {
             content.Component.Dismissable = value;
-            return content;
-        }
-
-        //TODO: move to compositecontent extensions later
-        public static CompositeContent<TComponent> Sized<TComponent, TEnum>(
-            this CompositeContent<TComponent> content,
-            TEnum size) 
-            where TComponent : HtmlComponent, ISizable<TEnum>
-            where TEnum : struct, Enum
-        {
-            content.Component.Size = size;
             return content;
         }
     }

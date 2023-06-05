@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace FluentBootstrapCore.Extensions
 {
@@ -164,7 +163,7 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> Sized<TComponent, TEnum>(
+        public static BootstrapContent<TComponent> Size<TComponent, TEnum>(
             this BootstrapContent<TComponent> bootstrapContent,
             TEnum size) 
             where TComponent : BootstrapComponent, ISizable<TEnum> 

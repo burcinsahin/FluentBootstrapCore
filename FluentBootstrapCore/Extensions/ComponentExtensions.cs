@@ -1,4 +1,5 @@
 ﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Interfaces;
 using System;
 using System.Globalization;
 
@@ -195,6 +196,18 @@ namespace FluentBootstrapCore.Extensions
             bootstrapContent.Component.MergeAttribute("tabindex", index, true);
             return bootstrapContent;
         }
+        #endregion
+
+        #region Composite
+        public static CompositeContent<TComponent> Size<TComponent, TEnum>(
+            this CompositeContent<TComponent> content,
+            TEnum size)
+            where TComponent : HtmlComponent, ISizable<TEnum>
+            where TEnum : struct, Enum
+        {
+            content.Component.Size = size;
+            return content;
+        } 
         #endregion
     }
 }

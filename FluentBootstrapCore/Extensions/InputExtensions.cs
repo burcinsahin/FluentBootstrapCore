@@ -57,13 +57,6 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> Size<TComponent>(this BootstrapContent<TComponent> bootstrapContent, FormControlSize size)
-            where TComponent : SingleComponent, IFormControl
-        {
-            bootstrapContent.Component.Size = size;
-            return bootstrapContent;
-        }
-
         public static BootstrapContent<FormCheck> Switch(this BootstrapContent<FormCheck> bootstrapContent)
         {
             bootstrapContent.Component.Switch = true;

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace FluentBootstrapCore
 {
@@ -21,7 +22,7 @@ namespace FluentBootstrapCore
         public string? Id { get; protected internal set; }
         public string Tag => _tagBuilder.TagName;
 
-        internal object? Content
+        public object? Content
         {
             get => _content;
             set => _content = value;
@@ -114,6 +115,64 @@ namespace FluentBootstrapCore
                 var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
                 Styles.Add(key, value);
             }
+        }
+
+        public void AddChild(SingleComponent? component, ChildLocation childType = ChildLocation.Body)
+        {
+            if (component == null) return;
+            if (childType.Equals(ChildLocation.FullWrap) || childType.Equals(ChildLocation.BodyWrap))
+                component.RenderMode = RenderMode.Start;
+
+            _children.Add((childType, component));
+        }
+
+        public void RemoveChild(SingleComponent component)
+        {
+            if (component == null) return;
+            _children.RemoveAll(c => c.Item2 == component);
+        }
+
+        public void AppendContent(object? content, bool clear = false, bool isHtml = false)
+        {
+            if (content == null)
+                return;
+
+            if (clear)
+                _tagBuilder.InnerHtml.Clear();
+
+            if (content is IHtmlComponent htmlComponent)
+            {
+                _tagBuilder.InnerHtml.AppendHtml(htmlComponent.ToHtml());
+                return;
+            }
+            if (content is IHtmlContent htmlContent)
+            {
+                _tagBuilder.InnerHtml.AppendHtml(htmlContent);
+                return;
+            }
+            if (isHtml)
+            {
+                _tagBuilder.InnerHtml.AppendHtml(content.ToString());
+                return;
+            }
+            _tagBuilder.InnerHtml.Append(content.ToString());
+        }
+
+        public void MergeAttribute(string key, object? value = null, bool replaceExisting = false)
+        {
+            if (value == null)
+            {
+                _tagBuilder.MergeAttribute(key, null, true);
+                return;
+            }
+
+            _tagBuilder.MergeAttribute(key, value.ToString(), replaceExisting);
+        }
+
+        public string? GetAttribute(string key)
+        {
+            _tagBuilder.Attributes.TryGetValue(key, out var attr);
+            return attr;
         }
         #endregion
 
@@ -251,80 +310,10 @@ namespace FluentBootstrapCore
             ComponentStackManager.ComponentStack?.Pop();
         }
 
-        protected internal void AddChild(SingleComponent? component, ChildLocation childType = ChildLocation.Body)
-        {
-            if (component == null) return;
-            if (childType.Equals(ChildLocation.FullWrap) || childType.Equals(ChildLocation.BodyWrap))
-                component.RenderMode = RenderMode.Start;
-
-            _children.Add((childType, component));
-        }
-
-        protected internal void RemoveChild(SingleComponent component)
-        {
-            if (component == null) return;
-            _children.RemoveAll(c => c.Item2 == component);
-        }
-
-        protected internal void AppendContent(object? content, bool clear = false, bool isHtml = false)
-        {
-            if (content == null)
-                return;
-
-            if (clear)
-                _tagBuilder.InnerHtml.Clear();
-
-            if (content is IHtmlComponent htmlComponent)
-            {
-                _tagBuilder.InnerHtml.AppendHtml(htmlComponent.ToHtml());
-                return;
-            }
-            if (content is IHtmlContent htmlContent)
-            {
-                _tagBuilder.InnerHtml.AppendHtml(htmlContent);
-                return;
-            }
-            if (isHtml)
-            {
-                _tagBuilder.InnerHtml.AppendHtml(content.ToString());
-                return;
-            }
-            _tagBuilder.InnerHtml.Append(content.ToString());
-        }
-
-        protected internal void MergeAttribute(string key, object? value = null, bool replaceExisting = false)
-        {
-            if (value == null)
-            {
-                _tagBuilder.MergeAttribute(key, null, true);
-                return;
-            }
-
-            _tagBuilder.MergeAttribute(key, value.ToString(), replaceExisting);
-        }
-
-        protected internal string? GetAttribute(string key)
-        {
-            _tagBuilder.Attributes.TryGetValue(key, out var attr);
-            return attr;
-        }
-
         protected TComponent GetChild<TComponent>()
         {
             throw new NotImplementedException();
         }
-
-        //[Obsolete("Use AddChild instead.")]
-        //protected void AddWrappingChild<TComponent>(TComponent component, WrapperType wrapperType = WrapperType.All)
-        //    where TComponent : SingleComponent
-        //{
-        //    var loc = wrapperType switch
-        //    {
-        //        WrapperType.Body => ChildLocation.BodyWrap,
-        //        _ => ChildLocation.FullWrap,
-        //    };
-        //    AddChild(component, loc);
-        //}
 
         public TComponent Clone<TComponent>()
             where TComponent : SingleComponent
@@ -337,7 +326,7 @@ namespace FluentBootstrapCore
             return Clone<SingleComponent>();
         }
 
-        protected internal void GenerateId()
+        public void GenerateId()
         {
             Id = $"{Tag}_{DateTime.Now.Ticks}";
         }
