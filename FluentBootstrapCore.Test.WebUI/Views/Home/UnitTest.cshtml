@@ -1,4 +1,7 @@
-﻿@using (Html.Bootstrap().Form().Begin())
+﻿@using (Html.Bootstrap().Div().Begin())
 {
-    @Html.Bootstrap().Input()
+    @using (Html.Bootstrap().Form().Begin())
+    {
+        @Html.Bootstrap().Input()
+    }
 }
