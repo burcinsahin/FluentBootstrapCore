@@ -4,15 +4,13 @@ using FluentBootstrapCore.Interfaces;
 namespace FluentBootstrapCore.Components
 {
     public class InputButton : ButtonComponent,
-        ICanHaveValue,
-        ICanBeDisabled
+        ICanHaveValue
     {
         public InputButton() : base("input")
         {
         }
 
         public object? Value { get; set; }
-        public bool Disabled { get; set; }
 
         protected override void PreBuild()
         {
@@ -20,8 +18,6 @@ namespace FluentBootstrapCore.Components
 
             if (Value != null)
                 MergeAttribute("value", Value);
-            if (Disabled)
-                MergeAttribute("disabled", Disabled);
 
             base.PreBuild();
         }

@@ -6,17 +6,14 @@ using System.Linq;
 
 namespace FluentBootstrapCore.Components
 {
-    public class TableRow : BootstrapComponent,
-        ICanCreate<TableData>,
+    public class TableHeader : BootstrapComponent,
         ITableState,
-        ICanBeActive,
         ITableData
     {
-        public TableState? State { get; set; }
         public IEnumerable<object>? Data { get; set; }
-        public bool Active { get; set; }
+        public TableState? State { get; set; }
 
-        public TableRow() : base("tr")
+        public TableHeader() : base("thead")
         {
         }
 
@@ -25,17 +22,19 @@ namespace FluentBootstrapCore.Components
             if (State.HasValue)
                 AddCss(State.GetCssDescription());
 
-            if (Active)
-                AddCss(Css.TableActive);
-
             if (Data != null && Data.Any())
             {
-                for (var i = 0; i < Data.Count(); i++)
+                var tr = new TableRow();
+                foreach (var header in Data)
                 {
-                    AddChild(new TableData(i == 0) { Content = Data.ElementAt(i) });
+                    var th = new TableData(true)
+                    {
+                        Content = header
+                    };
+                    tr.AddChild(th);
                 }
+                AddChild(tr);
             }
-
             base.PreBuild();
         }
     }

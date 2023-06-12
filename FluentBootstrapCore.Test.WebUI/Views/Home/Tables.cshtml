@@ -1,22 +1,729 @@
-﻿@using (Html.Bootstrap().Container().Begin())
+﻿@Html.Bootstrap().Heading2("Overview")
+@using (var table = Html.Bootstrap().Table().Begin())
 {
-    @Html.AntiForgeryToken()
-    @using (var table = Html.Bootstrap().Table().Style(TableStyle.Bordered | TableStyle.Striped).Responsive().Begin())
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
     {
-        @table.TableHeader("col1", "col2", "col3", "col4", "col5", "Edit", "Delete")
-        @for (int i = 0; i < 5; i++)
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Variants")
+@using (var table = Html.Bootstrap().Table().Begin())
+{
+    @table.Header("Class", "Heading", "Heading")
+    @table.Row("Default", "Cell", "Cell")
+    @table.Row("Primary", "Cell", "Cell").State(TableState.Primary)
+    @table.Row("Secondary", "Cell", "Cell").State(TableState.Secondary)
+    @table.Row("Success", "Cell", "Cell").State(TableState.Success)
+    @table.Row("Danger", "Cell", "Cell").State(TableState.Danger)
+    @table.Row("Warning", "Cell", "Cell").State(TableState.Warning)
+    @table.Row("Info", "Cell", "Cell").State(TableState.Info)
+    @table.Row("Light", "Cell", "Cell").State(TableState.Light)
+    @table.Row("Dark", "Cell", "Cell").State(TableState.Dark)
+}
+<hr />
+@Html.Bootstrap().Heading2("Accented tables")
+@Html.Bootstrap().Heading3("Striped rows")
+@using (var table = Html.Bootstrap().Table().Style(TableStyle.Striped).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+@Html.Bootstrap().Heading3("Striped columns")
+@using (var table = Html.Bootstrap().Table().Style(TableStyle.StripedColumns).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().State(TableState.Dark).Style(TableStyle.Striped).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().State(TableState.Dark).Style(TableStyle.StripedColumns).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().State(TableState.Success).Style(TableStyle.Striped).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().State(TableState.Success).Style(TableStyle.StripedColumns).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+@Html.Bootstrap().Heading3("Hoverable rows")
+@using (var table = Html.Bootstrap().Table().Hover().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().State(TableState.Dark).Hover().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().State(TableState.Dark).Style(TableStyle.Striped).Hover().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+@Html.Bootstrap().Heading3("Active tables")
+@using (var table = Html.Bootstrap().Table().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Active().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2).Active()
+        @row.Data("@twitter")
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().State(TableState.Dark).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Active().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2).Active()
+        @row.Data("@twitter")
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Table borders")
+@Html.Bootstrap().Heading3("Bordered tables")
+@using (var table = Html.Bootstrap().Table().Style(TableStyle.Bordered).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().Style(TableStyle.Bordered).Border(borderColor: BorderColor.Primary).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+@Html.Bootstrap().Heading3("Tables without borders")
+@using (var table = Html.Bootstrap().Table().Style(TableStyle.Borderless).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Small tables")
+@using (var table = Html.Bootstrap().Table().Small().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().State(TableState.Dark).Small().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("1")
+        @row.Data("Mark")
+        @row.Data("Otto")
+        @row.Data("@mdo")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("2")
+        @row.Data("Jacob")
+        @row.Data("Thornton")
+        @row.Data("@fat")
+    }
+    @using (var row = @table.Row().Begin())
+    {
+        @row.HeaderData("3")
+        @row.Data("Larry the Bird").ColSpan(2)
+        @row.Data("@twitter")
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Table group dividers")
+@using (var table = Html.Bootstrap().Table().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (table.Body(true).Begin())
+    {
+        @using (var row = @table.Row().Begin())
         {
-            @using (var row = @table.TableRow().Begin())
-            {
-                @row.TableData($"val{i}_1")
-                @row.TableData($"val{i}_2")
-                @row.TableData($"val{i}_3")
-                @row.TableData(Html.Bootstrap().CheckBox().Checked())
-                @row.TableData(Html.Bootstrap().CheckBox().Disabled())
-
-                @row.TableData(Html.Bootstrap().LinkButton(null,"#").Icon(IconType.PencilSquare).Size(ButtonSize.Small))
-                @row.TableData(Html.Bootstrap().Button().Icon(IconType.Trash).Size(ButtonSize.Small).Name("id"))
-            }
+            @row.HeaderData("1")
+            @row.Data("Mark")
+            @row.Data("Otto")
+            @row.Data("@mdo")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("2")
+            @row.Data("Jacob")
+            @row.Data("Thornton")
+            @row.Data("@fat")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("3")
+            @row.Data("Larry the Bird").ColSpan(2)
+            @row.Data("@twitter")
         }
     }
 }
+<br />
+<hr />
+@Html.Bootstrap().Heading2("Vertical alignment")
+@using (var table = Html.Bootstrap().Table().MaxWidth(800).VerticalAlign(VerticalAlign.Middle).Begin())
+{
+    @using (table.Header().Begin())
+    {
+        @table.HeaderData("Heading 1").Width(Width._25)
+        @table.HeaderData("Heading 2").Width(Width._25)
+        @table.HeaderData("Heading 3").Width(Width._25)
+        @table.HeaderData("Heading 4").Width(Width._25)
+    }
+    @using (table.Body().Begin())
+    {
+        @using (var row = @table.Row().Begin())
+        {
+            @row.Data().Content("This cell inherits <code>vertical-align: middle;</code> from the table", true)
+            @row.Data().Content("This cell inherits <code>vertical-align: middle;</code> from the table", true)
+            @row.Data().Content("This cell inherits <code>vertical-align: middle;</code> from the table", true)
+            @row.Data().Content("This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.")
+        }
+        @using (var row = @table.Row().VerticalAlign(VerticalAlign.Bottom).Begin())
+        {
+            @row.Data().Content("This cell inherits <code>vertical-align: bottom;</code> from the table row", true)
+            @row.Data().Content("This cell inherits <code>vertical-align: bottom;</code> from the table row", true)
+            @row.Data().Content("This cell inherits <code>vertical-align: bottom;</code> from the table row", true)
+            @row.Data().Content("This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.Data().Content("This cell inherits <code>vertical-align: middle;</code> from the table", true)
+            @row.Data().Content("This cell inherits <code>vertical-align: middle;</code> from the table", true)
+            @row.Data().Content("This cell is aligned to the top.").VerticalAlign(VerticalAlign.Top)
+            @row.Data().Content("This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.")
+        }
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Nesting")
+@using (var table = Html.Bootstrap().Table().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle").State(TableState.Light)
+    @using (table.Body().Begin())
+    {
+        @table.Row().Data("1", "Mark", "Otto", "@mdo")
+        @using (var row = @table.Row().Begin())
+        {
+            @using (row.Data().ColSpan(4).Begin())
+            {
+                @using (var table2 = Html.Bootstrap().Table().Margin(Margin.Bottom, 0).Begin())
+                {
+                    @table2.Header().Data("Header", "Header", "Header")
+                    @table2.Row().Data("A", "First", "Last")
+                    @table2.Row().Data("B", "First", "Last")
+                    @table2.Row().Data("C", "First", "Last")
+                }
+            }
+        }
+        @table.Row().Data("3", "Larry", "the Bird", "@twitter")
+    }
+}
+
+<hr />
+@Html.Bootstrap().Heading2("Anatomy")
+@Html.Bootstrap().Heading3("Table head")
+@using (var table = Html.Bootstrap().Table().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle").State(TableState.Light)
+    @using (table.Body().Begin())
+    {
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("1")
+            @row.Data("Mark")
+            @row.Data("Otto")
+            @row.Data("@mdo")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("2")
+            @row.Data("Jacob")
+            @row.Data("Thornton")
+            @row.Data("@fat")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("3")
+            @row.Data("Larry the Bird").ColSpan(2)
+            @row.Data("@twitter")
+        }
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle").State(TableState.Dark)
+    @using (table.Body().Begin())
+    {
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("1")
+            @row.Data("Mark")
+            @row.Data("Otto")
+            @row.Data("@mdo")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("2")
+            @row.Data("Jacob")
+            @row.Data("Thornton")
+            @row.Data("@fat")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("3")
+            @row.Data("Larry the Bird").ColSpan(2)
+            @row.Data("@twitter")
+        }
+    }
+}
+@Html.Bootstrap().Heading3("Table foot")
+@using (var table = Html.Bootstrap().Table().Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (table.Body().Begin())
+    {
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("1")
+            @row.Data("Mark")
+            @row.Data("Otto")
+            @row.Data("@mdo")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("2")
+            @row.Data("Jacob")
+            @row.Data("Thornton")
+            @row.Data("@fat")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("3")
+            @row.Data("Larry the Bird").ColSpan(2)
+            @row.Data("@twitter")
+        }
+    }
+    @table.Footer().Data("Footer", "Footer", "Footer", "Footer")
+}
+@Html.Bootstrap().Heading3("Captions")
+@using (var table = Html.Bootstrap().Table().Small().Caption("List of users").Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (table.Body().Begin())
+    {
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("1")
+            @row.Data("Mark")
+            @row.Data("Otto")
+            @row.Data("@mdo")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("2")
+            @row.Data("Jacob")
+            @row.Data("Thornton")
+            @row.Data("@fat")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("3")
+            @row.Data("Larry the Bird").ColSpan(2)
+            @row.Data("@twitter")
+        }
+    }
+}
+<br />
+@using (var table = Html.Bootstrap().Table().Small().Caption("List of users", true).Begin())
+{
+    @table.Header("#", "First", "Last", "Handle")
+    @using (table.Body().Begin())
+    {
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("1")
+            @row.Data("Mark")
+            @row.Data("Otto")
+            @row.Data("@mdo")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("2")
+            @row.Data("Jacob")
+            @row.Data("Thornton")
+            @row.Data("@fat")
+        }
+        @using (var row = @table.Row().Begin())
+        {
+            @row.HeaderData("3")
+            @row.Data("Larry the Bird").ColSpan(2)
+            @row.Data("@twitter")
+        }
+    }
+}
+<hr />
+@Html.Bootstrap().Heading2("Responsive tables")
+@using (var table = Html.Bootstrap().Table().Responsive().Begin())
+{
+    @table.Header("#", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading")
+    @table.Row("1", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("2", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("3", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+}
+<br />
+@using (var table = Html.Bootstrap().Table().Responsive(Breakpoint.Small).Begin())
+{
+    @table.Header("#", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading")
+    @table.Row("1", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("2", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("3", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+}
+<br />
+@using (var table = Html.Bootstrap().Table().Responsive(Breakpoint.Medium).Begin())
+{
+    @table.Header("#", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading")
+    @table.Row("1", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("2", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("3", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+}
+<br />
+@using (var table = Html.Bootstrap().Table().Responsive(Breakpoint.Large).Begin())
+{
+    @table.Header("#", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading")
+    @table.Row("1", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("2", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("3", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+}
+<br />
+@using (var table = Html.Bootstrap().Table().Responsive(Breakpoint.XLarge).Begin())
+{
+    @table.Header("#", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading")
+    @table.Row("1", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("2", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("3", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+}
+<br />
+@using (var table = Html.Bootstrap().Table().Responsive(Breakpoint.XXLarge).Begin())
+{
+    @table.Header("#", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading", "Heading")
+    @table.Row("1", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("2", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+    @table.Row("3", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell", "Cell")
+}
+<hr />
