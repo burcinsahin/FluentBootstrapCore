@@ -8,9 +8,11 @@ namespace FluentBootstrapCore.Enums
     {
         [Description(Css.TableStriped)]
         Striped = 1,
+        [Description(Css.TableStripedColumns)]
+        StripedColumns = 1 << 1,
         [Description(Css.TableBordered)]
-        Bordered = 1 << 1,
-        [Description(Css.TableHover)]
-        Hover = 1 << 2
+        Bordered = 1 << 2,
+        [Description(Css.TableBorderless)]
+        Borderless = 1 << 3
     }
 }

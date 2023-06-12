@@ -11,13 +11,13 @@
 <br />
 @using (var table = Html.Bootstrap().Table().Height(100).Begin())
 {
-    @using (var row = @table.TableRow().Begin())
+    @using (var row = @table.Row().Begin())
     {
-        @row.TableData("baseline").VerticalAlign(VerticalAlign.Baseline)
-        @row.TableData("top").VerticalAlign(VerticalAlign.Top)
-        @row.TableData("middle").VerticalAlign(VerticalAlign.Middle)
-        @row.TableData("bottom").VerticalAlign(VerticalAlign.Bottom)
-        @row.TableData("text-top").VerticalAlign(VerticalAlign.TextTop)
-        @row.TableData("text-bottom").VerticalAlign(VerticalAlign.TextBottom)
+        @row.Data("baseline").VerticalAlign(VerticalAlign.Baseline)
+        @row.Data("top").VerticalAlign(VerticalAlign.Top)
+        @row.Data("middle").VerticalAlign(VerticalAlign.Middle)
+        @row.Data("bottom").VerticalAlign(VerticalAlign.Bottom)
+        @row.Data("text-top").VerticalAlign(VerticalAlign.TextTop)
+        @row.Data("text-bottom").VerticalAlign(VerticalAlign.TextBottom)
     }
 }

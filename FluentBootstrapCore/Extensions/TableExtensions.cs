@@ -1,78 +1,133 @@
 ﻿using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
+using System;
+using System.Collections;
 
 namespace FluentBootstrapCore.Extensions
 {
     public static class TableExtensions
     {
-        public static BootstrapContent<Table> Style(this BootstrapContent<Table> bootstrapContent, TableStyle tableStyle)
+        public static BootstrapContent<Table> Style(
+            this BootstrapContent<Table> bootstrapContent,
+            TableStyle tableStyle)
         {
-            bootstrapContent.Component.SetStyle(tableStyle);
+            bootstrapContent.Component.Style = tableStyle;
             return bootstrapContent;
         }
 
-        public static BootstrapContent<Table> Responsive(this BootstrapContent<Table> bootstrapContent)
+        public static BootstrapContent<Table> Responsive(
+            this BootstrapContent<Table> bootstrapContent,
+            Breakpoint value = Breakpoint.Default)
         {
-            bootstrapContent.Component.SetResponsive();
+            bootstrapContent.Component.Responsive = value;
             return bootstrapContent;
         }
 
-        public static BootstrapContent<Table> Caption(this BootstrapContent<Table> bootstrapContent, string caption)
+        public static BootstrapContent<TComponent> Caption<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            string caption, bool captionTop = false) where TComponent : Table
         {
-            bootstrapContent.Component.SetCaption(caption);
+            bootstrapContent.Component.Caption = caption;
+            bootstrapContent.Component.CaptionTop = captionTop;
             return bootstrapContent;
         }
 
-        // Sections
-
-        //public static ComponentBuilder<TConfig, TableHeadSection> TableHeadSection<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper)
-        //    where TConfig : BootstrapConfig
-        //    where TComponent : Component, ICanCreate<TableHeadSection>
-        //{
-        //    return new ComponentBuilder<TConfig, TableHeadSection>(helper.Config, new TableHeadSection(helper));
-        //}
-
-        //public static ComponentBuilder<TConfig, TableBodySection> TableBodySection<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper)
-        //    where TConfig : BootstrapConfig
-        //    where TComponent : Component, ICanCreate<TableBodySection>
-        //{
-        //    return new ComponentBuilder<TConfig, TableBodySection>(helper.Config, new TableBodySection(helper));
-        //}
-
-        //public static ComponentBuilder<TConfig, TableFootSection> TableFootSection<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper)
-        //    where TConfig : BootstrapConfig
-        //    where TComponent : Component, ICanCreate<TableFootSection>
-        //{
-        //    return new ComponentBuilder<TConfig, TableFootSection>(helper.Config, new TableFootSection(helper));
-        //}
-
-        // TableRow
-
-        //public static ComponentBuilder<TConfig, TableRow> TableRow<TConfig, TComponent>(this BootstrapHelper<TConfig, TComponent> helper)
-        //    where TConfig : BootstrapConfig
-        //    where TComponent : Component, ICanCreate<TableRow>
-        //{
-        //    return new ComponentBuilder<TConfig, TableRow>(helper.Config, new TableRow(helper));
-        //}
-
-        // Cells
-        public static BootstrapContent<TableHeader> TableHeader<TComponent>(this ComponentBuilder<TComponent> builder, params string[] headers)
-            where TComponent : SingleComponent, ICanCreate<TableHeader>
+        public static BootstrapContent<TComponent> ColSpan<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            int value)
+            where TComponent : TableData
         {
-            return new BootstrapContent<TableHeader>(builder.HtmlHelper, new TableHeader(headers));
+            bootstrapContent.Component.ColSpan = value;
+            return bootstrapContent;
         }
 
-        public static BootstrapContent<TableRow> TableRow<TComponent>(this ComponentBuilder<TComponent> builder)
-            where TComponent : SingleComponent, ICanCreate<TableRow>
+        public static BootstrapContent<TComponent> State<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            TableState value)
+            where TComponent : BootstrapComponent, ITableState
         {
-            return new BootstrapContent<TableRow>(builder.HtmlHelper, new TableRow());
+            bootstrapContent.Component.State = value;
+            return bootstrapContent;
         }
 
-        public static BootstrapContent<TableData> TableData<TComponent>(this ComponentBuilder<TComponent> builder, object? content = null)
-            where TComponent : SingleComponent, ICanCreate<TableData>
+        public static BootstrapContent<TComponent> Hover<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            bool value = true)
+            where TComponent : Table
         {
-            return new BootstrapContent<TableData>(builder.HtmlHelper, new TableData(content));
+            bootstrapContent.Component.Hover = value;
+            return bootstrapContent;
         }
+
+        public static BootstrapContent<TComponent> Small<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            bool value = true) where TComponent : Table
+        {
+            bootstrapContent.Component.Small = value;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Data<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            params object[] value) where TComponent : BootstrapComponent, ITableData
+        {
+            bootstrapContent.Component.Data = value;
+            return bootstrapContent;
+        }
+
+        #region Builder
+        public static BootstrapContent<TableHeader> Header<TComponent>(
+            this ComponentBuilder<TComponent> builder,
+            params string[] headers)
+            where TComponent : BootstrapComponent, ICanCreate<TableHeader>
+        {
+            var thead = new TableHeader() { Data = headers };
+            return new BootstrapContent<TableHeader>(builder.HtmlHelper, thead);
+        }
+
+        public static BootstrapContent<TableBody> Body<TComponent>(
+            this ComponentBuilder<TComponent> builder, bool divider = false)
+            where TComponent : BootstrapComponent, ICanCreate<TableHeader>
+        {
+            var tbody = new TableBody() { Divider = divider };
+            return new BootstrapContent<TableBody>(builder.HtmlHelper, tbody);
+        }
+
+        public static BootstrapContent<TableFooter> Footer<TComponent>(
+            this ComponentBuilder<TComponent> builder, params object[] values)
+            where TComponent : BootstrapComponent, ICanCreate<TableHeader>
+        {
+            var tfoot = new TableFooter() { Data = values };
+            return new BootstrapContent<TableFooter>(builder.HtmlHelper, tfoot);
+        }
+
+        public static BootstrapContent<TableRow> Row<TComponent>(
+            this ComponentBuilder<TComponent> builder,
+            params object[] values)
+            where TComponent : BootstrapComponent, ICanCreate<TableRow>
+        {
+            var tr = new TableRow() { Data = values };
+            return new BootstrapContent<TableRow>(builder.HtmlHelper, tr);
+        }
+
+        public static BootstrapContent<TableData> Data<TComponent>(
+            this ComponentBuilder<TComponent> builder,
+            object? content = null)
+            where TComponent : BootstrapComponent, ICanCreate<TableData>
+        {
+            var td = new TableData() { Content = content };
+            return new BootstrapContent<TableData>(builder.HtmlHelper, td);
+        }
+
+        public static BootstrapContent<TableData> HeaderData<TComponent>(
+            this ComponentBuilder<TComponent> builder,
+            object? content = null)
+            where TComponent : BootstrapComponent, ICanCreate<TableData>
+        {
+            var th = new TableData(true) { Content = content };
+            return new BootstrapContent<TableData>(builder.HtmlHelper, th);
+        }
+        #endregion
     }
 }

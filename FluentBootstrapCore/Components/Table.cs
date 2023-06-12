@@ -1,40 +1,68 @@
 ﻿using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Extensions;
 using FluentBootstrapCore.Interfaces;
+using System.Linq;
 
 namespace FluentBootstrapCore.Components
 {
     public class Table : BootstrapComponent,
         ICanCreate<TableHeader>,
         ICanCreate<TableRow>,
-        ICanCreate<TableCell>
+        ICanCreate<TableData>,
+        ICanCreate<TableBody>,
+        ITableState
     {
-        private HtmlElement? _caption;
-        public Table(string? caption = null)
-            : base("table", Css.Table)
+        public object? Caption { get; set; }
+        public bool CaptionTop { get; set; }
+        public TableStyle? Style { get; set; }
+        public TableState? State { get; set; }
+        public Breakpoint? Responsive { get; set; }
+        public bool Hover { get; set; }
+        public bool Small { get; set; }
+
+        public Table()
+            : base("div")
         {
-            if (caption != null)
-                SetCaption(caption);
         }
 
-        public Table SetStyle(TableStyle tableStyle)
+        protected override void PreBuild()
         {
-            AddCss(tableStyle.GetCssDescription());
-            return this;
-        }
+            if (Responsive.HasValue)
+                AddCss(Css.TableResponsive + Responsive.Value.GetHyphenatedDescription());
 
-        public Table SetResponsive()
-        {
-            AddCss(Css.TableResponsive);
-            return this;
-        }
+            var table = new HtmlElement("table", Css.Table);
+            
+            if (UtilityOptions.Any())
+            {
+                foreach (var opt in UtilityOptions)
+                {
+                    table.UtilityOptions.Add(opt);
+                }
+                UtilityOptions.Clear();
+            }
 
-        public Table SetCaption(string caption)
-        {
-            _caption = new HtmlElement("caption");
-            _caption.AppendContent(caption);
-            AddChild(_caption);
-            return this;
+            if (Style.HasValue)
+                table.AddCss(Style.GetCssDescription());
+
+            if (State.HasValue)
+                table.AddCss(State.GetCssDescription());
+
+            if (Hover)
+                table.AddCss(Css.TableHover);
+
+            if (Small)
+                table.AddCss(Css.TableSm);
+
+            if (Caption != null)
+            {
+                var caption = new HtmlElement("caption") { Content = Caption };
+                AddChild(caption, ChildLocation.Header);
+                if (CaptionTop)
+                    table.AddCss(Css.CaptionTop);
+            }
+            AddChild(table, ChildLocation.FullWrap);
+
+            base.PreBuild();
         }
     }
 }
