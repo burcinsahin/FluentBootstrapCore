@@ -12,7 +12,7 @@ namespace FluentBootstrapCore.Components
         }
 
         public object? Value { get; set; }
-        public bool Disabled { get; set; }
+        //public bool Disabled { get; set; }
 
         protected override void PreBuild()
         {
