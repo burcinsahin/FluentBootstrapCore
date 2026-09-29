@@ -10,7 +10,7 @@ namespace FluentBootstrapCore.Options
         public DisplayPrint? DisplayPrint { get; set; }
         public DisplayOptions()
         {
-            Display = new EnumList<Display>();
+            Display = [];
         }
 
         public override IEnumerable<string> GetCssList()

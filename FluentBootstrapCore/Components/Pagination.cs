@@ -17,7 +17,7 @@ namespace FluentBootstrapCore.Components
 
         public Pagination AddPageItem(string? href, object? content, bool active = false, bool disabled = false)
         {
-            if(Size.HasValue)
+            if (Size.HasValue)
                 AddCss(Size.GetCssDescription());
 
             var pageItem = new PageItem();

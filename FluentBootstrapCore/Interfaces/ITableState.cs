@@ -2,8 +2,5 @@
 
 namespace FluentBootstrapCore.Interfaces
 {
-    public interface ITableState : IStatable<TableState>
-    {
-
-    }
+    public interface ITableState : IStatable<TableState>;
 }

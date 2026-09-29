@@ -6,16 +6,9 @@ using System.Collections.Generic;
 
 namespace FluentBootstrapCore
 {
-    public class BootstrapHelper<TModel> : IBootstrapHelper
+    public class BootstrapHelper<TModel>(IHtmlHelper<TModel> helper) : IBootstrapHelper
     {
-        private readonly IHtmlHelper<TModel> _htmlHelper;
-
-        public IHtmlHelper HtmlHelper => _htmlHelper;
-
-        public BootstrapHelper(IHtmlHelper<TModel> helper)
-        {
-            _htmlHelper = helper;
-        }
+        public IHtmlHelper HtmlHelper => helper;
 
         #region Content
         #region Typography
@@ -102,7 +95,7 @@ namespace FluentBootstrapCore
             var image = new Image();
             image.MergeAttribute("src", src);
             image.MergeAttribute("alt", alt);
-            return new BootstrapContent<Image>(_htmlHelper, image);
+            return new BootstrapContent<Image>(helper, image);
         }
         #endregion
 
@@ -130,13 +123,13 @@ namespace FluentBootstrapCore
             {
                 Content = content
             };
-            return new BootstrapContent<HtmlElement>(_htmlHelper, element);
+            return new BootstrapContent<HtmlElement>(helper, element);
         }
 
         public BootstrapContent<HtmlElement> Paragraph(object? content = null)
         {
             var p = new HtmlElement("p") { Content = content };
-            return new BootstrapContent<HtmlElement>(_htmlHelper, p);
+            return new BootstrapContent<HtmlElement>(helper, p);
         }
 
         public BootstrapContent<HtmlElement> Div()
@@ -208,19 +201,19 @@ namespace FluentBootstrapCore
         public BootstrapContent<Button> Button(object? content = null)
         {
             var button = new Button() { Content = content };
-            return new BootstrapContent<Button>(_htmlHelper, button);
+            return new BootstrapContent<Button>(helper, button);
         }
 
         public BootstrapContent<ButtonGroup> ButtonGroup()
         {
             var buttonGroup = new ButtonGroup();
-            return new BootstrapContent<ButtonGroup>(_htmlHelper, buttonGroup);
+            return new BootstrapContent<ButtonGroup>(helper, buttonGroup);
         }
 
         public BootstrapContent<ButtonToolbar> ButtonToolbar()
         {
             var buttonToolbar = new ButtonToolbar();
-            return new BootstrapContent<ButtonToolbar>(_htmlHelper, buttonToolbar);
+            return new BootstrapContent<ButtonToolbar>(helper, buttonToolbar);
         }
 
         /// <summary>
@@ -269,7 +262,7 @@ namespace FluentBootstrapCore
                 Value = value
             };
 
-            return new BootstrapContent<Input>(_htmlHelper, input);
+            return new BootstrapContent<Input>(helper, input);
         }
 
         public BootstrapContent<Icon> Icon(IconType iconType, object? content = null)
@@ -372,7 +365,7 @@ namespace FluentBootstrapCore
         public BootstrapContent<Navbar> Navbar()
         {
             var navbar = new Navbar();
-            return new BootstrapContent<Navbar>(_htmlHelper, navbar);
+            return new BootstrapContent<Navbar>(helper, navbar);
         }
 
         public BootstrapContent<Pagination> Pagination()
@@ -435,7 +428,7 @@ namespace FluentBootstrapCore
                 Name = name,
                 SelectList = selectList
             };
-            return new BootstrapContent<Select>(_htmlHelper, select);
+            return new BootstrapContent<Select>(helper, select);
         }
 
         public BootstrapContent<Table> Table()
@@ -449,7 +442,7 @@ namespace FluentBootstrapCore
         public BootstrapContent<Form> Form()
         {
             var form = new Form();
-            return new BootstrapContent<Form>(_htmlHelper, form);
+            return new BootstrapContent<Form>(helper, form);
         }
 
         public BootstrapContent<Form, TModel> Form(string action, string controller, FormMethod method = FormMethod.Post, object? routeValues = null)
@@ -464,7 +457,7 @@ namespace FluentBootstrapCore
                 Action = url,
                 Method = method.ToString()
             };
-            return new BootstrapContent<Form, TModel>(_htmlHelper, form);
+            return new BootstrapContent<Form, TModel>(helper, form);
         }
 
         public BootstrapContent<FormCheck> FormCheck(string? label = null)
@@ -473,7 +466,7 @@ namespace FluentBootstrapCore
             {
                 Label = label
             };
-            return new BootstrapContent<FormCheck>(_htmlHelper, formCheck);
+            return new BootstrapContent<FormCheck>(helper, formCheck);
         }
 
         public BootstrapContent<FormInput> FormInput(string? label = null)
@@ -482,13 +475,13 @@ namespace FluentBootstrapCore
             {
                 Label = label
             };
-            return new BootstrapContent<FormInput>(_htmlHelper, formInput);
+            return new BootstrapContent<FormInput>(helper, formInput);
         }
 
         public BootstrapContent<FormRadio> FormRadio(string? label = null)
         {
             var radio = new FormRadio(label);
-            return new BootstrapContent<FormRadio>(_htmlHelper, radio);
+            return new BootstrapContent<FormRadio>(helper, radio);
         }
 
         public BootstrapContent<FormRange> FormRange(string? label = null, int min = 0, int max = 0, double step = 0)
@@ -500,7 +493,7 @@ namespace FluentBootstrapCore
                 Max = max,
                 Step = step
             };
-            return new BootstrapContent<FormRange>(_htmlHelper, range);
+            return new BootstrapContent<FormRange>(helper, range);
         }
 
         public BootstrapContent<FormSelect> FormSelect(string? label = null)
@@ -509,7 +502,7 @@ namespace FluentBootstrapCore
             {
                 Label = label
             };
-            return new BootstrapContent<FormSelect>(_htmlHelper, select);
+            return new BootstrapContent<FormSelect>(helper, select);
         }
 
         public BootstrapContent<FormTextArea> FormTextArea(string? label = null)
@@ -518,7 +511,7 @@ namespace FluentBootstrapCore
             {
                 Label = label
             };
-            return new BootstrapContent<FormTextArea>(_htmlHelper, formTextArea);
+            return new BootstrapContent<FormTextArea>(helper, formTextArea);
         }
         #endregion
     }

@@ -24,8 +24,6 @@ namespace FluentBootstrapCore.Extensions
         /// </summary>
         /// <typeparam name="TComponent"></typeparam>
         /// <param name="bootstrapContent"></param>
-        /// <param name="bgColor"></param>
-        /// <param name="gradient"></param>
         /// <param name="opacity"></param>
         /// <returns></returns>
         public static BootstrapContent<TComponent> Color<TComponent>(this BootstrapContent<TComponent> bootstrapContent, TextColor txtColor, byte? opacity = null)

@@ -1,7 +1,6 @@
 ﻿using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
-using System;
 
 namespace FluentBootstrapCore.Extensions
 {

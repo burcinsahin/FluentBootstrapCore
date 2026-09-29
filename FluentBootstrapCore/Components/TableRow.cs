@@ -28,7 +28,7 @@ namespace FluentBootstrapCore.Components
             if (Active)
                 AddCss(Css.TableActive);
 
-            if (Data != null && Data.Any())
+            if (Data?.Any() == true)
             {
                 for (var i = 0; i < Data.Count(); i++)
                 {

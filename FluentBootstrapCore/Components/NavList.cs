@@ -4,7 +4,7 @@ using FluentBootstrapCore.Interfaces;
 namespace FluentBootstrapCore.Components
 {
     public class NavList : List,
-        ICanCreate<NavItem>, 
+        ICanCreate<NavItem>,
         INav,
         ICanCreate<NavDropdown>
     {

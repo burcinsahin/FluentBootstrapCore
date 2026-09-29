@@ -14,12 +14,12 @@ namespace FluentBootstrapCore.Options
 
         public FlexOptions()
         {
-            Direction = new EnumList<FlexDirection>();
-            JustifyContent = new EnumList<JustifyContent>();
-            AlignItems = new EnumList<AlignItems>();
-            AlignSelf = new EnumList<AlignSelf>();
-            FlexFill = new EnumList<FlexAbility>();
-            AlignContent = new EnumList<AlignContent>();
+            Direction = [];
+            JustifyContent = [];
+            AlignItems = [];
+            AlignSelf = [];
+            FlexFill = [];
+            AlignContent = [];
         }
 
         public override IEnumerable<string> GetCssList()

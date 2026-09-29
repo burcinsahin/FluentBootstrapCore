@@ -11,9 +11,9 @@ namespace FluentBootstrapCore.Test.Extensions
         [TestMethod]
         public void GetCssDescription_Should()
         {
-            var val = 1 << 2;
+            const int val = 1 << 2;
             WriteLine(val);
-            var a = TableStyle.Striped | TableStyle.Bordered;
+            const TableStyle a = TableStyle.Striped | TableStyle.Bordered;
             WriteLine(a);
 
             var css = EnumExtensions.GetCssDescription(TableStyle.Striped | TableStyle.Bordered);

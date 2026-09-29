@@ -1,11 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FluentBootstrapCore.Enums
 {
+    [SuppressMessage("Roslynator", "RCS1157:Composite enum value contains undefined flag", Justification = "<Pending>")]
     [Flags]
     public enum Border
     {
+
         [Description()]
         None = 0,
         [Description(Css.Border0)]

@@ -81,7 +81,8 @@ namespace FluentBootstrapCore.Extensions
             this BootstrapContent<TComponent> bootstrapContent, bool stretched = true)
             where TComponent : BootstrapComponent, ILink
         {
-            bootstrapContent.Component.AddCss(Css.StretchedLink);
+            if (stretched)
+                bootstrapContent.Component.AddCss(Css.StretchedLink);
             return bootstrapContent;
         }
 
@@ -89,7 +90,8 @@ namespace FluentBootstrapCore.Extensions
             this BootstrapContent<TComponent> bootstrapContent, bool truncate = true)
             where TComponent : BootstrapComponent
         {
-            bootstrapContent.Component.AddCss(Css.TextTruncate);
+            if (truncate)
+                bootstrapContent.Component.AddCss(Css.TextTruncate);
             return bootstrapContent;
         }
 

@@ -210,6 +210,7 @@ namespace FluentBootstrapCore.Extensions
             {
                 Content = text,
                 ButtonType = ButtonType.Button,
+                ButtonState = buttonState,
                 Value = value
             };
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
@@ -246,9 +247,7 @@ namespace FluentBootstrapCore.Extensions
             where TComponent : FormControl<TInput>
             where TInput : BootstrapComponent, IInputComponent
         {
-            if (bootstrapContent.Component.InputOpts == null)
-                bootstrapContent.Component.InputOpts = new OptionList();
-            bootstrapContent.Component.InputOpts.Add(opts);
+            (bootstrapContent.Component.InputOpts ??= []).Add(opts);
             return bootstrapContent;
         }
 

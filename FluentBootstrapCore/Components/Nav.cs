@@ -3,7 +3,7 @@
 namespace FluentBootstrapCore.Components
 {
     public class Nav : BootstrapComponent,
-        INav, 
+        INav,
         ICanCreate<NavLink>
     {
         public Nav() : base("nav", Css.Nav)

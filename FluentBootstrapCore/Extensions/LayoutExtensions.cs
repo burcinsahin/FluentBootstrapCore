@@ -67,27 +67,21 @@ namespace FluentBootstrapCore.Extensions
 
         private static BootstrapContent<GridRow> RowColumns(this BootstrapContent<GridRow> bootstrapContent, RowColumn columnCount, Breakpoint breakpoint = Breakpoint.Default)
         {
-            if (bootstrapContent.Component.RowColumns == null)
-                bootstrapContent.Component.RowColumns = new EnumList<RowColumn>();
-
-            bootstrapContent.Component.RowColumns.TryAdd(breakpoint, columnCount);
+            (bootstrapContent.Component.RowColumns ??= []).TryAdd(breakpoint, columnCount);
             return bootstrapContent;
         }
 
         public static BootstrapContent<TComponent> AlignItems<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignItems alignItem, Breakpoint br = Breakpoint.Default)
             where TComponent : SingleComponent, IAlignItem
         {
-            if (bootstrapContent.Component.AlignItem == null)
-                bootstrapContent.Component.AlignItem = new EnumList<AlignItems>();
-
-            bootstrapContent.Component.AlignItem.TryAdd(br, alignItem);
+            (bootstrapContent.Component.AlignItem ??= []).TryAdd(br, alignItem);
             return bootstrapContent;
         }
 
         public static BootstrapContent<TComponent> Offset<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte offset, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : SingleComponent, IOffsetable
         {
-            if (offset < 0) offset = 0;
+            if (offset <= 0) offset = 0;
             if (offset > 11) offset = 11;
             var offsetCss = $"offset{breakpoint.GetHyphenatedDescription()}-{offset}";
             bootstrapContent.Component.AddCss(offsetCss);

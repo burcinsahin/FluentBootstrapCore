@@ -19,7 +19,7 @@ namespace FluentBootstrapCore.Options
 
         public TextOptions()
         {
-            TextAlign = new EnumList<TextAlign>();
+            TextAlign = [];
         }
         public override IEnumerable<string> GetCssList()
         {

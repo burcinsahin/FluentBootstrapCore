@@ -3,15 +3,10 @@ using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
-    public class List : BootstrapComponent,
+    public class List(ListType listType) : BootstrapComponent(listType == ListType.Ordered ? "ol" : "ul"),
         ICanCreate<ListItem>
     {
-        public ListType Type { get; set; }
-        public List(ListType listType)
-            : base(listType == ListType.Ordered ? "ol" : "ul")
-        {
-            Type = listType;
-        }
+        public ListType Type { get; set; } = listType;
 
         protected override void PreBuild()
         {

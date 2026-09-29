@@ -54,8 +54,8 @@ namespace FluentBootstrapCore.Test
 
         private class Person
         {
-            public string Name { get; private set; }
-            public string Surname { get; private set; }
+            public string Name { get; }
+            public string Surname { get; }
             public byte Age { get; set; }
 
             internal Person(string name, string surname)
@@ -80,9 +80,7 @@ namespace FluentBootstrapCore.Test
             public override bool Equals(object? obj)
             {
                 if (obj == null) return false;
-                if (obj is Person p)
-                    return p.Name == Name && p.Surname == Surname;
-                return false;
+                return obj is Person p && p.Name == Name && p.Surname == Surname;
             }
 
             public override int GetHashCode()

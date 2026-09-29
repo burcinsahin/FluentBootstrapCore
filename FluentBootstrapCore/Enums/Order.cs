@@ -4,6 +4,8 @@ namespace FluentBootstrapCore.Enums
 {
     public enum Order
     {
+        [Description(Css.OrderFirst)]
+        First = -1,
         [Description(Css.Order0)]
         O0 = 0,
         [Description(Css.Order1)]
@@ -16,8 +18,6 @@ namespace FluentBootstrapCore.Enums
         O4 = 4,
         [Description(Css.Order5)]
         O5 = 5,
-        [Description(Css.OrderFirst)]
-        First = -1,
         [Description(Css.OrderLast)]
         Last = 6
     }

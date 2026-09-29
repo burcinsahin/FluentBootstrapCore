@@ -11,10 +11,10 @@ namespace FluentBootstrapCore.Options
         protected List<string> _cssList;
         protected Dictionary<string, object> _styles;
 
-        public UtilityOptions()
+        protected UtilityOptions()
         {
-            _cssList = new List<string>();
-            _styles = new Dictionary<string, object>();
+            _cssList = [];
+            _styles = [];
         }
 
         public virtual IEnumerable<string> GetCssList()

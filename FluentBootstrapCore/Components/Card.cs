@@ -36,13 +36,16 @@ namespace FluentBootstrapCore.Components
                     var link = new Link();
                     link.MergeAttribute("data-bs-toggle", "collapse");
                     link.MergeAttribute("aria-expanded", "true");
-                    link.MergeAttribute("aria-controls", uid.ToString());
+                    link.MergeAttribute("aria-controls", uid);
                     link.MergeAttribute("href", $"#{uid}");
                     link.Content = Header;
                     header.Content = link;
                 }
                 else
+                {
                     header.Content = Header;
+                }
+
                 AddChild(header, ChildLocation.Header);
             }
 
@@ -58,7 +61,7 @@ namespace FluentBootstrapCore.Components
             {
                 var div = new HtmlElement("div", Css.Collapse)
                 {
-                    Id = uid.ToString()
+                    Id = uid
                 };
                 AddChild(div, ChildLocation.BodyWrap);
             }

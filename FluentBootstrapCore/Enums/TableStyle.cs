@@ -6,6 +6,7 @@ namespace FluentBootstrapCore.Enums
     [Flags]
     public enum TableStyle
     {
+        None = 0,
         [Description(Css.TableStriped)]
         Striped = 1,
         [Description(Css.TableStripedColumns)]

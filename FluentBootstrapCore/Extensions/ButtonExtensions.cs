@@ -58,19 +58,22 @@ namespace FluentBootstrapCore.Extensions
         public static BootstrapContent<TComponent> Modal<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string modalId)
             where TComponent : BootstrapComponent, IButton
         {
-            if (!modalId.StartsWith("#"))
+            if (!modalId.StartsWith('#'))
                 modalId = $"#{modalId}";
             if (typeof(ILink).IsAssignableFrom(typeof(TComponent)))
             {
                 ((ILink)bootstrapContent.Component).Href = modalId;
             }
             else
+            {
                 bootstrapContent.Component.MergeAttribute("data-bs-target", modalId);
-            bootstrapContent.Component.MergeAttribute("data-bs-toggle", $"modal");
+            }
+
+            bootstrapContent.Component.MergeAttribute("data-bs-toggle", "modal");
             return bootstrapContent;
         }
 
-        [Obsolete]
+        [Obsolete("Will be investigated")]
         public static BootstrapContent<TComponent> Popover<TComponent>(
             this BootstrapContent<TComponent> bootstrapContent,
             string title,

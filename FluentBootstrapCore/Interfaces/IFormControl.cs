@@ -10,7 +10,5 @@ namespace FluentBootstrapCore.Interfaces
         ICanBeRequired,
         ICanBeDisabled,
         ICanBeInvalid,
-        ISizable<FormControlSize>
-    {
-    }
+        ISizable<FormControlSize>;
 }

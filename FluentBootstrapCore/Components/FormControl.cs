@@ -24,7 +24,7 @@ namespace FluentBootstrapCore.Components
 
         protected readonly Label _label;
 
-        public FormControl() : base("div")
+        protected FormControl() : base("div")
         {
             _label = new Label();
         }
@@ -42,7 +42,9 @@ namespace FluentBootstrapCore.Components
                 Id = null;
             }
             else
+            {
                 Input.GenerateId();
+            }
 
             if (InputOpts != null)
                 Input.UtilityOptions = InputOpts;

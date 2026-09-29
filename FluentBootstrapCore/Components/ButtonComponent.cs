@@ -4,14 +4,14 @@ using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
-    public abstract class ButtonComponent : BootstrapComponent,
+    public abstract class ButtonComponent(string tagName) : BootstrapComponent(tagName, Css.Btn),
         ICanHaveName,
         IButton,
         ICanBeActive,
         ICanBeDisabled,
         ISizable<ButtonSize>
     {
-        public ButtonState ButtonState { get; set; }
+        public ButtonState ButtonState { get; set; } = ButtonState.Primary;
         public ButtonType ButtonType { get; set; }
         public ButtonOutlineState? OutlineState { get; set; }
         public IconType? IconType { get; set; }
@@ -21,16 +21,10 @@ namespace FluentBootstrapCore.Components
         public bool Disabled { get; set; }
         public ButtonSize? Size { get; set; }
 
-        protected ButtonComponent(string tagName)
-            : base(tagName, Css.Btn)
-        {
-            ButtonState = ButtonState.Primary;
-        }
-
         protected override void PreBuild()//TODO: ButtonType at base?
         {
             AddCss(ButtonState.GetCssDescription());
-            
+
             if (Name != null)
                 MergeAttribute("name", Name);
 

@@ -1,7 +1,6 @@
 ﻿using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 
 namespace FluentBootstrapCore.Extensions
 {

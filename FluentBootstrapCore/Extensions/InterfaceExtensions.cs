@@ -103,7 +103,9 @@ namespace FluentBootstrapCore.Extensions
                 //badge.Content = " ";
             }
             else
+            {
                 badge.UtilityOptions.Add(new BorderOptions { BorderRadius = BorderRadius.RoundedPill });
+            }
 
             return bootstrapContent;
         }
@@ -148,10 +150,7 @@ namespace FluentBootstrapCore.Extensions
             this BootstrapContent<TComponent> bootstrapContent, JustifyContent justifyContent, Breakpoint br = Breakpoint.Default)
             where TComponent : SingleComponent, IJustifyContent
         {
-            if (bootstrapContent.Component.JustifyContent == null)
-                bootstrapContent.Component.JustifyContent = new EnumList<JustifyContent>();
-
-            bootstrapContent.Component.JustifyContent.TryAdd(br, justifyContent);
+            (bootstrapContent.Component.JustifyContent ??= []).TryAdd(br, justifyContent);
             return bootstrapContent;
         }
 
@@ -165,8 +164,8 @@ namespace FluentBootstrapCore.Extensions
 
         public static BootstrapContent<TComponent> Size<TComponent, TEnum>(
             this BootstrapContent<TComponent> bootstrapContent,
-            TEnum size) 
-            where TComponent : BootstrapComponent, ISizable<TEnum> 
+            TEnum size)
+            where TComponent : BootstrapComponent, ISizable<TEnum>
             where TEnum : struct, Enum
         {
             bootstrapContent.Component.Size = size;

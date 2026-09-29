@@ -1,6 +1,4 @@
 ﻿namespace FluentBootstrapCore.Interfaces
 {
-    internal interface ICanBeSelected
-    {
-    }
+    internal interface ICanBeSelected;
 }

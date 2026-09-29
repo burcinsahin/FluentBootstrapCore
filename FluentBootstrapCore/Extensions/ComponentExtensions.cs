@@ -23,7 +23,7 @@ namespace FluentBootstrapCore.Extensions
             bool condition)
             where TComponent : SingleComponent
         {
-            if (condition == false)
+            if (!condition)
                 bootstrapContent.Component.RenderMode = RenderMode.None;
             return bootstrapContent;
         }
@@ -111,8 +111,7 @@ namespace FluentBootstrapCore.Extensions
             string? id = null)
             where TComponent : SingleComponent
         {
-            if (id == null)
-                id = $"{typeof(TComponent).Name}_{DateTime.Now.Ticks}";
+            id ??= $"{typeof(TComponent).Name}_{DateTime.Now.Ticks}";
             bootstrapContent.Component.Id = id;
             return bootstrapContent;
         }
@@ -122,8 +121,7 @@ namespace FluentBootstrapCore.Extensions
             string? id = null)
             where TComponent : SingleComponent
         {
-            if (id == null)
-                id = $"{typeof(TComponent).Name}_{DateTime.Now.Ticks}";
+            id ??= $"{typeof(TComponent).Name}_{DateTime.Now.Ticks}";
             bootstrapContent.Component.Id = id;
             return bootstrapContent;
         }
@@ -207,7 +205,7 @@ namespace FluentBootstrapCore.Extensions
         {
             content.Component.Size = size;
             return content;
-        } 
+        }
         #endregion
     }
 }

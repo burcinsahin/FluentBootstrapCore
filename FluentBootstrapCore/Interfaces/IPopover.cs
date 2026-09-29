@@ -2,7 +2,7 @@
 
 namespace FluentBootstrapCore.Interfaces
 {
-    public interface IPopover : ICanBeDisabled, 
+    public interface IPopover : ICanBeDisabled,
         ISizable<ButtonSize>
     {
         string? CustomClass { get; set; }

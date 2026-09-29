@@ -10,10 +10,10 @@ namespace FluentBootstrapCore.Options
         {
         }
 
-        public T Get<T>()
+        public T? Get<T>()
             where T : IUtilityOptions
         {
-            return (T)this.FirstOrDefault(o => o.GetType().Equals(typeof(T)));
+            return (T?)this.FirstOrDefault(o => o.GetType().Equals(typeof(T)));
         }
 
         public bool Contains<T>()
@@ -29,7 +29,8 @@ namespace FluentBootstrapCore.Options
             if (Contains<T>())
             {
                 var opts = Get<T>();
-                Remove(opts);
+                if (opts != null)
+                    Remove(opts);
             }
             Add(options);
         }
@@ -37,9 +38,9 @@ namespace FluentBootstrapCore.Options
         private class TypeEqualityComparer<T> : EqualityComparer<T>
             where T : class
         {
-            public override bool Equals(T x, T y)
+            public override bool Equals(T? x, T? y)
             {
-                return x.GetType().Equals(y.GetType());
+                return x != null && y != null && x.GetType().Equals(y.GetType());
             }
 
             public override int GetHashCode(T obj)

@@ -2,15 +2,10 @@
 
 namespace FluentBootstrapCore.Components
 {
-    public class Heading : BootstrapComponent,
+    public class Heading(byte size) : BootstrapComponent($"h{size}"),
         ICanHaveBadge
     {
         public Badge? Badge { get; set; }
-
-        public Heading(byte size)
-            : base($"h{size}")
-        {
-        }
 
         protected override void PreBuild()
         {

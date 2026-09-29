@@ -5,15 +5,9 @@ namespace FluentBootstrapCore
     /// <summary>
     /// Bootstrap component with bootstrap utilities
     /// </summary>
-    public abstract class BootstrapComponent : SingleComponent
+    public abstract class BootstrapComponent(string tagName, params string[] cssClasses) : SingleComponent(tagName, cssClasses)
     {
-        public OptionList UtilityOptions { get; set; }
-
-        protected BootstrapComponent(string tagName, params string[] cssClasses)
-            : base(tagName, cssClasses)
-        {
-            UtilityOptions = new OptionList();
-        }
+        public OptionList UtilityOptions { get; set; } = [];
 
         protected override void PreBuild()
         {
@@ -30,7 +24,7 @@ namespace FluentBootstrapCore
             if (!UtilityOptions.Contains<TOptions>())
                 UtilityOptions.Add(new TOptions());
 
-            return UtilityOptions.Get<TOptions>();
+            return UtilityOptions.Get<TOptions>()!;
         }
     }
 }

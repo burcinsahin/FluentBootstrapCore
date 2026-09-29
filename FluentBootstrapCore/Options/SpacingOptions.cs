@@ -11,9 +11,9 @@ namespace FluentBootstrapCore.Options
         public EnumList<Gap> Gap { get; set; }
         public SpacingOptions()
         {
-            Margin = new Dictionary<(Breakpoint, Margin), sbyte>();
-            Padding = new Dictionary<(Breakpoint, Padding), sbyte>();
-            Gap = new EnumList<Gap>();
+            Margin = [];
+            Padding = [];
+            Gap = [];
         }
 
         public override IEnumerable<string> GetCssList()

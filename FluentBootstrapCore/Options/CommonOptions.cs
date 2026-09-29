@@ -15,7 +15,7 @@ namespace FluentBootstrapCore.Options
 
         public CommonOptions()
         {
-            Order = new EnumList<Order>();
+            Order = [];
         }
 
         public override IEnumerable<string> GetCssList()

@@ -6,49 +6,38 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using System.Security.Cryptography;
 
 namespace FluentBootstrapCore
 {
     public abstract class SingleComponent : HtmlComponent
     {
+
         #region Props&Fields
-        private object? _content;
         private readonly TagBuilder _tagBuilder;
         private readonly List<(ChildLocation, SingleComponent)> _children;
-
-        private RenderMode _renderMode;
 
         public string? Id { get; protected internal set; }
         public string Tag => _tagBuilder.TagName;
 
-        public object? Content
-        {
-            get => _content;
-            set => _content = value;
-        }
-        internal RenderMode RenderMode
-        {
-            get => _renderMode;
-            set => _renderMode = value;
-        }
+        public object? Content { get; set; }
+        internal RenderMode RenderMode { get; set; }
         public bool IsContentHtml { get; set; }
-        public HashSet<string> CssClasses { get; private set; }
+        public HashSet<string> CssClasses { get; }
 
-        public Dictionary<string, object> Styles { get; private set; }
+        public Dictionary<string, object> Styles { get; }
 
         #endregion
 
         #region Ctors
-        public SingleComponent(string tagName, params string[] cssClasses)
+        protected SingleComponent(string tagName, params string[] cssClasses)
         {
             _tagBuilder = new TagBuilder(tagName);
-            _renderMode = RenderMode.Normal;
-            CssClasses = new HashSet<string>();
-            Styles = new Dictionary<string, object>();
-            if (cssClasses.Any())
+            RenderMode = RenderMode.Normal;
+            CssClasses = [];
+            Styles = [];
+            if (cssClasses.Length != 0)
                 AddCss(cssClasses);
-            _children = new List<(ChildLocation, SingleComponent)>();
+            _children = [];
         }
         #endregion
 
@@ -112,7 +101,7 @@ namespace FluentBootstrapCore
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(styles))
             {
                 var key = property.Name.ToLowerInvariant().Replace("_", "-");
-                var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture);
+                var value = Convert.ToString(property.GetValue(styles), CultureInfo.InvariantCulture) ?? string.Empty;
                 Styles.Add(key, value);
             }
         }
@@ -198,7 +187,7 @@ namespace FluentBootstrapCore
         /// </summary>
         protected virtual void PreBuild()
         {
-            if (CssClasses.Any())
+            if (CssClasses.Count != 0)
             {
                 foreach (var cssClass in CssClasses)
                 {
@@ -206,7 +195,7 @@ namespace FluentBootstrapCore
                 }
             }
 
-            if (Styles.Any())
+            if (Styles.Count != 0)
             {
                 var style = string.Join(";", Styles.Select(s => $"{s.Key}:{s.Value}"));
                 MergeAttribute("style", style, true);
@@ -246,7 +235,7 @@ namespace FluentBootstrapCore
 
             bodyWrapperChildren.ForEach(c => _tagBuilder.InnerHtml.AppendHtml(c.ToHtml()));
 
-            AppendContent(_content, false, IsContentHtml);
+            AppendContent(Content, false, IsContentHtml);
             var bodyChildren = _children.Where(c => c.Item1 == ChildLocation.Body)
                                         .Select(c => c.Item2)
                                         .ToList();
@@ -331,7 +320,7 @@ namespace FluentBootstrapCore
             Id = $"{Tag}_{DateTime.Now.Ticks}";
         }
 
-        protected bool HasParent<T>(bool firstLevelOnly = true)
+        protected static bool HasParent<T>(bool firstLevelOnly = true)
         {
             if (firstLevelOnly)
             {

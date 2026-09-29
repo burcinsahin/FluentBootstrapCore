@@ -8,10 +8,5 @@ namespace FluentBootstrapCore.Components
         public CardGroup() : base("div", Css.CardGroup)
         {
         }
-
-        protected override void PreBuild()
-        {
-            base.PreBuild();
-        }
     }
 }

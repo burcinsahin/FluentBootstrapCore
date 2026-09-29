@@ -1,7 +1,4 @@
 ﻿namespace FluentBootstrapCore.Interfaces
 {
-    public interface IGutterable
-    {
-
-    }
+    public interface IGutterable;
 }

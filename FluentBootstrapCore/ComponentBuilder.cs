@@ -3,18 +3,12 @@ using System;
 
 namespace FluentBootstrapCore
 {
-    public class ComponentBuilder<TComponent, TModel> : ComponentBuilder<TComponent>
+    public class ComponentBuilder<TComponent, TModel>(IHtmlHelper<TModel> htmlHelper, TComponent component) : ComponentBuilder<TComponent>(htmlHelper, component)
         where TComponent : SingleComponent
     {
-        protected new readonly IHtmlHelper<TModel> _htmlHelper;
+        protected new readonly IHtmlHelper<TModel> _htmlHelper = htmlHelper;
 
         internal new IHtmlHelper<TModel> HtmlHelper => _htmlHelper;
-
-        public ComponentBuilder(IHtmlHelper<TModel> htmlHelper, TComponent component)
-            : base(htmlHelper, component)
-        {
-            _htmlHelper = htmlHelper;
-        }
     }
 
     public class ComponentBuilder<TComponent> : IDisposable

@@ -9,7 +9,7 @@ namespace FluentBootstrapCore.Options
 
         public FloatOptions()
         {
-            Float = new EnumList<Float>();
+            Float = [];
         }
 
         public override IEnumerable<string> GetCssList()

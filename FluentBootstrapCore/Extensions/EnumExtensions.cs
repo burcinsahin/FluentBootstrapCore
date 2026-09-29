@@ -30,37 +30,27 @@ namespace FluentBootstrapCore.Extensions
         {
             var fi = value.GetType().GetField(value.ToString());
 
-            var attribute = fi.GetCustomAttribute<DescriptionAttribute>();
+            var attribute = fi?.GetCustomAttribute<DescriptionAttribute>();
 
-            if (attribute != null)
-                return attribute.Description;
-
-            return value.ToString();
+            return attribute != null ? attribute.Description : value.ToString();
         }
 
         internal static string GetSuffix(this ComponentSize size)
         {
-            switch (size)
+            return size switch
             {
-                case ComponentSize.ExtraSmall:
-                    return "sm";
-                case ComponentSize.Small:
-                    return "sm";
-                case ComponentSize.Normal:
-                    return "";
-                case ComponentSize.Large:
-                    return "lg";
-                default:
-                    return "";
-            }
+                ComponentSize.ExtraSmall => "sm",
+                ComponentSize.Small => "sm",
+                ComponentSize.Normal => "",
+                ComponentSize.Large => "lg",
+                _ => "",
+            };
         }
 
         internal static string GetHyphenatedDescription(this Breakpoint breakpoint)
         {
             var desc = breakpoint.GetCssDescription();
-            if (string.IsNullOrWhiteSpace(desc))
-                return desc;
-            return $"-{desc}";
+            return string.IsNullOrWhiteSpace(desc) ? desc : $"-{desc}";
         }
     }
 }

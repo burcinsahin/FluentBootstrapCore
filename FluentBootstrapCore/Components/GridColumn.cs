@@ -9,10 +9,5 @@ namespace FluentBootstrapCore.Components
             : base("div", Css.Col)
         {
         }
-
-        protected override void PreBuild()
-        {
-            base.PreBuild();
-        }
     }
 }

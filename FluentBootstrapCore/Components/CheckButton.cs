@@ -4,25 +4,20 @@ using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
-    public class CheckButton : HtmlComponent,
+    public class CheckButton(bool radio = false) : HtmlComponent,
         ICanBeChecked,
         ICanHaveName,
         ICanBeDisabled,
         IButtonOutlineState,
         IButtonState
     {
-        public bool Radio { get; set; }
+        public bool Radio { get; set; } = radio;
         public bool Checked { get; set; }
         public object? Content { get; set; }
         public string? Name { get; set; }
         public bool Disabled { get; set; }
         public ButtonOutlineState? OutlineState { get; set; }
-        public ButtonState ButtonState { get; set; }
-
-        public CheckButton(bool radio = false)
-        {
-            ButtonState = ButtonState.Primary;
-        }
+        public ButtonState ButtonState { get; set; } = ButtonState.Primary;
 
         public override string ToHtml()
         {
@@ -38,7 +33,9 @@ namespace FluentBootstrapCore.Components
             checkbox.GenerateId();
 
             if (Radio)
+            {
                 checkbox.MergeAttribute("type", "radio");
+            }
             else
             {
                 checkbox.MergeAttribute("type", "checkbox");

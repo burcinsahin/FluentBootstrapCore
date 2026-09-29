@@ -4,20 +4,12 @@ using System.Linq;
 
 namespace FluentBootstrapCore.Components
 {
-    public class CardBody : BootstrapComponent
+    public class CardBody(string? title = null, string? subtitle = null) : BootstrapComponent("div", Css.CardBody)
     {
-        internal object? Title { get; set; }
-        internal object? Subtitle { get; set; }
+        internal object? Title { get; set; } = title;
+        internal object? Subtitle { get; set; } = subtitle;
         internal string? CardText { get; set; }
-        internal IEnumerable<Link> CardLinks { get; set; }
-
-        public CardBody(string? title = null, string? subtitle = null)
-            : base("div", Css.CardBody)
-        {
-            Title = title;
-            Subtitle = subtitle;
-            CardLinks = new List<Link>();
-        }
+        internal IEnumerable<Link> CardLinks { get; set; } = [];
 
         protected override void PreBuild()
         {

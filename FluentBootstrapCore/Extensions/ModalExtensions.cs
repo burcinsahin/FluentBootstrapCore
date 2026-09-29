@@ -65,9 +65,8 @@ namespace FluentBootstrapCore.Extensions
         /// <summary>
         /// Fullscreen
         /// </summary>
-        /// <typeparam name="TComponent"></typeparam>
         /// <param name="content"></param>
-        /// <param name="size"></param>
+        /// <param name="br"></param>
         /// <returns></returns>
         public static BootstrapContent<TComponent> Full<TComponent>(
             this BootstrapContent<TComponent> content,

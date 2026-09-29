@@ -31,7 +31,7 @@ namespace FluentBootstrapCore.Components
                 AddCss(Css.TableResponsive + Responsive.Value.GetHyphenatedDescription());
 
             var table = new HtmlElement("table", Css.Table);
-            
+
             if (UtilityOptions.Any())
             {
                 foreach (var opt in UtilityOptions)

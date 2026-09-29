@@ -5,24 +5,15 @@ using System.Text.Encodings.Web;
 
 namespace FluentBootstrapCore
 {
-    public class CompositeContent<TComponent> : IHtmlContent
+    public class CompositeContent<TComponent>(IHtmlHelper htmlHelper, TComponent component) : IHtmlContent
     where TComponent : IHtmlComponent
     {
-        private readonly TComponent _component;
-        private readonly IHtmlHelper _htmlHelper;
-
-        internal TComponent Component => _component;
-        internal IHtmlHelper HtmlHelper => _htmlHelper;
-
-        public CompositeContent(IHtmlHelper htmlHelper, TComponent component)
-        {
-            _htmlHelper = htmlHelper;
-            _component = component;
-        }
+        internal TComponent Component => component;
+        internal IHtmlHelper HtmlHelper => htmlHelper;
 
         public void WriteTo(TextWriter writer, HtmlEncoder encoder)
         {
-            var html = _component.ToHtml();
+            var html = component.ToHtml();
             writer.Write(html);
         }
     }

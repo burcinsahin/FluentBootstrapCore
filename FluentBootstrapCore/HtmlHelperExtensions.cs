@@ -19,30 +19,24 @@ namespace FluentBootstrapCore
 
         public static string ToHtmlString(this IHtmlContent htmlContent)
         {
-            using (var writer = new StringWriter())
-            {
-                htmlContent.WriteTo(writer, HtmlEncoder.Default);
-                return writer.ToString();
-            }
+            using var writer = new StringWriter();
+            htmlContent.WriteTo(writer, HtmlEncoder.Default);
+            return writer.ToString();
         }
 
         public static ModelExpressionProvider GetModelExpressionProvider(this IHtmlHelper htmlHelper)
         {
-            var modelExpressionProvider = htmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(ModelExpressionProvider)) as ModelExpressionProvider;
-            if (modelExpressionProvider == null)
-                throw new InvalidOperationException($"{nameof(ModelExpressionProvider)} must be registered!");
-            return modelExpressionProvider;
+            return htmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(ModelExpressionProvider)) is not ModelExpressionProvider modelExpressionProvider
+                ? throw new InvalidOperationException($"{nameof(ModelExpressionProvider)} must be registered!")
+                : modelExpressionProvider;
         }
 
         public static IUrlHelper GetUrlHelper(this IHtmlHelper htmlHelper)
         {
-            var urlHelperFactory = htmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) as IUrlHelperFactory;
-            if (urlHelperFactory == null)
+            if (htmlHelper.ViewContext.HttpContext.RequestServices.GetService(typeof(IUrlHelperFactory)) is not IUrlHelperFactory urlHelperFactory)
                 throw new InvalidOperationException($"{nameof(IUrlHelperFactory)} must be registered!");
             var urlHelper = urlHelperFactory.GetUrlHelper(htmlHelper.ViewContext);
-            if (urlHelper == null)
-                throw new InvalidOperationException($"{nameof(IUrlHelper)} must be provided!");
-            return urlHelper;
+            return (IUrlHelper?)urlHelper ?? throw new InvalidOperationException($"{nameof(IUrlHelper)} must be provided!");
         }
     }
 }

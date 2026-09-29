@@ -5,7 +5,7 @@ using FluentBootstrapCore.Options;
 
 namespace FluentBootstrapCore.Components
 {
-    public class Popover : HtmlComponent, IPopover
+    public class Popover(bool isLink = false) : HtmlComponent, IPopover
     {
         public object? Content { get; set; }
         public string? CustomClass { get; set; }
@@ -18,19 +18,11 @@ namespace FluentBootstrapCore.Components
         public bool Dismissable { get; set; }
         public ButtonSize? Size { get; set; }
 
-
-        private readonly bool _isLink;
-
-        public Popover(bool isLink = false)
-        {
-            _isLink = isLink;
-        }
-
         public override string ToHtml()
         {
             ButtonComponent popover;
 
-            if (_isLink)
+            if (isLink)
                 popover = new LinkButton();
             else
                 popover = new Button();

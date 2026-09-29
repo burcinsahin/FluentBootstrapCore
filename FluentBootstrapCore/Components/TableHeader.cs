@@ -22,7 +22,7 @@ namespace FluentBootstrapCore.Components
             if (State.HasValue)
                 AddCss(State.GetCssDescription());
 
-            if (Data != null && Data.Any())
+            if (Data?.Any() == true)
             {
                 var tr = new TableRow();
                 foreach (var header in Data)

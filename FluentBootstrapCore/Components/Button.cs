@@ -28,7 +28,8 @@ namespace FluentBootstrapCore.Components
                 if (!Badge.UtilityOptions.Contains<BackgroundOptions>())
                     Badge.UtilityOptions.Add(new BackgroundOptions() { BgColor = BgColor.Secondary });
 
-                if (Badge.UtilityOptions.Contains<PositionOptions>() && Badge.UtilityOptions.Get<PositionOptions>().Absolute.HasValue)
+                var posOptions = Badge.UtilityOptions.Get<PositionOptions>();
+                if (Badge.UtilityOptions.Contains<PositionOptions>() && posOptions?.Absolute.HasValue == true)
                 {
                     UtilityOptions.Add(new PositionOptions
                     {

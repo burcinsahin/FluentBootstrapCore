@@ -4,7 +4,5 @@
         ICanHaveName,
         ICanBeDisabled,
         ICanBeRequired,
-        ICanBeReadonly
-    {
-    }
+        ICanBeReadonly;
 }

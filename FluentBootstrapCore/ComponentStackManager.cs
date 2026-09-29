@@ -1,14 +1,8 @@
-﻿using System.Linq;
-namespace FluentBootstrapCore
+﻿namespace FluentBootstrapCore
 {
-    internal class ComponentStackManager
+    internal static class ComponentStackManager
     {
-        private static IComponentStack? _component;
-        public static IComponentStack? ComponentStack
-        {
-            get { return _component; }
-            set { _component = value; }
-        }
+        public static IComponentStack? ComponentStack { get; set; }
 
         internal static bool Any<T>()
         {
