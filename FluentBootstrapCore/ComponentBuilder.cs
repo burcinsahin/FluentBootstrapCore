@@ -24,12 +24,14 @@ namespace FluentBootstrapCore
         {
             _htmlHelper = htmlHelper;
             _component = component;
+            ComponentStackManager.Use(_htmlHelper);
             _htmlHelper.ViewContext.Writer.Write(_component.Begin());
             _htmlHelper.ViewContext.Writer.Write(_component.Body());
         }
 
         public void Dispose()
         {
+            ComponentStackManager.Use(_htmlHelper);
             _htmlHelper.ViewContext.Writer.Write(_component.End());
             GC.SuppressFinalize(this);
         }

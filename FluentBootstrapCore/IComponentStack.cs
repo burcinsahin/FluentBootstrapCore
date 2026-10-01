@@ -1,4 +1,6 @@
-﻿namespace FluentBootstrapCore
+﻿using System.Collections.Generic;
+
+namespace FluentBootstrapCore
 {
     internal interface IComponentStack
     {
@@ -6,5 +8,10 @@
         IHtmlComponent? Pop();
         IHtmlComponent? Peek();
         IHtmlComponent? Find<T>();
+
+        /// <summary>
+        /// Returns the current stack contents ordered from top to bottom.
+        /// </summary>
+        IReadOnlyList<IHtmlComponent> Snapshot();
     }
 }

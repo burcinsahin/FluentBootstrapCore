@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="8.11.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="4.4.1" />
     <PackageReference Include="MSTest.TestFramework" Version="4.4.1" />
@@ -22,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FluentBootstrapCore\FluentBootstrapCore.csproj" />
+    <ProjectReference Include="..\FluentBootstrapCore.Test.WebUI\FluentBootstrapCore.Test.WebUI.csproj" />
   </ItemGroup>
 
 </Project>

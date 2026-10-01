@@ -33,6 +33,12 @@ namespace FluentBootstrapCore
             return item is Stack<IHtmlComponent> stack && stack.Count != 0 ? stack.Pop() : default;
         }
 
+        public IReadOnlyList<IHtmlComponent> Snapshot()
+        {
+            var item = htmlHelper.ViewContext.HttpContext.Items[_componentStackKey];
+            return item is Stack<IHtmlComponent> stack ? stack.ToArray() : [];
+        }
+
         public void Push(IHtmlComponent component)
         {
             if (htmlHelper.ViewContext.HttpContext.Items[_componentStackKey] is not Stack<IHtmlComponent> stack)

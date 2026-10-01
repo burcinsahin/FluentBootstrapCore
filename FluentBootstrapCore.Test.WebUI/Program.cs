@@ -33,3 +33,6 @@ app.MapControllerRoute(
     defaults: new { controller = "Home", action = "MvcTest" });
 
 app.Run();
+
+// Required so that WebApplicationFactory<Program> in FluentBootstrapCore.Test can reference the entry point.
+public partial class Program;
