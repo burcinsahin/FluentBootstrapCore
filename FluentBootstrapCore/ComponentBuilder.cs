@@ -31,6 +31,7 @@ namespace FluentBootstrapCore
         public void Dispose()
         {
             _htmlHelper.ViewContext.Writer.Write(_component.End());
+            GC.SuppressFinalize(this);
         }
     }
 }
