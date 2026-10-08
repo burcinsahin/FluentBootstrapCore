@@ -253,6 +253,32 @@ namespace FluentBootstrapCore
             return new CompositeContent<CheckButton>(HtmlHelper, checkButton);
         }
 
+        public BootstrapContent<Figure> Figure()
+        {
+            var figure = new Figure();
+            return new BootstrapContent<Figure>(HtmlHelper, figure);
+        }
+
+        /// <summary>
+        /// Figure with a fluid, rounded image and an optional caption.
+        /// </summary>
+        public BootstrapContent<Figure> Figure(string src, string? alt = null, object? caption = null)
+        {
+            var figure = new Figure();
+            var image = new Image
+            {
+                Source = src,
+                Alt = alt,
+                Fluid = true
+            };
+            image.AddCss(Css.FigureImg);
+            image.GetOptions<Options.BorderOptions>().BorderRadius = BorderRadius.Rounded;
+            figure.AddChild(image);
+            if (caption != null)
+                figure.AddChild(new FigureCaption { Content = caption });
+            return new BootstrapContent<Figure>(HtmlHelper, figure);
+        }
+
         public BootstrapContent<Input> Hidden(string? name = null, object? value = null)
         {
             var input = new Input

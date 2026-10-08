@@ -1,0 +1,15 @@
+@Html.Bootstrap().Heading2("Figures")
+@using (var figure = Html.Bootstrap().Figure().Margin(Margin.Bottom, 4).Begin())
+{
+    @figure.Image("https://picsum.photos/seed/figure1/400/300", "Placeholder image 1").Fluid().Border(borderRadius: BorderRadius.Rounded)
+    @figure.Caption("A caption for the above image.")
+}
+<br />
+@using (var figure = Html.Bootstrap().Figure().Margin(Margin.Bottom, 4).Begin())
+{
+    @figure.Image("https://picsum.photos/seed/figure2/400/300", "Placeholder image 2").Fluid().Border(borderRadius: BorderRadius.Rounded)
+    @figure.Caption("A caption for the above image.").AlignText(TextAlign.End)
+}
+<br />
+@Html.Bootstrap().Heading2("Figure shortcut")
+@Html.Bootstrap().Figure("https://picsum.photos/seed/figure3/400/300", "Placeholder image 3", "A caption for the above image.")
