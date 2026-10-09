@@ -32,7 +32,7 @@ namespace FluentBootstrapCore.Components
             if (Title != null)
                 MergeAttribute("title", Title);
 
-            if (HasParent<Form>(false))
+            if (HasParent<Form>(false) || HasParent<InputGroup>())
                 AddCss(Css.FormControl);
 
             base.PreBuild();

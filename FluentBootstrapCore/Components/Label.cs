@@ -15,6 +15,13 @@
             if (For != null)
                 MergeAttribute("for", For);
 
+            if (HasParent<InputGroup>())
+            {
+                // Inside an input group the label is an addon, not a regular form label
+                RemoveCss(Css.FormLabel);
+                AddCss(Css.InputGroupText);
+            }
+
             base.PreBuild();
         }
     }

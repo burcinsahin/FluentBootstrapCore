@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
 using System;
@@ -36,6 +36,30 @@ namespace FluentBootstrapCore.Extensions
         {
             if (toggle)
                 bootstrapContent.Component.MergeAttribute("data-bs-toggle", "button", true);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> DropdownToggle<TComponent>(this BootstrapContent<TComponent> bootstrapContent)
+            where TComponent : ButtonComponent, IButton
+        {
+            bootstrapContent.Component.AddCss(Css.DropdownToggle);
+            bootstrapContent.Component.MergeAttribute("data-bs-toggle", "dropdown");
+            bootstrapContent.Component.MergeAttribute("aria-expanded", false);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Split<TComponent>(this BootstrapContent<TComponent> bootstrapContent, string? visuallyHiddenText = "Toggle Dropdown")
+            where TComponent : ButtonComponent, IButton
+        {
+            bootstrapContent.Component.AddCss(Css.DropdownToggleSplit);
+            if (!string.IsNullOrEmpty(visuallyHiddenText))
+            {
+                var span = new HtmlElement("span", Css.VisuallyHidden)
+                {
+                    Content = visuallyHiddenText
+                };
+                bootstrapContent.Component.AddChild(span);
+            }
             return bootstrapContent;
         }
 

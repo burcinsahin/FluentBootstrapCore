@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Enums
 {
     public enum BgColor
     {
-        [Description()]
+        [Description]
         None,
         [Description(Css.BgPrimary)]
         Primary,

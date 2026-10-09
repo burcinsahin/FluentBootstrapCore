@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Extensions;
 using FluentBootstrapCore.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +12,7 @@ namespace FluentBootstrapCore.Components
         ICanBeMultiple,
         ICanBeDisabled,
         ICanHaveOptions,
+        ICanHaveName,
         ISizable<FormSelectSize>
     {
         public string? Name { get; set; }

@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +41,12 @@ namespace FluentBootstrapCore.Extensions
         public static BootstrapContent<DropdownMenu> Dark(this BootstrapContent<DropdownMenu> bootstrapContent)
         {
             bootstrapContent.Component.AddCss(Css.DropdownMenuDark);
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<DropdownMenu> AlignEnd(this BootstrapContent<DropdownMenu> bootstrapContent)
+        {
+            bootstrapContent.Component.AlignEnd = true;
             return bootstrapContent;
         }
         #endregion

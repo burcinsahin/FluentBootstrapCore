@@ -2,10 +2,10 @@
 
 namespace FluentBootstrapCore.Test.Extensions
 {
-    [TestClass()]
+    [TestClass]
     public class NumericExtensionsTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void Limit_Should()
         {
             ((byte)6).Limit((byte)0, (byte)5).Should().Be(5);

@@ -43,6 +43,10 @@ namespace FluentBootstrapCore.Components
                 MergeAttribute("readonly");
             if (Disabled)
                 MergeAttribute("disabled");
+
+            if (HasParent<InputGroup>())
+                AddCss(Css.FormControl);
+
             base.PreBuild();
         }
     }

@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Enums
 {
     public enum FormSelectSize
     {
-        [Description()]
+        [Description]
         Default,
         [Description(Css.FormSelectLg)]
         Lg,

@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Enums
 {
     public enum PaginationSize
     {
-        [Description()]
+        [Description]
         Default,
         [Description(Css.PaginationSm)]
         Small,

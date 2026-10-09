@@ -17,6 +17,9 @@ namespace FluentBootstrapCore.Components
             if (Checked)
                 MergeAttribute("checked");
 
+            if (HasParent<InputGroupText>())
+                AddCss(Css.FormCheckInput, Css.Mt0);
+
             base.PreBuild();
         }
     }

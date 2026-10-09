@@ -9,7 +9,7 @@ namespace FluentBootstrapCore.Enums
     public enum Border
     {
 
-        [Description()]
+        [Description]
         None = 0,
         [Description(Css.Border0)]
         NoAll = 1,

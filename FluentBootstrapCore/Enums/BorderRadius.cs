@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Enums
 {
     public enum BorderRadius
     {
-        [Description()]
+        [Description]
         None,
         [Description(Css.Rounded)]
         Rounded,

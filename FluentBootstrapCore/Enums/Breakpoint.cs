@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Enums
 {
     public enum Breakpoint
     {
-        [Description()]
+        [Description]
         Default,
         [Description("sm")]
         Small,

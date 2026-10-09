@@ -1,52 +1,318 @@
-﻿@{
-    var genderOpts = (SelectList)ViewBag.GenderOptions;
-}
-
 @using (Html.Bootstrap().Container().Begin())
 {
     @Html.Bootstrap().Heading2("Basic example")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.InputGroupText("@").Id("basic-addon1")
+            @group.Input().Placeholder("Username").Attribute("aria-label", "Username").Attribute("aria-describedby", "basic-addon1")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Input().Placeholder("Recipient's username").Attribute("aria-label", "Recipient's username").Attribute("aria-describedby", "basic-addon2")
+            @group.InputGroupText("@example.com").Id("basic-addon2")
+        }
+
+        @Html.Bootstrap().Label("Your vanity URL", "basic-url")
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.InputGroupText("https://example.com/users/").Id("basic-addon3")
+            @group.Input().Id("basic-url").Attribute("aria-describedby", "basic-addon3")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.InputGroupText("$")
+            @group.Input().Attribute("aria-label", "Amount (to the nearest dollar)")
+            @group.InputGroupText(".00")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Input().Placeholder("Username").Attribute("aria-label", "Username")
+            @group.InputGroupText("@")
+            @group.Input().Placeholder("Server").Attribute("aria-label", "Server")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Begin())
+        {
+            @group.InputGroupText("With textarea")
+            @group.TextArea().Attribute("aria-label", "With textarea")
+        }
     }
     @Html.Bootstrap().Heading2("Wrapping")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().NoWrap().Begin())
+        {
+            @group.InputGroupText("@").Id("addon-wrapping")
+            @group.Input().Placeholder("Username").Attribute("aria-label", "Username").Attribute("aria-describedby", "addon-wrapping")
+        }
     }
     @Html.Bootstrap().Heading2("Sizing")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().Size(InputGroupSize.Sm).Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.InputGroupText("Small").Id("inputGroup-sizing-sm")
+            @group.Input().Attribute("aria-label", "Sizing example input").Attribute("aria-describedby", "inputGroup-sizing-sm")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.InputGroupText("Default").Id("inputGroup-sizing-default")
+            @group.Input().Attribute("aria-label", "Sizing example input").Attribute("aria-describedby", "inputGroup-sizing-default")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Size(InputGroupSize.Lg).Begin())
+        {
+            @group.InputGroupText("Large").Id("inputGroup-sizing-lg")
+            @group.Input().Attribute("aria-label", "Sizing example input").Attribute("aria-describedby", "inputGroup-sizing-lg")
+        }
     }
     @Html.Bootstrap().Heading2("Checkboxes and radios")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @using (var addon = group.InputGroupText().Begin())
+            {
+                @addon.CheckBox().Attribute("aria-label", "Checkbox for following text input")
+            }
+            @group.Input().Attribute("aria-label", "Text input with checkbox")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Begin())
+        {
+            @using (var addon = group.InputGroupText().Begin())
+            {
+                @addon.RadioButton().Attribute("aria-label", "Radio button for following text input")
+            }
+            @group.Input().Attribute("aria-label", "Text input with radio button")
+        }
     }
     @Html.Bootstrap().Heading2("Multiple inputs")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().Begin())
+        {
+            @group.InputGroupText("First and last name")
+            @group.Input().Attribute("aria-label", "First name")
+            @group.Input().Attribute("aria-label", "Last name")
+        }
     }
     @Html.Bootstrap().Heading2("Multiple addons")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.InputGroupText("$")
+            @group.InputGroupText("0.00")
+            @group.Input().Attribute("aria-label", "Dollar amount (with dot and two decimal places)")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Begin())
+        {
+            @group.Input().Attribute("aria-label", "Dollar amount (with dot and two decimal places)")
+            @group.InputGroupText("$")
+            @group.InputGroupText("0.00")
+        }
     }
     @Html.Bootstrap().Heading2("Button addons")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Button("Button").Outline(ButtonOutlineState.Secondary).Id("button-addon1")
+            @group.Input().Placeholder("").Attribute("aria-label", "Example text with button addon").Attribute("aria-describedby", "button-addon1")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Input().Placeholder("Recipient's username").Attribute("aria-label", "Recipient's username").Attribute("aria-describedby", "button-addon2")
+            @group.Button("Button").Outline(ButtonOutlineState.Secondary).Id("button-addon2")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Button("Button").Outline(ButtonOutlineState.Secondary)
+            @group.Button("Button").Outline(ButtonOutlineState.Secondary)
+            @group.Input().Placeholder("").Attribute("aria-label", "Example text with two button addons")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Begin())
+        {
+            @group.Input().Placeholder("Recipient's username").Attribute("aria-label", "Recipient's username with two button addons")
+            @group.Button("Button").Outline(ButtonOutlineState.Secondary)
+            @group.Button("Button").Outline(ButtonOutlineState.Secondary)
+        }
     }
     @Html.Bootstrap().Heading2("Buttons with dropdowns")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.DropdownToggle("Dropdown").Outline(ButtonOutlineState.Secondary)
+            @using (var menu = group.DropdownMenu().Begin())
+            {
+                @menu.DropdownItem("Action", "#")
+                @menu.DropdownItem("Another action", "#")
+                @menu.DropdownItem("Something else here", "#")
+                @menu.DropdownDivider()
+                @menu.DropdownItem("Separated link", "#")
+            }
+            @group.Input().Attribute("aria-label", "Text input with dropdown button")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Input().Attribute("aria-label", "Text input with dropdown button")
+            @group.DropdownToggle("Dropdown").Outline(ButtonOutlineState.Secondary)
+            @using (var menu = group.DropdownMenu().AlignEnd().Begin())
+            {
+                @menu.DropdownItem("Action", "#")
+                @menu.DropdownItem("Another action", "#")
+                @menu.DropdownItem("Something else here", "#")
+                @menu.DropdownDivider()
+                @menu.DropdownItem("Separated link", "#")
+            }
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Begin())
+        {
+            @group.DropdownToggle("Dropdown").Outline(ButtonOutlineState.Secondary)
+            @using (var menu = group.DropdownMenu().Begin())
+            {
+                @menu.DropdownItem("Action before", "#")
+                @menu.DropdownItem("Another action before", "#")
+                @menu.DropdownItem("Something else here", "#")
+                @menu.DropdownDivider()
+                @menu.DropdownItem("Separated link", "#")
+            }
+            @group.Input().Attribute("aria-label", "Text input with 2 dropdown buttons")
+            @group.DropdownToggle("Dropdown").Outline(ButtonOutlineState.Secondary)
+            @using (var menu = group.DropdownMenu().AlignEnd().Begin())
+            {
+                @menu.DropdownItem("Action", "#")
+                @menu.DropdownItem("Another action", "#")
+                @menu.DropdownItem("Something else here", "#")
+                @menu.DropdownDivider()
+                @menu.DropdownItem("Separated link", "#")
+            }
+        }
     }
     @Html.Bootstrap().Heading2("Segmented buttons")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Button("Action").Outline(ButtonOutlineState.Secondary)
+            @group.DropdownToggle().Split().Outline(ButtonOutlineState.Secondary)
+            @using (var menu = group.DropdownMenu().Begin())
+            {
+                @menu.DropdownItem("Action", "#")
+                @menu.DropdownItem("Another action", "#")
+                @menu.DropdownItem("Something else here", "#")
+                @menu.DropdownDivider()
+                @menu.DropdownItem("Separated link", "#")
+            }
+            @group.Input().Attribute("aria-label", "Text input with segmented dropdown button")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Begin())
+        {
+            @group.Input().Attribute("aria-label", "Text input with segmented dropdown button")
+            @group.Button("Action").Outline(ButtonOutlineState.Secondary)
+            @group.DropdownToggle().Split().Outline(ButtonOutlineState.Secondary)
+            @using (var menu = group.DropdownMenu().AlignEnd().Begin())
+            {
+                @menu.DropdownItem("Action", "#")
+                @menu.DropdownItem("Another action", "#")
+                @menu.DropdownItem("Something else here", "#")
+                @menu.DropdownDivider()
+                @menu.DropdownItem("Separated link", "#")
+            }
+        }
     }
     @Html.Bootstrap().Heading2("Custom forms")
     @Html.Bootstrap().Heading5("Custom select")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Label("Options", "inputGroupSelect01")
+            @using (var select = group.Select().Id("inputGroupSelect01").Begin())
+            {
+                @select.Option("Choose...").Selected()
+                @select.Option("One", "1")
+                @select.Option("Two", "2")
+                @select.Option("Three", "3")
+            }
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @using (var select = group.Select().Id("inputGroupSelect02").Begin())
+            {
+                @select.Option("Choose...").Selected()
+                @select.Option("One", "1")
+                @select.Option("Two", "2")
+                @select.Option("Three", "3")
+            }
+            @group.Label("Options", "inputGroupSelect02")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Button("Button").Outline(ButtonOutlineState.Secondary)
+            @using (var select = group.Select().Id("inputGroupSelect03").Attribute("aria-label", "Example select with button addon").Begin())
+            {
+                @select.Option("Choose...").Selected()
+                @select.Option("One", "1")
+                @select.Option("Two", "2")
+                @select.Option("Three", "3")
+            }
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Begin())
+        {
+            @using (var select = group.Select().Id("inputGroupSelect04").Attribute("aria-label", "Example select with button addon").Begin())
+            {
+                @select.Option("Choose...").Selected()
+                @select.Option("One", "1")
+                @select.Option("Two", "2")
+                @select.Option("Three", "3")
+            }
+            @group.Button("Button").Outline(ButtonOutlineState.Secondary)
+        }
     }
     @Html.Bootstrap().Heading5("Custom file input")
     @using (Html.Bootstrap().Div().Begin())
     {
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Label("Upload", "inputGroupFile01")
+            @group.Input().Type(FormInputType.File).Id("inputGroupFile01")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Input().Type(FormInputType.File).Id("inputGroupFile02")
+            @group.Label("Upload", "inputGroupFile02")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Margin(Margin.Bottom, 3).Begin())
+        {
+            @group.Button("Button").Outline(ButtonOutlineState.Secondary).Id("inputGroupFileAddon03")
+            @group.Input().Type(FormInputType.File).Id("inputGroupFile03").Attribute("aria-describedby", "inputGroupFileAddon03").Attribute("aria-label", "Upload")
+        }
+
+        @using (var group = Html.Bootstrap().InputGroup().Begin())
+        {
+            @group.Input().Type(FormInputType.File).Id("inputGroupFile04").Attribute("aria-describedby", "inputGroupFileAddon04").Attribute("aria-label", "Upload")
+            @group.Button("Button").Outline(ButtonOutlineState.Secondary).Id("inputGroupFileAddon04")
+        }
     }
 }

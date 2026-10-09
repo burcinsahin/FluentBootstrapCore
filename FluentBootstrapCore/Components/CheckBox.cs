@@ -25,6 +25,10 @@ namespace FluentBootstrapCore.Components
                 MergeAttribute("role", Role);
             if (Indeterminate)
                 AddCss("indeterminate");
+
+            if (HasParent<InputGroupText>())
+                AddCss(Css.FormCheckInput, Css.Mt0);
+
             base.PreBuild();
         }
     }

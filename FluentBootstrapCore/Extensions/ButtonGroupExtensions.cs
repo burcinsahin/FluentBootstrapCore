@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
 
@@ -39,6 +39,23 @@ namespace FluentBootstrapCore.Extensions
             };
             button.AddCss(Css.DropdownToggle);
             button.MergeAttribute("data-bs-toggle", "dropdown");
+            return new BootstrapContent<Button>(builder.HtmlHelper, button);
+        }
+
+        public static BootstrapContent<Button> DropdownToggleSplit(this ComponentBuilder<ButtonGroup> builder, string? visuallyHiddenText = "Toggle Dropdown")
+        {
+            var button = new Button();
+            button.AddCss(Css.DropdownToggle, Css.DropdownToggleSplit);
+            button.MergeAttribute("data-bs-toggle", "dropdown");
+            button.MergeAttribute("aria-expanded", false);
+            if (!string.IsNullOrEmpty(visuallyHiddenText))
+            {
+                var span = new HtmlElement("span", Css.VisuallyHidden)
+                {
+                    Content = visuallyHiddenText
+                };
+                button.AddChild(span);
+            }
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
         }
 

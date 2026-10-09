@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Enums
 {
     public enum BorderColor
     {
-        [Description()]
+        [Description]
         None,
         [Description(Css.BorderPrimary)]
         Primary,

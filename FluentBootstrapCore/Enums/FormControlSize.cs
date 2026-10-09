@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Enums
 {
     public enum FormControlSize
     {
-        [Description()]
+        [Description]
         Default,
         [Description(Css.FormControlLg)]
         Lg,

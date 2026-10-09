@@ -1,4 +1,7 @@
-﻿namespace FluentBootstrapCore.Interfaces
+namespace FluentBootstrapCore.Interfaces
 {
-    internal interface ICanBeSelected;
+    public interface ICanBeSelected
+    {
+        bool Selected { get; set; }
+    }
 }

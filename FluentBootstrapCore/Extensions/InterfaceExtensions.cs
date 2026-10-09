@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
 using FluentBootstrapCore.Options;
@@ -35,6 +35,15 @@ namespace FluentBootstrapCore.Extensions
             where TComponent : SingleComponent, ICanHaveName
         {
             bootstrapContent.Component.Name = name;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<TComponent> Selected<TComponent>(
+            this BootstrapContent<TComponent> bootstrapContent,
+            bool value = true)
+            where TComponent : SingleComponent, ICanBeSelected
+        {
+            bootstrapContent.Component.Selected = value;
             return bootstrapContent;
         }
 

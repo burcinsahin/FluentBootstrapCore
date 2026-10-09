@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Enums
 {
     public enum TextColor
     {
-        [Description()]
+        [Description]
         None,
         [Description(Css.TextPrimary)]
         Primary,

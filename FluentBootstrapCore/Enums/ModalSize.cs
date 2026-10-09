@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Enums
 {
     public enum ModalSize
     {
-        [Description()]
+        [Description]
         Default,
         [Description(Css.ModalSm)]
         Small,

@@ -318,6 +318,16 @@ namespace FluentBootstrapCore
             return new BootstrapContent<InputGroup>(HtmlHelper, inputGroup);
         }
 
+        public BootstrapContent<Label> Label(object? content = null, string? @for = null)
+        {
+            var label = new Label(content)
+            {
+                For = @for
+            };
+            label.AddCss(Css.FormLabel);
+            return new BootstrapContent<Label>(HtmlHelper, label);
+        }
+
         public BootstrapContent<LinkButton> LinkButton(object? content, string href = "#")
         {
             var linkButton = new LinkButton

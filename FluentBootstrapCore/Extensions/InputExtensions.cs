@@ -1,6 +1,8 @@
-﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 
 namespace FluentBootstrapCore.Extensions
 {
@@ -46,6 +48,12 @@ namespace FluentBootstrapCore.Extensions
             where TComponent : FormInput
         {
             bootstrapContent.Component.AutoFocus = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<Input> Type(this BootstrapContent<Input> bootstrapContent, FormInputType type)
+        {
+            bootstrapContent.Component.Type = type;
             return bootstrapContent;
         }
 
@@ -129,13 +137,81 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<InputGroup>(builder.HtmlHelper, inputGroup);
         }
 
-        public static BootstrapContent<HtmlElement> InputGroupText(this ComponentBuilder<InputGroup> builder, object? content = null)
+        public static BootstrapContent<InputGroupText> InputGroupText(this ComponentBuilder<InputGroup> builder, object? content = null)
         {
-            var inputGroupText = new HtmlElement("span", Css.InputGroupText)
+            var inputGroupText = new InputGroupText
             {
                 Content = content
             };
-            return new BootstrapContent<HtmlElement>(builder.HtmlHelper, inputGroupText);
+            return new BootstrapContent<InputGroupText>(builder.HtmlHelper, inputGroupText);
+        }
+
+        /// <summary>
+        /// Label addon (label.input-group-text) of an input group.
+        /// </summary>
+        public static BootstrapContent<Label> Label(this ComponentBuilder<InputGroup> builder, object? content = null, string? @for = null)
+        {
+            var label = new Label(content)
+            {
+                For = @for
+            };
+            return new BootstrapContent<Label>(builder.HtmlHelper, label);
+        }
+
+        public static BootstrapContent<Select> Select(this ComponentBuilder<InputGroup> builder, IEnumerable<SelectListItem>? options = null, string? name = null)
+        {
+            var select = new Select
+            {
+                Name = name,
+                SelectList = options
+            };
+            return new BootstrapContent<Select>(builder.HtmlHelper, select);
+        }
+
+        public static BootstrapContent<SelectOption> Option<TComponent>(this ComponentBuilder<TComponent> builder, object? content = null, object? value = null)
+            where TComponent : BootstrapComponent, ICanCreate<SelectOption>
+        {
+            var option = new SelectOption
+            {
+                Content = content,
+                Value = value
+            };
+            return new BootstrapContent<SelectOption>(builder.HtmlHelper, option);
+        }
+
+        public static BootstrapContent<TextArea> TextArea(this ComponentBuilder<InputGroup> builder, string? name = null, object? value = null)
+        {
+            var textArea = new TextArea
+            {
+                Name = name,
+                Value = value,
+                Content = value
+            };
+            return new BootstrapContent<TextArea>(builder.HtmlHelper, textArea);
+        }
+
+        public static BootstrapContent<TextArea> Rows(this BootstrapContent<TextArea> bootstrapContent, short rows)
+        {
+            bootstrapContent.Component.Rows = rows;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<InputGroup> NoWrap(this BootstrapContent<InputGroup> bootstrapContent)
+        {
+            bootstrapContent.Component.NoWrap = true;
+            return bootstrapContent;
+        }
+
+        public static BootstrapContent<CheckBox> CheckBox(this ComponentBuilder<InputGroupText> builder)
+        {
+            var checkBox = new CheckBox();
+            return new BootstrapContent<CheckBox>(builder.HtmlHelper, checkBox);
+        }
+
+        public static BootstrapContent<RadioButton> RadioButton(this ComponentBuilder<InputGroupText> builder)
+        {
+            var radioButton = new RadioButton();
+            return new BootstrapContent<RadioButton>(builder.HtmlHelper, radioButton);
         }
 
         public static BootstrapContent<Input> Input<TComponent>(this ComponentBuilder<TComponent> builder)
@@ -143,6 +219,63 @@ namespace FluentBootstrapCore.Extensions
         {
             var input = new Input();
             return new BootstrapContent<Input>(builder.HtmlHelper, input);
+        }
+
+        public static BootstrapContent<Button> DropdownToggle(this ComponentBuilder<InputGroup> builder, object? content = null)
+        {
+            var button = new Button
+            {
+                Content = content
+            };
+            button.AddCss(Css.DropdownToggle);
+            button.MergeAttribute("data-bs-toggle", "dropdown");
+            button.MergeAttribute("aria-expanded", false);
+            return new BootstrapContent<Button>(builder.HtmlHelper, button);
+        }
+
+        public static BootstrapContent<Button> DropdownToggleSplit(this ComponentBuilder<InputGroup> builder, string? visuallyHiddenText = "Toggle Dropdown")
+        {
+            var button = new Button();
+            button.AddCss(Css.DropdownToggle, Css.DropdownToggleSplit);
+            button.MergeAttribute("data-bs-toggle", "dropdown");
+            button.MergeAttribute("aria-expanded", false);
+            if (!string.IsNullOrEmpty(visuallyHiddenText))
+            {
+                var span = new HtmlElement("span", Css.VisuallyHidden)
+                {
+                    Content = visuallyHiddenText
+                };
+                button.AddChild(span);
+            }
+            return new BootstrapContent<Button>(builder.HtmlHelper, button);
+        }
+
+        public static BootstrapContent<DropdownMenu> DropdownMenu(this ComponentBuilder<InputGroup> builder, bool alignEnd = false)
+        {
+            var menu = new DropdownMenu
+            {
+                AlignEnd = alignEnd
+            };
+            return new BootstrapContent<DropdownMenu>(builder.HtmlHelper, menu);
+        }
+
+        public static BootstrapContent<DropdownItem> DropdownItem(this ComponentBuilder<DropdownMenu> builder, object? content = null, string? href = null)
+        {
+            var item = new DropdownItem
+            {
+                Content = content,
+                Href = href
+            };
+            return new BootstrapContent<DropdownItem>(builder.HtmlHelper, item);
+        }
+
+        public static BootstrapContent<ListItem> DropdownDivider(this ComponentBuilder<DropdownMenu> builder)
+        {
+            var li = new ListItem
+            {
+                Content = new HtmlElement("hr", Css.DropdownDivider)
+            };
+            return new BootstrapContent<ListItem>(builder.HtmlHelper, li);
         }
 
 

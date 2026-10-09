@@ -4,7 +4,7 @@ namespace FluentBootstrapCore.Enums
 {
     public enum ButtonGroupSize
     {
-        [Description()]
+        [Description]
         Default,
         [Description(Css.BtnGroupLg)]
         Lg,
