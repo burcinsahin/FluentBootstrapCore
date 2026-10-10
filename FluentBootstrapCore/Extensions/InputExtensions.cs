@@ -233,51 +233,6 @@ namespace FluentBootstrapCore.Extensions
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
         }
 
-        public static BootstrapContent<Button> DropdownToggleSplit(this ComponentBuilder<InputGroup> builder, string? visuallyHiddenText = "Toggle Dropdown")
-        {
-            var button = new Button();
-            button.AddCss(Css.DropdownToggle, Css.DropdownToggleSplit);
-            button.MergeAttribute("data-bs-toggle", "dropdown");
-            button.MergeAttribute("aria-expanded", false);
-            if (!string.IsNullOrEmpty(visuallyHiddenText))
-            {
-                var span = new HtmlElement("span", Css.VisuallyHidden)
-                {
-                    Content = visuallyHiddenText
-                };
-                button.AddChild(span);
-            }
-            return new BootstrapContent<Button>(builder.HtmlHelper, button);
-        }
-
-        public static BootstrapContent<DropdownMenu> DropdownMenu(this ComponentBuilder<InputGroup> builder, bool alignEnd = false)
-        {
-            var menu = new DropdownMenu
-            {
-                AlignEnd = alignEnd
-            };
-            return new BootstrapContent<DropdownMenu>(builder.HtmlHelper, menu);
-        }
-
-        public static BootstrapContent<DropdownItem> DropdownItem(this ComponentBuilder<DropdownMenu> builder, object? content = null, string? href = null)
-        {
-            var item = new DropdownItem
-            {
-                Content = content,
-                Href = href
-            };
-            return new BootstrapContent<DropdownItem>(builder.HtmlHelper, item);
-        }
-
-        public static BootstrapContent<ListItem> DropdownDivider(this ComponentBuilder<DropdownMenu> builder)
-        {
-            var li = new ListItem
-            {
-                Content = new HtmlElement("hr", Css.DropdownDivider)
-            };
-            return new BootstrapContent<ListItem>(builder.HtmlHelper, li);
-        }
-
 
     }
 }

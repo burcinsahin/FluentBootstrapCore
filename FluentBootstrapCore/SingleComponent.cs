@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Enums;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -155,7 +155,12 @@ namespace FluentBootstrapCore
                 return;
             }
 
-            _tagBuilder.MergeAttribute(key, value.ToString(), replaceExisting);
+            // bool.ToString() gives "True"/"False"; HTML/ARIA attributes expect lowercase "true"/"false"
+            var stringValue = value is bool boolValue
+                ? (boolValue ? "true" : "false")
+                : value.ToString();
+
+            _tagBuilder.MergeAttribute(key, stringValue, replaceExisting);
         }
 
         public string? GetAttribute(string key)
