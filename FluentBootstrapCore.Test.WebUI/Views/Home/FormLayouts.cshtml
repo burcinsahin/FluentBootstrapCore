@@ -1,0 +1,212 @@
+@{
+    var stateOptions = new List<SelectListItem>
+    {
+        new SelectListItem { Text = "Choose...", Selected = true },
+        new SelectListItem { Text = "..." }
+    };
+    var preferenceOptions = new List<SelectListItem>
+    {
+        new SelectListItem { Text = "Choose...", Selected = true },
+        new SelectListItem { Text = "One", Value = "1" },
+        new SelectListItem { Text = "Two", Value = "2" },
+        new SelectListItem { Text = "Three", Value = "3" }
+    };
+}
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Layout")
+    @Html.Bootstrap().Heading3("Utilities")
+    @Html.Bootstrap().FormInput("Example label").Id("formGroupExampleInput").Placeholder("Example input placeholder").Margin(Margin.Bottom, 3)
+    @Html.Bootstrap().FormInput("Another label").Id("formGroupExampleInput2").Placeholder("Another input placeholder").Margin(Margin.Bottom, 3)
+    <hr />
+    @Html.Bootstrap().Heading3("Form grid")
+    @using (var row = Html.Bootstrap().Row().Begin())
+    {
+        @using (row.Column().Begin())
+        {
+            @Html.Bootstrap().Input().Css(Css.FormControl).Placeholder("First name").Attribute("aria-label", "First name")
+        }
+        @using (row.Column().Begin())
+        {
+            @Html.Bootstrap().Input().Css(Css.FormControl).Placeholder("Last name").Attribute("aria-label", "Last name")
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Gutters")
+    @using (var row = Html.Bootstrap().Row().Gutter(Gutter.All, 3).Begin())
+    {
+        @using (row.Column().Begin())
+        {
+            @Html.Bootstrap().Input().Css(Css.FormControl).Placeholder("First name").Attribute("aria-label", "First name")
+        }
+        @using (row.Column().Begin())
+        {
+            @Html.Bootstrap().Input().Css(Css.FormControl).Placeholder("Last name").Attribute("aria-label", "Last name")
+        }
+    }
+    <br />
+    @using (Html.Bootstrap().Form().Css(Css.Row).Gutter(Gutter.All, 3).Begin())
+    {
+        @Html.Bootstrap().FormInput("Email").Type(FormInputType.Email).Id("inputEmail4").Columnize(6, Breakpoint.Medium)
+        @Html.Bootstrap().FormInput("Password").Type(FormInputType.Password).Id("inputPassword4").Columnize(6, Breakpoint.Medium)
+        @Html.Bootstrap().FormInput("Address").Id("inputAddress").Placeholder("1234 Main St").Columnize(12)
+        @Html.Bootstrap().FormInput("Address 2").Id("inputAddress2").Placeholder("Apartment, studio, or floor").Columnize(12)
+        @Html.Bootstrap().FormInput("City").Id("inputCity").Columnize(6, Breakpoint.Medium)
+        @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Begin())
+        {
+            @Html.Bootstrap().Label("State", "inputState")
+            @Html.Bootstrap().Select("state", stateOptions).Id("inputState")
+        }
+        @Html.Bootstrap().FormInput("Zip").Id("inputZip").Columnize(2, Breakpoint.Medium)
+        @using (Html.Bootstrap().Column().Columnize(12).Begin())
+        {
+            @Html.Bootstrap().FormCheck("Check me out").Id("gridCheck")
+        }
+        @using (Html.Bootstrap().Column().Columnize(12).Begin())
+        {
+            @Html.Bootstrap().Button("Sign in").Type(ButtonType.Submit)
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Horizontal form")
+    @using (Html.Bootstrap().Form().Begin())
+    {
+        @using (var row = Html.Bootstrap().Row().Margin(Margin.Bottom, 3).Begin())
+        {
+            @Html.Bootstrap().Label("Email", "inputEmail3").ColumnLabel().Columnize(2, Breakpoint.Small)
+            @using (row.Column().Columnize(10, Breakpoint.Small).Begin())
+            {
+                @Html.Bootstrap().Input().Type(FormInputType.Email).Id("inputEmail3")
+            }
+        }
+        @using (var row = Html.Bootstrap().Row().Margin(Margin.Bottom, 3).Begin())
+        {
+            @Html.Bootstrap().Label("Password", "inputPassword3").ColumnLabel().Columnize(2, Breakpoint.Small)
+            @using (row.Column().Columnize(10, Breakpoint.Small).Begin())
+            {
+                @Html.Bootstrap().Input().Type(FormInputType.Password).Id("inputPassword3")
+            }
+        }
+        @using (Html.Bootstrap().Element("fieldset").Css(Css.Row, Css.Mb3).Begin())
+        {
+            @Html.Bootstrap().Element("legend", "Radios").Css(Css.ColFormLabel, Css.Pt0).Columnize(2, Breakpoint.Small)
+            @using (Html.Bootstrap().Column().Columnize(10, Breakpoint.Small).Begin())
+            {
+                @Html.Bootstrap().FormRadio("First radio").Name("gridRadios").Id("gridRadios1").Value("option1").Checked()
+                @Html.Bootstrap().FormRadio("Second radio").Name("gridRadios").Id("gridRadios2").Value("option2")
+                @Html.Bootstrap().FormRadio("Third disabled radio").Name("gridRadios").Id("gridRadios3").Value("option3").Disabled()
+            }
+        }
+        @using (Html.Bootstrap().Row().Margin(Margin.Bottom, 3).Begin())
+        {
+            @using (Html.Bootstrap().Column().Columnize(10, Breakpoint.Small).Offset(2, Breakpoint.Small).Begin())
+            {
+                @Html.Bootstrap().FormCheck("Example checkbox").Id("gridCheck1")
+            }
+        }
+        @Html.Bootstrap().Button("Sign in").Type(ButtonType.Submit)
+    }
+    <hr />
+    @Html.Bootstrap().Heading4("Horizontal form label sizing")
+    @using (var row = Html.Bootstrap().Row().Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Label("Email", "colFormLabelSm").ColumnLabel(FormControlSize.Sm).Columnize(2, Breakpoint.Small)
+        @using (row.Column().Columnize(10, Breakpoint.Small).Begin())
+        {
+            @Html.Bootstrap().Input().Type(FormInputType.Email).Css(Css.FormControl).Size(FormControlSize.Sm).Id("colFormLabelSm").Placeholder("col-form-label-sm")
+        }
+    }
+    @using (var row = Html.Bootstrap().Row().Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Label("Email", "colFormLabel").ColumnLabel().Columnize(2, Breakpoint.Small)
+        @using (row.Column().Columnize(10, Breakpoint.Small).Begin())
+        {
+            @Html.Bootstrap().Input().Type(FormInputType.Email).Css(Css.FormControl).Id("colFormLabel").Placeholder("col-form-label")
+        }
+    }
+    @using (var row = Html.Bootstrap().Row().Begin())
+    {
+        @Html.Bootstrap().Label("Email", "colFormLabelLg").ColumnLabel(FormControlSize.Lg).Columnize(2, Breakpoint.Small)
+        @using (row.Column().Columnize(10, Breakpoint.Small).Begin())
+        {
+            @Html.Bootstrap().Input().Type(FormInputType.Email).Css(Css.FormControl).Size(FormControlSize.Lg).Id("colFormLabelLg").Placeholder("col-form-label-lg")
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Column sizing")
+    @using (var row = Html.Bootstrap().Row().Gutter(Gutter.All, 3).Begin())
+    {
+        @using (row.Column().Columnize(7, Breakpoint.Small).Begin())
+        {
+            @Html.Bootstrap().Input().Css(Css.FormControl).Placeholder("City").Attribute("aria-label", "City")
+        }
+        @using (row.Column().Columnize(breakpoint: Breakpoint.Small).Begin())
+        {
+            @Html.Bootstrap().Input().Css(Css.FormControl).Placeholder("State").Attribute("aria-label", "State")
+        }
+        @using (row.Column().Columnize(breakpoint: Breakpoint.Small).Begin())
+        {
+            @Html.Bootstrap().Input().Css(Css.FormControl).Placeholder("Zip").Attribute("aria-label", "Zip")
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Auto-sizing")
+    @using (Html.Bootstrap().Form().Css(Css.Row).Gutter(Gutter.Vertical, 2).Gutter(Gutter.Horizontal, 3).AlignItems(AlignItems.Center).Begin())
+    {
+        @using (Html.Bootstrap().Column().Columnize(0).Begin())
+        {
+            @Html.Bootstrap().Label("Name", "autoSizingInput").VisuallyHidden()
+            @Html.Bootstrap().Input().Id("autoSizingInput").Placeholder("Jane Doe")
+        }
+        @using (Html.Bootstrap().Column().Columnize(0).Begin())
+        {
+            @Html.Bootstrap().Label("Username", "autoSizingInputGroup").VisuallyHidden()
+            @using (var group = Html.Bootstrap().InputGroup().Begin())
+            {
+                @group.InputGroupText("@")
+                @group.Input().Id("autoSizingInputGroup").Placeholder("Username")
+            }
+        }
+        @using (Html.Bootstrap().Column().Columnize(0).Begin())
+        {
+            @Html.Bootstrap().Label("Preference", "autoSizingSelect").VisuallyHidden()
+            @Html.Bootstrap().Select("preference", preferenceOptions).Id("autoSizingSelect")
+        }
+        @using (Html.Bootstrap().Column().Columnize(0).Begin())
+        {
+            @Html.Bootstrap().FormCheck("Remember me").Id("autoSizingCheck")
+        }
+        @using (Html.Bootstrap().Column().Columnize(0).Begin())
+        {
+            @Html.Bootstrap().Button("Submit").Type(ButtonType.Submit)
+        }
+    }
+    <hr />
+    @Html.Bootstrap().Heading3("Inline forms")
+    @using (Html.Bootstrap().Form().Css(Css.Row, "row-cols-lg-auto").Gutter(Gutter.All, 3).AlignItems(AlignItems.Center).Begin())
+    {
+        @using (Html.Bootstrap().Column().Columnize(12).Begin())
+        {
+            @Html.Bootstrap().Label("Username", "inlineFormInputGroupUsername").VisuallyHidden()
+            @using (var group = Html.Bootstrap().InputGroup().Begin())
+            {
+                @group.InputGroupText("@")
+                @group.Input().Id("inlineFormInputGroupUsername").Placeholder("Username")
+            }
+        }
+        @using (Html.Bootstrap().Column().Columnize(12).Begin())
+        {
+            @Html.Bootstrap().Label("Preference", "inlineFormSelectPref").VisuallyHidden()
+            @Html.Bootstrap().Select("preference", preferenceOptions).Id("inlineFormSelectPref")
+        }
+        @using (Html.Bootstrap().Column().Columnize(12).Begin())
+        {
+            @Html.Bootstrap().FormCheck("Remember me").Id("inlineFormCheck")
+        }
+        @using (Html.Bootstrap().Column().Columnize(12).Begin())
+        {
+            @Html.Bootstrap().Button("Submit").Type(ButtonType.Submit)
+        }
+    }
+    <hr />
+}

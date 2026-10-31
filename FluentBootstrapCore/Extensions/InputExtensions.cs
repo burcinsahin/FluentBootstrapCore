@@ -130,6 +130,54 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
+        /// <summary>
+        /// Turns a label into a horizontal form column label (<c>col-form-label</c>).
+        /// </summary>
+        /// <remarks>
+        /// Replaces the default <c>form-label</c> class of the label with <c>col-form-label</c>, which aligns the
+        /// label text vertically with the form control next to it inside a grid row. The width of the label is not
+        /// set by this method; use <c>Columnize</c> (e.g. <c>Columnize(2, Breakpoint.Small)</c> for <c>col-sm-2</c>).
+        /// </remarks>
+        /// <param name="bootstrapContent">The label to convert.</param>
+        /// <param name="size">
+        /// Optional label size. <see cref="FormControlSize.Sm"/> adds <c>col-form-label-sm</c> and
+        /// <see cref="FormControlSize.Lg"/> adds <c>col-form-label-lg</c>. <see cref="FormControlSize.Default"/> adds no size class.
+        /// </param>
+        /// <returns>The same label, for chaining.</returns>
+        public static BootstrapContent<Label> ColumnLabel(this BootstrapContent<Label> bootstrapContent, FormControlSize size = FormControlSize.Default)
+        {
+            var label = bootstrapContent.Component;
+            label.RemoveCss(Css.FormLabel);
+            label.AddCss(Css.ColFormLabel);
+            switch (size)
+            {
+                case FormControlSize.Sm:
+                    label.AddCss(Css.ColFormLabelSm);
+                    break;
+                case FormControlSize.Lg:
+                    label.AddCss(Css.ColFormLabelLg);
+                    break;
+            }
+            return bootstrapContent;
+        }
+
+        /// <summary>
+        /// Hides a label visually while keeping it available to screen readers (<c>visually-hidden</c>).
+        /// </summary>
+        /// <remarks>
+        /// Replaces the default <c>form-label</c> class of the label with <c>visually-hidden</c>, so no
+        /// label spacing styles remain on the hidden element.
+        /// </remarks>
+        /// <param name="bootstrapContent">The label to hide.</param>
+        /// <returns>The same label, for chaining.</returns>
+        public static BootstrapContent<Label> VisuallyHidden(this BootstrapContent<Label> bootstrapContent)
+        {
+            var label = bootstrapContent.Component;
+            label.RemoveCss(Css.FormLabel);
+            label.AddCss(Css.VisuallyHidden);
+            return bootstrapContent;
+        }
+
         public static BootstrapContent<InputGroup> InputGroup<TComponent>(this ComponentBuilder<TComponent> builder)
             where TComponent : SingleComponent, ICanCreate<InputGroup>
         {

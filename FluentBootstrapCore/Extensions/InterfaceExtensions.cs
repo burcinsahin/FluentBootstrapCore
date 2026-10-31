@@ -155,14 +155,6 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> JustifyContent<TComponent>(
-            this BootstrapContent<TComponent> bootstrapContent, JustifyContent justifyContent, Breakpoint br = Breakpoint.Default)
-            where TComponent : SingleComponent, IJustifyContent
-        {
-            (bootstrapContent.Component.JustifyContent ??= []).TryAdd(br, justifyContent);
-            return bootstrapContent;
-        }
-
         public static BootstrapContent<TComponent> Options<TComponent>(this BootstrapContent<TComponent> bootstrapContent,
             IEnumerable<SelectListItem> list)
             where TComponent : SingleComponent, ICanHaveOptions

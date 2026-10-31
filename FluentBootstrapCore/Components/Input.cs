@@ -1,14 +1,16 @@
 ﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Extensions;
 using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
-    public class Input : InputComponent, ICanHaveTitle
+    public class Input : InputComponent, ICanHaveTitle, ISizable<FormControlSize>
     {
         public bool AutoFocus { get; set; }
         public int MaxLength { get; set; }
         public bool Multiple { get; set; }
         public string? Title { get; set; }
+        public FormControlSize? Size { get; set; }
 
         public Input()
             : base(FormInputType.Text)
@@ -34,6 +36,9 @@ namespace FluentBootstrapCore.Components
 
             if (HasParent<Form>(false) || HasParent<InputGroup>())
                 AddCss(Css.FormControl);
+
+            if (Size.HasValue)
+                AddCss(Size.GetCssDescription());
 
             base.PreBuild();
         }

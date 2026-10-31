@@ -20,19 +20,19 @@
     @Html.Bootstrap().Heading3("Vertical alignment")
     @using (var container = Html.Bootstrap().Container().Css("vertical-example").TextCenter().Begin())
     {
-        @using (var row = LayoutExtensions.AlignItems(container.Row(), AlignItems.Start).Begin())
+        @using (var row = container.Row().AlignItems(AlignItems.Start).Begin())
         {
             @row.Column().Content("One of three columns")
             @row.Column().Content("One of three columns")
             @row.Column().Content("One of three columns")
         }
-        @using (var row = LayoutExtensions.AlignItems(container.Row(), AlignItems.Center).Begin())
+        @using (var row = container.Row().AlignItems(AlignItems.Center).Begin())
         {
             @row.Column().Content("One of three columns")
             @row.Column().Content("One of three columns")
             @row.Column().Content("One of three columns")
         }
-        @using (var row = LayoutExtensions.AlignItems(container.Row(), AlignItems.End).Begin())
+        @using (var row = container.Row().AlignItems(AlignItems.End).Begin())
         {
             @row.Column().Content("One of three columns")
             @row.Column().Content("One of three columns")
@@ -52,32 +52,32 @@
     @Html.Bootstrap().Heading3("Horizontal alignment")
     @using (var container = Html.Bootstrap().Container().TextCenter().Begin())
     {
-        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Start).Begin())
+        @using (var row = container.Row().JustifyContent(JustifyContent.Start).Begin())
         {
             @row.Column().Columnize(4).Content("One of two columns")
             @row.Column().Columnize(4).Content("One of two columns")
         }
-        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Center).Begin())
+        @using (var row = container.Row().JustifyContent(JustifyContent.Center).Begin())
         {
             @row.Column().Columnize(4).Content("One of two columns")
             @row.Column().Columnize(4).Content("One of two columns")
         }
-        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.End).Begin())
+        @using (var row = container.Row().JustifyContent(JustifyContent.End).Begin())
         {
             @row.Column().Columnize(4).Content("One of two columns")
             @row.Column().Columnize(4).Content("One of two columns")
         }
-        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Around).Begin())
+        @using (var row = container.Row().JustifyContent(JustifyContent.Around).Begin())
         {
             @row.Column().Columnize(4).Content("One of two columns")
             @row.Column().Columnize(4).Content("One of two columns")
         }
-        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Between).Begin())
+        @using (var row = container.Row().JustifyContent(JustifyContent.Between).Begin())
         {
             @row.Column().Columnize(4).Content("One of two columns")
             @row.Column().Columnize(4).Content("One of two columns")
         }
-        @using (var row = InterfaceExtensions.JustifyContent(container.Row(), JustifyContent.Evenly).Begin())
+        @using (var row = container.Row().JustifyContent(JustifyContent.Evenly).Begin())
         {
             @row.Column().Columnize(4).Content("One of two columns")
             @row.Column().Columnize(4).Content("One of two columns")

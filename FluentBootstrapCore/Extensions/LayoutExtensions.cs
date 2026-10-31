@@ -71,13 +71,6 @@ namespace FluentBootstrapCore.Extensions
             return bootstrapContent;
         }
 
-        public static BootstrapContent<TComponent> AlignItems<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignItems alignItem, Breakpoint br = Breakpoint.Default)
-            where TComponent : SingleComponent, IAlignItem
-        {
-            (bootstrapContent.Component.AlignItem ??= []).TryAdd(br, alignItem);
-            return bootstrapContent;
-        }
-
         public static BootstrapContent<TComponent> Offset<TComponent>(this BootstrapContent<TComponent> bootstrapContent, byte offset, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : SingleComponent, IOffsetable
         {
@@ -107,7 +100,7 @@ namespace FluentBootstrapCore.Extensions
                 return bootstrapContent;
             }
 
-            value = value.Value.Limit((byte)0, (byte)10);
+            value = value.Value.Limit((byte)0, (byte)12);
             if (value == 0)
             {
                 bootstrapContent.Component.AddCss($"col{breakpoint.GetHyphenatedDescription()}-auto");

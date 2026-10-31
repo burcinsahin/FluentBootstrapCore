@@ -8,7 +8,8 @@ namespace FluentBootstrapCore.Components
         ICanCreate<FormCheck>,
         ICanCreate<FormRadio>,
         ICanCreate<Button>,
-        ICanCreate<Label>
+        ICanCreate<Label>,
+        IGutterable
     {
         public string? Action { get; set; }
         public string? Method { get; set; }

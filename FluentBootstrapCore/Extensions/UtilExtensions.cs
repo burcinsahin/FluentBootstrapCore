@@ -74,8 +74,6 @@ namespace FluentBootstrapCore.Extensions
         public static BootstrapContent<TComponent> Flex<TComponent>(this BootstrapContent<TComponent> bootstrapContent, FlexDirection flexDir, Breakpoint breakpoint = Breakpoint.Default)
     where TComponent : BootstrapComponent
         {
-            bootstrapContent.Display(Enums.Display.Flex);
-
             var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
             flexOpts.Direction.TryAdd(breakpoint, flexDir);
             return bootstrapContent;
@@ -84,8 +82,6 @@ namespace FluentBootstrapCore.Extensions
         public static BootstrapContent<TComponent> JustifyContent<TComponent>(this BootstrapContent<TComponent> bootstrapContent, JustifyContent justifyContent, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : BootstrapComponent
         {
-            bootstrapContent.Display(Enums.Display.Flex);
-
             var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
             flexOpts.JustifyContent.TryAdd(breakpoint, justifyContent);
             return bootstrapContent;
@@ -94,8 +90,6 @@ namespace FluentBootstrapCore.Extensions
         public static BootstrapContent<TComponent> AlignItems<TComponent>(this BootstrapContent<TComponent> bootstrapContent, AlignItems alignItems, Breakpoint breakpoint = Breakpoint.Default)
             where TComponent : BootstrapComponent
         {
-            bootstrapContent.Display(Enums.Display.Flex);
-
             var flexOpts = bootstrapContent.Component.GetOptions<FlexOptions>();
             flexOpts.AlignItems.TryAdd(breakpoint, alignItems);
             return bootstrapContent;
