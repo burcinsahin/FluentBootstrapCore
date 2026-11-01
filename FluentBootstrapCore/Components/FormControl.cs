@@ -1,11 +1,11 @@
-﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Extensions;
 using FluentBootstrapCore.Interfaces;
 using FluentBootstrapCore.Options;
 
 namespace FluentBootstrapCore.Components
 {
-    public abstract class FormControl<TComponent> : BootstrapComponent, IFormControl
+    public abstract class FormControl<TComponent> : BootstrapComponent, IFormControl, ICanBeValid, ICanHaveFeedback
         where TComponent : BootstrapComponent, IInputComponent
     {
         public bool Readonly { get; set; }
@@ -16,6 +16,10 @@ namespace FluentBootstrapCore.Components
         public bool Required { get; set; }
         public FormControlSize? Size { get; set; }
         public bool Invalid { get; set; }
+        public bool Valid { get; set; }
+        public string? ValidFeedback { get; set; }
+        public string? InvalidFeedback { get; set; }
+        public bool FeedbackTooltip { get; set; }
 
         protected bool _labelFirst;
         internal abstract TComponent Input { get; }
@@ -55,6 +59,9 @@ namespace FluentBootstrapCore.Components
             if (Invalid)
                 Input.AddCss(Css.IsInvalid);
 
+            if (Valid)
+                Input.AddCss(Css.IsValid);
+
             if (Label != null)
             {
                 _label.AddCss(Css.FormLabel);
@@ -68,6 +75,8 @@ namespace FluentBootstrapCore.Components
 
             if (Label != null && !_labelFirst)
                 AddChild(_label);
+
+            ValidationFeedback.Apply(this, this, Input, Invalid, Valid);
 
             base.PreBuild();
         }

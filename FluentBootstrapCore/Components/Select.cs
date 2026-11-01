@@ -13,6 +13,9 @@ namespace FluentBootstrapCore.Components
         ICanBeDisabled,
         ICanHaveOptions,
         ICanHaveName,
+        ICanBeRequired,
+        ICanBeInvalid,
+        ICanBeValid,
         ISizable<FormSelectSize>
     {
         public string? Name { get; set; }
@@ -20,6 +23,9 @@ namespace FluentBootstrapCore.Components
         public object? SelectedValue { get; set; }
         public bool Multiple { get; set; }
         public bool Disabled { get; set; }
+        public bool Required { get; set; }
+        public bool Invalid { get; set; }
+        public bool Valid { get; set; }
         public FormSelectSize? Size { get; set; }
 
         public Select()
@@ -36,6 +42,12 @@ namespace FluentBootstrapCore.Components
                 MergeAttribute("multiple");
             if (Disabled)
                 MergeAttribute("disabled");
+            if (Required)
+                MergeAttribute("required", true);
+            if (Invalid)
+                AddCss(Css.IsInvalid);
+            if (Valid)
+                AddCss(Css.IsValid);
 
             if (Size.HasValue && Size != FormSelectSize.Default)
                 AddCss(Size.GetCssDescription());

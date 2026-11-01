@@ -1,0 +1,209 @@
+@{
+    var states = new List<SelectListItem>
+    {
+        new("Choose...", "", true, true),
+        new("...", "1")
+    };
+}
+@Html.Bootstrap().Heading1("Validation")
+@Html.Bootstrap().Heading2("Custom styles").Margin(Margin.Top, 5)
+@using (Html.Bootstrap().Form().Row().NeedsValidation().Gutter(Gutter.All, 3).Begin())
+{
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("First name").Id("validationCustom01").Value("Mark").Required().ValidFeedback("Looks good!")
+    }
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("Last name").Id("validationCustom02").Value("Otto").Required().ValidFeedback("Looks good!")
+    }
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().Label("Username", "validationCustomUsername")
+        @using (var group = Html.Bootstrap().InputGroup().HasValidation().Begin())
+        {
+            @group.InputGroupText("@").Id("inputGroupPrepend")
+            @group.Input().Id("validationCustomUsername").Attribute("aria-describedby", "inputGroupPrepend").Required()
+            @Html.Bootstrap().InvalidFeedback("Please choose a username.")
+        }
+    }
+    @using (Html.Bootstrap().Column().Columnize(6, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("City").Id("validationCustom03").Required().InvalidFeedback("Please provide a valid city.")
+    }
+    @using (Html.Bootstrap().Column().Columnize(3, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormSelect("State").Id("validationCustom04").Options(states).Required().InvalidFeedback("Please select a valid state.")
+    }
+    @using (Html.Bootstrap().Column().Columnize(3, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("Zip").Id("validationCustom05").Required().InvalidFeedback("Please provide a valid zip.")
+    }
+    @using (Html.Bootstrap().Column().Columnize(12).Begin())
+    {
+        @Html.Bootstrap().FormCheck("Agree to terms and conditions").Id("invalidCheck").Required().InvalidFeedback("You must agree before submitting.")
+    }
+    @using (Html.Bootstrap().Column().Columnize(12).Begin())
+    {
+        @Html.Bootstrap().Button("Submit form").Type(ButtonType.Submit)
+    }
+}
+
+@Html.Bootstrap().Heading2("Browser default validation").Margin(Margin.Top, 5)
+@using (Html.Bootstrap().Form().Row().Gutter(Gutter.All, 3).Begin())
+{
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("First name").Id("validationDefault01").Value("Mark").Required()
+    }
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("Last name").Id("validationDefault02").Value("Otto").Required()
+    }
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().Label("Username", "validationDefaultUsername")
+        @using (var group = Html.Bootstrap().InputGroup().Begin())
+        {
+            @group.InputGroupText("@").Id("inputGroupPrepend2")
+            @group.Input().Id("validationDefaultUsername").Attribute("aria-describedby", "inputGroupPrepend2").Required()
+        }
+    }
+    @using (Html.Bootstrap().Column().Columnize(6, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("City").Id("validationDefault03").Required()
+    }
+    @using (Html.Bootstrap().Column().Columnize(3, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormSelect("State").Id("validationDefault04").Options(states).Required()
+    }
+    @using (Html.Bootstrap().Column().Columnize(3, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("Zip").Id("validationDefault05").Required()
+    }
+    @using (Html.Bootstrap().Column().Columnize(12).Begin())
+    {
+        @Html.Bootstrap().FormCheck("Agree to terms and conditions").Id("validationCheck").Required()
+    }
+    @using (Html.Bootstrap().Column().Columnize(12).Begin())
+    {
+        @Html.Bootstrap().Button("Submit form").Type(ButtonType.Submit)
+    }
+}
+
+@Html.Bootstrap().Heading2("Server side").Margin(Margin.Top, 5)
+@using (Html.Bootstrap().Form().Row().Gutter(Gutter.All, 3).Begin())
+{
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("First name").Id("validationServer01").Value("Mark").Required().Valid().ValidFeedback("Looks good!")
+    }
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("Last name").Id("validationServer02").Value("Otto").Required().Valid().ValidFeedback("Looks good!")
+    }
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().Label("Username", "validationServerUsername")
+        @using (var group = Html.Bootstrap().InputGroup().HasValidation().Begin())
+        {
+            @group.InputGroupText("@").Id("inputGroupPrepend3")
+            @group.Input().Id("validationServerUsername").Attribute("aria-describedby", "inputGroupPrepend3 validationServerUsernameFeedback").Required().Invalid()
+            @Html.Bootstrap().InvalidFeedback("Please choose a username.").Id("validationServerUsernameFeedback")
+        }
+    }
+    @using (Html.Bootstrap().Column().Columnize(6, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("City").Id("validationServer03").Required().Invalid().InvalidFeedback("Please provide a valid city.")
+    }
+    @using (Html.Bootstrap().Column().Columnize(3, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormSelect("State").Id("validationServer04").Options(states).Required().Valid().ValidFeedback("Looks good!")
+    }
+    @using (Html.Bootstrap().Column().Columnize(3, Breakpoint.Medium).Begin())
+    {
+        @Html.Bootstrap().FormInput("Zip").Id("validationServer05").Required().Invalid().InvalidFeedback("Please provide a valid zip.")
+    }
+    @using (Html.Bootstrap().Column().Columnize(12).Begin())
+    {
+        @Html.Bootstrap().FormCheck("Agree to terms and conditions").Id("validationServer06").Required().Invalid().InvalidFeedback("You must agree before submitting.")
+    }
+    @using (Html.Bootstrap().Column().Columnize(12).Begin())
+    {
+        @Html.Bootstrap().Button("Submit form").Type(ButtonType.Submit)
+    }
+}
+
+@Html.Bootstrap().Heading2("Checkboxes and radios").Margin(Margin.Top, 5)
+@using (Html.Bootstrap().Form().WasValidated().Begin())
+{
+    @Html.Bootstrap().FormCheck("Check this checkbox").Id("validationFormCheck1").Required().InvalidFeedback("Example invalid feedback text").Margin(Margin.Bottom, 3)
+    @Html.Bootstrap().FormRadio("Toggle this radio").Id("validationFormCheck2").Name("radio-stacked").Required().Margin(Margin.Bottom, 3)
+    @Html.Bootstrap().FormRadio("Or toggle this other radio").Id("validationFormCheck3").Name("radio-stacked").Required().InvalidFeedback("More example invalid feedback text").Margin(Margin.Bottom, 3)
+    @using (Html.Bootstrap().Div().Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Label("File example", "validationFile").VisuallyHidden()
+        @Html.Bootstrap().FormInput().Id("validationFile").Type(FormInputType.File).Required().InvalidFeedback("Example invalid form file feedback")
+    }
+    @using (Html.Bootstrap().Div().Margin(Margin.Bottom, 3).Begin())
+    {
+        @Html.Bootstrap().Button("Submit form").Type(ButtonType.Submit).Disabled()
+    }
+}
+
+@Html.Bootstrap().Heading2("Tooltips").Margin(Margin.Top, 5)
+@using (Html.Bootstrap().Form().Row().Gutter(Gutter.All, 3).NeedsValidation().Begin())
+{
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Position(Position.Relative).Begin())
+    {
+        @Html.Bootstrap().FormInput("First name").Id("validationTooltip01").Value("Mark").Required().ValidFeedback("Looks good!").FeedbackTooltip()
+    }
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Position(Position.Relative).Begin())
+    {
+        @Html.Bootstrap().FormInput("Last name").Id("validationTooltip02").Value("Otto").Required().ValidFeedback("Looks good!").FeedbackTooltip()
+    }
+    @using (Html.Bootstrap().Column().Columnize(4, Breakpoint.Medium).Position(Position.Relative).Begin())
+    {
+        @Html.Bootstrap().Label("Username", "validationTooltipUsername")
+        @using (var group = Html.Bootstrap().InputGroup().HasValidation().Begin())
+        {
+            @group.InputGroupText("@").Id("validationTooltipUsernamePrepend")
+            @group.Input().Id("validationTooltipUsername").Attribute("aria-describedby", "validationTooltipUsernamePrepend").Required()
+            @Html.Bootstrap().InvalidFeedback("Please choose a unique and valid username.", tooltip: true)
+        }
+    }
+    @using (Html.Bootstrap().Column().Columnize(6, Breakpoint.Medium).Position(Position.Relative).Begin())
+    {
+        @Html.Bootstrap().FormInput("City").Id("validationTooltip03").Required().InvalidFeedback("Please provide a valid city.").FeedbackTooltip()
+    }
+    @using (Html.Bootstrap().Column().Columnize(3, Breakpoint.Medium).Position(Position.Relative).Begin())
+    {
+        @Html.Bootstrap().FormSelect("State").Id("validationTooltip04").Options(states).Required().InvalidFeedback("Please select a valid state.").FeedbackTooltip()
+    }
+    @using (Html.Bootstrap().Column().Columnize(3, Breakpoint.Medium).Position(Position.Relative).Begin())
+    {
+        @Html.Bootstrap().FormInput("Zip").Id("validationTooltip05").Required().InvalidFeedback("Please provide a valid zip.").FeedbackTooltip()
+    }
+    @using (Html.Bootstrap().Column().Columnize(12).Begin())
+    {
+        @Html.Bootstrap().Button("Submit form").Type(ButtonType.Submit)
+    }
+}
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>

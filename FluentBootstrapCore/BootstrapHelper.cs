@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -548,6 +548,32 @@ namespace FluentBootstrapCore
                 Label = label
             };
             return new BootstrapContent<FormTextArea>(helper, formTextArea);
+        }
+
+        /// <summary>
+        /// Standalone <c>valid-feedback</c> (or <c>valid-tooltip</c>) element, for controls without feedback support,
+        /// e.g. an input inside an input group. It must be rendered right after the input it belongs to.
+        /// </summary>
+        public BootstrapContent<HtmlElement> ValidFeedback(object? content = null, bool tooltip = false)
+        {
+            var feedback = new HtmlElement("div", tooltip ? Css.ValidTooltip : Css.ValidFeedback)
+            {
+                Content = content
+            };
+            return new BootstrapContent<HtmlElement>(HtmlHelper, feedback);
+        }
+
+        /// <summary>
+        /// Standalone <c>invalid-feedback</c> (or <c>invalid-tooltip</c>) element, for controls without feedback support,
+        /// e.g. an input inside an input group. It must be rendered right after the input it belongs to.
+        /// </summary>
+        public BootstrapContent<HtmlElement> InvalidFeedback(object? content = null, bool tooltip = false)
+        {
+            var feedback = new HtmlElement("div", tooltip ? Css.InvalidTooltip : Css.InvalidFeedback)
+            {
+                Content = content
+            };
+            return new BootstrapContent<HtmlElement>(HtmlHelper, feedback);
         }
         #endregion
     }

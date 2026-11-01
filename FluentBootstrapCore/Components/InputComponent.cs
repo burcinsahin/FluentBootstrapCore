@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Extensions;
 using FluentBootstrapCore.Interfaces;
 
@@ -7,7 +7,10 @@ namespace FluentBootstrapCore.Components
     public abstract class InputComponent(FormInputType inputType, params string[] cssClasses) : BootstrapComponent("input", cssClasses),
         IInputComponent,
         IPlaceholder,
-        ICanBeReadonly
+        ICanBeReadonly,
+        ICanBeRequired,
+        ICanBeInvalid,
+        ICanBeValid
     {
         public FormInputType Type { get; set; } = inputType;
         public object? Value { get; set; }
@@ -17,6 +20,8 @@ namespace FluentBootstrapCore.Components
         public bool Required { get; set; }
         public bool AutoComplete { get; set; } = true;
         public bool Readonly { get; set; }
+        public bool Invalid { get; set; }
+        public bool Valid { get; set; }
 
         protected override void PreBuild()
         {
@@ -31,6 +36,12 @@ namespace FluentBootstrapCore.Components
                 MergeAttribute("autocomplete", "off");
             if (Readonly)
                 MergeAttribute("readonly");
+            if (Required)
+                MergeAttribute("required", true);
+            if (Invalid)
+                AddCss(Css.IsInvalid);
+            if (Valid)
+                AddCss(Css.IsValid);
             base.PreBuild();
         }
     }
