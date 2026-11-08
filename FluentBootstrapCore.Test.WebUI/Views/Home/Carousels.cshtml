@@ -1,0 +1,74 @@
+@Html.Bootstrap().Heading1("Carousel")
+<hr />
+@Html.Bootstrap().Heading2("Example")
+
+@Html.Bootstrap().Heading3("Slides only")
+@using (var carousel = Html.Bootstrap().Carousel().Ride().Begin())
+{
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel1/800/400", "First slide")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel2/800/400", "Second slide")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel3/800/400", "Third slide")
+}
+<br />
+
+@Html.Bootstrap().Heading3("With controls")
+@using (var carousel = Html.Bootstrap().Carousel().Ride().Controls().Begin())
+{
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel1/800/400", "First slide")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel2/800/400", "Second slide")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel3/800/400", "Third slide")
+}
+<br />
+
+@Html.Bootstrap().Heading3("With indicators")
+@using (var carousel = Html.Bootstrap().Carousel().Ride(CarouselRide.AfterInteraction).Indicators().Controls().Begin())
+{
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel1/800/400", "First slide")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel2/800/400", "Second slide")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel3/800/400", "Third slide")
+}
+<br />
+
+@Html.Bootstrap().Heading3("With captions")
+@using (var carousel = Html.Bootstrap().Carousel().Indicators().Controls().Begin())
+{
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel1/800/400", "First slide", "First slide label", "Some representative placeholder content for the first slide.")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel2/800/400", "Second slide", "Second slide label", "Some representative placeholder content for the second slide.")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel3/800/400", "Third slide", "Third slide label", "Some representative placeholder content for the third slide.")
+}
+<br />
+
+@Html.Bootstrap().Heading3("Crossfade")
+@using (var carousel = Html.Bootstrap().Carousel().Ride().Fade().Controls().Begin())
+{
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel1/800/400", "First slide")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel2/800/400", "Second slide")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel3/800/400", "Third slide")
+}
+<br />
+
+@Html.Bootstrap().Heading3("Individual .carousel-item interval")
+@using (var carousel = Html.Bootstrap().Carousel().Ride().Controls().Begin())
+{
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel1/800/400", "First slide").Interval(10000)
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel2/800/400", "Second slide").Interval(2000)
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel3/800/400", "Third slide")
+}
+<br />
+
+@Html.Bootstrap().Heading3("Disable touch swiping")
+@using (var carousel = Html.Bootstrap().Carousel().Touch(false).Controls().Begin())
+{
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel1/800/400", "First slide")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel2/800/400", "Second slide")
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel3/800/400", "Third slide")
+}
+<hr />
+
+@Html.Bootstrap().Heading2("Dark variant")
+@using (var carousel = Html.Bootstrap().Carousel().Ride().Dark().Indicators().Controls().Begin())
+{
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel1/800/400", "First slide", "First slide label", "Some representative placeholder content for the first slide.").Interval(10000)
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel2/800/400", "Second slide", "Second slide label", "Some representative placeholder content for the second slide.").Interval(2000)
+    @carousel.CarouselItem("https://picsum.photos/seed/carousel3/800/400", "Third slide", "Third slide label", "Some representative placeholder content for the third slide.")
+}

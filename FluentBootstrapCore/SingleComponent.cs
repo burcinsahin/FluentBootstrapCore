@@ -271,8 +271,10 @@ namespace FluentBootstrapCore
 
             foreach (var child in footerChildren)
             {
-                _tagBuilder.InnerHtml.AppendHtml(child.ToHtml());
-                htmlContentBuilder.AppendHtml(child.ToHtml());
+                // ToHtml appends to the child's own TagBuilder, so it must be called only once per child
+                var childHtml = child.ToHtml();
+                _tagBuilder.InnerHtml.AppendHtml(childHtml);
+                htmlContentBuilder.AppendHtml(childHtml);
             }
 
             var fullWrapperChildren = _children.Where(c => c.Item1 == ChildLocation.FullWrap)

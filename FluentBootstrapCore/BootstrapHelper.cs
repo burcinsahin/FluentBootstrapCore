@@ -238,6 +238,12 @@ namespace FluentBootstrapCore
             return new BootstrapContent<CardGroup>(HtmlHelper, cardGroup);
         }
 
+        public BootstrapContent<Carousel> Carousel()
+        {
+            var carousel = new Carousel();
+            return new BootstrapContent<Carousel>(HtmlHelper, carousel);
+        }
+
         public BootstrapContent<CheckBox> CheckBox()
         {
             var checkbox = new CheckBox();
