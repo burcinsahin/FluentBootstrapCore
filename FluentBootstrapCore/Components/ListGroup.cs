@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Interfaces;
+using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
@@ -13,7 +13,8 @@ namespace FluentBootstrapCore.Components
 
         protected override void PreBuild()
         {
-            if (Flush)
+            // A list group placed directly inside a card must be flush (Bootstrap docs: Cards > List groups)
+            if (Flush || HasParent<Card>())
                 AddCss(Css.ListGroupFlush);
 
             base.PreBuild();

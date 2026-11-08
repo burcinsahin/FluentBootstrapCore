@@ -1,4 +1,4 @@
-﻿@Html.Bootstrap().Heading2("Example")
+@Html.Bootstrap().Heading2("Example")
 @using (Html.Bootstrap().Div().Width(500).Begin())
 {
     @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
@@ -48,8 +48,29 @@
         @using (var lg = Html.Bootstrap().ListGroup().Begin())
         {
             @lg.ListGroupItem().Content("An item")
-            @lg.ListGroupItem().Content("An second item")
-            @lg.ListGroupItem().Content("An third item")
+            @lg.ListGroupItem().Content("A second item")
+            @lg.ListGroupItem().Content("A third item")
+        }
+    }
+    <br />
+    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
+    {
+        @card.Header("Featured")
+        @using (var lg = Html.Bootstrap().ListGroup().Begin())
+        {
+            @lg.ListGroupItem().Content("An item")
+            @lg.ListGroupItem().Content("A second item")
+            @lg.ListGroupItem().Content("A third item")
+        }
+    }
+    <br />
+    @using (var card = Html.Bootstrap().Card().Width(18, LengthUnit.RootElement).Begin())
+    {
+        @using (var lg = Html.Bootstrap().ListGroup().Begin())
+        {
+            @lg.ListGroupItem().Content("An item")
+            @lg.ListGroupItem().Content("A second item")
+            @lg.ListGroupItem().Content("A third item")
         }
         @card.Footer().Content("Card footer")
     }
@@ -66,8 +87,8 @@
         @using (var lg = Html.Bootstrap().ListGroup().Begin())
         {
             @lg.ListGroupItem().Content("An item")
-            @lg.ListGroupItem().Content("An second item")
-            @lg.ListGroupItem().Content("An third item")
+            @lg.ListGroupItem().Content("A second item")
+            @lg.ListGroupItem().Content("A third item")
         }
         @using (card.Body().Begin())
         {
@@ -459,4 +480,92 @@
         }
     }
     @Html.Bootstrap().Heading3("Grid cards")
+    var longText = "This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.";
+    var midText = "This is a longer card with supporting text below as a natural lead-in to additional content.";
+    var gridTexts = new[] { longText, longText, midText, longText };
+    var equalHeightTexts = new[] { longText, "This is a short card.", midText, longText };
+    var footerTexts = new[]
+    {
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+        "This card has supporting text below as a natural lead-in to additional content.",
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action."
+    };
+    @using (var row = Html.Bootstrap().Row().RowColumns(1).RowColumns(2, Breakpoint.Medium).Gutter(Gutter.All, 4).Begin())
+    {
+        @foreach (var text in gridTexts)
+        {
+            @using (row.Column().Begin())
+            {
+                @using (var card = Html.Bootstrap().Card().Begin())
+                {
+                    @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+                    @using (card.Body().Begin())
+                    {
+                        @card.Title("Card title")
+                        @card.Text(text)
+                    }
+                }
+            }
+        }
+    }
+    <br />
+    @using (var row = Html.Bootstrap().Row().RowColumns(1).RowColumns(3, Breakpoint.Medium).Gutter(Gutter.All, 4).Begin())
+    {
+        @foreach (var text in gridTexts)
+        {
+            @using (row.Column().Begin())
+            {
+                @using (var card = Html.Bootstrap().Card().Begin())
+                {
+                    @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+                    @using (card.Body().Begin())
+                    {
+                        @card.Title("Card title")
+                        @card.Text(text)
+                    }
+                }
+            }
+        }
+    }
+    <br />
+    @Html.Bootstrap().Paragraph("When you need equal height, add h-100 to the cards.")
+    @using (var row = Html.Bootstrap().Row().RowColumns(1).RowColumns(3, Breakpoint.Medium).Gutter(Gutter.All, 4).Begin())
+    {
+        @foreach (var text in equalHeightTexts)
+        {
+            @using (row.Column().Begin())
+            {
+                @using (var card = Html.Bootstrap().Card().Height(Height._100).Begin())
+                {
+                    @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+                    @using (card.Body().Begin())
+                    {
+                        @card.Title("Card title")
+                        @card.Text(text)
+                    }
+                }
+            }
+        }
+    }
+    <br />
+    @Html.Bootstrap().Paragraph("Just like with card groups, card footers will automatically line up.")
+    @using (var row = Html.Bootstrap().Row().RowColumns(1).RowColumns(3, Breakpoint.Medium).Gutter(Gutter.All, 4).Begin())
+    {
+        @foreach (var text in footerTexts)
+        {
+            @using (row.Column().Begin())
+            {
+                @using (var card = Html.Bootstrap().Card().Height(Height._100).Begin())
+                {
+                    @card.Image("https://picsum.photos/286/180", "photo", CardImage.Top)
+                    @using (card.Body().Begin())
+                    {
+                        @card.Title("Card title")
+                        @card.Text(text)
+                    }
+                    @card.Footer().Content(Html.Bootstrap().Element("small", "Last updated 3 mins ago").Color(TextColor.Muted))
+                }
+            }
+        }
+    }
 }
