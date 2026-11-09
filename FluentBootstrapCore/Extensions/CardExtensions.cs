@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Enums;
 
 namespace FluentBootstrapCore.Extensions
@@ -34,6 +34,16 @@ namespace FluentBootstrapCore.Extensions
             where TComponent : Card
         {
             bootstrapContent.Component.WrapBody = value;
+            return bootstrapContent;
+        }
+
+        /// <summary>
+        /// Adds <c>.card-body</c> to the card element itself (<c>div.card.card-body</c>) instead of wrapping the content in a separate card body.
+        /// </summary>
+        public static BootstrapContent<TComponent> SelfBody<TComponent>(this BootstrapContent<TComponent> bootstrapContent, bool value = true)
+            where TComponent : Card
+        {
+            bootstrapContent.Component.SelfBody = value;
             return bootstrapContent;
         }
 

@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Interfaces;
 using FluentBootstrapCore.Options;
 using System;
@@ -13,6 +13,7 @@ namespace FluentBootstrapCore.Components
         internal object? Header { get; set; }
         internal object? Footer { get; set; }
         internal bool WrapBody { get; set; }
+        internal bool SelfBody { get; set; }
         internal object? BodyTitle { get; set; }
         internal bool Collapsible { get; set; }
         public TextColor? BodyColor { get; set; }
@@ -27,6 +28,12 @@ namespace FluentBootstrapCore.Components
         protected override void PreBuild()
         {
             var uid = $"cb_{DateTime.Now.Ticks}";
+
+            if (SelfBody && WrapBody)
+                throw new InvalidOperationException("Card.SelfBody and Card.WrapBody cannot be used together: both add a card-body.");
+
+            if (SelfBody)
+                AddCss(Css.CardBody);
 
             if (Header != null)
             {

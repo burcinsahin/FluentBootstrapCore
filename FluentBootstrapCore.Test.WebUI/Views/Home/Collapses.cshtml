@@ -1,0 +1,53 @@
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Example")
+    using (Html.Bootstrap().Paragraph().Begin())
+    {
+        @Html.Bootstrap().LinkButton("Link with href").Collapse("collapseExample")
+        @Html.Bootstrap().Button("Button with data-bs-target").Collapse("collapseExample")
+    }
+    using (Html.Bootstrap().Collapse().Id("collapseExample").Begin())
+    {
+        @Html.Bootstrap().Card().SelfBody().Content("Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.")
+    }
+
+    <hr />
+    @Html.Bootstrap().Heading2("Horizontal")
+    using (Html.Bootstrap().Paragraph().Begin())
+    {
+        @Html.Bootstrap().Button("Toggle width collapse").Collapse("collapseWidthExample")
+    }
+    using (Html.Bootstrap().Div().MinHeight(120).Begin())
+    {
+        using (Html.Bootstrap().Collapse().Id("collapseWidthExample").Horizontal().Begin())
+        {
+            @Html.Bootstrap().Card().SelfBody().Width(300).Content("This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.")
+        }
+    }
+
+    <hr />
+    @Html.Bootstrap().Heading2("Multiple targets")
+    using (Html.Bootstrap().Paragraph().Begin())
+    {
+        @Html.Bootstrap().LinkButton("Toggle first element").Collapse("multiCollapseExample1")
+        @Html.Bootstrap().Button("Toggle second element").Collapse("multiCollapseExample2")
+        @Html.Bootstrap().Button("Toggle both elements").Collapse(".multi-collapse", controls: "multiCollapseExample1 multiCollapseExample2")
+    }
+    using (var row = Html.Bootstrap().Row().Begin())
+    {
+        using (row.Column().Begin())
+        {
+            using (Html.Bootstrap().Collapse().Id("multiCollapseExample1").Css("multi-collapse").Begin())
+            {
+                @Html.Bootstrap().Card().SelfBody().Content("Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.")
+            }
+        }
+        using (row.Column().Begin())
+        {
+            using (Html.Bootstrap().Collapse().Id("multiCollapseExample2").Css("multi-collapse").Begin())
+            {
+                @Html.Bootstrap().Card().SelfBody().Content("Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.")
+            }
+        }
+    }
+}

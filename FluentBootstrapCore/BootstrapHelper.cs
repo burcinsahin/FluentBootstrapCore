@@ -265,6 +265,12 @@ namespace FluentBootstrapCore
             return new BootstrapContent<CloseButton>(HtmlHelper, closeButton);
         }
 
+        public BootstrapContent<Collapse> Collapse()
+        {
+            var collapse = new Collapse();
+            return new BootstrapContent<Collapse>(HtmlHelper, collapse);
+        }
+
         public BootstrapContent<Figure> Figure()
         {
             var figure = new Figure();
