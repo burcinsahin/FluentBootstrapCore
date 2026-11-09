@@ -259,6 +259,12 @@ namespace FluentBootstrapCore
             return new CompositeContent<CheckButton>(HtmlHelper, checkButton);
         }
 
+        public BootstrapContent<CloseButton> CloseButton()
+        {
+            var closeButton = new CloseButton();
+            return new BootstrapContent<CloseButton>(HtmlHelper, closeButton);
+        }
+
         public BootstrapContent<Figure> Figure()
         {
             var figure = new Figure();

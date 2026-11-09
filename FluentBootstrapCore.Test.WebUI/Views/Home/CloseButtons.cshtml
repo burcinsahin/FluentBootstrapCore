@@ -1,0 +1,23 @@
+@using (Html.Bootstrap().Container().Begin())
+{
+    @Html.Bootstrap().Heading2("Example")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().CloseButton()
+    }
+
+    <hr />
+    @Html.Bootstrap().Heading2("Disabled state")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @Html.Bootstrap().CloseButton().Disabled()
+    }
+
+    <hr />
+    @Html.Bootstrap().Heading2("White variant")
+    using (Html.Bootstrap().Div().Css($"{Css.BgDark} {Css.P3}").Begin())
+    {
+        @Html.Bootstrap().CloseButton().White()
+        @Html.Bootstrap().CloseButton().White().Disabled()
+    }
+}
