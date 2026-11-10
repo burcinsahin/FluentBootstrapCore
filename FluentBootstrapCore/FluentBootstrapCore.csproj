@@ -5,11 +5,11 @@
     <Nullable>enable</Nullable>
 
     <Title>FluentBootstrapCore</Title>
-    <Description>Fluent bootstrap (v5.2.2) library for netcore MVC applications.</Description>
+    <Description>Fluent bootstrap (v5.2.x) library for netcore MVC applications.</Description>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.5.2.2-alpha.$([System.DateTime]::Now.ToString("yyyyMMddHH"))</Version>
+    <Version>1.5.2.3-alpha.$([System.DateTime]::Now.ToString("yyyyMMddHH"))</Version>
     <PackageOutputPath>C:\Temp\MyNugetPackages</PackageOutputPath>
     <Copyright>burcinsahin</Copyright>
     <PackageProjectUrl>https://github.com/burcinsahin/FluentBootstrapCore</PackageProjectUrl>
@@ -32,6 +32,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.3.13" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="[8.0.2,9.0.0)" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="[8.0.5,9.0.0)" />
   </ItemGroup>
   
   <ItemGroup>
