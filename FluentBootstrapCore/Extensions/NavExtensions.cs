@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Components;
+using FluentBootstrapCore.Components;
 using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Extensions
@@ -46,16 +46,6 @@ namespace FluentBootstrapCore.Extensions
         {
             var link = new NavLink();
             return new BootstrapContent<NavLink>(builder.HtmlHelper, link);
-        }
-
-        public static BootstrapContent<ListItem> Divider<TComponent>(this ComponentBuilder<TComponent> builder)
-            where TComponent : DropdownMenu
-        {
-            var li = new ListItem()
-            {
-                Content = new HtmlElement("hr", Css.DropdownDivider)
-            };
-            return new BootstrapContent<ListItem>(builder.HtmlHelper, li);
         }
 
         public static BootstrapContent<NavDropdown> Dropdown<TComponent>(this ComponentBuilder<TComponent> builder, string text)

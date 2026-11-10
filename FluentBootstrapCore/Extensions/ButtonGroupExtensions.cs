@@ -39,6 +39,7 @@ namespace FluentBootstrapCore.Extensions
             };
             button.AddCss(Css.DropdownToggle);
             button.MergeAttribute("data-bs-toggle", "dropdown");
+            button.MergeAttribute("aria-expanded", false);
             return new BootstrapContent<Button>(builder.HtmlHelper, button);
         }
 

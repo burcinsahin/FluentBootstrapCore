@@ -271,6 +271,21 @@ namespace FluentBootstrapCore
             return new BootstrapContent<Collapse>(HtmlHelper, collapse);
         }
 
+        public BootstrapContent<Dropdown> Dropdown()
+        {
+            var dropdown = new Dropdown();
+            return new BootstrapContent<Dropdown>(HtmlHelper, dropdown);
+        }
+
+        /// <summary>
+        /// Standalone dropdown menu (e.g. to render a menu without a toggle).
+        /// </summary>
+        public BootstrapContent<DropdownMenu> DropdownMenu()
+        {
+            var dropdownMenu = new DropdownMenu();
+            return new BootstrapContent<DropdownMenu>(HtmlHelper, dropdownMenu);
+        }
+
         public BootstrapContent<Figure> Figure()
         {
             var figure = new Figure();

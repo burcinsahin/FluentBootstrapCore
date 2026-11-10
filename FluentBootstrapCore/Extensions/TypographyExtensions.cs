@@ -7,50 +7,6 @@ namespace FluentBootstrapCore.Extensions
 {
     public static class TypographyExtensions
     {
-        #region Dropdown
-        public static BootstrapContent<DropdownMenu> DropdownMenu<TComponent>(this ComponentBuilder<TComponent> builder)
-            where TComponent : SingleComponent, ICanCreate<DropdownMenu>
-        {
-            var dropdownMenu = new DropdownMenu();
-            return new BootstrapContent<DropdownMenu>(builder.HtmlHelper, dropdownMenu);
-        }
-
-        public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this ComponentBuilder<TComponent> builder, string? text, string? href)
-            where TComponent : SingleComponent, ICanCreate<DropdownItem>
-        {
-            var dropdownItem = new DropdownItem
-            {
-                Content = text,
-                Href = href
-            };
-            return new BootstrapContent<DropdownItem>(builder.HtmlHelper, dropdownItem);
-        }
-
-        public static BootstrapContent<DropdownItem> DropdownItem<TComponent>(this ComponentBuilder<TComponent> builder, string? text, string action, string controller, object? routeValues = null)
-            where TComponent : SingleComponent, ICanCreate<DropdownItem>
-        {
-            var url = builder.HtmlHelper.GetUrlHelper().Action(action, controller, routeValues);
-            var dropdownItem = new DropdownItem
-            {
-                Content = text,
-                Href = url
-            };
-            return new BootstrapContent<DropdownItem>(builder.HtmlHelper, dropdownItem);
-        }
-
-        public static BootstrapContent<DropdownMenu> Dark(this BootstrapContent<DropdownMenu> bootstrapContent)
-        {
-            bootstrapContent.Component.AddCss(Css.DropdownMenuDark);
-            return bootstrapContent;
-        }
-
-        public static BootstrapContent<DropdownMenu> AlignEnd(this BootstrapContent<DropdownMenu> bootstrapContent)
-        {
-            bootstrapContent.Component.AlignEnd = true;
-            return bootstrapContent;
-        }
-        #endregion
-
         public static BootstrapContent<ListItem> ListItem<TComponent>(this ComponentBuilder<TComponent> builder, object? content = null)
             where TComponent : List
         {

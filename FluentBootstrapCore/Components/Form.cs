@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Interfaces;
+using FluentBootstrapCore.Interfaces;
 
 namespace FluentBootstrapCore.Components
 {
@@ -9,7 +9,8 @@ namespace FluentBootstrapCore.Components
         ICanCreate<FormRadio>,
         ICanCreate<Button>,
         ICanCreate<Label>,
-        IGutterable
+        IGutterable,
+        ICanBeDropdownMenu
     {
         public string? Action { get; set; }
         public string? Method { get; set; }

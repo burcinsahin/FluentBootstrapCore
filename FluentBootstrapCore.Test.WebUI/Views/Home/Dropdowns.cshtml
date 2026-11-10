@@ -1,0 +1,594 @@
+@using (Html.Bootstrap().Container().Begin())
+{
+    var states = new[] { ButtonState.Primary, ButtonState.Secondary, ButtonState.Success, ButtonState.Info, ButtonState.Warning, ButtonState.Danger };
+
+    @Html.Bootstrap().Heading2("Examples")
+    @Html.Bootstrap().Heading3("Single button")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var dropdown = Html.Bootstrap().Dropdown().Begin())
+        {
+            @dropdown.Button("Dropdown button").State(ButtonState.Secondary).DropdownToggle()
+            @using (var dropdownMenu = dropdown.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+            }
+        }
+        <br />
+        @using (var dropdown = Html.Bootstrap().Dropdown().Begin())
+        {
+            @dropdown.LinkButton("Dropdown link").State(ButtonState.Secondary).DropdownToggle()
+            @using (var dropdownMenu = dropdown.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+            }
+        }
+        <br />
+        foreach (var state in states)
+        {
+            @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+            {
+                @buttonGroup.DropdownToggle(state.ToString()).State(state)
+                @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+                {
+                    @dropdownMenu.DropdownItem("Action", "#")
+                    @dropdownMenu.DropdownItem("Another action", "#")
+                    @dropdownMenu.DropdownItem("Something else here", "#")
+                    @dropdownMenu.Divider()
+                    @dropdownMenu.DropdownItem("Separated link", "#")
+                }
+            }
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Split button")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        foreach (var state in states)
+        {
+            @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+            {
+                @buttonGroup.Button(state.ToString()).State(state)
+                @buttonGroup.DropdownToggleSplit().State(state)
+                @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+                {
+                    @dropdownMenu.DropdownItem("Action", "#")
+                    @dropdownMenu.DropdownItem("Another action", "#")
+                    @dropdownMenu.DropdownItem("Something else here", "#")
+                    @dropdownMenu.Divider()
+                    @dropdownMenu.DropdownItem("Separated link", "#")
+                }
+            }
+        }
+    }
+    <hr />
+
+    @Html.Bootstrap().Heading2("Sizing")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Large button").State(ButtonState.Secondary).Size(ButtonSize.Large)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.Button("Large split button").State(ButtonState.Secondary).Size(ButtonSize.Large)
+            @buttonGroup.DropdownToggleSplit().State(ButtonState.Secondary).Size(ButtonSize.Large)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+        <br />
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Small button").State(ButtonState.Secondary).Size(ButtonSize.Small)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.Button("Small split button").State(ButtonState.Secondary).Size(ButtonSize.Small)
+            @buttonGroup.DropdownToggleSplit().State(ButtonState.Secondary).Size(ButtonSize.Small)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+    }
+    <hr />
+
+    @Html.Bootstrap().Heading2("Dark dropdowns")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var dropdown = Html.Bootstrap().Dropdown().Begin())
+        {
+            @dropdown.Button("Dropdown button").State(ButtonState.Secondary).DropdownToggle()
+            @using (var dropdownMenu = dropdown.DropdownMenu().Dark().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#").Active()
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+        <br />
+        @using (var navbar = Html.Bootstrap().Navbar().Expand(Breakpoint.Large).Dark().Background(BgColor.Dark).Begin())
+        {
+            @navbar.Brand("Navbar").Href()
+            @navbar.NavbarToggler("navbarNavDarkDropdown")
+            @using (var navbarCollapse = navbar.NavbarCollapse("navbarNavDarkDropdown").Begin())
+            {
+                @using (var nav = navbarCollapse.NavbarNav().Begin())
+                {
+                    @using (var dropdown = nav.Dropdown("Dropdown").Begin())
+                    {
+                        @using (var dropdownMenu = dropdown.DropdownMenu().Dark().Begin())
+                        {
+                            @dropdownMenu.DropdownItem("Action", "#")
+                            @dropdownMenu.DropdownItem("Another action", "#")
+                            @dropdownMenu.DropdownItem("Something else here", "#")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    <hr />
+
+    @Html.Bootstrap().Heading2("Directions")
+    @Html.Bootstrap().Heading3("Centered")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var dropdown = Html.Bootstrap().Dropdown().Centered().Begin())
+        {
+            @dropdown.Button("Centered dropdown").State(ButtonState.Secondary).DropdownToggle()
+            @using (var dropdownMenu = dropdown.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Action two", "#")
+                @dropdownMenu.DropdownItem("Action three", "#")
+            }
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Dropup")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Dropup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Dropup").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Dropup().Begin())
+        {
+            @buttonGroup.Button("Split dropup").State(ButtonState.Secondary)
+            @buttonGroup.DropdownToggleSplit().State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Dropup centered")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var dropdown = Html.Bootstrap().Dropdown().Dropup().Centered().Begin())
+        {
+            @dropdown.Button("Centered dropup").State(ButtonState.Secondary).DropdownToggle()
+            @using (var dropdownMenu = dropdown.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Action two", "#")
+                @dropdownMenu.DropdownItem("Action three", "#")
+            }
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Dropend")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Dropend().Begin())
+        {
+            @buttonGroup.DropdownToggle("Dropend").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Dropend().Begin())
+        {
+            @buttonGroup.Button("Split dropend").State(ButtonState.Secondary)
+            @buttonGroup.DropdownToggleSplit("Toggle Dropend").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Dropstart")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Dropstart().Begin())
+        {
+            @buttonGroup.DropdownToggle("Dropstart").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Dropstart().Begin())
+        {
+            @buttonGroup.DropdownToggleSplit("Toggle Dropstart").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+            @buttonGroup.Button("Split dropstart").State(ButtonState.Secondary)
+        }
+    }
+    <hr />
+
+    @Html.Bootstrap().Heading2("Menu items")
+    @Html.Bootstrap().Heading3("Button items")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var dropdown = Html.Bootstrap().Dropdown().Begin())
+        {
+            @dropdown.Button("Dropdown").State(ButtonState.Secondary).DropdownToggle()
+            @using (var dropdownMenu = dropdown.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownButtonItem("Action")
+                @dropdownMenu.DropdownButtonItem("Another action")
+                @dropdownMenu.DropdownButtonItem("Something else here")
+            }
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Non-interactive text item")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var dropdownMenu = Html.Bootstrap().DropdownMenu().Display(Display.Block).Position(Position.Static).Begin())
+        {
+            @dropdownMenu.DropdownText("Dropdown item text")
+            @dropdownMenu.DropdownItem("Action", "#")
+            @dropdownMenu.DropdownItem("Another action", "#")
+            @dropdownMenu.DropdownItem("Something else here", "#")
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Active")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var dropdownMenu = Html.Bootstrap().DropdownMenu().Display(Display.Block).Position(Position.Static).Begin())
+        {
+            @dropdownMenu.DropdownItem("Regular link", "#")
+            @dropdownMenu.DropdownItem("Active link", "#").Active()
+            @dropdownMenu.DropdownItem("Another link", "#")
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Disabled")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var dropdownMenu = Html.Bootstrap().DropdownMenu().Display(Display.Block).Position(Position.Static).Begin())
+        {
+            @dropdownMenu.DropdownItem("Regular link", "#")
+            @dropdownMenu.DropdownItem("Disabled link", null).Disabled()
+            @dropdownMenu.DropdownItem("Another link", "#")
+        }
+    }
+    <hr />
+
+    @Html.Bootstrap().Heading2("Menu alignment")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Right-aligned menu example").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().AlignEnd().Begin())
+            {
+                @dropdownMenu.DropdownButtonItem("Action")
+                @dropdownMenu.DropdownButtonItem("Another action")
+                @dropdownMenu.DropdownButtonItem("Something else here")
+            }
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Responsive alignment")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Left-aligned but right aligned when large screen").State(ButtonState.Secondary).DropdownStatic()
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().AlignEnd(Breakpoint.Large).Begin())
+            {
+                @dropdownMenu.DropdownButtonItem("Action")
+                @dropdownMenu.DropdownButtonItem("Another action")
+                @dropdownMenu.DropdownButtonItem("Something else here")
+            }
+        }
+        <br />
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Right-aligned but left aligned when large screen").State(ButtonState.Secondary).DropdownStatic()
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().AlignEnd().AlignStart(Breakpoint.Large).Begin())
+            {
+                @dropdownMenu.DropdownButtonItem("Action")
+                @dropdownMenu.DropdownButtonItem("Another action")
+                @dropdownMenu.DropdownButtonItem("Something else here")
+            }
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Alignment options")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Dropdown").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Right-aligned menu").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().AlignEnd().Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Left-aligned, right-aligned lg").State(ButtonState.Secondary).DropdownStatic()
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().AlignEnd(Breakpoint.Large).Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Right-aligned, left-aligned lg").State(ButtonState.Secondary).DropdownStatic()
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().AlignEnd().AlignStart(Breakpoint.Large).Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Dropstart().Begin())
+        {
+            @buttonGroup.DropdownToggle("Dropstart").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Dropend().Begin())
+        {
+            @buttonGroup.DropdownToggle("Dropend").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Dropup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Dropup").State(ButtonState.Secondary)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+    }
+    <hr />
+
+    @Html.Bootstrap().Heading2("Menu content")
+    @Html.Bootstrap().Heading3("Headers")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var dropdownMenu = Html.Bootstrap().DropdownMenu().Display(Display.Block).Position(Position.Static).Begin())
+        {
+            @dropdownMenu.DropdownHeader("Dropdown header")
+            @dropdownMenu.DropdownItem("Action", "#")
+            @dropdownMenu.DropdownItem("Another action", "#")
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Dividers")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var dropdownMenu = Html.Bootstrap().DropdownMenu().Display(Display.Block).Position(Position.Static).Begin())
+        {
+            @dropdownMenu.DropdownItem("Action", "#")
+            @dropdownMenu.DropdownItem("Another action", "#")
+            @dropdownMenu.DropdownItem("Something else here", "#")
+            @dropdownMenu.Divider()
+            @dropdownMenu.DropdownItem("Separated link", "#")
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Text")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (Html.Bootstrap().Div().AsDropdownMenu().Display(Display.Block).Position(Position.Static).Padding(4).Color(TextColor.Muted).MaxWidth(200).Begin())
+        {
+            @Html.Bootstrap().Paragraph("Some example text that's free-flowing within the dropdown menu.")
+            @Html.Bootstrap().Paragraph("And this is more example text.").Margin(Margin.Bottom, 0)
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Forms")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (Html.Bootstrap().Div().AsDropdownMenu().Display(Display.Block).Position(Position.Static).Begin())
+        {
+            @using (Html.Bootstrap().Form().Padding(Padding.Horizontal, 4).Padding(Padding.Vertical, 3).Begin())
+            {
+                @Html.Bootstrap().FormInput("Email address").Type(FormInputType.Email).Placeholder("email@example.com").Margin(Margin.Bottom, 3)
+                @Html.Bootstrap().FormInput("Password").Type(FormInputType.Password).Placeholder("Password").Margin(Margin.Bottom, 3)
+                @Html.Bootstrap().FormCheck("Remember me").Margin(Margin.Bottom, 3)
+                @Html.Bootstrap().Button("Sign in").Type(ButtonType.Submit)
+            }
+            @Html.Bootstrap().Div().AsDropdownDivider()
+            @Html.Bootstrap().Link("New around here? Sign up").AsDropdownItem()
+            @Html.Bootstrap().Link("Forgot password?").AsDropdownItem()
+        }
+        <br />
+        @using (var dropdown = Html.Bootstrap().Dropdown().Begin())
+        {
+            @dropdown.Button("Dropdown form").DropdownToggle().DropdownAutoClose(DropdownAutoClose.Outside)
+            @using (Html.Bootstrap().Form().AsDropdownMenu().Padding(4).Begin())
+            {
+                @Html.Bootstrap().FormInput("Email address").Type(FormInputType.Email).Placeholder("email@example.com").Margin(Margin.Bottom, 3)
+                @Html.Bootstrap().FormInput("Password").Type(FormInputType.Password).Placeholder("Password").Margin(Margin.Bottom, 3)
+                @Html.Bootstrap().FormCheck("Remember me").Margin(Margin.Bottom, 3)
+                @Html.Bootstrap().Button("Sign in").Type(ButtonType.Submit)
+            }
+        }
+    }
+    <hr />
+
+    @Html.Bootstrap().Heading2("Dropdown options")
+    using (Html.Bootstrap().Div().Display(Display.Flex).Begin())
+    {
+        @using (var dropdown = Html.Bootstrap().Dropdown().Margin(Margin.End, 1).Begin())
+        {
+            @dropdown.Button("Offset").State(ButtonState.Secondary).DropdownToggle().DropdownOffset(10, 20)
+            @using (var dropdownMenu = dropdown.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.Button("Reference").State(ButtonState.Secondary)
+            @buttonGroup.DropdownToggleSplit().State(ButtonState.Secondary).DropdownReference(DropdownReference.Parent)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Action", "#")
+                @dropdownMenu.DropdownItem("Another action", "#")
+                @dropdownMenu.DropdownItem("Something else here", "#")
+                @dropdownMenu.Divider()
+                @dropdownMenu.DropdownItem("Separated link", "#")
+            }
+        }
+    }
+
+    @Html.Bootstrap().Heading3("Auto close behavior")
+    using (Html.Bootstrap().Div().Begin())
+    {
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Default dropdown").State(ButtonState.Secondary).DropdownAutoClose(DropdownAutoClose.Default)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Clickable outside").State(ButtonState.Secondary).DropdownAutoClose(DropdownAutoClose.Inside)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Clickable inside").State(ButtonState.Secondary).DropdownAutoClose(DropdownAutoClose.Outside)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+        @using (var buttonGroup = Html.Bootstrap().ButtonGroup().Begin())
+        {
+            @buttonGroup.DropdownToggle("Manual close").State(ButtonState.Secondary).DropdownAutoClose(DropdownAutoClose.Manual)
+            @using (var dropdownMenu = buttonGroup.DropdownMenu().Begin())
+            {
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+                @dropdownMenu.DropdownItem("Menu item", "#")
+            }
+        }
+    }
+}

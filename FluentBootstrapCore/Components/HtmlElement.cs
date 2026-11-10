@@ -1,6 +1,10 @@
-﻿namespace FluentBootstrapCore.Components
+using FluentBootstrapCore.Interfaces;
+
+namespace FluentBootstrapCore.Components
 {
-    public class HtmlElement(string tagName, params string[] cssClasses) : BootstrapComponent(tagName, cssClasses)
+    public class HtmlElement(string tagName, params string[] cssClasses) : BootstrapComponent(tagName, cssClasses),
+        ICanBeDropdownMenu,
+        ICanBeDropdownDivider
     {
     }
 }

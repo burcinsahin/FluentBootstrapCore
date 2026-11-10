@@ -3,6 +3,7 @@ using FluentBootstrapCore.Interfaces;
 namespace FluentBootstrapCore.Components
 {
     public class DropdownMenu : BootstrapComponent,
+        ICanBeDropdownMenu,
         ICanCreate<DropdownItem>
     {
         public bool AlignEnd { get; set; }

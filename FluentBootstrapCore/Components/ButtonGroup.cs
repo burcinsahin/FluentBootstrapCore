@@ -1,4 +1,4 @@
-﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Extensions;
 using FluentBootstrapCore.Interfaces;
 
@@ -8,9 +8,12 @@ namespace FluentBootstrapCore.Components
         ICanCreate<IButton>,
         ICanCreate<ButtonGroup>,
         ICanCreate<DropdownMenu>,
-        ISizable<ButtonGroupSize>
+        ISizable<ButtonGroupSize>,
+        IDropdownContainer
     {
         public ButtonGroupSize? Size { get; set; }
+        public DropdownDirection Direction { get; set; }
+        public bool Centered { get; set; }
         public bool Vertical { get; set; }
         public ButtonGroup() : base("div", Css.BtnGroup)
         {
@@ -19,6 +22,7 @@ namespace FluentBootstrapCore.Components
         protected override void PreBuild()
         {
             MergeAttribute("role", "group");
+            Dropdown.ApplyDirection(this, this);
 
             if (Size.HasValue)
                 AddCss(Size.GetCssDescription());
