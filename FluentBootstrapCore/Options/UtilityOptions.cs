@@ -1,8 +1,7 @@
-﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace FluentBootstrapCore.Options
 {
@@ -40,7 +39,7 @@ namespace FluentBootstrapCore.Options
 
         protected void AddCssFor<T>(EnumList<T> list) where T : struct, Enum
         {
-            if (list.Any())
+            if (list.Count != 0)
                 _cssList.AddRange(list.GetCssDescriptions());
         }
     }

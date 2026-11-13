@@ -1,7 +1,6 @@
-﻿using FluentBootstrapCore.Enums;
+using FluentBootstrapCore.Enums;
 using FluentBootstrapCore.Extensions;
 using FluentBootstrapCore.Interfaces;
-using System.Linq;
 
 namespace FluentBootstrapCore.Components
 {
@@ -32,7 +31,7 @@ namespace FluentBootstrapCore.Components
 
             var table = new HtmlElement("table", Css.Table);
 
-            if (UtilityOptions.Any())
+            if (UtilityOptions.Count != 0)
             {
                 foreach (var opt in UtilityOptions)
                 {
